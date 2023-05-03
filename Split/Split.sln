@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SplitWebService", "SplitWeb
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Split.Engine", "Split.Engine\Split.Engine.csproj", "{D5F30305-0739-48D3-9486-14F39F872ADE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Split.DbContext", "Split.DbContext\Split.DbContext.csproj", "{6DF7977F-9D0B-4BD7-9AA3-3AEA2C25B220}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Split.DbContexts", "Split.DbContext\Split.DbContexts.csproj", "{6DF7977F-9D0B-4BD7-9AA3-3AEA2C25B220}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Split.UI", "Split.UI\Split.UI.csproj", "{1BDC84DB-600B-4BA7-985F-A1B972855C0B}"
 EndProject

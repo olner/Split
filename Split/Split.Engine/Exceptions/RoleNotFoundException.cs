@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Split.Engine.Exceptions
 {
-    internal class UserNotFoundException : ServiceException
+    public class RoleNotFoundException : ServiceException
     {
-        public UserNotFoundException() : base("User not found")
+        public RoleNotFoundException() : base("Role not found")
         {
-
         }
     }
 }
