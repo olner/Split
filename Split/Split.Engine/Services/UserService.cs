@@ -1,6 +1,8 @@
-﻿using Split.Engine.Exceptions;
+﻿using Split.DbContexts.Tables;
+using Split.Engine.Exceptions;
 using Split.Engine.Models;
 using Split.Engine.Repositories.Interfaces;
+using System.Linq;
 
 namespace Split.Engine.Services
 {
@@ -59,6 +61,22 @@ namespace Split.Engine.Services
             {
 
             } 
+        }
+        public List<User> GetUsers()
+        {
+            var users = new List<User>();
+            var rawUsers = userRepository.GetUsers();
+            foreach (var user in rawUsers)
+            {
+                var tmpUser = new User
+                {
+                    Id = user.Id,
+                    Password = user.Password,
+                    Login = user.Login
+                };
+                users.Add(tmpUser);
+            }
+            return users;
         }
     }
 }

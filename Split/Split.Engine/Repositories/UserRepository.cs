@@ -8,6 +8,16 @@ namespace Split.Engine.Repositories
 {
     public class UserRepository : IUserRepository
     {
+        public List<Users> GetUsers()
+        {
+            using var context = new SplitDbContextFactory().CreateDbContext(null);
+            var users = context.Users.ToList();
+            if (users == null)
+            {
+                throw new UserNotFoundException();
+            }
+            return users;
+        }
         public User GetUser(string login,string password)
         {
             using var context = new SplitDbContextFactory().CreateDbContext(null);

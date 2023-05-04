@@ -1,4 +1,6 @@
 
+using Split.Engine.Repositories;
+using Split.Engine.Repositories.Interfaces;
 using Split.Engine.Services;
 using SplitWebService.Controllers;
 
@@ -14,6 +16,8 @@ namespace SplitWebService
 
             builder.Services.AddControllers();
             builder.Services.AddScoped<UserService>();
+            builder.Services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
+            builder.Services.AddScoped(typeof(IRoleRepository), typeof(RoleRepository));
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

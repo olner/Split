@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Split.Engine.Models;
+using Split.Engine.Repositories.Interfaces;
 using Split.Engine.Services;
 
 namespace SplitWebService.Controllers
@@ -7,30 +9,29 @@ namespace SplitWebService.Controllers
     [Route("[controller]")]
     public class UserController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
         private readonly ILogger<UserController> logger;
         private readonly UserService userService;
+        private readonly IUserRepository userRepository;
 
         public UserController(
             ILogger<UserController> logger,
-            UserService userService)
+            UserService userService,
+            IUserRepository userRepository)
         {
             this.logger = logger;
             this.userService = userService;
+            this.userRepository = userRepository;
         }
-        [HttpGet(Name = "GetUserData")]
-        public IEnumerable<WeatherForecast> GetUserData()
+        [HttpGet(Name = "GetUsers")]
+        public List<User> GetUsers()
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+            var tmp = userService.GetUsers();
+            return tmp;
+        }
+        [HttpGet(Name = "GetUser")]
+        public User GetUser()
+        {
+            return userRepository.GetUser(1);
         }
     }
 }

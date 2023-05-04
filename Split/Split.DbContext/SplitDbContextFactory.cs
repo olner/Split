@@ -12,7 +12,7 @@ namespace Split.DbContexts
     {
         public SplitDbContext CreateDbContext(string[] args)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
             var optionsBuilder = new DbContextOptionsBuilder<SplitDbContext>();
             //TODO: Брать connectionstring из файла
             optionsBuilder.UseMySql("Server=127.0.0.1;Database=split;port=3306;User Id=root;password=Olegka_2003",
