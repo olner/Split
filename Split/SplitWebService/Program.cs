@@ -1,4 +1,6 @@
 
+using Microsoft.EntityFrameworkCore;
+using Split.DbContexts;
 using Split.Engine.Repositories;
 using Split.Engine.Repositories.Interfaces;
 using Split.Engine.Services;
@@ -21,6 +23,13 @@ namespace SplitWebService
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddDbContextFactory<SplitDbContext>(opt =>
+            {
+                //TODO: Брать connectionstring из файла
+                opt.UseMySql("Server=127.0.0.1;Database=split;port=3306;User Id=root;password=Olegka_2003",
+                    new MySqlServerVersion(new Version(8, 0, 30)));
+            });
 
             var app = builder.Build();
 
