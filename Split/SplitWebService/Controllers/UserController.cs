@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Split.Engine.Exceptions;
 using Split.Engine.Models;
 using Split.Engine.Repositories.Interfaces;
 using Split.Engine.Services;
@@ -22,16 +23,40 @@ namespace SplitWebService.Controllers
             this.userService = userService;
             this.userRepository = userRepository;
         }
-        [HttpGet(Name = "GetUsers")]
-        public List<User> GetUsers()
+
+        [HttpGet("", Name = "GetAllUsers")]
+        public List<User> GetUsers() => userService.GetUsers();
+
+        [HttpGet("{id:int}", Name = "GetUserById")]
+        public User? GetUser(int id) => userService.GetUserById(id);
+
+        [HttpGet("{login}&{password}", Name = "Authorize")]
+        public User? Authorize(string login, string password) => userService.Authorize(login, password);
+
+        [HttpGet("Register{login}&{password}", Name = "Register")]
+        public User? Register(string login, string password)
         {
-            var tmp = userService.GetUsers();
-            return tmp;
+            try
+            {
+                return userService.Register(login, password);
+            }
+            catch (ServiceException)
+            {
+                return null;
+            }            
         }
-        [HttpGet(Name = "GetUser")]
-        public User GetUser()
+
+        [HttpPost("SetRole{userId:int}/{roleName}",Name = "SetRole")]
+        public void SetRole(int userId, string roleName)
         {
-            return userRepository.GetUser(1);
+            try
+            {
+                userService.SetRole(userId, roleName);
+            }
+            catch (ServiceException)
+            {
+
+            }
         }
     }
 }
