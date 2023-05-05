@@ -7,14 +7,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
+using Split.Engine.Models;
 
 namespace Split.Engine.Repositories
 {
     public class RoleRepository : IRoleRepository
     {
+        private readonly IDbContextFactory<SplitDbContext> contextFactory;
+
+        public RoleRepository(IDbContextFactory<SplitDbContext> contextFactory)
+        {
+            this.contextFactory = contextFactory;
+        }
+        public List<Role> GetRoles()
+        {
+            using var context = contextFactory.CreateDbContext();
+        }
         public void AddRole(int roleId, int userId)
         {
-            using var context = new SplitDbContextFactory().CreateDbContext(null);
+            using var context = contextFactory.CreateDbContext();
             UserRoles userRole = new UserRoles
             {
                 RoleId = roleId,
@@ -25,7 +38,7 @@ namespace Split.Engine.Repositories
         }
         public void RemoveRole(int roleId, int userId)
         {
-            using var context = new SplitDbContextFactory().CreateDbContext(null);
+            using var context = contextFactory.CreateDbContext();
             var userRole = context.UserRoles.Where(p => p.UserId == userId && p.RoleId == roleId).FirstOrDefault();
             if (userRole == null)
             {
@@ -34,19 +47,9 @@ namespace Split.Engine.Repositories
             context.UserRoles.Remove(userRole);
             context.SaveChanges();
         }
-        public List<string> GetUserRoles(int userId)
-        {
-            using var context = new SplitDbContextFactory().CreateDbContext(null);
-            var roles = context.UserRoles.Where(p => p.UserId == userId).Select(p => p.Roles.Name).ToList();
-            if (roles == null)
-            {
-                throw new UserNotFoundException();
-            }
-            return roles;
-        }
         public int GetRoleId(string roleName)
         {
-            using var context = new SplitDbContextFactory().CreateDbContext(null);
+            using var context = contextFactory.CreateDbContext();
             var role = context.Roles.Where(x=>x.Name == roleName).Select(x=>x.Id).FirstOrDefault();
             if (role == null) 
             {

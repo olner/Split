@@ -3,14 +3,22 @@ using Split.Engine.Repositories.Interfaces;
 using Split.DbContexts;
 using Split.Engine.Exceptions;
 using Split.DbContexts.Tables;
+using Microsoft.EntityFrameworkCore.Internal;
+using Microsoft.EntityFrameworkCore;
 
 namespace Split.Engine.Repositories
 {
     public class UserRepository : IUserRepository
     {
+        private readonly IDbContextFactory<SplitDbContext> contextFactory;
+
+        public UserRepository(IDbContextFactory<SplitDbContext> contextFactory)
+        {
+            this.contextFactory = contextFactory;
+        }
         public List<Users> GetUsers()
         {
-            using var context = new SplitDbContextFactory().CreateDbContext(null);
+            using var context = contextFactory.CreateDbContext();
             var users = context.Users.ToList();
             if (users == null)
             {
@@ -20,7 +28,7 @@ namespace Split.Engine.Repositories
         }
         public User GetUser(string login,string password)
         {
-            using var context = new SplitDbContextFactory().CreateDbContext(null);
+            using var context = contextFactory.CreateDbContext();
             var users = context.Users.Where(p => p.Login == login && p.Password == password).FirstOrDefault();
             if (users == null)
             {
@@ -36,7 +44,7 @@ namespace Split.Engine.Repositories
         }
         public User GetUser(int id)
         {
-            using var context = new SplitDbContextFactory().CreateDbContext(null);
+            using var context = contextFactory.CreateDbContext();
             var users = context.Users.Where(p => p.Id == id).FirstOrDefault();
             if (users == null)
             {
@@ -53,7 +61,7 @@ namespace Split.Engine.Repositories
 
         public bool IsUserExists(string login)
         {
-            using var context = new SplitDbContextFactory().CreateDbContext(null);
+            using var context = contextFactory.CreateDbContext();
             var user = context.Users.Where(p => p.Login == login).FirstOrDefault();
             if (user != null)
             {
@@ -61,10 +69,20 @@ namespace Split.Engine.Repositories
             }
             return false;
         }
+        public List<string> GetUserRoles(int userId)
+        {
+            using var context = contextFactory.CreateDbContext();
+            var roles = context.UserRoles.Where(p => p.UserId == userId).Select(p => p.Roles.Name).ToList();
+            if (roles == null)
+            {
+                throw new UserNotFoundException();
+            }
+            return roles;
+        }
 
         public User Register(string login, string password)
         {
-            using var context = new SplitDbContextFactory().CreateDbContext(null);
+            using var context = contextFactory.CreateDbContext();
             Users user = new Users
             {
                 Login = login,

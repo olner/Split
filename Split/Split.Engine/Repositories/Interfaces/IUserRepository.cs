@@ -14,6 +14,7 @@ namespace Split.Engine.Repositories.Interfaces
         User GetUser(string login, string password);
         bool IsUserExists(string login);
         User Register(string login, string password);
+        List<string> GetUserRoles(int userId);
         User GetUser(int id);
         
     }

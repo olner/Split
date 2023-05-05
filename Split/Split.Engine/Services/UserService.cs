@@ -64,19 +64,26 @@ namespace Split.Engine.Services
         }
         public List<User> GetUsers()
         {
-            var users = new List<User>();
-            var rawUsers = userRepository.GetUsers();
-            foreach (var user in rawUsers)
-            {
-                var tmpUser = new User
+            var users = userRepository
+                .GetUsers()
+                .Select(user => new User
                 {
                     Id = user.Id,
                     Password = user.Password,
                     Login = user.Login
-                };
-                users.Add(tmpUser);
-            }
+                }).ToList();
             return users;
+        }
+        public User? GetUserById(int id)
+        {
+            try
+            {
+                return userRepository.GetUser(id);
+            }
+            catch (UserNotFoundException)
+            {
+                return null;
+            }
         }
     }
 }
