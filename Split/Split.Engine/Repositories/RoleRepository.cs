@@ -21,11 +21,40 @@ namespace Split.Engine.Repositories
         {
             this.contextFactory = contextFactory;
         }
-        public List<Role> GetRoles()
+        public List<Roles> GetRoles()
         {
             using var context = contextFactory.CreateDbContext();
+            var roles = context.Roles.ToList();
+            if (roles == null)
+            {
+                throw new RoleNotFoundException();
+            }
+            return roles;
         }
-        public void AddRole(int roleId, int userId)
+        public Role GetRole(string roleName)
+        {
+            using var context = contextFactory.CreateDbContext();
+            var rawRole = context.Roles.Where(x => x.Name == roleName).FirstOrDefault();
+            if(rawRole == null)
+            {
+                throw new RoleNotFoundException();
+            }
+            var role = new Role
+            {
+                Id = rawRole.Id,
+                Name = rawRole.Name,
+                Description = rawRole.Description
+            };
+            return role;
+        }
+        public bool IsRoleExists(string roleName)
+        {
+            using var context = contextFactory.CreateDbContext();
+            var role = context.Roles.Where(x => x.Name == roleName).FirstOrDefault();
+            if (role != null) return true;
+            return false;
+        }
+        public void SetRole(int roleId, int userId)
         {
             using var context = contextFactory.CreateDbContext();
             UserRoles userRole = new UserRoles
@@ -57,5 +86,26 @@ namespace Split.Engine.Repositories
             }
             return role;
         }
+        public Role AddRole(string name, string description)
+        {
+            using var context = contextFactory.CreateDbContext();
+            var role = new Roles
+            {
+                Name = name,
+                Description = description
+            };
+            context.Roles.Add(role);
+            context.SaveChanges();
+            return GetRole(name);
+        }
+        public void DeleteRole(string name)
+        {
+            using var context = contextFactory.CreateDbContext();
+            var role = context.Roles.Where(x => x.Name == name).FirstOrDefault() ?? throw new RoleNotFoundException();
+            context.Roles.Remove(role);
+            context.SaveChanges();
+        }
+
+
     }
 }
