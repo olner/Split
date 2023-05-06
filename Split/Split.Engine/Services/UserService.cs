@@ -45,23 +45,6 @@ namespace Split.Engine.Services
                 return null;
             }
         }
-
-        public void SetRole(int userId,string roleName)
-        {
-            var roles = roleRepository.GetUserRoles(userId);
-            foreach(var role in roles)
-            {
-                if (role == roleName) throw new ServiceException("User already have this role");
-            }
-            try
-            {
-                roleRepository.AddRole(roleRepository.GetRoleId(roleName), userId);
-            }
-            catch (RoleNotFoundException)
-            {
-
-            } 
-        }
         public List<User> GetUsers()
         {
             var users = userRepository

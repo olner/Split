@@ -45,18 +45,5 @@ namespace SplitWebService.Controllers
                 return null;
             }            
         }
-
-        [HttpPost("SetRole{userId:int}/{roleName}",Name = "SetRole")]
-        public void SetRole(int userId, string roleName)
-        {
-            try
-            {
-                userService.SetRole(userId, roleName);
-            }
-            catch (ServiceException)
-            {
-
-            }
-        }
     }
 }
