@@ -13,5 +13,7 @@ namespace Split.DbContexts.Tables
         public string Password { get; set; }
 
         public string Login { get; set; }
+
+        public ICollection<UserRoles> userRoles { get; set; }
     }
 }

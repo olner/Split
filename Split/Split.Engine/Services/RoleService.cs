@@ -92,5 +92,19 @@ namespace Split.Engine.Services
 
             }
         }
+
+        public void RemoveRole(int userId, string roleName)
+        {
+            //var role = roleRepository.GetRole(roleName) ?? throw new RoleNotFoundException();
+            try
+            {
+                var id = roleRepository.GetRoleId(roleName);
+                roleRepository.RemoveRole(id, userId);
+            }
+            catch (RoleNotFoundException)
+            {
+
+            }
+        }
     }
 }

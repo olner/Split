@@ -6,6 +6,9 @@ namespace SplitWebService.Controllers
     [Route("[controller]")]
     public class GroupController : ControllerBase
     {
+        public void CreateGroup()
+        {
 
+        }
     }
 }

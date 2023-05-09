@@ -79,12 +79,12 @@ namespace Split.Engine.Repositories
         public int GetRoleId(string roleName)
         {
             using var context = contextFactory.CreateDbContext();
-            var role = context.Roles.Where(x=>x.Name == roleName).Select(x=>x.Id).FirstOrDefault();
+            var role = context.Roles.Where(x=>x.Name == roleName).FirstOrDefault();
             if (role == null) 
             {
                 throw new RoleNotFoundException();
             }
-            return role;
+            return role.Id;
         }
         public Role AddRole(string name, string description)
         {

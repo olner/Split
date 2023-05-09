@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Split.DbContexts.Tables
 {
+    [Table("groups_members")]
     public record GroupsMembers
     {
         [Key]
