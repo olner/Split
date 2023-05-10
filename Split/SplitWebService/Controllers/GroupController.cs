@@ -2,11 +2,25 @@
 
 namespace SplitWebService.Controllers
 {
-    [ApiController]
-    [Route("[controller]")]
+ 
     public class GroupController : ControllerBase
     {
         public void CreateGroup()
+        {
+
+        }
+
+        public void DeleteGroup()
+        {
+
+        }
+
+        public void AddUser()
+        {
+
+        }
+
+        public void DeleteUser()
         {
 
         }

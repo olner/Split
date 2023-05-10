@@ -15,5 +15,6 @@ namespace Split.DbContexts.Tables
         public string Login { get; set; }
 
         public ICollection<UserRoles> userRoles { get; set; }
+        public ICollection<GroupsMembers> groupsMembers { get; set; }
     }
 }
