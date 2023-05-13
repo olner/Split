@@ -8,22 +8,28 @@ using System.Threading.Tasks;
 using Split.Engine.Exceptions;
 using Split.DbContexts.Tables;
 using Split.Engine.Repositories;
+using Microsoft.Extensions.Logging;
 
 namespace Split.Engine.Services
 {
     public class RoleService
     {
+        private readonly ILogger<RoleService> logger;
         private readonly IRoleRepository roleRepository;
         private readonly IUserRepository userRepository;
 
-        public RoleService(IRoleRepository roleRepository,IUserRepository userRepository)
+        public RoleService(
+            ILogger<RoleService> logger, 
+            IRoleRepository roleRepository,IUserRepository userRepository)
         {
+            this.logger = logger;
             this.roleRepository = roleRepository;
             this.userRepository = userRepository;
         }
 
         public List<Role>? GetRoles()
         {
+            logger.LogDebug("get all roles");
             try
             {
                 var roles = roleRepository
@@ -36,8 +42,9 @@ namespace Split.Engine.Services
                 }).ToList();
                 return roles;
             }
-            catch (RoleNotFoundException)
+            catch (RoleNotFoundException e)
             {
+                logger.LogError(e, "get all roles error");
                 return null;
             }
         }

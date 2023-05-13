@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Split.DbContexts.Tables;
 using Split.Engine.Exceptions;
 using Split.Engine.Models;
 using Split.Engine.Services;
+using SplitWebService.Models;
 
 namespace SplitWebService.Controllers
 {
@@ -50,13 +52,17 @@ namespace SplitWebService.Controllers
             }
         }
 
-        [HttpGet("AddRole/{roleName}/{discription}", Name = "AddRole")]
-        public void AddRole(string roleName, string discription)
+        [HttpPost("AddRole", Name = "AddRole")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest, "application/json")]
+        [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError, "application/json")]
+        public IActionResult AddRole(AddRoleRequest request)
         {
-            roleService.AddRole(roleName, discription);
+            roleService.AddRole(request.RoleName, request.Description);
+            return NoContent();
         }
 
-        [HttpGet("DeleteRole/{roleName}", Name = "DeleteRole")]
+        [HttpDelete("DeleteRole/{roleName}", Name = "DeleteRole")]        
         public void DeleteRole(string roleName)
         {
             roleService.DeleteRole(roleName);

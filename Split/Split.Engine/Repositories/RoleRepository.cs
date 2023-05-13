@@ -50,9 +50,14 @@ namespace Split.Engine.Repositories
         public bool IsRoleExists(string roleName)
         {
             using var context = contextFactory.CreateDbContext();
-            var role = context.Roles.Where(x => x.Name == roleName).FirstOrDefault();
-            if (role != null) return true;
-            return false;
+            try
+            {
+                var role = context.Roles.Where(x => x.Name == roleName).FirstOrDefault();
+                if (role != null) return true;
+                return false;
+            }
+            catch(Exception) { throw new RoleNotFoundException(roleName); }
+            
         }
         public void SetRole(int roleId, int userId)
         {

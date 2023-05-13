@@ -1,10 +1,10 @@
-
 using Microsoft.EntityFrameworkCore;
 using Split.DbContexts;
 using Split.Engine.Repositories;
 using Split.Engine.Repositories.Interfaces;
 using Split.Engine.Services;
 using SplitWebService.Controllers;
+using SplitWebService.Middleware;
 
 namespace SplitWebService
 {
@@ -44,7 +44,7 @@ namespace SplitWebService
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
+            app.UseMiddleware<ErrorHandlingMiddleware>();
 
             app.MapControllers();
 

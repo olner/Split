@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SplitWebService", "SplitWebService\SplitWebService.csproj", "{8A5CF51C-D06A-44DA-92F9-06E311258D57}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SplitWebService", "SplitWebService\SplitWebService.csproj", "{8A5CF51C-D06A-44DA-92F9-06E311258D57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Split.Engine", "Split.Engine\Split.Engine.csproj", "{D5F30305-0739-48D3-9486-14F39F872ADE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Split.Engine", "Split.Engine\Split.Engine.csproj", "{D5F30305-0739-48D3-9486-14F39F872ADE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Split.DbContexts", "Split.DbContext\Split.DbContexts.csproj", "{6DF7977F-9D0B-4BD7-9AA3-3AEA2C25B220}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Split.DbContexts", "Split.DbContext\Split.DbContexts.csproj", "{6DF7977F-9D0B-4BD7-9AA3-3AEA2C25B220}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Split.UI", "Split.UI\Split.UI.csproj", "{1BDC84DB-600B-4BA7-985F-A1B972855C0B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Split.UI", "Split.UI\Split.UI.csproj", "{1BDC84DB-600B-4BA7-985F-A1B972855C0B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Split.WebService.Client", "Split.WebService.Client\Split.WebService.Client.csproj", "{4820A202-53AB-4066-8D80-1234BCF5960D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{1BDC84DB-600B-4BA7-985F-A1B972855C0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1BDC84DB-600B-4BA7-985F-A1B972855C0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1BDC84DB-600B-4BA7-985F-A1B972855C0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4820A202-53AB-4066-8D80-1234BCF5960D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4820A202-53AB-4066-8D80-1234BCF5960D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4820A202-53AB-4066-8D80-1234BCF5960D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4820A202-53AB-4066-8D80-1234BCF5960D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
