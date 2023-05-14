@@ -12,14 +12,12 @@ namespace SplitWebService.Controllers
     [Route("[controller]")]
     public class RoleController : ControllerBase
     {
-        private readonly ILogger<UserController> logger;
         private readonly RoleService roleService;
 
         public RoleController(
             ILogger<UserController> logger,
             RoleService roleService)
         {
-            this.logger = logger;
             this.roleService = roleService;
         }
 
@@ -29,27 +27,15 @@ namespace SplitWebService.Controllers
         [HttpGet("SetRole/{userId:int}/{roleName}", Name = "SetRole")]
         public void SetRole(int userId, string roleName)
         {
-            try
-            {
-                roleService.SetRole(userId, roleName);
-            }
-            catch (ServiceException)
-            {
 
-            }
+                roleService.SetRole(userId, roleName);
         }
 
         [HttpGet("RemoveRole/{userId:int}/{roleName}", Name = "RemoveRole")]
         public void RemoveRole(int userId, string roleName)
         {
-            try
-            {
-                roleService.RemoveRole(userId, roleName);
-            }
-            catch (RoleNotFoundException)
-            {
 
-            }
+                roleService.RemoveRole(userId, roleName);
         }
 
         [HttpPost("AddRole", Name = "AddRole")]

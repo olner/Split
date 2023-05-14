@@ -13,7 +13,7 @@ namespace Split.DbContexts.Tables
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string Name { get; set; }
 
         public ICollection<GroupsMembers> groupsMembers { get; set; }

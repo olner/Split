@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Split.Engine.Models
 {
-    public record Group
+    public record GroupMember
     {
-        public Guid Id { get; set; }
-        public string Name { get; set; }
-        public List<User>? Members { get; set; }
+        public int Id { get; set; }
+        public Guid GroupId { get; set; }
+        public int UserId { get; set; }
+
     }
 }

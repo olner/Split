@@ -16,7 +16,7 @@ namespace Split.DbContexts.Tables
         public int Id { get; set; }
         [Column("group_id")]
         [ForeignKey("Group")]
-        public int GroupId { get; set; }
+        public Guid GroupId { get; set; }
         public Groups Groups { get; set; }
 
         [Column("user_id")]
