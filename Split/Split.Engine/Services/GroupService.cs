@@ -41,7 +41,7 @@ namespace Split.Engine.Services
                 groupRepository.RemoveAllMembers(groupId);
                 groupRepository.RemoveGroup(groupId);
             }
-            catch (Exception)
+            catch (GroupMembersNotFoundException)
             {
 
             }

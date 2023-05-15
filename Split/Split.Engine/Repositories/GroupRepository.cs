@@ -92,9 +92,8 @@ namespace Split.Engine.Repositories
         public void RemoveGroupMember(Guid groupId, int userId)
         {
             using var context = contextFactory.CreateDbContext();
-            var member = context.GroupsMembers.Where(x => x.GroupId == groupId && x.UserID == userId).FirstOrDefault();
-            if (member == null) throw new GroupMembersNotFoundException();
-
+            var member = context.GroupsMembers.Where(x => x.GroupId == groupId && x.UserID == userId).FirstOrDefault()
+                ?? throw new GroupMembersNotFoundException();
             context.GroupsMembers.Remove(member);
             context.SaveChanges();
         }
@@ -102,8 +101,9 @@ namespace Split.Engine.Repositories
         public void RemoveAllMembers(Guid groupId)
         {
             using var context = contextFactory.CreateDbContext();
-            var members = context.GroupsMembers.Where(x => x.GroupId == groupId).ToList();
-            if (members == null) throw new GroupMembersNotFoundException();
+            var members = context.GroupsMembers.Where(x => x.GroupId == groupId).ToList()
+                ?? throw new GroupMembersNotFoundException();
+            if (members.Count == 0) throw new GroupMembersNotFoundException();
 
             context.GroupsMembers.RemoveRange(members);
             context.SaveChanges();
