@@ -28,7 +28,7 @@ namespace SplitWebService.Controllers
         public IActionResult AddGroup(string name)
         {
             groupService.AddGroup(name);
-            return NoContent();
+            return Ok();
         }
 
         [HttpDelete("DeleteGroup/{groupId}", Name = "DeleteGroup")]
@@ -44,7 +44,7 @@ namespace SplitWebService.Controllers
         public IActionResult AddUserToGroup(Guid groupId,int userId)
         {
             groupService.AddGroupMember(groupId,userId);
-            return NoContent();
+            return Ok();
         }
 
         [HttpDelete("DeleteGroupMember/{groupId}/{userId}", Name = "DeleteGroupMember")]

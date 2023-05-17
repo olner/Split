@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace Split.Engine.Repositories
 {
+
     public class GroupRepository : IGroupRepository
     {
         private readonly IDbContextFactory<SplitDbContext> contextFactory;
