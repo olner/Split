@@ -78,7 +78,6 @@ namespace Split.UI.Tools.CustomControls
 
         protected override void OnPaintBackground(PaintEventArgs e)
         {
-
         }
 
         protected override void OnMouseEnter(EventArgs e)

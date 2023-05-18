@@ -34,8 +34,8 @@
             tableLayoutPanel2 = new TableLayoutPanel();
             loginTb = new TextBox();
             passwordTb = new TextBox();
-            loginBtn = new Tools.CustomControls.RoundButton();
             linkLabel1 = new LinkLabel();
+            loginBtn = new Tools.CustomControls.RoundButton();
             tableLayoutPanel1.SuspendLayout();
             groupBox1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -84,8 +84,8 @@
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel2.Controls.Add(loginTb, 0, 0);
             tableLayoutPanel2.Controls.Add(passwordTb, 0, 1);
-            tableLayoutPanel2.Controls.Add(loginBtn, 0, 2);
             tableLayoutPanel2.Controls.Add(linkLabel1, 0, 3);
+            tableLayoutPanel2.Controls.Add(loginBtn, 0, 2);
             tableLayoutPanel2.Location = new Point(6, 26);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 4;
@@ -112,6 +112,17 @@
             passwordTb.Size = new Size(409, 40);
             passwordTb.TabIndex = 1;
             // 
+            // linkLabel1
+            // 
+            linkLabel1.Anchor = AnchorStyles.Top;
+            linkLabel1.AutoSize = true;
+            linkLabel1.Location = new Point(132, 186);
+            linkLabel1.Name = "linkLabel1";
+            linkLabel1.Size = new Size(151, 20);
+            linkLabel1.TabIndex = 3;
+            linkLabel1.TabStop = true;
+            linkLabel1.Text = "Зарегистрироваться";
+            // 
             // loginBtn
             // 
             loginBtn.BackColor = Color.Gainsboro;
@@ -126,20 +137,10 @@
             loginBtn.ButtonRoundRadius = 30;
             loginBtn.Location = new Point(3, 128);
             loginBtn.Name = "loginBtn";
-            loginBtn.Size = new Size(409, 47);
-            loginBtn.TabIndex = 2;
-            loginBtn.Text = "Войти";
-            // 
-            // linkLabel1
-            // 
-            linkLabel1.Anchor = AnchorStyles.Top;
-            linkLabel1.AutoSize = true;
-            linkLabel1.Location = new Point(132, 186);
-            linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(151, 20);
-            linkLabel1.TabIndex = 3;
-            linkLabel1.TabStop = true;
-            linkLabel1.Text = "Зарегистрироваться";
+            loginBtn.Size = new Size(409, 50);
+            loginBtn.TabIndex = 4;
+            loginBtn.Text = "Вход";
+            loginBtn.Click += loginBtn_Click;
             // 
             // LoginForm
             // 
@@ -165,7 +166,7 @@
         private TableLayoutPanel tableLayoutPanel2;
         private TextBox loginTb;
         private TextBox passwordTb;
-        private Tools.CustomControls.RoundButton loginBtn;
         private LinkLabel linkLabel1;
+        private Tools.CustomControls.RoundButton loginBtn;
     }
 }
