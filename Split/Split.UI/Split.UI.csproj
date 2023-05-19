@@ -16,4 +16,13 @@
     <ProjectReference Include="..\Split.WebService.Client\Split.WebService.Client.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="Bunifu_UI_v1.5.3">
+      <HintPath>..\..\..\..\..\Downloads\Bunifu_UI_v1.5.3.dll</HintPath>
+    </Reference>
+    <Reference Include="XanderUI">
+      <HintPath>..\..\..\..\Курсовик 2022-20223\XanderUI.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
