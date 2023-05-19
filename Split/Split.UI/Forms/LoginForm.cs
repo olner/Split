@@ -17,6 +17,10 @@ namespace Split.UI
             this.client = client;
             this.context = context;
         }
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+
+        }
         private void Build()
         {
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -46,5 +50,7 @@ namespace Split.UI
             //TODO: null exception
             this.Hide();
         }
+
+        
     }
 }

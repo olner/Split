@@ -1,13 +1,12 @@
 using Microsoft.Extensions.DependencyInjection;
 using Split.WebClient;
-using System.Runtime.CompilerServices;
+
 
 namespace Split.UI
 {
     internal static class Program
     {
         private static IServiceProvider provider;
-        static ApplicationContext context;
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
@@ -18,7 +17,7 @@ namespace Split.UI
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             //var client = new SplitServiceApi(new HttpClient());
-            context = provider.GetRequiredService<ApplicationContext>();
+            var context = provider.GetRequiredService<ApplicationContext>();
 
             ApplicationConfiguration.Initialize();
 
@@ -30,25 +29,18 @@ namespace Split.UI
         {
             var services = new ServiceCollection();
 
-            services.AddTransient<LoginForm>(sp =>
-            {
-                var client = sp.GetRequiredService<SplitServiceApi>();
-                var context = sp.GetRequiredService<ApplicationContext>(); 
-                return new LoginForm(client,context);
-            });
-            services.AddTransient<SplitServiceApi>(sp =>
+            services.AddTransient<LoginForm>();
+            services.AddSingleton(sp =>
             {
                 var httpClient = sp.GetRequiredService<HttpClient>();
-                //var httpClientHandler = new HttpClientHandler();
-
+                httpClient.BaseAddress = new Uri("http://localhost:5153");
                 return new SplitServiceApi(httpClient);
             });
 
-            services.AddSingleton<LoginForm>();
+            
             services.AddSingleton<ApplicationContext>();
-            services.AddSingleton<SplitServiceApi>();
 
-            services.AddSingleton<HttpClient>();
+            services.AddHttpClient();
 
             return services.BuildServiceProvider();
         }

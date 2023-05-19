@@ -31,8 +31,8 @@
             tableLayoutPanel1 = new TableLayoutPanel();
             dateLbl = new Label();
             nameLbl = new Label();
-            discriptionLbl = new Label();
-            label1 = new Label();
+            membersLb = new ListBox();
+            descriptionTb = new RichTextBox();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -46,8 +46,8 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
             tableLayoutPanel1.Controls.Add(dateLbl, 0, 0);
             tableLayoutPanel1.Controls.Add(nameLbl, 1, 0);
-            tableLayoutPanel1.Controls.Add(discriptionLbl, 2, 0);
-            tableLayoutPanel1.Controls.Add(label1, 3, 0);
+            tableLayoutPanel1.Controls.Add(membersLb, 3, 0);
+            tableLayoutPanel1.Controls.Add(descriptionTb, 2, 0);
             tableLayoutPanel1.Location = new Point(3, 3);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
@@ -69,33 +69,33 @@
             // 
             // nameLbl
             // 
-            nameLbl.Anchor = AnchorStyles.Left;
+            nameLbl.Anchor = AnchorStyles.None;
             nameLbl.AutoSize = true;
-            nameLbl.Location = new Point(104, 38);
+            nameLbl.Location = new Point(123, 38);
             nameLbl.Name = "nameLbl";
             nameLbl.Size = new Size(49, 20);
             nameLbl.TabIndex = 1;
             nameLbl.Text = "Name";
             // 
-            // discriptionLbl
+            // membersLb
             // 
-            discriptionLbl.Anchor = AnchorStyles.Left;
-            discriptionLbl.AutoSize = true;
-            discriptionLbl.Location = new Point(198, 38);
-            discriptionLbl.Name = "discriptionLbl";
-            discriptionLbl.Size = new Size(81, 20);
-            discriptionLbl.TabIndex = 2;
-            discriptionLbl.Text = "Discription";
+            membersLb.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            membersLb.FormattingEnabled = true;
+            membersLb.ItemHeight = 20;
+            membersLb.Location = new Point(541, 3);
+            membersLb.Name = "membersLb";
+            membersLb.Size = new Size(265, 84);
+            membersLb.TabIndex = 3;
             // 
-            // label1
+            // descriptionTb
             // 
-            label1.Anchor = AnchorStyles.Left;
-            label1.AutoSize = true;
-            label1.Location = new Point(541, 38);
-            label1.Name = "label1";
-            label1.Size = new Size(71, 20);
-            label1.TabIndex = 3;
-            label1.Text = "Members";
+            descriptionTb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            descriptionTb.BorderStyle = BorderStyle.FixedSingle;
+            descriptionTb.Location = new Point(198, 3);
+            descriptionTb.Name = "descriptionTb";
+            descriptionTb.Size = new Size(337, 84);
+            descriptionTb.TabIndex = 4;
+            descriptionTb.Text = "";
             // 
             // GroupControl
             // 
@@ -116,7 +116,7 @@
         private TableLayoutPanel tableLayoutPanel1;
         private Label dateLbl;
         private Label nameLbl;
-        private Label discriptionLbl;
-        private Label label1;
+        private ListBox membersLb;
+        private RichTextBox descriptionTb;
     }
 }

@@ -150,6 +150,7 @@
             Controls.Add(tableLayoutPanel1);
             Name = "LoginForm";
             Text = "Авторизация";
+            Load += LoginForm_Load;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             groupBox1.ResumeLayout(false);

@@ -24,18 +24,12 @@ namespace Split.UI.Forms
 
             addTb.Text = "Name";
             addTb.ForeColor = Color.Gray;
-
-            /*dataGridView1.BackgroundColor = Color.White;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.AutoGenerateColumns = true;
-            dataGridView1.RowHeadersVisible = false;
-            //dataGridView1.ReadOnly = tr
-            //dataGridView1.Columns["YourIdColumn"].Visible = false;*/
         }
 
         private void addLinklbl_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            addTb.Visible = true;
+            if (addTb.Visible) addTb.Visible = false;
+            else addTb.Visible = true;
         }
 
         private void addTb_Enter(object sender, EventArgs e)
@@ -56,5 +50,17 @@ namespace Split.UI.Forms
                 listBox1.Items.Add(addTb.Text);
             }
         }
+
+        private void listBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (listBox1.SelectedItem == null) return;
+
+            if (e.KeyChar == (char)Keys.Delete || e.KeyChar == (char)Keys.Back)
+            {
+                listBox1.Items.Remove(listBox1.SelectedItem);
+            }
+        }
+
+        private void cancelBtn_Click(object sender, EventArgs e) => this.Close();
     }
 }

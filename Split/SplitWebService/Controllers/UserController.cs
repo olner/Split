@@ -30,10 +30,10 @@ namespace SplitWebService.Controllers
         [HttpGet("{id:int}", Name = "GetUserById")]
         public User? GetUser(int id) => userService.GetUserById(id);
 
-        [HttpGet("{login}&{password}", Name = "Authorize")]
+        [HttpGet("/auth", Name = "Authorize")]
         public User? Authorize(string login, string password) => userService.Authorize(login, password);
 
-        [HttpGet("Register{login}&{password}", Name = "Register")]
+        [HttpGet("/reg", Name = "Register")]
         public User? Register(string login, string password)
         {
             try
