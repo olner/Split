@@ -1,4 +1,5 @@
-﻿using Split.UI.Tools;
+﻿using Split.UI.Forms;
+using Split.UI.Tools;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,8 +30,15 @@ namespace Split.UI.UserControls
                 Size = new Size(300,50),
                 Anchor = AnchorStyles.Left | AnchorStyles.Right
             };
+            button.Click += addBtn_Click;
             tableLayoutPanel1.Controls.Remove(label1);
             tableLayoutPanel1.Controls.Add(button, 3, 0);
+        }
+
+        private void addBtn_Click(object sender, EventArgs e)
+        {
+            var form = new AddGroupForm();
+            form.ShowDialog();
         }
 
         private void GroupControl_Load(object sender, EventArgs e)

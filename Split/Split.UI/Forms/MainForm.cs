@@ -45,7 +45,14 @@ namespace Split.UI.Forms
                 Width = groupsTlp.Width,
                 Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top
             };
+            control3.NewFriend();
+            var control4 = new FriendControl
+            {
+                Width = groupsTlp.Width,
+                Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top
+            };
             friendsTlp.Controls.Add(control3);
+            friendsTlp.Controls.Add(control4);
         }
 
         private void tabControl1_DrawItem(object sender, DrawItemEventArgs e)

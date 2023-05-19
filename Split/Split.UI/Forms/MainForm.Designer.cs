@@ -34,9 +34,13 @@
             friendsPage = new TabPage();
             friendsTlp = new TableLayoutPanel();
             accountPage = new TabPage();
+            pictureBox1 = new PictureBox();
+            accLbl = new Label();
             tabControl1.SuspendLayout();
             groupsPage.SuspendLayout();
             friendsPage.SuspendLayout();
+            accountPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -48,11 +52,11 @@
             tabControl1.Controls.Add(accountPage);
             tabControl1.DrawMode = TabDrawMode.OwnerDrawFixed;
             tabControl1.ItemSize = new Size(30, 120);
-            tabControl1.Location = new Point(12, 12);
+            tabControl1.Location = new Point(-3, 12);
             tabControl1.Multiline = true;
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(1081, 529);
+            tabControl1.Size = new Size(1096, 529);
             tabControl1.SizeMode = TabSizeMode.Fixed;
             tabControl1.TabIndex = 0;
             tabControl1.DrawItem += tabControl1_DrawItem;
@@ -64,7 +68,7 @@
             groupsPage.Location = new Point(124, 4);
             groupsPage.Name = "groupsPage";
             groupsPage.Padding = new Padding(3);
-            groupsPage.Size = new Size(953, 521);
+            groupsPage.Size = new Size(968, 521);
             groupsPage.TabIndex = 0;
             groupsPage.Text = "Группы";
             groupsPage.UseVisualStyleBackColor = true;
@@ -79,7 +83,7 @@
             groupsTlp.RowCount = 2;
             groupsTlp.RowStyles.Add(new RowStyle());
             groupsTlp.RowStyles.Add(new RowStyle());
-            groupsTlp.Size = new Size(941, 509);
+            groupsTlp.Size = new Size(959, 509);
             groupsTlp.TabIndex = 0;
             // 
             // friendsPage
@@ -88,7 +92,7 @@
             friendsPage.Location = new Point(124, 4);
             friendsPage.Name = "friendsPage";
             friendsPage.Padding = new Padding(3);
-            friendsPage.Size = new Size(953, 521);
+            friendsPage.Size = new Size(968, 521);
             friendsPage.TabIndex = 1;
             friendsPage.Text = "Друзья";
             friendsPage.UseVisualStyleBackColor = true;
@@ -108,12 +112,32 @@
             // 
             // accountPage
             // 
+            accountPage.Controls.Add(pictureBox1);
+            accountPage.Controls.Add(accLbl);
             accountPage.Location = new Point(124, 4);
             accountPage.Name = "accountPage";
-            accountPage.Size = new Size(953, 521);
+            accountPage.Size = new Size(968, 521);
             accountPage.TabIndex = 2;
             accountPage.Text = "Профиль";
             accountPage.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Location = new Point(14, 73);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(204, 168);
+            pictureBox1.TabIndex = 2;
+            pictureBox1.TabStop = false;
+            // 
+            // accLbl
+            // 
+            accLbl.AutoSize = true;
+            accLbl.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            accLbl.Location = new Point(14, 16);
+            accLbl.Name = "accLbl";
+            accLbl.Size = new Size(169, 37);
+            accLbl.TabIndex = 1;
+            accLbl.Text = "Ваш аккаунт";
             // 
             // MainForm
             // 
@@ -127,6 +151,9 @@
             tabControl1.ResumeLayout(false);
             groupsPage.ResumeLayout(false);
             friendsPage.ResumeLayout(false);
+            accountPage.ResumeLayout(false);
+            accountPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -138,5 +165,7 @@
         private TabPage accountPage;
         private TableLayoutPanel groupsTlp;
         private TableLayoutPanel friendsTlp;
+        private Label accLbl;
+        private PictureBox pictureBox1;
     }
 }

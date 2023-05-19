@@ -4,10 +4,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Split.UI.Tools;
+
 namespace Split.UI.UserControls
 {
     public partial class FriendControl : UserControl
@@ -21,10 +23,22 @@ namespace Split.UI.UserControls
 
         private void FriendControl_Load(object sender, EventArgs e)
         {
-            SetActions(controlsAdditions.GetAll(this, typeof(Label)));
+            SetActions(controlsAdditions.GetAll(this, typeof(System.Windows.Forms.Label)));
             SetActions(controlsAdditions.GetAll(this, typeof(Button)));
         }
 
+        public void NewFriend()
+        {
+            var button = new Button
+            {
+                Name = "addBtn",
+                Text = "Добавить",
+                Size = new Size(300, 50),
+                Anchor = AnchorStyles.Left | AnchorStyles.Right
+            };
+            tableLayoutPanel1.Controls.Remove(deleteBtn);
+            tableLayoutPanel1.Controls.Add(button, 3, 0);
+        }
 
         public void SetActions(IEnumerable<Control> controls)
         {
