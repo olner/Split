@@ -41,8 +41,8 @@
             tabPage3 = new TabPage();
             label3 = new Label();
             groupBox1 = new GroupBox();
-            button2 = new Button();
-            button1 = new Button();
+            resetBtn = new Button();
+            saveBtn = new Button();
             label4 = new Label();
             richTextBox1 = new RichTextBox();
             textBox1 = new TextBox();
@@ -195,7 +195,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(13, 12);
+            label3.Location = new Point(3, 0);
             label3.Name = "label3";
             label3.Size = new Size(230, 35);
             label3.TabIndex = 2;
@@ -203,35 +203,35 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(button2);
-            groupBox1.Controls.Add(button1);
+            groupBox1.Controls.Add(resetBtn);
+            groupBox1.Controls.Add(saveBtn);
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(richTextBox1);
             groupBox1.Controls.Add(textBox1);
             groupBox1.Controls.Add(label2);
             groupBox1.Location = new Point(13, 50);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(345, 422);
+            groupBox1.Size = new Size(345, 444);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             // 
-            // button2
+            // resetBtn
             // 
-            button2.Location = new Point(69, 263);
-            button2.Name = "button2";
-            button2.Size = new Size(94, 60);
-            button2.TabIndex = 6;
-            button2.Text = "button2";
-            button2.UseVisualStyleBackColor = true;
+            resetBtn.Location = new Point(69, 263);
+            resetBtn.Name = "resetBtn";
+            resetBtn.Size = new Size(94, 60);
+            resetBtn.TabIndex = 6;
+            resetBtn.Text = "Отмена";
+            resetBtn.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // saveBtn
             // 
-            button1.Location = new Point(169, 263);
-            button1.Name = "button1";
-            button1.Size = new Size(170, 60);
-            button1.TabIndex = 5;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
+            saveBtn.Location = new Point(169, 263);
+            saveBtn.Name = "saveBtn";
+            saveBtn.Size = new Size(170, 60);
+            saveBtn.TabIndex = 5;
+            saveBtn.Text = "Сохранить";
+            saveBtn.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -311,7 +311,7 @@
         private TextBox textBox1;
         private Label label4;
         private RichTextBox richTextBox1;
-        private Button button2;
-        private Button button1;
+        private Button resetBtn;
+        private Button saveBtn;
     }
 }

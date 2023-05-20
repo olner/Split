@@ -26,7 +26,7 @@ namespace Split.UI.Forms
         {
             //this.tabControl1.DrawMode = TabDrawMode.OwnerDrawFixed;
             //this.tabControl1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tabControl1_DrawItem);
-
+            pictureBox1.Image = Properties.Resources.noImage;
 
             var control = new GroupControl
             {
@@ -46,17 +46,31 @@ namespace Split.UI.Forms
 
             var control3 = new FriendControl
             {
-                Width = groupsTlp.Width,
+                Width = friendsTlp.Width,
                 Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top
             };
             control3.NewFriend();
             var control4 = new FriendControl
             {
-                Width = groupsTlp.Width,
+                Width = friendsTlp.Width,
                 Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top
             };
             friendsTlp.Controls.Add(control3);
             friendsTlp.Controls.Add(control4);
+
+            var control5 = new ExpenseControl
+            {
+                Width = expensesTlp.Width,
+                Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top
+            };
+            var control6 = new ExpenseControl
+            {
+                Width = expensesTlp.Width,
+                Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top
+            };
+            expensesTlp.Controls.Add(control5);
+            expensesTlp.Controls.Add(control6);
+
         }
 
         private void tabControl1_DrawItem(object sender, DrawItemEventArgs e)

@@ -8,20 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Split.UI.UserControls
+namespace Split.UI.Forms
 {
-    public partial class ExpenseControl : UserControl
+    public partial class RegistrationForm : Form
     {
-        public ExpenseControl()
+        public RegistrationForm()
         {
             InitializeComponent();
-        }
-
-        private void ExpenseControl_Load(object sender, EventArgs e)
-        {
-            dateLbl.AutoSize = true;
-            dateLbl.Text = "Май\n 20";
-
         }
     }
 }

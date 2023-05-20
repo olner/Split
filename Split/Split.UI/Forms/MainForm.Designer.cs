@@ -34,22 +34,26 @@
             friendsPage = new TabPage();
             friendsTlp = new TableLayoutPanel();
             accountPage = new TabPage();
-            pictureBox1 = new PictureBox();
+            profileTlp = new TableLayoutPanel();
+            label4 = new Label();
             accLbl = new Label();
+            groupBox1 = new GroupBox();
+            pictureBox1 = new PictureBox();
+            saveBtn = new Button();
             label1 = new Label();
+            textBox3 = new TextBox();
             textBox1 = new TextBox();
+            label3 = new Label();
             label2 = new Label();
             textBox2 = new TextBox();
-            label3 = new Label();
-            textBox3 = new TextBox();
-            saveBtn = new Button();
-            groupBox1 = new GroupBox();
+            expensesTlp = new TableLayoutPanel();
             tabControl1.SuspendLayout();
             groupsPage.SuspendLayout();
             friendsPage.SuspendLayout();
             accountPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            profileTlp.SuspendLayout();
             groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -65,7 +69,7 @@
             tabControl1.Multiline = true;
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(1096, 529);
+            tabControl1.Size = new Size(1212, 548);
             tabControl1.SizeMode = TabSizeMode.Fixed;
             tabControl1.TabIndex = 0;
             tabControl1.DrawItem += tabControl1_DrawItem;
@@ -77,7 +81,7 @@
             groupsPage.Location = new Point(124, 4);
             groupsPage.Name = "groupsPage";
             groupsPage.Padding = new Padding(3);
-            groupsPage.Size = new Size(968, 521);
+            groupsPage.Size = new Size(1084, 540);
             groupsPage.TabIndex = 0;
             groupsPage.Text = "Группы";
             groupsPage.UseVisualStyleBackColor = true;
@@ -92,7 +96,7 @@
             groupsTlp.RowCount = 2;
             groupsTlp.RowStyles.Add(new RowStyle());
             groupsTlp.RowStyles.Add(new RowStyle());
-            groupsTlp.Size = new Size(959, 509);
+            groupsTlp.Size = new Size(1075, 528);
             groupsTlp.TabIndex = 0;
             // 
             // friendsPage
@@ -101,7 +105,7 @@
             friendsPage.Location = new Point(124, 4);
             friendsPage.Name = "friendsPage";
             friendsPage.Padding = new Padding(3);
-            friendsPage.Size = new Size(968, 521);
+            friendsPage.Size = new Size(1084, 540);
             friendsPage.TabIndex = 1;
             friendsPage.Text = "Друзья";
             friendsPage.UseVisualStyleBackColor = true;
@@ -116,37 +120,91 @@
             friendsTlp.RowCount = 2;
             friendsTlp.RowStyles.Add(new RowStyle());
             friendsTlp.RowStyles.Add(new RowStyle());
-            friendsTlp.Size = new Size(944, 512);
+            friendsTlp.Size = new Size(1072, 528);
             friendsTlp.TabIndex = 0;
             // 
             // accountPage
             // 
-            accountPage.Controls.Add(groupBox1);
-            accountPage.Controls.Add(accLbl);
+            accountPage.Controls.Add(profileTlp);
             accountPage.Location = new Point(124, 4);
             accountPage.Name = "accountPage";
-            accountPage.Size = new Size(968, 521);
+            accountPage.Size = new Size(1084, 540);
             accountPage.TabIndex = 2;
             accountPage.Text = "Профиль";
             accountPage.UseVisualStyleBackColor = true;
+            // 
+            // profileTlp
+            // 
+            profileTlp.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            profileTlp.ColumnCount = 2;
+            profileTlp.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 485F));
+            profileTlp.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 8F));
+            profileTlp.Controls.Add(label4, 1, 0);
+            profileTlp.Controls.Add(accLbl, 0, 0);
+            profileTlp.Controls.Add(groupBox1, 0, 1);
+            profileTlp.Controls.Add(expensesTlp, 1, 1);
+            profileTlp.Location = new Point(3, 3);
+            profileTlp.Name = "profileTlp";
+            profileTlp.RowCount = 2;
+            profileTlp.RowStyles.Add(new RowStyle(SizeType.Percent, 6.65362024F));
+            profileTlp.RowStyles.Add(new RowStyle(SizeType.Percent, 93.34638F));
+            profileTlp.Size = new Size(1078, 534);
+            profileTlp.TabIndex = 11;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.Location = new Point(488, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(427, 35);
+            label4.TabIndex = 12;
+            label4.Text = "Тут типа покупки из ваших групп";
+            // 
+            // accLbl
+            // 
+            accLbl.AutoSize = true;
+            accLbl.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            accLbl.Location = new Point(3, 0);
+            accLbl.Name = "accLbl";
+            accLbl.Size = new Size(169, 35);
+            accLbl.TabIndex = 1;
+            accLbl.Text = "Ваш аккаунт";
+            // 
+            // groupBox1
+            // 
+            groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            groupBox1.Controls.Add(pictureBox1);
+            groupBox1.Controls.Add(saveBtn);
+            groupBox1.Controls.Add(label1);
+            groupBox1.Controls.Add(textBox3);
+            groupBox1.Controls.Add(textBox1);
+            groupBox1.Controls.Add(label3);
+            groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(textBox2);
+            groupBox1.Location = new Point(3, 38);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(479, 493);
+            groupBox1.TabIndex = 10;
+            groupBox1.TabStop = false;
             // 
             // pictureBox1
             // 
             pictureBox1.Location = new Point(6, 26);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(204, 168);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
             // 
-            // accLbl
+            // saveBtn
             // 
-            accLbl.AutoSize = true;
-            accLbl.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            accLbl.Location = new Point(14, 16);
-            accLbl.Name = "accLbl";
-            accLbl.Size = new Size(169, 37);
-            accLbl.TabIndex = 1;
-            accLbl.Text = "Ваш аккаунт";
+            saveBtn.Location = new Point(378, 212);
+            saveBtn.Name = "saveBtn";
+            saveBtn.Size = new Size(94, 29);
+            saveBtn.TabIndex = 9;
+            saveBtn.Text = "Сохранить";
+            saveBtn.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -157,12 +215,28 @@
             label1.TabIndex = 3;
             label1.Text = "Имя";
             // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(230, 167);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(242, 27);
+            textBox3.TabIndex = 8;
+            // 
             // textBox1
             // 
             textBox1.Location = new Point(230, 49);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(125, 27);
+            textBox1.Size = new Size(242, 27);
             textBox1.TabIndex = 4;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(230, 142);
+            label3.Name = "label3";
+            label3.Size = new Size(62, 20);
+            label3.TabIndex = 7;
+            label3.Text = "Пароль";
             // 
             // label2
             // 
@@ -177,55 +251,27 @@
             // 
             textBox2.Location = new Point(230, 112);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(125, 27);
+            textBox2.Size = new Size(242, 27);
             textBox2.TabIndex = 6;
             // 
-            // label3
+            // expensesTlp
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(230, 142);
-            label3.Name = "label3";
-            label3.Size = new Size(62, 20);
-            label3.TabIndex = 7;
-            label3.Text = "Пароль";
-            // 
-            // textBox3
-            // 
-            textBox3.Location = new Point(230, 167);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(125, 27);
-            textBox3.TabIndex = 8;
-            // 
-            // saveBtn
-            // 
-            saveBtn.Location = new Point(261, 220);
-            saveBtn.Name = "saveBtn";
-            saveBtn.Size = new Size(94, 29);
-            saveBtn.TabIndex = 9;
-            saveBtn.Text = "Сохранить";
-            saveBtn.UseVisualStyleBackColor = true;
-            // 
-            // groupBox1
-            // 
-            groupBox1.Controls.Add(pictureBox1);
-            groupBox1.Controls.Add(saveBtn);
-            groupBox1.Controls.Add(label1);
-            groupBox1.Controls.Add(textBox3);
-            groupBox1.Controls.Add(textBox1);
-            groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(label2);
-            groupBox1.Controls.Add(textBox2);
-            groupBox1.Location = new Point(14, 56);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(387, 452);
-            groupBox1.TabIndex = 10;
-            groupBox1.TabStop = false;
+            expensesTlp.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            expensesTlp.ColumnCount = 1;
+            expensesTlp.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            expensesTlp.Location = new Point(488, 38);
+            expensesTlp.Name = "expensesTlp";
+            expensesTlp.RowCount = 2;
+            expensesTlp.RowStyles.Add(new RowStyle());
+            expensesTlp.RowStyles.Add(new RowStyle());
+            expensesTlp.Size = new Size(587, 493);
+            expensesTlp.TabIndex = 11;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1105, 553);
+            ClientSize = new Size(1221, 572);
             Controls.Add(tabControl1);
             Name = "MainForm";
             Text = "Split - Группы";
@@ -234,10 +280,11 @@
             groupsPage.ResumeLayout(false);
             friendsPage.ResumeLayout(false);
             accountPage.ResumeLayout(false);
-            accountPage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            profileTlp.ResumeLayout(false);
+            profileTlp.PerformLayout();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -259,5 +306,8 @@
         private Label label1;
         private Button saveBtn;
         private GroupBox groupBox1;
+        private TableLayoutPanel profileTlp;
+        private TableLayoutPanel expensesTlp;
+        private Label label4;
     }
 }
