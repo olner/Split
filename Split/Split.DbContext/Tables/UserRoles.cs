@@ -15,10 +15,16 @@ namespace Split.DbContexts.Tables
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
+        [Column("group_id")]
+        [ForeignKey("Groups")]
+        public Guid GroupId { get; set; }
+        public Groups Groups { get; set; }
+
         [Column("role_id")]
         [ForeignKey("Roles")]
         public int RoleId { get; set; }
         public Roles Roles { get; set; }
+
         [Column("user_id")]
         [ForeignKey("Users")]
         public int UserId { get; set; }

@@ -25,17 +25,17 @@ namespace SplitWebService.Controllers
         public List<Role>? GetRoles() => roleService.GetRoles();
 
         [HttpGet("SetRole/{userId:int}/{roleName}", Name = "SetRole")]
-        public void SetRole(int userId, string roleName)
+        public void SetRole(int userId, string roleName, Guid groupId)
         {
 
-                roleService.SetRole(userId, roleName);
+                roleService.SetRole(userId, roleName, groupId);
         }
 
         [HttpGet("RemoveRole/{userId:int}/{roleName}", Name = "RemoveRole")]
-        public void RemoveRole(int userId, string roleName)
+        public void RemoveRole(int userId, string roleName, Guid groupId)
         {
 
-                roleService.RemoveRole(userId, roleName);
+                roleService.RemoveRole(userId, roleName, groupId);
         }
 
         [HttpPost("AddRole", Name = "AddRole")]

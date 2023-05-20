@@ -83,7 +83,7 @@ namespace Split.Engine.Services
 
             }
         }
-        public void SetRole(int userId, string roleName)
+        public void SetRole(int userId, string roleName, Guid groupId)
         {
             var roles = userRepository.GetUserRoles(userId);
             foreach (var role in roles)
@@ -92,7 +92,7 @@ namespace Split.Engine.Services
             }
             try
             {
-                roleRepository.SetRole(roleRepository.GetRoleId(roleName), userId);
+                roleRepository.SetRole(roleRepository.GetRoleId(roleName), userId,groupId);
             }
             catch (RoleNotFoundException)
             {
@@ -100,13 +100,13 @@ namespace Split.Engine.Services
             }
         }
 
-        public void RemoveRole(int userId, string roleName)
+        public void RemoveRole(int userId, string roleName, Guid groupId)
         {
             //var role = roleRepository.GetRole(roleName) ?? throw new RoleNotFoundException();
             try
             {
                 var id = roleRepository.GetRoleId(roleName);
-                roleRepository.RemoveRole(id, userId);
+                roleRepository.RemoveRole(id, userId,groupId);
             }
             catch (RoleNotFoundException)
             {

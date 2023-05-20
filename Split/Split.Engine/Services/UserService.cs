@@ -1,8 +1,6 @@
-﻿using Split.DbContexts.Tables;
-using Split.Engine.Exceptions;
+﻿using Split.Engine.Exceptions;
 using Split.Engine.Models;
 using Split.Engine.Repositories.Interfaces;
-using System.Linq;
 
 namespace Split.Engine.Services
 {
@@ -53,8 +51,10 @@ namespace Split.Engine.Services
                 {
                     Id = user.Id,
                     Password = user.Password,
-                    Login = user.Login
-                }).ToList();
+                    Login = user.Login,
+                    Email = user.Email,
+                    Name = user.Name
+                }).ToList(); 
             return users;
         }
         public User? GetUserById(int id)

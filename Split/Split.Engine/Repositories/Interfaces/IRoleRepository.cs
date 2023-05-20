@@ -13,8 +13,8 @@ namespace Split.Engine.Repositories.Interfaces
         List<Roles> GetRoles();
         Role GetRole(string roleName);
         bool IsRoleExists(string roleName);
-        void SetRole(int roleId, int userId);
-        void RemoveRole(int roleId, int userId);
+        void SetRole(int roleId, int userId, Guid groupId);
+        void RemoveRole(int roleId, int userId, Guid groupId);
         int GetRoleId(string roleName);
         Role AddRole(string name, string description);
         void DeleteRole(string name);

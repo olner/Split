@@ -38,7 +38,9 @@ namespace Split.Engine.Repositories
             {
                 Id = users.Id,
                 Password = users.Password,
-                Login = users.Login
+                Login = users.Login,
+                Email = users.Email,
+                Name = users.Name
             };
             return user;
         }
@@ -54,7 +56,9 @@ namespace Split.Engine.Repositories
             {
                 Id = users.Id,
                 Password = users.Password,
-                Login = users.Login
+                Login = users.Login,
+                Email = users.Email,
+                Name = users.Name
             };
             return user;
         }

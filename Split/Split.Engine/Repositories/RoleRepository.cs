@@ -49,21 +49,22 @@ namespace Split.Engine.Repositories
             catch(Exception) { throw new RoleNotFoundException(roleName); }
             
         }
-        public void SetRole(int roleId, int userId)
+        public void SetRole(int roleId, int userId, Guid groupId)
         {
             using var context = contextFactory.CreateDbContext();
             UserRoles userRole = new UserRoles
             {
                 RoleId = roleId,
-                UserId = userId
+                UserId = userId,
+                GroupId = groupId
             };
             context.UserRoles.Add(userRole);
             context.SaveChanges();
         }
-        public void RemoveRole(int roleId, int userId)
+        public void RemoveRole(int roleId, int userId, Guid groupId)
         {
             using var context = contextFactory.CreateDbContext();
-            var userRole = context.UserRoles.Where(p => p.UserId == userId && p.RoleId == roleId).FirstOrDefault()
+            var userRole = context.UserRoles.Where(p => p.UserId == userId && p.RoleId == roleId && p.GroupId == groupId).FirstOrDefault()
                 ?? throw new UserRoleNotFoundException();
 
             context.UserRoles.Remove(userRole);
