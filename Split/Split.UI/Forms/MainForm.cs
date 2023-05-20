@@ -1,14 +1,5 @@
 ﻿using Split.UI.UserControls;
 using Split.WebClient;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Split.UI.Forms
 {
@@ -24,9 +15,11 @@ namespace Split.UI.Forms
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            //this.tabControl1.DrawMode = TabDrawMode.OwnerDrawFixed;
-            //this.tabControl1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tabControl1_DrawItem);
             pictureBox1.Image = Properties.Resources.noImage;
+            saveBtn.BackColor = Color.FromArgb(91, 197, 167);
+            saveBtn.ForeColor = Color.White;
+            saveBtn.FlatStyle = FlatStyle.Flat;
+            saveBtn.FlatAppearance.BorderSize = 0;
 
             var control = new GroupControl
             {
@@ -70,7 +63,6 @@ namespace Split.UI.Forms
             };
             expensesTlp.Controls.Add(control5);
             expensesTlp.Controls.Add(control6);
-
         }
 
         private void tabControl1_DrawItem(object sender, DrawItemEventArgs e)
