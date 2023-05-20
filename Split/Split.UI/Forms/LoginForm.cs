@@ -51,6 +51,12 @@ namespace Split.UI
             this.Hide();
         }
 
-        
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var form = new RegistrationForm(context,client);
+            context.MainForm = form;
+            form.Show();
+            this.Hide();
+        }
     }
 }

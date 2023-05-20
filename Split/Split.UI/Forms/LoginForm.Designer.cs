@@ -122,6 +122,7 @@
             linkLabel1.TabIndex = 3;
             linkLabel1.TabStop = true;
             linkLabel1.Text = "Зарегистрироваться";
+            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
             // 
             // loginBtn
             // 

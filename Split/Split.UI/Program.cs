@@ -1,4 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
+using Split.UI.Forms;
 using Split.WebClient;
 
 
@@ -30,6 +31,8 @@ namespace Split.UI
             var services = new ServiceCollection();
 
             services.AddTransient<LoginForm>();
+            services.AddTransient<RegistrationForm>();
+
             services.AddSingleton(sp =>
             {
                 var httpClient = sp.GetRequiredService<HttpClient>();
