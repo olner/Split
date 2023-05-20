@@ -33,7 +33,7 @@ namespace SplitWebService.Controllers
         [HttpGet("/auth", Name = "Authorize")]
         public User? Authorize(string login, string password) => userService.Authorize(login, password);
 
-        [HttpGet("/reg", Name = "Register")]
+        [HttpPost("/reg", Name = "Register")]
         public User? Register(string login, string password)
         {
             try

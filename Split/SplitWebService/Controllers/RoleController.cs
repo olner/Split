@@ -1,7 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Formatters;
-using Split.DbContexts.Tables;
-using Split.Engine.Exceptions;
 using Split.Engine.Models;
 using Split.Engine.Services;
 using SplitWebService.Models;
@@ -21,24 +18,22 @@ namespace SplitWebService.Controllers
             this.roleService = roleService;
         }
 
-        [HttpGet("", Name = "GetAllRoles")]
+        [HttpGet("/Roles", Name = "GetAllRoles")]
         public List<Role>? GetRoles() => roleService.GetRoles();
 
-        [HttpGet("SetRole/{userId:int}/{roleName}", Name = "SetRole")]
+        [HttpPost("/SetRole", Name = "SetRole")]
         public void SetRole(int userId, string roleName, Guid groupId)
         {
-
                 roleService.SetRole(userId, roleName, groupId);
         }
 
-        [HttpGet("RemoveRole/{userId:int}/{roleName}", Name = "RemoveRole")]
+        [HttpDelete("/RemoveRole", Name = "RemoveRole")]
         public void RemoveRole(int userId, string roleName, Guid groupId)
         {
-
                 roleService.RemoveRole(userId, roleName, groupId);
         }
 
-        [HttpPost("AddRole", Name = "AddRole")]
+        [HttpPost("/AddRole", Name = "AddRole")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest, "application/json")]
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError, "application/json")]
@@ -48,11 +43,10 @@ namespace SplitWebService.Controllers
             return NoContent();
         }
 
-        [HttpDelete("DeleteRole/{roleName}", Name = "DeleteRole")]        
+        [HttpDelete("/DeleteRole", Name = "DeleteRole")]        
         public void DeleteRole(string roleName)
         {
             roleService.DeleteRole(roleName);
         }
-
     }
 }

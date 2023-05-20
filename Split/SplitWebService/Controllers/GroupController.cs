@@ -18,10 +18,10 @@ namespace SplitWebService.Controllers
             this.groupService = groupService;
         }
 
-        [HttpGet("", Name = "GetAllGroups")]
+        [HttpGet("/Groups", Name = "GetAllGroups")]
         public List<Group>? GetGroups() => groupService.GetGroups();
 
-        [HttpPost("AddGroup", Name = "AddGroup")]
+        [HttpPost("/AddGroup", Name = "AddGroup")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest, "application/json")]
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError, "application/json")]
@@ -31,13 +31,13 @@ namespace SplitWebService.Controllers
             return Ok();
         }
 
-        [HttpDelete("DeleteGroup/{groupId}", Name = "DeleteGroup")]
+        [HttpDelete("/DeleteGroup", Name = "DeleteGroup")]
         public void DeleteGroup(Guid groupId)
         {
             groupService.RemoveGroup(groupId);
         }
 
-        [HttpPost("AddUserToGroup", Name = "AddUserToGroup")]
+        [HttpPost("/AddUserToGroup", Name = "AddUserToGroup")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest, "application/json")]
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError, "application/json")]
@@ -47,7 +47,7 @@ namespace SplitWebService.Controllers
             return Ok();
         }
 
-        [HttpDelete("DeleteGroupMember/{groupId}/{userId}", Name = "DeleteGroupMember")]
+        [HttpDelete("/DeleteGroupMember", Name = "DeleteGroupMember")]
         public void RemoveGroupMember(Guid groupId, int userId)
         {
             groupService.RemoveGroupMember(groupId, userId);
