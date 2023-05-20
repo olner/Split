@@ -36,11 +36,20 @@
             accountPage = new TabPage();
             pictureBox1 = new PictureBox();
             accLbl = new Label();
+            label1 = new Label();
+            textBox1 = new TextBox();
+            label2 = new Label();
+            textBox2 = new TextBox();
+            label3 = new Label();
+            textBox3 = new TextBox();
+            saveBtn = new Button();
+            groupBox1 = new GroupBox();
             tabControl1.SuspendLayout();
             groupsPage.SuspendLayout();
             friendsPage.SuspendLayout();
             accountPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl1
@@ -112,7 +121,7 @@
             // 
             // accountPage
             // 
-            accountPage.Controls.Add(pictureBox1);
+            accountPage.Controls.Add(groupBox1);
             accountPage.Controls.Add(accLbl);
             accountPage.Location = new Point(124, 4);
             accountPage.Name = "accountPage";
@@ -123,7 +132,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(14, 73);
+            pictureBox1.Location = new Point(6, 26);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(204, 168);
             pictureBox1.TabIndex = 2;
@@ -138,6 +147,79 @@
             accLbl.Size = new Size(169, 37);
             accLbl.TabIndex = 1;
             accLbl.Text = "Ваш аккаунт";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(230, 26);
+            label1.Name = "label1";
+            label1.Size = new Size(39, 20);
+            label1.TabIndex = 3;
+            label1.Text = "Имя";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(230, 49);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(125, 27);
+            textBox1.TabIndex = 4;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(230, 89);
+            label2.Name = "label2";
+            label2.Size = new Size(46, 20);
+            label2.TabIndex = 5;
+            label2.Text = "Email";
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(230, 112);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(125, 27);
+            textBox2.TabIndex = 6;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(230, 142);
+            label3.Name = "label3";
+            label3.Size = new Size(62, 20);
+            label3.TabIndex = 7;
+            label3.Text = "Пароль";
+            // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(230, 167);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(125, 27);
+            textBox3.TabIndex = 8;
+            // 
+            // saveBtn
+            // 
+            saveBtn.Location = new Point(261, 220);
+            saveBtn.Name = "saveBtn";
+            saveBtn.Size = new Size(94, 29);
+            saveBtn.TabIndex = 9;
+            saveBtn.Text = "Сохранить";
+            saveBtn.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(pictureBox1);
+            groupBox1.Controls.Add(saveBtn);
+            groupBox1.Controls.Add(label1);
+            groupBox1.Controls.Add(textBox3);
+            groupBox1.Controls.Add(textBox1);
+            groupBox1.Controls.Add(label3);
+            groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(textBox2);
+            groupBox1.Location = new Point(14, 56);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(387, 452);
+            groupBox1.TabIndex = 10;
+            groupBox1.TabStop = false;
             // 
             // MainForm
             // 
@@ -154,6 +236,8 @@
             accountPage.ResumeLayout(false);
             accountPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -167,5 +251,13 @@
         private TableLayoutPanel friendsTlp;
         private Label accLbl;
         private PictureBox pictureBox1;
+        private TextBox textBox3;
+        private Label label3;
+        private TextBox textBox2;
+        private Label label2;
+        private TextBox textBox1;
+        private Label label1;
+        private Button saveBtn;
+        private GroupBox groupBox1;
     }
 }

@@ -26,7 +26,7 @@ namespace Split.UI.Forms
         {
             //this.tabControl1.DrawMode = TabDrawMode.OwnerDrawFixed;
             //this.tabControl1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tabControl1_DrawItem);
-            
+
 
             var control = new GroupControl
             {

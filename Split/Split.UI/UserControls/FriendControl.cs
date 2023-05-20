@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Split.UI.Tools;
+﻿using Split.UI.Tools;
 
 namespace Split.UI.UserControls
 {
@@ -34,6 +24,27 @@ namespace Split.UI.UserControls
 
             pictureBox1.Image = Properties.Resources.noImage;
         }
+        public void NewMember()
+        {
+            this.Height /= 2;
+            var button = new Button
+            {
+                Name = "addBtn",
+                Text = "Добавить в группу",
+                Size = new Size(300, 50),
+                BackColor = Color.FromArgb(91, 197, 167),
+                ForeColor = Color.White,
+                Anchor = AnchorStyles.Left | AnchorStyles.Right
+            };
+            button.FlatStyle = FlatStyle.Flat;
+            button.FlatAppearance.BorderSize = 0;
+
+            tableLayoutPanel1.Controls.Remove(deleteBtn);
+            tableLayoutPanel1.Controls.Remove(pictureBox1);
+            tableLayoutPanel1.Controls.Add(button, 3, 0);
+
+            AddNameTextBox();
+        }
 
         public void NewFriend()
         {
@@ -50,11 +61,15 @@ namespace Split.UI.UserControls
             button.FlatStyle = FlatStyle.Flat;
             button.FlatAppearance.BorderSize = 0;
 
-            nameLbl.Text = "";
             tableLayoutPanel1.Controls.Remove(deleteBtn);
             tableLayoutPanel1.Controls.Remove(pictureBox1);
             tableLayoutPanel1.Controls.Add(button, 3, 0);
+            AddNameTextBox();
+        }
 
+        public void AddNameTextBox() 
+        {
+            nameLbl.Text = "";
             var nameTb = new TextBox
             {
                 Name = "nameTb",

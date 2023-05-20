@@ -1,6 +1,6 @@
 ﻿namespace Split.UI.UserControls
 {
-    partial class GroupControl
+    partial class ExpenseControl
     {
         /// <summary> 
         /// Обязательная переменная конструктора.
@@ -30,83 +30,66 @@
         {
             tableLayoutPanel1 = new TableLayoutPanel();
             dateLbl = new Label();
-            nameLbl = new Label();
-            membersLb = new ListBox();
-            descriptionTb = new RichTextBox();
+            priceLbl = new Label();
+            label1 = new Label();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
-            tableLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            tableLayoutPanel1.ColumnCount = 4;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.4834F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 11.6192827F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 42.39802F));
+            tableLayoutPanel1.ColumnCount = 5;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 7.887324F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 34.64789F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 24.1001568F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 57F));
             tableLayoutPanel1.Controls.Add(dateLbl, 0, 0);
-            tableLayoutPanel1.Controls.Add(nameLbl, 1, 0);
-            tableLayoutPanel1.Controls.Add(membersLb, 3, 0);
-            tableLayoutPanel1.Controls.Add(descriptionTb, 2, 0);
+            tableLayoutPanel1.Controls.Add(priceLbl, 2, 0);
+            tableLayoutPanel1.Controls.Add(label1, 3, 0);
             tableLayoutPanel1.Location = new Point(3, 3);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(809, 97);
+            tableLayoutPanel1.Size = new Size(1065, 103);
             tableLayoutPanel1.TabIndex = 0;
-            tableLayoutPanel1.MouseClick += tableLayoutPanel1_MouseClick;
-            tableLayoutPanel1.MouseEnter += tableLayoutPanel1_MouseEnter;
-            tableLayoutPanel1.MouseLeave += tableLayoutPanel1_MouseLeave;
             // 
             // dateLbl
             // 
             dateLbl.Anchor = AnchorStyles.None;
             dateLbl.AutoSize = true;
-            dateLbl.Location = new Point(30, 38);
+            dateLbl.Location = new Point(19, 41);
             dateLbl.Name = "dateLbl";
             dateLbl.Size = new Size(41, 20);
             dateLbl.TabIndex = 0;
             dateLbl.Text = "Date";
             // 
-            // nameLbl
+            // priceLbl
             // 
-            nameLbl.Anchor = AnchorStyles.None;
-            nameLbl.AutoSize = true;
-            nameLbl.Location = new Point(123, 38);
-            nameLbl.Name = "nameLbl";
-            nameLbl.Size = new Size(49, 20);
-            nameLbl.TabIndex = 1;
-            nameLbl.Text = "Name";
+            priceLbl.AutoSize = true;
+            priceLbl.Location = new Point(431, 0);
+            priceLbl.Name = "priceLbl";
+            priceLbl.Size = new Size(41, 20);
+            priceLbl.TabIndex = 1;
+            priceLbl.Text = "Price";
             // 
-            // membersLb
+            // label1
             // 
-            membersLb.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            membersLb.FormattingEnabled = true;
-            membersLb.ItemHeight = 20;
-            membersLb.Location = new Point(541, 3);
-            membersLb.Name = "membersLb";
-            membersLb.Size = new Size(265, 84);
-            membersLb.TabIndex = 3;
+            label1.AutoSize = true;
+            label1.Location = new Point(674, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(144, 20);
+            label1.TabIndex = 2;
+            label1.Text = "Сколько ты должен";
             // 
-            // descriptionTb
-            // 
-            descriptionTb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            descriptionTb.BorderStyle = BorderStyle.FixedSingle;
-            descriptionTb.Location = new Point(198, 3);
-            descriptionTb.Name = "descriptionTb";
-            descriptionTb.Size = new Size(337, 84);
-            descriptionTb.TabIndex = 4;
-            descriptionTb.Text = "";
-            // 
-            // GroupControl
+            // ExpenseControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BorderStyle = BorderStyle.FixedSingle;
             Controls.Add(tableLayoutPanel1);
-            Name = "GroupControl";
-            Size = new Size(815, 103);
-            Load += GroupControl_Load;
+            Name = "ExpenseControl";
+            Size = new Size(1069, 109);
+            Load += ExpenseControl_Load;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             ResumeLayout(false);
@@ -116,8 +99,7 @@
 
         private TableLayoutPanel tableLayoutPanel1;
         private Label dateLbl;
-        private Label nameLbl;
-        private ListBox membersLb;
-        private RichTextBox descriptionTb;
+        private Label priceLbl;
+        private Label label1;
     }
 }

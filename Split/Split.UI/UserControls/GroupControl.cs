@@ -1,14 +1,5 @@
 ﻿using Split.UI.Forms;
 using Split.UI.Tools;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Split.UI.UserControls
 {
@@ -27,13 +18,25 @@ namespace Split.UI.UserControls
             //TODO: Дописать
         }
 
+        private void GroupControl_Load(object sender, EventArgs e)
+        {
+            SetActions(controlsAdditions.GetAll(this, typeof(ListBox)));
+            SetActions(controlsAdditions.GetAll(this, typeof(RichTextBox)));
+            SetActions(controlsAdditions.GetAll(this, typeof(Label)));
+            SetActions(controlsAdditions.GetAll(this, typeof(Button)));
+
+            descriptionTb.ReadOnly = true;
+            descriptionTb.BackColor = Color.White;
+            //MyExtensions.Disable(descriptionTb, nameLbl);
+        }
+
         public void NewGroup()
         {
             this.Height /= 2;
             var button = new Button
             {
                 Name = "addBtn",
-                Text = "Добавить группу",
+                Text = "Создать группу",
                 Size = new Size(300, 50),
                 BackColor = Color.FromArgb(91, 197, 167),
                 ForeColor = Color.White,
@@ -41,14 +44,17 @@ namespace Split.UI.UserControls
             };
             button.FlatStyle = FlatStyle.Flat;
             button.FlatAppearance.BorderSize = 0;
+            button.Click += addBtn_Click;
 
             nameLbl.Text = "";
             dateLbl.Text = "";
             descriptionTb.Text = "";
-            button.Click += addBtn_Click;
+
             tableLayoutPanel1.Controls.Remove(descriptionTb);
             tableLayoutPanel1.Controls.Remove(membersLb);
             tableLayoutPanel1.Controls.Add(button, 3, 0);
+
+
         }
 
         private void addBtn_Click(object sender, EventArgs e)
@@ -57,20 +63,13 @@ namespace Split.UI.UserControls
             form.ShowDialog();
         }
 
-        private void GroupControl_Load(object sender, EventArgs e)
-        {
-            SetActions(controlsAdditions.GetAll(this, typeof(ListBox)));
-            SetActions(controlsAdditions.GetAll(this, typeof(RichTextBox)));
-            SetActions(controlsAdditions.GetAll(this, typeof(Label)));
-            SetActions(controlsAdditions.GetAll(this, typeof(Button)));
-        }
-
         public void SetActions(IEnumerable<Control> controls)
         {
             foreach (var control in controls)
             {
                 control.MouseEnter += tableLayoutPanel1_MouseEnter;
                 control.MouseLeave += tableLayoutPanel1_MouseLeave;
+                control.MouseClick += tableLayoutPanel1_MouseClick;
             }
         }
 
@@ -83,5 +82,12 @@ namespace Split.UI.UserControls
         {
             this.BackColor = Color.White;
         }
+
+        private void tableLayoutPanel1_MouseClick(object sender, MouseEventArgs e)
+        {
+            var form = new GroupForm();
+            form.ShowDialog();
+        }
+
     }
 }
