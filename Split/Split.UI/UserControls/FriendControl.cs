@@ -158,6 +158,7 @@ namespace Split.UI.UserControls
             }
             else
             {
+                
                 //DeleteMember();
                 this.Dispose();
             }
@@ -168,6 +169,9 @@ namespace Split.UI.UserControls
         }
         public async void DeleteMember()
         {
+            var group = await client.GetGroupAsync(member.GroupId);
+            if (group.Admin == member.Id) return;
+
             await client.DeleteGroupMemberAsync(member.GroupId,member.UserId);
         }
     }
