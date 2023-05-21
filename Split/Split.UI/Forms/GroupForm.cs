@@ -102,5 +102,11 @@ namespace Split.UI.Forms
         {
             nameTb.Text = GroupName;
         }
+
+        private async void saveBtn_Click(object sender, EventArgs e)
+        {
+            var group = await client.UpdateNameAsync(groupId, nameTb.Text);
+            GroupName = group.Name;
+        }
     }
 }

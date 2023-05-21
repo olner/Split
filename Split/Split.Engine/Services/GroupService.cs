@@ -47,6 +47,18 @@ namespace Split.Engine.Services
             }
         }
 
+        public Group? UpdateGroupName(Guid groupId, string name)
+        {
+            try
+            {
+                return groupRepository.UpdateGroupName(groupId, name);
+            }
+            catch(GroupNotFoundException)
+            {
+                return null;
+            }
+        }
+
         public List<Group>? GetGroups() 
         {
             try

@@ -67,6 +67,19 @@ namespace Split.Engine.Repositories
             context.SaveChanges();
         }
 
+        public Group UpdateGroupName(Guid groupId, string name)
+        {
+            using var context = contextFactory.CreateDbContext();
+            var group = context.Groups.Where(x => x.Id == groupId).FirstOrDefault() ?? throw new GroupNotFoundException();
+
+            group.Name = name;
+
+            context.Groups.Update(group);
+            context.SaveChanges();
+
+            return GetGroup(groupId);
+        }
+
         public GroupsMembers GetGroupMember(Guid groupId, int userId)
         {
             using var context = contextFactory.CreateDbContext();
@@ -124,6 +137,8 @@ namespace Split.Engine.Repositories
             }
             return groupMembers;
         }
+
+        
         /*public List<Users> GetMembers(Guid groupId)
         {
             using var context = contextFactory.CreateDbContext();

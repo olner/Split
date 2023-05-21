@@ -14,6 +14,7 @@ namespace Split.Engine.Repositories.Interfaces
         Group GetGroup(Guid id);
         Group AddGroup(string name, int adminId);
         void RemoveGroup(Guid groupId);
+        Group UpdateGroupName(Guid groupId, string name);
         GroupsMembers AddGroupMember(Guid groupId, int userId);
         List<GroupsMembers> GetGroupMembers(Guid groupId);
         void RemoveGroupMember(Guid groupId, int userId);

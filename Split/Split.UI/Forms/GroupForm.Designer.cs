@@ -233,6 +233,7 @@
             saveBtn.TabIndex = 5;
             saveBtn.Text = "Сохранить";
             saveBtn.UseVisualStyleBackColor = true;
+            saveBtn.Click += saveBtn_Click;
             // 
             // label4
             // 

@@ -39,6 +39,9 @@ namespace SplitWebService.Controllers
             groupService.RemoveGroup(groupId);
         }
 
+        [HttpPatch("/UpdateName", Name = "UpdateName")]
+        public Group? UpdateGroupName(Guid groupId, string name) => groupService.UpdateGroupName(groupId, name);
+
         [HttpGet("/Members", Name = "GetGroupMembers")]
         public List<GroupMember>? GetGroupMembers(Guid groupId) => groupService.GetGroupMembers(groupId);
 
