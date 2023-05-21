@@ -105,5 +105,45 @@ namespace Split.Engine.Repositories
             context.Users.Remove(user);
             context.SaveChanges();
         }
+
+        public Friend GetFriend(int userId,int friendId)
+        {
+            using var context = contextFactory.CreateDbContext();
+            var friends = context.Friends.Where(x => x.UserId == userId && x.FriendId == friendId).FirstOrDefault() ?? throw new UserNotFoundException();
+
+            var friend = new Friend
+            {
+                Id = friends.Id,
+                UserId = friends.UserId,
+                FriendId = friends.FriendId,
+                Request = friends.Request
+            };
+            return friend;
+        }
+
+        public Friend AddFriend(int userId, int friendId, bool request)
+        {
+            using var context = contextFactory.CreateDbContext();
+            var friend = new Friends
+            {
+                Id = new Guid(),
+                UserId = userId, 
+                FriendId = friendId,
+                Request = request
+            };
+            context.Friends.Add(friend);
+            context.SaveChanges();
+
+            return GetFriend(userId, friendId);
+        }
+
+        public void DeleteFriend(Guid id)
+        {
+            using var context = contextFactory.CreateDbContext();
+            var friend = context.Friends.Where(x => x.Id == id).FirstOrDefault() ?? throw new UserNotFoundException();
+
+            context.Friends.Remove(friend);
+            context.SaveChanges();
+        }
     }
 }

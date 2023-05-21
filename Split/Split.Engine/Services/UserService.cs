@@ -74,5 +74,34 @@ namespace Split.Engine.Services
                 return null;
             }
         }
+
+        public Friend? GetFriend(int userId, int friendId)
+        {
+            try
+            {
+                return userRepository.GetFriend(userId, friendId);
+            }
+            catch (UserNotFoundException)
+            {
+                return null;
+            }
+        }
+
+        public Friend AddFriend(int userId, int friendId, bool request)
+        {
+            try
+            {
+                return userRepository.AddFriend(userId, friendId, request);
+            }
+            catch(UserNotFoundException)
+            {
+                return null;
+            }
+        }
+
+        public void DeleteFriend(Guid id)
+        {
+            userRepository.DeleteFriend(id);
+        }
     }
 }

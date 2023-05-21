@@ -17,6 +17,9 @@ namespace Split.Engine.Repositories.Interfaces
         void DeleteUser(int Id);
         List<string> GetUserRoles(int userId);
         User GetUser(int id);
-        
+        Friend GetFriend(int userId, int friendId);
+        Friend AddFriend(int userId, int friendId, bool request);
+        void DeleteFriend(Guid id);
+
     }
 }

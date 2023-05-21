@@ -51,5 +51,14 @@ namespace SplitWebService.Controllers
         {
             userService.DeleteUser(id);
         }
+
+        [HttpGet("/Friend", Name = "GetFriend")]
+        public Friend? GetFriend(int userId, int friendId) => userService.GetFriend(userId, friendId);
+
+        [HttpPost("/AddFriend", Name = "AddFriend")]
+        public Friend AddFriend(int userId, int friendId, bool request) => userService.AddFriend(userId,friendId,request);
+
+        [HttpDelete("/DeleteFriend", Name = "DeleteFriend")]
+        public void DeleteFriend(Guid id) => userService.DeleteFriend(id);
     }
 }
