@@ -147,8 +147,28 @@ namespace Split.UI.UserControls
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Вы точно хотите удалить пользователя из друзей?", "Подтверждение",
+            var result = MessageBox.Show("Вы точно хотите удалить пользователя из друзей?", "Подтверждение",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.No) return;
+
+            if(member == null)
+            {
+                //DeleteFriend();
+                this.Dispose();
+            }
+            else
+            {
+                //DeleteMember();
+                this.Dispose();
+            }
+        }
+        public async void DeleteFriend()
+        {
+            await client.DeleteFriendAsync(friend.Id);
+        }
+        public async void DeleteMember()
+        {
+            await client.DeleteGroupMemberAsync(member.GroupId,member.UserId);
         }
     }
 }

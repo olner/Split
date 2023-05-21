@@ -223,6 +223,7 @@
             resetBtn.TabIndex = 6;
             resetBtn.Text = "Отмена";
             resetBtn.UseVisualStyleBackColor = true;
+            resetBtn.Click += resetBtn_Click;
             // 
             // saveBtn
             // 

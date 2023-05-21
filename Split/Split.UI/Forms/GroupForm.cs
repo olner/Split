@@ -97,5 +97,10 @@ namespace Split.UI.Forms
         {
             this.Text = GroupName + " - " + tabControl1.SelectedTab.Text;
         }
+
+        private void resetBtn_Click(object sender, EventArgs e)
+        {
+            nameTb.Text = GroupName;
+        }
     }
 }
