@@ -34,11 +34,11 @@ namespace SplitWebService.Controllers
         }
 
         [HttpPost("/reg", Name = "Register")]
-        public User? Register(string login, string password)
+        public User? Register(string login, string password, string email)
         {
             try
             {
-                return userService.Register(login, password);
+                return userService.Register(login, password, email);
             }
             catch (ServiceException)
             {
@@ -47,10 +47,7 @@ namespace SplitWebService.Controllers
         }
 
         [HttpDelete("/delete", Name = "Delete")]
-        public void Delete(int id)
-        {
-            userService.DeleteUser(id);
-        }
+        public void Delete(int id) => userService.DeleteUser(id);
 
         [HttpGet("/Friend", Name = "GetFriend")]
         public Friend? GetFriend(int userId, int friendId) => userService.GetFriend(userId, friendId);

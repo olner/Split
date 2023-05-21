@@ -13,7 +13,7 @@ namespace Split.Engine.Repositories.Interfaces
         List<Users> GetUsers();
         User GetUser(string login, string password);
         bool IsUserExists(string login);
-        User Register(string login, string password);
+        User Register(string login, string password, string email);
         void DeleteUser(int Id);
         List<string> GetUserRoles(int userId);
         User GetUser(int id);

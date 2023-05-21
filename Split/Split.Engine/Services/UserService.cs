@@ -26,7 +26,7 @@ namespace Split.Engine.Services
             }
         }
 
-        public User? Register(string login, string password)
+        public User? Register(string login, string password, string email)
         {
             if(userRepository.IsUserExists(login)) throw new ServiceException("Такой пользователь уже есть");
 
@@ -36,7 +36,7 @@ namespace Split.Engine.Services
                 {
                     throw new ServiceException("Not valid password");
                 }
-                return userRepository.Register(login, password);
+                return userRepository.Register(login, password, email);
             }
             catch (UserNotFoundException)
             {
