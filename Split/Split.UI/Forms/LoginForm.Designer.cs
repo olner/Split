@@ -36,9 +36,12 @@
             passwordTb = new TextBox();
             linkLabel1 = new LinkLabel();
             loginBtn = new Tools.CustomControls.RoundButton();
+            errorGB = new GroupBox();
+            errorLbl = new Label();
             tableLayoutPanel1.SuspendLayout();
             groupBox1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
+            errorGB.SuspendLayout();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -86,13 +89,15 @@
             tableLayoutPanel2.Controls.Add(passwordTb, 0, 1);
             tableLayoutPanel2.Controls.Add(linkLabel1, 0, 3);
             tableLayoutPanel2.Controls.Add(loginBtn, 0, 2);
+            tableLayoutPanel2.Controls.Add(errorGB, 0, 4);
             tableLayoutPanel2.Location = new Point(6, 26);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.RowCount = 4;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 18.4210529F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 19.4078941F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 18.4210529F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 43.42105F));
+            tableLayoutPanel2.RowCount = 5;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 21.09375F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 23.046875F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 20.3125F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 35.546875F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 75F));
             tableLayoutPanel2.Size = new Size(415, 333);
             tableLayoutPanel2.TabIndex = 0;
             // 
@@ -106,7 +111,7 @@
             // 
             // passwordTb
             // 
-            passwordTb.Location = new Point(3, 64);
+            passwordTb.Location = new Point(3, 57);
             passwordTb.Multiline = true;
             passwordTb.Name = "passwordTb";
             passwordTb.Size = new Size(409, 40);
@@ -116,7 +121,7 @@
             // 
             linkLabel1.Anchor = AnchorStyles.Top;
             linkLabel1.AutoSize = true;
-            linkLabel1.Location = new Point(132, 186);
+            linkLabel1.Location = new Point(132, 165);
             linkLabel1.Name = "linkLabel1";
             linkLabel1.Size = new Size(151, 20);
             linkLabel1.TabIndex = 3;
@@ -136,12 +141,31 @@
             loginBtn.ButtonPressedColor2 = Color.Maroon;
             loginBtn.ButtonPressedForeColor = Color.White;
             loginBtn.ButtonRoundRadius = 30;
-            loginBtn.Location = new Point(3, 128);
+            loginBtn.Location = new Point(3, 116);
             loginBtn.Name = "loginBtn";
-            loginBtn.Size = new Size(409, 50);
+            loginBtn.Size = new Size(409, 46);
             loginBtn.TabIndex = 4;
             loginBtn.Text = "Вход";
             loginBtn.Click += loginBtn_Click;
+            // 
+            // errorGB
+            // 
+            errorGB.Controls.Add(errorLbl);
+            errorGB.Location = new Point(3, 259);
+            errorGB.Name = "errorGB";
+            errorGB.Size = new Size(409, 71);
+            errorGB.TabIndex = 5;
+            errorGB.TabStop = false;
+            errorGB.Visible = false;
+            // 
+            // errorLbl
+            // 
+            errorLbl.AutoSize = true;
+            errorLbl.Location = new Point(6, 14);
+            errorLbl.Name = "errorLbl";
+            errorLbl.Size = new Size(50, 20);
+            errorLbl.TabIndex = 0;
+            errorLbl.Text = "label2";
             // 
             // LoginForm
             // 
@@ -157,6 +181,8 @@
             groupBox1.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
+            errorGB.ResumeLayout(false);
+            errorGB.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -170,5 +196,7 @@
         private TextBox passwordTb;
         private LinkLabel linkLabel1;
         private Tools.CustomControls.RoundButton loginBtn;
+        private GroupBox errorGB;
+        private Label errorLbl;
     }
 }

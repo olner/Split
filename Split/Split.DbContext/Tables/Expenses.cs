@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
 namespace Split.DbContexts.Tables
@@ -23,6 +21,8 @@ namespace Split.DbContexts.Tables
         public Groups Groups { get; set; }
 
         public double Sum { get; set; }
+
+        public DateTime Date { get; set; }
         
     }
 }

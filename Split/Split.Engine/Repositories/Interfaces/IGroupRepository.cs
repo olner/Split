@@ -11,6 +11,7 @@ namespace Split.Engine.Repositories.Interfaces
     public interface IGroupRepository
     {
         List<Groups> GetGroups();
+        Group GetGroup(Guid id);
         Group AddGroup(string name);
         void RemoveGroup(Guid groupId);
         GroupsMembers AddGroupMember(Guid groupId, int userId);

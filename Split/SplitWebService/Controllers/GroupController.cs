@@ -21,6 +21,9 @@ namespace SplitWebService.Controllers
         [HttpGet("/Groups", Name = "GetAllGroups")]
         public List<Group>? GetGroups() => groupService.GetGroups();
 
+        [HttpGet("/Group", Name = "GetGroup")]
+        public Group? GetGroup(Guid groupId) => groupService.GetGroup(groupId);
+
         [HttpPost("/AddGroup", Name = "AddGroup")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest, "application/json")]
@@ -36,6 +39,9 @@ namespace SplitWebService.Controllers
         {
             groupService.RemoveGroup(groupId);
         }
+
+        /*[HttpGet("/Members", Name = "GetMembers")]
+        public */
 
         [HttpPost("/AddUserToGroup", Name = "AddUserToGroup")]
         [ProducesResponseType(StatusCodes.Status200OK)]

@@ -97,6 +97,7 @@ namespace Split.Engine.Repositories
             context.SaveChanges();
             return GetUser(login, password);
         }
+
         public void DeleteUser(int Id)
         {
             using var context = contextFactory.CreateDbContext();

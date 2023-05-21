@@ -1,4 +1,5 @@
 using Split.UI.Forms;
+using Split.UI.Tools;
 using Split.WebClient;
 
 namespace Split.UI
@@ -11,14 +12,13 @@ namespace Split.UI
         public LoginForm(SplitServiceApi client, ApplicationContext context)
         {
             InitializeComponent();
-            Build();
             //this.MinimumSize = new Size(427, 511);
             this.client = client;
             this.context = context;
         }
         private void LoginForm_Load(object sender, EventArgs e)
         {
-
+            Build();
         }
         private void Build()
         {
@@ -34,20 +34,31 @@ namespace Split.UI
 
             loginBtn.ButtonPressedColor = Color.FromArgb(31, 209, 165);
             loginBtn.ButtonPressedColor2 = Color.FromArgb(64, 227, 186);
-
-
         }
 
         private async void loginBtn_Click(object sender, EventArgs e)
         {
-            /*if (loginBtn.Text.Length == 0 || passwordTb.Text.Length == 0) return;
-            await client.AuthorizeAsync(loginTb.Text, passwordTb.Text);
-            if(user == null)
+            loginBtn.Enabled = false;
+            if (loginBtn.Text.Length < 3 || passwordTb.Text.Length < 5)
             {
-                MessageBox.Show("Нет такого типочка");
-                return;
-            } */
+                errorGB.Visible = true;
+                errorLbl.Text = "Логин должен быть не менее 3-х символов\nпароль не менее 5";
+                errorLbl.ForeColor = Color.Red;
 
+                loginBtn.Enabled = true;
+                return;
+            }
+
+            var user = await client.AuthorizeAsync(loginTb.Text, passwordTb.Text);
+            if (user == null)
+            {
+                MessageBox.Show("Пользователь не найден.\nПроверьте правильность написания логина и пароля");
+
+                loginBtn.Enabled = true;
+                return;
+            }
+
+            Data.Id = (int)user.Id;
             var form = new MainForm(client);
             context.MainForm = form;
             form.Show();
@@ -57,7 +68,7 @@ namespace Split.UI
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var form = new RegistrationForm(context,client);
+            var form = new RegistrationForm(context, client);
             context.MainForm = form;
             form.Show();
             this.Hide();

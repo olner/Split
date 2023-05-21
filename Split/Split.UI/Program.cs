@@ -36,7 +36,7 @@ namespace Split.UI
             services.AddSingleton(sp =>
             {
                 var httpClient = sp.GetRequiredService<HttpClient>();
-                httpClient.BaseAddress = new Uri("http://localhost:5153/");
+                httpClient.BaseAddress = new Uri("http://localhost:5000/");
                 return new SplitServiceApi(httpClient);
             });
 

@@ -3,25 +3,23 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Split.DbContexts.Tables
 {
-    public record Debts
+    public record Friends
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
 
-        [Column("expense_id")]
-        [ForeignKey("Expense")]
-        public Guid ExpenseId { get; set; }
-        public Expenses Expenses { get; set; }
-
         [Column("user_id")]
         [ForeignKey("Users")]
         public int UserId { get; set; }
-
         public Users Users { get; set; }
 
-        public double Debt { get;set; }
+        [Column("friend_id")]
+        [ForeignKey("Friends")]
+        public int FriendId { get; set; }
+        public Users Friend { get; set; }
 
-        public double Paid { get;set; }
+        public bool Request { get; set; }
+
     }
 }

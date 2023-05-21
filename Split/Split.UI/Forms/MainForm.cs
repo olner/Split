@@ -1,4 +1,5 @@
-﻿using Split.UI.UserControls;
+﻿using Split.UI.Tools;
+using Split.UI.UserControls;
 using Split.WebClient;
 
 namespace Split.UI.Forms
@@ -18,7 +19,7 @@ namespace Split.UI.Forms
             deleteBtn.BackColor = Color.FromArgb(204, 68, 85);
             deleteBtn.ForeColor = Color.White;
 
-            pictureBox1.Image = Properties.Resources.noImage;
+            profilePb.Image = Properties.Resources.noImage;
             saveBtn.BackColor = Color.FromArgb(91, 197, 167);
             saveBtn.ForeColor = Color.White;
             saveBtn.FlatStyle = FlatStyle.Flat;
@@ -31,7 +32,7 @@ namespace Split.UI.Forms
             };
             control.NewGroup();
 
-            var control2 = new GroupControl
+            var control2 = new GroupControl(client, Guid.Parse("08db554d-dd2c-4fa6-8603-e962f375eb65"))
             {
                 Width = groupsTlp.Width,
                 Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top
@@ -46,7 +47,7 @@ namespace Split.UI.Forms
                 Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top
             };
             control3.NewFriend();
-            var control4 = new FriendControl
+            var control4 = new FriendControl(client, 1)
             {
                 Width = friendsTlp.Width,
                 Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top
@@ -66,6 +67,16 @@ namespace Split.UI.Forms
             };
             expensesTlp.Controls.Add(control5);
             expensesTlp.Controls.Add(control6);
+
+            SetProfile(Data.Id);
+        }
+
+        private async void SetProfile(int id)
+        {
+            var user = await client.GetUserByIdAsync(id);
+            nameTb.Text = user.Login;
+            emailTb.Text = user.Email;
+            passwordTb.Text = "*******";
         }
 
         private void tabControl1_DrawItem(object sender, DrawItemEventArgs e)
@@ -98,6 +109,11 @@ namespace Split.UI.Forms
         {
             MessageBox.Show("Вы точно хотите удалить аккаунт без возможности восстановления?", "Подтверждение",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+        }
+
+        private void saveBtn_Click(object sender, EventArgs e)
+        {
+            //TODO: В сервисе сделать метод для изменения данных профиля
         }
     }
 }

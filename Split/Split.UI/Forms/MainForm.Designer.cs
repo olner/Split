@@ -39,14 +39,14 @@
             accLbl = new Label();
             groupBox1 = new GroupBox();
             deleteBtn = new Button();
-            pictureBox1 = new PictureBox();
+            profilePb = new PictureBox();
             saveBtn = new Button();
             label1 = new Label();
-            textBox3 = new TextBox();
-            textBox1 = new TextBox();
+            passwordTb = new TextBox();
+            nameTb = new TextBox();
             label3 = new Label();
             label2 = new Label();
-            textBox2 = new TextBox();
+            emailTb = new TextBox();
             expensesTlp = new TableLayoutPanel();
             tabControl1.SuspendLayout();
             groupsPage.SuspendLayout();
@@ -54,7 +54,7 @@
             accountPage.SuspendLayout();
             profileTlp.SuspendLayout();
             groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)profilePb).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -176,14 +176,14 @@
             // 
             groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             groupBox1.Controls.Add(deleteBtn);
-            groupBox1.Controls.Add(pictureBox1);
+            groupBox1.Controls.Add(profilePb);
             groupBox1.Controls.Add(saveBtn);
             groupBox1.Controls.Add(label1);
-            groupBox1.Controls.Add(textBox3);
-            groupBox1.Controls.Add(textBox1);
+            groupBox1.Controls.Add(passwordTb);
+            groupBox1.Controls.Add(nameTb);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label2);
-            groupBox1.Controls.Add(textBox2);
+            groupBox1.Controls.Add(emailTb);
             groupBox1.Location = new Point(3, 38);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(479, 493);
@@ -200,14 +200,14 @@
             deleteBtn.UseVisualStyleBackColor = true;
             deleteBtn.Click += deleteBtn_Click;
             // 
-            // pictureBox1
+            // profilePb
             // 
-            pictureBox1.Location = new Point(6, 26);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(204, 168);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 2;
-            pictureBox1.TabStop = false;
+            profilePb.Location = new Point(6, 26);
+            profilePb.Name = "profilePb";
+            profilePb.Size = new Size(204, 168);
+            profilePb.SizeMode = PictureBoxSizeMode.Zoom;
+            profilePb.TabIndex = 2;
+            profilePb.TabStop = false;
             // 
             // saveBtn
             // 
@@ -217,6 +217,7 @@
             saveBtn.TabIndex = 9;
             saveBtn.Text = "Сохранить";
             saveBtn.UseVisualStyleBackColor = true;
+            saveBtn.Click += saveBtn_Click;
             // 
             // label1
             // 
@@ -227,19 +228,19 @@
             label1.TabIndex = 3;
             label1.Text = "Имя";
             // 
-            // textBox3
+            // passwordTb
             // 
-            textBox3.Location = new Point(230, 167);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(242, 27);
-            textBox3.TabIndex = 8;
+            passwordTb.Location = new Point(230, 167);
+            passwordTb.Name = "passwordTb";
+            passwordTb.Size = new Size(242, 27);
+            passwordTb.TabIndex = 8;
             // 
-            // textBox1
+            // nameTb
             // 
-            textBox1.Location = new Point(230, 49);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(242, 27);
-            textBox1.TabIndex = 4;
+            nameTb.Location = new Point(230, 49);
+            nameTb.Name = "nameTb";
+            nameTb.Size = new Size(242, 27);
+            nameTb.TabIndex = 4;
             // 
             // label3
             // 
@@ -259,12 +260,12 @@
             label2.TabIndex = 5;
             label2.Text = "Email";
             // 
-            // textBox2
+            // emailTb
             // 
-            textBox2.Location = new Point(230, 112);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(242, 27);
-            textBox2.TabIndex = 6;
+            emailTb.Location = new Point(230, 112);
+            emailTb.Name = "emailTb";
+            emailTb.Size = new Size(242, 27);
+            emailTb.TabIndex = 6;
             // 
             // expensesTlp
             // 
@@ -296,7 +297,7 @@
             profileTlp.PerformLayout();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)profilePb).EndInit();
             ResumeLayout(false);
         }
 
@@ -309,12 +310,12 @@
         private TableLayoutPanel groupsTlp;
         private TableLayoutPanel friendsTlp;
         private Label accLbl;
-        private PictureBox pictureBox1;
-        private TextBox textBox3;
+        private PictureBox profilePb;
+        private TextBox passwordTb;
         private Label label3;
-        private TextBox textBox2;
+        private TextBox emailTb;
         private Label label2;
-        private TextBox textBox1;
+        private TextBox nameTb;
         private Label label1;
         private Button saveBtn;
         private GroupBox groupBox1;

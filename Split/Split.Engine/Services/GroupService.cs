@@ -57,6 +57,7 @@ namespace Split.Engine.Services
                     {
                         Id = group.Id,
                         Name = group.Name,
+                        Date = group.Date,
                         Members = null
                     }).ToList();
                 return groups;
@@ -66,6 +67,19 @@ namespace Split.Engine.Services
                 return null;
             }
         }
+
+        public Group? GetGroup(Guid gropId)
+        {
+            try
+            {
+                return groupRepository.GetGroup(gropId);
+            }
+            catch (GroupNotFoundException)
+            {
+                return null;
+            }
+        }
+        
         public void AddGroupMember(Guid groupId, int userId)
         {
             try

@@ -40,6 +40,7 @@ namespace Split.Engine.Repositories
             {
                 Id = groups.Id,
                 Name = groups.Name,
+                Date = groups.Date,
                 Members = null
             };
 
@@ -52,7 +53,8 @@ namespace Split.Engine.Repositories
             Groups group = new Groups
             {
                 Id = new Guid(),
-                Name = name
+                Name = name,
+                Date = DateTime.Now
             };
             context.Groups.Add(group);
             context.SaveChanges();
@@ -126,6 +128,11 @@ namespace Split.Engine.Repositories
             }
             return groupMembers;
         }
+        /*public List<Users> GetMembers(Guid groupId)
+        {
+            using var context = contextFactory.CreateDbContext();
+            var members =  context.Users.Where(x => x.groupsMembers.)
+        }*/
 
     }
 }

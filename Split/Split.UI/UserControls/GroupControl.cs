@@ -1,21 +1,28 @@
 ﻿using Split.UI.Forms;
 using Split.UI.Tools;
+using Split.WebClient;
 
 namespace Split.UI.UserControls
 {
     public partial class GroupControl : UserControl
     {
         private readonly ControlsAdditions controlsAdditions;
+        private readonly SplitServiceApi client;
+        private readonly Guid groupId;
+
         public GroupControl()
         {
             InitializeComponent();
             controlsAdditions = new ControlsAdditions();
         }
-        public GroupControl(string date, string name)
+
+        public GroupControl(SplitServiceApi client, Guid groupId)
         {
             InitializeComponent();
             controlsAdditions = new ControlsAdditions();
-            //TODO: Дописать
+            this.client = client;
+            this.groupId = groupId;
+            SetData();
         }
 
         private void GroupControl_Load(object sender, EventArgs e)
@@ -28,6 +35,15 @@ namespace Split.UI.UserControls
             descriptionTb.ReadOnly = true;
             descriptionTb.BackColor = Color.White;
             //MyExtensions.Disable(descriptionTb, nameLbl);
+        }
+
+        private async void SetData()
+        {
+            var group = await client.GetGroupAsync(groupId);
+            if (group == null) return;
+
+            dateLbl.Text = group.Date.Value.Date.ToShortDateString();
+            nameLbl.Text = group.Name;
         }
 
         public void NewGroup()

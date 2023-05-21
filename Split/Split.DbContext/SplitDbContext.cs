@@ -12,6 +12,7 @@ namespace Split.DbContexts
         public DbSet<GroupsMembers> GroupsMembers { get; set; }
         public DbSet<Expenses> Expenses { get; set; }
         public DbSet<Debts> Debts { get; set; }
+        public DbSet<Friends> Friends { get; set; }
         public SplitDbContext(DbContextOptions<SplitDbContext> connection) : base(connection) { }
     }
 }

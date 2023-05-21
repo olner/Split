@@ -1,14 +1,27 @@
 ﻿using Split.UI.Tools;
+using Split.WebClient;
 
 namespace Split.UI.UserControls
 {
     public partial class FriendControl : UserControl
     {
         private readonly ControlsAdditions controlsAdditions;
+        private readonly SplitServiceApi client;
+        private readonly int userId;
+
         public FriendControl()
         {
             InitializeComponent();
             controlsAdditions = new ControlsAdditions();
+        }
+        public FriendControl(SplitServiceApi client,int userId)
+        {
+            InitializeComponent();
+            controlsAdditions = new ControlsAdditions();
+            this.client = client;
+            this.userId = userId;
+
+            SetData();
         }
 
         private void FriendControl_Load(object sender, EventArgs e)
@@ -24,6 +37,14 @@ namespace Split.UI.UserControls
 
             pictureBox1.Image = Properties.Resources.noImage;
         }
+        public async void SetData()
+        {
+            var user = await client.GetUserByIdAsync(userId);
+            if (user == null) return;
+
+            nameLbl.Text = user.Name;
+        }
+
         public void NewMember()
         {
             this.Height /= 2;
