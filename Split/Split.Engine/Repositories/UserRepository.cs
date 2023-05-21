@@ -123,6 +123,15 @@ namespace Split.Engine.Repositories
             return friend;
         }
 
+        public List<Friends> GetFriends(int userId)
+        {
+            using var context = contextFactory.CreateDbContext();
+            var friends = context.Friends.Where(x => x.UserId == userId || x.FriendId == userId).ToList();
+            if (friends.Count == 0) throw new FriendNotFoundException();
+
+            return friends;
+        }
+
         public Friend AddFriend(int userId, int friendId, bool request)
         {
             using var context = contextFactory.CreateDbContext();

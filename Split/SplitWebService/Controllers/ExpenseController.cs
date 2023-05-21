@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Split.DbContexts.Tables;
 using Split.Engine.Models;
 using Split.Engine.Services;
 
@@ -29,5 +30,20 @@ namespace SplitWebService.Controllers
 
         [HttpDelete("/DeleteExpense", Name = "DeleteExpense")]
         public void DeleteExpense(Guid id) => expenseSerivce.DeleteExpense(id);
+
+        [HttpGet("/Debt", Name = "GetDebt")]
+        public DebtModel? GetDebt(Guid id) => expenseSerivce.GetDebt(id);
+
+        [HttpGet("/UserDebts", Name = "GetUserDebts")]
+        public List<Debts> GetUserDebts(int userId) => expenseSerivce.GetUserDebts(userId);
+
+        [HttpGet("/ExpenseDebts", Name = "GetExpenseDebts")]
+        public List<Debts>? GetExpenseDebts(Guid groupId) => expenseSerivce.GetExpenseDebts(groupId);
+
+        [HttpPost("/AddDebt", Name = "AddDebt")]
+        public DebtModel? AddDebt(Guid expenseId, int userId, double sum, double paid) => expenseSerivce.AddDebt(expenseId, userId, sum, paid);
+
+        [HttpDelete("/DeleteDebt", Name = "DeleteDebt")]
+        public void DeleteDebt(Guid id) => expenseSerivce.DeleteDebt(id);
     }
 }

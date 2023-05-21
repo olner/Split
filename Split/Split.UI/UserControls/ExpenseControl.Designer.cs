@@ -32,6 +32,7 @@
             dateLbl = new Label();
             priceLbl = new Label();
             label1 = new Label();
+            nameLbl = new Label();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -47,6 +48,7 @@
             tableLayoutPanel1.Controls.Add(dateLbl, 0, 0);
             tableLayoutPanel1.Controls.Add(priceLbl, 2, 0);
             tableLayoutPanel1.Controls.Add(label1, 3, 0);
+            tableLayoutPanel1.Controls.Add(nameLbl, 1, 0);
             tableLayoutPanel1.Location = new Point(3, 3);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
@@ -66,8 +68,9 @@
             // 
             // priceLbl
             // 
+            priceLbl.Anchor = AnchorStyles.None;
             priceLbl.AutoSize = true;
-            priceLbl.Location = new Point(431, 0);
+            priceLbl.Location = new Point(529, 41);
             priceLbl.Name = "priceLbl";
             priceLbl.Size = new Size(41, 20);
             priceLbl.TabIndex = 1;
@@ -75,12 +78,23 @@
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
-            label1.Location = new Point(674, 0);
+            label1.Location = new Point(767, 41);
             label1.Name = "label1";
             label1.Size = new Size(144, 20);
             label1.TabIndex = 2;
             label1.Text = "Сколько ты должен";
+            // 
+            // nameLbl
+            // 
+            nameLbl.Anchor = AnchorStyles.Left;
+            nameLbl.AutoSize = true;
+            nameLbl.Location = new Point(82, 41);
+            nameLbl.Name = "nameLbl";
+            nameLbl.Size = new Size(49, 20);
+            nameLbl.TabIndex = 3;
+            nameLbl.Text = "Name";
             // 
             // ExpenseControl
             // 
@@ -102,5 +116,6 @@
         private Label dateLbl;
         private Label priceLbl;
         private Label label1;
+        private Label nameLbl;
     }
 }

@@ -1,4 +1,5 @@
-﻿using Split.Engine.Exceptions;
+﻿using Split.DbContexts.Tables;
+using Split.Engine.Exceptions;
 using Split.Engine.Models;
 using Split.Engine.Repositories.Interfaces;
 
@@ -88,7 +89,7 @@ namespace Split.Engine.Services
             }
         }
 
-        public Friend AddFriend(int userId, int friendId, bool request)
+        public Friend? AddFriend(int userId, int friendId, bool request)
         {
             try
             {
@@ -103,6 +104,27 @@ namespace Split.Engine.Services
         public void DeleteFriend(Guid id)
         {
             userRepository.DeleteFriend(id);
+        }
+
+        public List<Friend>? GetFriends(int userId)
+        {
+            try
+            {
+                var friends = userRepository.GetFriends(userId)
+                     .Select(friend => new Friend
+                     {
+                         Id = friend.Id,
+                         FriendId = friend.FriendId,
+                         UserId = friend.UserId,
+                         Request = friend.Request
+                     }).ToList();
+
+                return friends;
+            }
+            catch (FriendNotFoundException)
+            {
+                return null;
+            }
         }
     }
 }

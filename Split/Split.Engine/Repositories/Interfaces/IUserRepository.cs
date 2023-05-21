@@ -20,6 +20,7 @@ namespace Split.Engine.Repositories.Interfaces
         Friend GetFriend(int userId, int friendId);
         Friend AddFriend(int userId, int friendId, bool request);
         void DeleteFriend(Guid id);
+        List<Friends> GetFriends(int userId);
 
     }
 }

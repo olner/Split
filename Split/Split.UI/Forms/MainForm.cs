@@ -56,20 +56,8 @@ namespace Split.UI.Forms
             friendsTlp.Controls.Add(control3);
             friendsTlp.Controls.Add(control4);
 
-            var control5 = new ExpenseControl
-            {
-                Width = expensesTlp.Width,
-                Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top
-            };
-            var control6 = new ExpenseControl
-            {
-                Width = expensesTlp.Width,
-                Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top
-            };
-            expensesTlp.Controls.Add(control5);
-            expensesTlp.Controls.Add(control6);
-
             SetProfile(Data.Id);
+            SetExpense(Data.Id);
         }
 
         private async void SetProfile(int id)
@@ -78,6 +66,29 @@ namespace Split.UI.Forms
             nameTb.Text = user.Login;
             emailTb.Text = user.Email;
             passwordTb.Text = "*******";
+        }
+
+        private async void SetExpense(int id)
+        {
+            var expenses = await client.GetUserExpensesAsync(id);
+
+            var i = 0;
+            foreach (var item in expenses)
+            {
+                var control = new ExpenseControl(client, item)
+                {
+                    Name = $"expensseControl{i}",
+                    Width = expensesTlp.Width,
+                    Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top
+                };
+                expensesTlp.Controls.Add(control);
+                i++;
+            }
+        }
+
+        private void SetFriends(int id)
+        {
+            
         }
 
         private void tabControl1_DrawItem(object sender, DrawItemEventArgs e)

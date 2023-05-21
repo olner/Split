@@ -1,10 +1,5 @@
 ﻿using Split.DbContexts.Tables;
 using Split.Engine.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Split.Engine.Repositories.Interfaces
 {
@@ -15,5 +10,10 @@ namespace Split.Engine.Repositories.Interfaces
         List<Expenses> GetUserExpenses(int userId);
         Expense AddExpense(string name, int userId, Guid groupId, double sum);
         void DeleteExpense(Guid id);
+        DebtModel GetDebt(Guid id);
+        List<Debts> GetUserDebts(int userId);
+        List<Debts> GetExpenseDebts(Guid groupId);
+        DebtModel AddDebt(Guid expenseId, int userId, double sum, double paid);
+        void DeleteDebt(Guid id);
     }
 }

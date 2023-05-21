@@ -72,5 +72,65 @@ namespace Split.Engine.Repositories
             context.SaveChanges();
         }
 
+        public DebtModel GetDebt(Guid id)
+        {
+            using var context = contextFactory.CreateDbContext();
+            var debts = context.Debts.Where(x => x.Id == id).FirstOrDefault() ?? throw new DebtNotFoundException();
+
+            var debt = new DebtModel
+            {
+                Id = debts.Id,
+                ExpenseId = debts.ExpenseId,
+                UserId = debts.UserId,
+                Debt = debts.Debt,
+                Paid = debts.Paid
+            };
+            return debt;
+        }
+
+        public List<Debts> GetUserDebts(int userId)
+        {
+            using var context = contextFactory.CreateDbContext();
+            var debts = context.Debts.Where(x => x.UserId == userId).ToList();
+            if (debts.Count == 0) throw new DebtNotFoundException();
+
+            return debts;
+        }
+
+        public List<Debts> GetExpenseDebts(Guid groupId)
+        {
+            using var context = contextFactory.CreateDbContext();
+            var debts = context.Debts.Where(x => x.ExpenseId == groupId).ToList();
+            if (debts.Count == 0) throw new DebtNotFoundException();
+
+            return debts;
+        }
+
+        public DebtModel AddDebt(Guid expenseId, int userId, double sum, double paid)
+        {
+            using var context = contextFactory.CreateDbContext();
+            var debt = new Debts
+            {
+                Id = new Guid(),
+                ExpenseId = expenseId,
+                UserId = userId,
+                Debt = sum,
+                Paid = paid
+            };
+            context.Debts.Add(debt);
+            context.SaveChanges();
+
+            return GetDebt(debt.Id);
+        }
+
+        public void DeleteDebt(Guid id)
+        {
+            using var context = contextFactory.CreateDbContext();
+            var debt = context.Debts.Where(x => x.Id == id).FirstOrDefault() ?? throw new DebtNotFoundException();
+
+            context.Debts.Remove(debt);
+            context.SaveChanges();
+        }
+
     }
 }
