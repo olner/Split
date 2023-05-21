@@ -7,20 +7,19 @@ namespace Split.UI.UserControls
     {
         private readonly ControlsAdditions controlsAdditions;
         private readonly SplitServiceApi client;
-        private readonly int userId;
+        private readonly Friend friend;
 
         public FriendControl()
         {
             InitializeComponent();
             controlsAdditions = new ControlsAdditions();
         }
-        public FriendControl(SplitServiceApi client,int userId)
+        public FriendControl(SplitServiceApi client, Friend friend)
         {
             InitializeComponent();
             controlsAdditions = new ControlsAdditions();
             this.client = client;
-            this.userId = userId;
-
+            this.friend = friend;
             SetData();
         }
 
@@ -39,10 +38,16 @@ namespace Split.UI.UserControls
         }
         public async void SetData()
         {
-            var user = await client.GetUserByIdAsync(userId);
-            if (user == null) return;
-
-            nameLbl.Text = user.Name;
+            if(friend.UserId == Data.Id)
+            {
+                var user = await client.GetUserByIdAsync((int)friend.FriendId);
+                nameLbl.Text = user.Login;
+            }
+            else
+            {
+                var user = await client.GetUserByIdAsync((int)friend.UserId);
+                nameLbl.Text = user.Login;
+            }
         }
 
         public void NewMember()

@@ -42,22 +42,9 @@ namespace Split.UI.Forms
             groupsTlp.Controls.Add(control);
             groupsTlp.Controls.Add(control2);
 
-            var control3 = new FriendControl
-            {
-                Width = friendsTlp.Width,
-                Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top
-            };
-            control3.NewFriend();
-            var control4 = new FriendControl(client, 1)
-            {
-                Width = friendsTlp.Width,
-                Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top
-            };
-            friendsTlp.Controls.Add(control3);
-            friendsTlp.Controls.Add(control4);
-
             SetProfile(Data.Id);
             SetExpense(Data.Id);
+            SetFriends(Data.Id);
         }
 
         private async void SetProfile(int id)
@@ -86,9 +73,22 @@ namespace Split.UI.Forms
             }
         }
 
-        private void SetFriends(int id)
+        private async void SetFriends(int id)
         {
-            
+            var frined = await client.GetFriendsAsync(id);
+
+            var i = 0;
+            foreach(var item in frined)
+            {
+                var control = new FriendControl(client, item)
+                {
+                    Name = $"friendControl{i}",
+                    Width = expensesTlp.Width,
+                    Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top
+                };
+                friendsTlp.Controls.Add(control);
+                i++;
+            }
         }
 
         private void tabControl1_DrawItem(object sender, DrawItemEventArgs e)

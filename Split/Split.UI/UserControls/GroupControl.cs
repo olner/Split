@@ -101,7 +101,7 @@ namespace Split.UI.UserControls
 
         private void tableLayoutPanel1_MouseClick(object sender, MouseEventArgs e)
         {
-            var form = new GroupForm();
+            var form = new GroupForm(client, groupId);
             form.ShowDialog();
         }
 

@@ -105,7 +105,7 @@
             expenseTlp.Name = "expenseTlp";
             expenseTlp.RowCount = 2;
             expenseTlp.RowStyles.Add(new RowStyle(SizeType.Absolute, 71F));
-            expenseTlp.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            expenseTlp.RowStyles.Add(new RowStyle());
             expenseTlp.Size = new Size(941, 485);
             expenseTlp.TabIndex = 0;
             // 

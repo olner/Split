@@ -1,36 +1,48 @@
 ﻿using Split.UI.UserControls;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using Split.WebClient;
 
 namespace Split.UI.Forms
 {
     public partial class GroupForm : Form
     {
-        public GroupForm()
+        private readonly SplitServiceApi client;
+        private readonly Guid groupId;
+        private string GroupName { get; set; }
+
+        public GroupForm(SplitServiceApi client, Guid groupId)
         {
             InitializeComponent();
+            this.client = client;
+            this.groupId = groupId;
         }
 
         private void GroupForm_Load(object sender, EventArgs e)
         {
+            SetData();
+
             addExpenseBtn.BackColor = Color.FromArgb(91, 197, 167);
             addExpenseBtn.ForeColor = Color.White;
             addExpenseBtn.FlatStyle = FlatStyle.Flat;
             addExpenseBtn.FlatAppearance.BorderSize = 0;
+        }
 
-            var expense = new ExpenseControl
+        public async void SetData()
+        {
+            var expenses = await client.GetGroupExpensesAsync(groupId);
+            var group = await client.GetGroupAsync(groupId);
+
+            var i = 0;
+            foreach (var item in expenses)
             {
-                Width = expenseTlp.Width,
-                Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top
-            };
-            expenseTlp.Controls.Add(expense);
+                var control = new ExpenseControl(client, item)
+                {
+                    Name = $"expensseControl{i}",
+                    Width = expenseTlp.Width,
+                    Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top
+                };
+                expenseTlp.Controls.Add(control);
+                i++;
+            }
 
             var addMember = new FriendControl
             {
@@ -40,12 +52,12 @@ namespace Split.UI.Forms
             addMember.NewMember();
             membersTlp.Controls.Add(addMember);
 
-            var member = new FriendControl
-            {
-                Width = expenseTlp.Width,
-                Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top
-            };
-            membersTlp.Controls.Add(member);
+            var j = 0;
+
+
+            GroupName = group.Name;
+            groupNameLbl.Text = GroupName;
+            this.Text = GroupName + " - группы";
         }
 
         private void tabControl1_DrawItem(object sender, DrawItemEventArgs e)
@@ -71,7 +83,7 @@ namespace Split.UI.Forms
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.Text = "GroupName - " + tabControl1.SelectedTab.Text;
+            this.Text = GroupName + " - " + tabControl1.SelectedTab.Text;
         }
     }
 }
