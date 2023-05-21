@@ -16,6 +16,7 @@ namespace Split.UI.Forms
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            deleteBtn.Visible = false;
             deleteBtn.BackColor = Color.FromArgb(204, 68, 85);
             deleteBtn.ForeColor = Color.White;
 
@@ -107,13 +108,15 @@ namespace Split.UI.Forms
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Вы точно хотите удалить аккаунт без возможности восстановления?", "Подтверждение",
+            var result = MessageBox.Show("Вы точно хотите удалить аккаунт без возможности восстановления?", "Подтверждение",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result != DialogResult.OK) return;
         }
 
         private void saveBtn_Click(object sender, EventArgs e)
         {
             //TODO: В сервисе сделать метод для изменения данных профиля
         }
+
     }
 }

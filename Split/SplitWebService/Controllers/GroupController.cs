@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Split.Engine.Models;
-using Split.Engine.Repositories.Interfaces;
 using Split.Engine.Services;
 using SplitWebService.Models;
 

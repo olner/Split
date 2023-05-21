@@ -1,15 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Internal;
 using Split.DbContexts;
 using Split.DbContexts.Tables;
 using Split.Engine.Exceptions;
 using Split.Engine.Models;
 using Split.Engine.Repositories.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Split.Engine.Repositories
 {
