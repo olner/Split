@@ -8,11 +8,22 @@ namespace Split.UI.UserControls
         private readonly ControlsAdditions controlsAdditions;
         private readonly SplitServiceApi client;
         private readonly Friend friend;
+        private readonly GroupMember member;
+
+        private string Name { get; set; }
 
         public FriendControl()
         {
             InitializeComponent();
             controlsAdditions = new ControlsAdditions();
+        }
+        public FriendControl(SplitServiceApi client, GroupMember member )
+        {
+            InitializeComponent();
+            controlsAdditions = new ControlsAdditions();
+            this.client = client;
+            this.member = member;
+            SetMembers();
         }
         public FriendControl(SplitServiceApi client, Friend friend)
         {
@@ -20,7 +31,7 @@ namespace Split.UI.UserControls
             controlsAdditions = new ControlsAdditions();
             this.client = client;
             this.friend = friend;
-            SetData();
+            SetFriends();
         }
 
         private void FriendControl_Load(object sender, EventArgs e)
@@ -36,18 +47,27 @@ namespace Split.UI.UserControls
 
             pictureBox1.Image = Properties.Resources.noImage;
         }
-        public async void SetData()
+        public async void SetFriends()
         {
             if(friend.UserId == Data.Id)
             {
                 var user = await client.GetUserByIdAsync((int)friend.FriendId);
-                nameLbl.Text = user.Login;
+                Name = user.Login;
+                nameLbl.Text = Name;
             }
             else
             {
                 var user = await client.GetUserByIdAsync((int)friend.UserId);
-                nameLbl.Text = user.Login;
+                Name = user.Login;
+                nameLbl.Text = Name;
             }
+        }
+
+        public async void SetMembers()
+        {
+            var user = await client.GetUserByIdAsync((int)member.UserId);
+            Name = user.Login;
+            nameLbl.Text = Name;
         }
 
         public void NewMember()

@@ -39,8 +39,8 @@ namespace SplitWebService.Controllers
             groupService.RemoveGroup(groupId);
         }
 
-        /*[HttpGet("/Members", Name = "GetMembers")]
-        public */
+        [HttpGet("/Members", Name = "GetGroupMembers")]
+        public List<GroupMember>? GetGroupMembers(Guid groupId) => groupService.GetGroupMembers(groupId);
 
         [HttpPost("/AddUserToGroup", Name = "AddUserToGroup")]
         [ProducesResponseType(StatusCodes.Status200OK)]

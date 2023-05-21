@@ -44,8 +44,8 @@
             resetBtn = new Button();
             saveBtn = new Button();
             label4 = new Label();
-            richTextBox1 = new RichTextBox();
-            textBox1 = new TextBox();
+            descRtb = new RichTextBox();
+            nameTb = new TextBox();
             label2 = new Label();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
@@ -206,8 +206,8 @@
             groupBox1.Controls.Add(resetBtn);
             groupBox1.Controls.Add(saveBtn);
             groupBox1.Controls.Add(label4);
-            groupBox1.Controls.Add(richTextBox1);
-            groupBox1.Controls.Add(textBox1);
+            groupBox1.Controls.Add(descRtb);
+            groupBox1.Controls.Add(nameTb);
             groupBox1.Controls.Add(label2);
             groupBox1.Location = new Point(13, 50);
             groupBox1.Name = "groupBox1";
@@ -243,20 +243,20 @@
             label4.TabIndex = 4;
             label4.Text = "Описание";
             // 
-            // richTextBox1
+            // descRtb
             // 
-            richTextBox1.Location = new Point(6, 126);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(333, 131);
-            richTextBox1.TabIndex = 3;
-            richTextBox1.Text = "";
+            descRtb.Location = new Point(6, 126);
+            descRtb.Name = "descRtb";
+            descRtb.Size = new Size(333, 131);
+            descRtb.TabIndex = 3;
+            descRtb.Text = "";
             // 
-            // textBox1
+            // nameTb
             // 
-            textBox1.Location = new Point(6, 54);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(333, 27);
-            textBox1.TabIndex = 2;
+            nameTb.Location = new Point(6, 54);
+            nameTb.Name = "nameTb";
+            nameTb.Size = new Size(333, 27);
+            nameTb.TabIndex = 2;
             // 
             // label2
             // 
@@ -308,9 +308,9 @@
         private Label label3;
         private GroupBox groupBox1;
         private Label label2;
-        private TextBox textBox1;
+        private TextBox nameTb;
         private Label label4;
-        private RichTextBox richTextBox1;
+        private RichTextBox descRtb;
         private Button resetBtn;
         private Button saveBtn;
     }

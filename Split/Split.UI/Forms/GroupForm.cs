@@ -31,6 +31,11 @@ namespace Split.UI.Forms
             var expenses = await client.GetGroupExpensesAsync(groupId);
             var group = await client.GetGroupAsync(groupId);
 
+            GroupName = group.Name;
+            groupNameLbl.Text = GroupName;
+            nameTb.Text = GroupName;
+            this.Text = GroupName + " - группы";
+
             var i = 0;
             foreach (var item in expenses)
             {
@@ -52,12 +57,19 @@ namespace Split.UI.Forms
             addMember.NewMember();
             membersTlp.Controls.Add(addMember);
 
+            var members = await client.GetGroupMembersAsync(groupId);
             var j = 0;
-
-
-            GroupName = group.Name;
-            groupNameLbl.Text = GroupName;
-            this.Text = GroupName + " - группы";
+            foreach (var item in members)
+            {
+                var control = new FriendControl(client, item)
+                {
+                    Name = $"friednControl{j}",
+                    Width = membersTlp.Width,
+                    Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top
+                };
+                membersTlp.Controls.Add(control);
+                j++;
+            }
         }
 
         private void tabControl1_DrawItem(object sender, DrawItemEventArgs e)
