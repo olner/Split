@@ -30,6 +30,9 @@ namespace Split.UI.Forms
 
         private void registartionBtn_Click(object sender, EventArgs e)
         {
+            //if (loginTb.Text.Length < 4 || passwordTb.Text.Length < 6 || emailTb.Text.Length < 6) return;
+            
+
             var form = new MainForm(client);
             context.MainForm = form;
             form.Show();

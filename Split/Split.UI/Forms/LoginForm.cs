@@ -1,5 +1,4 @@
 using Split.UI.Forms;
-using Split.UI.Tools.CustomControls;
 using Split.WebClient;
 
 namespace Split.UI
@@ -41,8 +40,13 @@ namespace Split.UI
 
         private async void loginBtn_Click(object sender, EventArgs e)
         {
-            //var user = await client.AuthorizeAsync(loginTb.Text, passwordTb.Text);
-            //if(user == null) return; 
+            /*if (loginBtn.Text.Length == 0 || passwordTb.Text.Length == 0) return;
+            await client.AuthorizeAsync(loginTb.Text, passwordTb.Text);
+            if(user == null)
+            {
+                MessageBox.Show("Нет такого типочка");
+                return;
+            } */
 
             var form = new MainForm(client);
             context.MainForm = form;

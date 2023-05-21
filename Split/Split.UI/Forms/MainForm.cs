@@ -15,6 +15,9 @@ namespace Split.UI.Forms
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            deleteBtn.BackColor = Color.FromArgb(204, 68, 85);
+            deleteBtn.ForeColor = Color.White;
+
             pictureBox1.Image = Properties.Resources.noImage;
             saveBtn.BackColor = Color.FromArgb(91, 197, 167);
             saveBtn.ForeColor = Color.White;
@@ -89,6 +92,12 @@ namespace Split.UI.Forms
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.Text = "Split - " + tabControl1.SelectedTab.Text;
+        }
+
+        private void deleteBtn_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Вы точно хотите удалить аккаунт без возможности восстановления?", "Подтверждение",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
         }
     }
 }

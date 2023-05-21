@@ -43,6 +43,12 @@ namespace Split.Engine.Services
                 return null;
             }
         }
+
+        public void DeleteUser(int Id)
+        {
+            userRepository.DeleteUser(Id);
+        }
+
         public List<User> GetUsers()
         {
             var users = userRepository

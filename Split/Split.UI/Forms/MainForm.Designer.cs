@@ -38,6 +38,7 @@
             label4 = new Label();
             accLbl = new Label();
             groupBox1 = new GroupBox();
+            deleteBtn = new Button();
             pictureBox1 = new PictureBox();
             saveBtn = new Button();
             label1 = new Label();
@@ -174,6 +175,7 @@
             // groupBox1
             // 
             groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            groupBox1.Controls.Add(deleteBtn);
             groupBox1.Controls.Add(pictureBox1);
             groupBox1.Controls.Add(saveBtn);
             groupBox1.Controls.Add(label1);
@@ -188,6 +190,16 @@
             groupBox1.TabIndex = 10;
             groupBox1.TabStop = false;
             // 
+            // deleteBtn
+            // 
+            deleteBtn.Location = new Point(328, 452);
+            deleteBtn.Name = "deleteBtn";
+            deleteBtn.Size = new Size(145, 35);
+            deleteBtn.TabIndex = 10;
+            deleteBtn.Text = "Удалить аккаунт";
+            deleteBtn.UseVisualStyleBackColor = true;
+            deleteBtn.Click += deleteBtn_Click;
+            // 
             // pictureBox1
             // 
             pictureBox1.Location = new Point(6, 26);
@@ -199,9 +211,9 @@
             // 
             // saveBtn
             // 
-            saveBtn.Location = new Point(378, 212);
+            saveBtn.Location = new Point(328, 212);
             saveBtn.Name = "saveBtn";
-            saveBtn.Size = new Size(94, 29);
+            saveBtn.Size = new Size(144, 42);
             saveBtn.TabIndex = 9;
             saveBtn.Text = "Сохранить";
             saveBtn.UseVisualStyleBackColor = true;
@@ -309,5 +321,6 @@
         private TableLayoutPanel profileTlp;
         private TableLayoutPanel expensesTlp;
         private Label label4;
+        private Button deleteBtn;
     }
 }

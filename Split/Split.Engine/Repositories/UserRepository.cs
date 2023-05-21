@@ -16,6 +16,7 @@ namespace Split.Engine.Repositories
         {
             this.contextFactory = contextFactory;
         }
+
         public List<Users> GetUsers()
         {
             using var context = contextFactory.CreateDbContext();
@@ -96,6 +97,12 @@ namespace Split.Engine.Repositories
             context.SaveChanges();
             return GetUser(login, password);
         }
-
+        public void DeleteUser(int Id)
+        {
+            using var context = contextFactory.CreateDbContext();
+            var user = context.Users.Where(x => x.Id == Id).FirstOrDefault() ?? throw new UserNotFoundException();
+            context.Users.Remove(user);
+            context.SaveChanges();
+        }
     }
 }

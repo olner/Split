@@ -10,16 +10,13 @@ namespace SplitWebService.Controllers
     [Route("[controller]")]
     public class UserController : ControllerBase
     {
-        private readonly ILogger<UserController> logger;
         private readonly UserService userService;
         private readonly IUserRepository userRepository;
 
         public UserController(
-            ILogger<UserController> logger,
             UserService userService,
             IUserRepository userRepository)
         {
-            this.logger = logger;
             this.userService = userService;
             this.userRepository = userRepository;
         }
@@ -31,7 +28,10 @@ namespace SplitWebService.Controllers
         public User? GetUser(int id) => userService.GetUserById(id);
 
         [HttpGet("/auth", Name = "Authorize")]
-        public User? Authorize(string login, string password) => userService.Authorize(login, password);
+        public User? Authorize(string login, string password) 
+        {
+            return userService.Authorize(login, password);
+        }
 
         [HttpPost("/reg", Name = "Register")]
         public User? Register(string login, string password)
@@ -44,6 +44,12 @@ namespace SplitWebService.Controllers
             {
                 return null;
             }            
+        }
+
+        [HttpDelete("/delete", Name = "Delete")]
+        public void Delete(int id)
+        {
+            userService.DeleteUser(id);
         }
     }
 }
