@@ -60,5 +60,8 @@ namespace SplitWebService.Controllers
         {
             groupService.RemoveGroupMember(groupId, userId);
         }
+
+        [HttpGet("/UserGroups", Name = "GetUserGroups")]
+        public List<Group>? GetUserGroups(int userId) => groupService.GetUserGroups(userId);
     }
 }

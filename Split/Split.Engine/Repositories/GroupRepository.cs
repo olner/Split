@@ -137,13 +137,15 @@ namespace Split.Engine.Repositories
             }
             return groupMembers;
         }
-
         
-        /*public List<Users> GetMembers(Guid groupId)
+        public List<Groups> GetUserGroups(int userId)
         {
             using var context = contextFactory.CreateDbContext();
-            var members =  context.Users.Where(x => x.groupsMembers.)
-        }*/
 
+            var groups = context.Groups.Where(x => x.groupsMembers.Any(z => z.UserID == userId)).ToList();
+            if (groups.Count == 0) throw new GroupNotFoundException();
+
+            return groups;
+        }
     }
 }

@@ -20,5 +20,6 @@ namespace Split.Engine.Repositories.Interfaces
         void RemoveGroupMember(Guid groupId, int userId);
         void RemoveAllMembers(Guid groupId);
         bool IsUserInGroup(Guid groupId, int userId);
+        List<Groups> GetUserGroups(int userId);
     }
 }

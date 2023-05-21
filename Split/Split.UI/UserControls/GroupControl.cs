@@ -8,7 +8,7 @@ namespace Split.UI.UserControls
     {
         private readonly ControlsAdditions controlsAdditions;
         private readonly SplitServiceApi client;
-        private readonly Guid groupId;
+        private readonly Group group;
 
         public GroupControl()
         {
@@ -16,12 +16,12 @@ namespace Split.UI.UserControls
             controlsAdditions = new ControlsAdditions();
         }
 
-        public GroupControl(SplitServiceApi client, Guid groupId)
+        public GroupControl(SplitServiceApi client, Group group)
         {
             InitializeComponent();
             controlsAdditions = new ControlsAdditions();
             this.client = client;
-            this.groupId = groupId;
+            this.group = group;
             SetData();
         }
 
@@ -39,11 +39,20 @@ namespace Split.UI.UserControls
 
         private async void SetData()
         {
-            var group = await client.GetGroupAsync(groupId);
+            var group = await client.GetGroupAsync(this.group.Id);
             if (group == null) return;
 
             dateLbl.Text = group.Date.Value.Date.ToShortDateString();
             nameLbl.Text = group.Name;
+
+            var members = await client.GetGroupMembersAsync(this.group.Id);
+            if (members == null) return;
+
+            foreach (var member in members)
+            {
+                var name = await client.GetUserByIdAsync((int)member.UserId);
+                membersLb.Items.Add(name.Name);
+            }
         }
 
         public void NewGroup()
@@ -69,8 +78,6 @@ namespace Split.UI.UserControls
             tableLayoutPanel1.Controls.Remove(descriptionTb);
             tableLayoutPanel1.Controls.Remove(membersLb);
             tableLayoutPanel1.Controls.Add(button, 3, 0);
-
-
         }
 
         private void addBtn_Click(object sender, EventArgs e)
@@ -101,7 +108,7 @@ namespace Split.UI.UserControls
 
         private void tableLayoutPanel1_MouseClick(object sender, MouseEventArgs e)
         {
-            var form = new GroupForm(client, groupId);
+            var form = new GroupForm(client, (Guid)group.Id);
             form.ShowDialog();
         }
 

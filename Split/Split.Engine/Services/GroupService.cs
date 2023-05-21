@@ -136,5 +136,26 @@ namespace Split.Engine.Services
 
             }
         }
+
+        public List<Group>? GetUserGroups(int userId)
+        {
+            try
+            {
+                var groups = groupRepository.GetUserGroups(userId)
+                    .Select(x => new Group
+                    {
+                        Id = x.Id,
+                        Name = x.Name,
+                        Date = x.Date,
+                        Admin = x.Admin,
+                        Members = null
+                    }).ToList();
+                return groups;
+            }
+            catch (GroupNotFoundException)
+            {
+                return null;
+            }
+        }
     }
 }

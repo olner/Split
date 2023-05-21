@@ -26,25 +26,10 @@ namespace Split.UI.Forms
             saveBtn.FlatStyle = FlatStyle.Flat;
             saveBtn.FlatAppearance.BorderSize = 0;
 
-            var control = new GroupControl
-            {
-                Width = groupsTlp.Width,
-                Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top
-            };
-            control.NewGroup();
-
-            var control2 = new GroupControl(client, Guid.Parse("08db554d-dd2c-4fa6-8603-e962f375eb65"))
-            {
-                Width = groupsTlp.Width,
-                Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top
-            };
-
-            groupsTlp.Controls.Add(control);
-            groupsTlp.Controls.Add(control2);
-
             SetProfile(Data.Id);
             SetExpense(Data.Id);
             SetFriends(Data.Id);
+            SetGroups(Data.Id);
         }
 
         private async void SetProfile(int id)
@@ -83,10 +68,36 @@ namespace Split.UI.Forms
                 var control = new FriendControl(client, item)
                 {
                     Name = $"friendControl{i}",
-                    Width = expensesTlp.Width,
+                    Width = friendsTlp.Width,
                     Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top
                 };
                 friendsTlp.Controls.Add(control);
+                i++;
+            }
+        }
+
+        private async void SetGroups(int id)
+        {
+            var newControl = new GroupControl
+            {
+                Width = groupsTlp.Width,
+                Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top
+            };
+            newControl.NewGroup();
+            groupsTlp.Controls.Add(newControl);
+
+            var groups = await client.GetUserGroupsAsync(id);
+
+            var i = 0;
+            foreach( var item in groups)
+            {
+                var control = new GroupControl(client, item)
+                {
+                    Name = $"groupControl{i}",
+                    Width = groupsTlp.Width,
+                    Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top
+                };
+                groupsTlp.Controls.Add(control);
                 i++;
             }
         }
