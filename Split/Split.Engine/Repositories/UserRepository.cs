@@ -85,14 +85,15 @@ namespace Split.Engine.Repositories
             return roles;
         }
 
-        public User Register(string login, string password, string email)
+        public User Register(string login, string password, string email, string name)
         {
             using var context = contextFactory.CreateDbContext();
             Users user = new Users
             {
                 Login = login,
                 Password = password,
-                Email = email
+                Email = email,
+                Name = name
             };
             context.Users.Add(user);
             context.SaveChanges();

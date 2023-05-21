@@ -36,7 +36,8 @@ namespace Split.Engine.Services
                 {
                     throw new ServiceException("Not valid password");
                 }
-                return userRepository.Register(login, password, email);
+                var name = "не указано";
+                return userRepository.Register(login, password, email,name);
             }
             catch (UserNotFoundException)
             {
