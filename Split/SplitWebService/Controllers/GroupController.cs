@@ -27,9 +27,9 @@ namespace SplitWebService.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest, "application/json")]
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError, "application/json")]
-        public IActionResult AddGroup(string name)
+        public IActionResult AddGroup(string name, int adminId)
         {
-            groupService.AddGroup(name);
+            groupService.AddGroup(name, adminId);
             return Ok();
         }
 

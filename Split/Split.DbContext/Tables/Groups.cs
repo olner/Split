@@ -18,6 +18,11 @@ namespace Split.DbContexts.Tables
 
         public DateTime Date { get; set; }
 
+        [Column("admin")]
+        [ForeignKey("Users")]
+        public int Admin { get; set; }
+        public Users Users { get; set; }
+
         public ICollection<GroupsMembers> groupsMembers { get; set; }
     }
 }

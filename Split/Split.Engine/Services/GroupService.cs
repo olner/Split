@@ -22,11 +22,11 @@ namespace Split.Engine.Services
             this.groupRepository = groupRepository;
         }
 
-        public Group? AddGroup(string name)
+        public Group? AddGroup(string name, int adminId)
         {
             try
             {
-                return groupRepository.AddGroup(name);
+                return groupRepository.AddGroup(name, adminId);
             }
             catch (GroupNotFoundException)
             {
@@ -58,6 +58,7 @@ namespace Split.Engine.Services
                         Id = group.Id,
                         Name = group.Name,
                         Date = group.Date,
+                        Admin = group.Admin,
                         Members = null
                     }).ToList();
                 return groups;

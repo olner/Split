@@ -564,6 +564,15 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "adminId",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           }
         ],
         "responses": {
@@ -1475,6 +1484,10 @@
             "type": "string",
             "format": "date-time"
           },
+          "admin": {
+            "type": "integer",
+            "format": "int32"
+          },
           "members": {
             "type": "array",
             "items": {
@@ -1517,6 +1530,13 @@
           "date": {
             "type": "string",
             "format": "date-time"
+          },
+          "admin": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "users": {
+            "$ref": "#/components/schemas/Users"
           },
           "groupsMembers": {
             "type": "array",

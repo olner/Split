@@ -12,7 +12,7 @@ namespace Split.Engine.Repositories.Interfaces
     {
         List<Groups> GetGroups();
         Group GetGroup(Guid id);
-        Group AddGroup(string name);
+        Group AddGroup(string name, int adminId);
         void RemoveGroup(Guid groupId);
         GroupsMembers AddGroupMember(Guid groupId, int userId);
         List<GroupsMembers> GetGroupMembers(Guid groupId);

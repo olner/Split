@@ -35,20 +35,22 @@ namespace Split.Engine.Repositories
                 Id = groups.Id,
                 Name = groups.Name,
                 Date = groups.Date,
+                Admin = groups.Admin,
                 Members = null
             };
 
             return group;
         }
 
-        public Group AddGroup(string name)
+        public Group AddGroup(string name, int adminId)
         {
             using var context = contextFactory.CreateDbContext();
             Groups group = new Groups
             {
                 Id = new Guid(),
                 Name = name,
-                Date = DateTime.Now
+                Date = DateTime.Now,
+                Admin = adminId
             };
             context.Groups.Add(group);
             context.SaveChanges();
