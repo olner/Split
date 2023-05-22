@@ -145,9 +145,15 @@ namespace Split.UI.Forms
             MessageBox.Show("Я не понял, ты сейчас быканул или как?");
         }
 
-        private void saveBtn_Click(object sender, EventArgs e)
+        private async void saveBtn_Click(object sender, EventArgs e)
         {
             //TODO: В сервисе сделать метод для изменения данных профиля
+            saveBtn.Enabled = false;
+            var user = await client.UpdateUserDataAsync(Data.Id, nameTb.Text, emailTb.Text, passwordTb.Text);
+            if (user == null)
+            {
+                //TODO: не знаю
+            }
         }
 
     }
