@@ -49,7 +49,7 @@ namespace Split.UI.Forms
                 i++;
             }
 
-            var addMember = new FriendControl
+            var addMember = new FriendControl(client)
             {
                 Width = expenseTlp.Width,
                 Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top

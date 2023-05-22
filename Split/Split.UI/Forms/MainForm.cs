@@ -60,6 +60,15 @@ namespace Split.UI.Forms
 
         private async void SetFriends(int id)
         {
+            var newFriendControl = new FriendControl(client)
+            {
+                Name = $"newFriendControl",
+                Width = friendsTlp.Width,
+                Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top
+            };
+            newFriendControl.NewFriend();
+            friendsTlp.Controls.Add(newFriendControl);
+
             var frined = await client.GetFriendsAsync(id);
 
             var i = 0;

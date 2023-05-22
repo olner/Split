@@ -36,6 +36,7 @@
             passwordTb = new TextBox();
             registartionBtn = new Tools.CustomControls.RoundButton();
             emailTb = new TextBox();
+            warningLbl = new Label();
             tableLayoutPanel1.SuspendLayout();
             groupBox1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -86,13 +87,15 @@
             tableLayoutPanel2.Controls.Add(passwordTb, 0, 1);
             tableLayoutPanel2.Controls.Add(registartionBtn, 0, 3);
             tableLayoutPanel2.Controls.Add(emailTb, 0, 2);
+            tableLayoutPanel2.Controls.Add(warningLbl, 0, 4);
             tableLayoutPanel2.Location = new Point(6, 26);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.RowCount = 4;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 18.4210529F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 16.8168163F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 18.0180187F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 46.5465469F));
+            tableLayoutPanel2.RowCount = 5;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 22.8699551F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 22.8699551F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 26.0089684F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 28.3237F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 108F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel2.Size = new Size(415, 333);
             tableLayoutPanel2.TabIndex = 0;
@@ -107,7 +110,7 @@
             // 
             // passwordTb
             // 
-            passwordTb.Location = new Point(3, 64);
+            passwordTb.Location = new Point(3, 54);
             passwordTb.Multiline = true;
             passwordTb.Name = "passwordTb";
             passwordTb.Size = new Size(409, 40);
@@ -125,7 +128,7 @@
             registartionBtn.ButtonPressedColor2 = Color.Maroon;
             registartionBtn.ButtonPressedForeColor = Color.White;
             registartionBtn.ButtonRoundRadius = 30;
-            registartionBtn.Location = new Point(3, 180);
+            registartionBtn.Location = new Point(3, 163);
             registartionBtn.Name = "registartionBtn";
             registartionBtn.Size = new Size(409, 46);
             registartionBtn.TabIndex = 4;
@@ -134,11 +137,20 @@
             // 
             // emailTb
             // 
-            emailTb.Location = new Point(3, 120);
+            emailTb.Location = new Point(3, 105);
             emailTb.Multiline = true;
             emailTb.Name = "emailTb";
             emailTb.Size = new Size(409, 40);
             emailTb.TabIndex = 2;
+            // 
+            // warningLbl
+            // 
+            warningLbl.AutoSize = true;
+            warningLbl.Location = new Point(3, 223);
+            warningLbl.Name = "warningLbl";
+            warningLbl.Size = new Size(64, 20);
+            warningLbl.TabIndex = 5;
+            warningLbl.Text = "Warning";
             // 
             // RegistrationForm
             // 
@@ -165,7 +177,8 @@
         private TableLayoutPanel tableLayoutPanel2;
         private TextBox loginTb;
         private TextBox passwordTb;
-        private Tools.CustomControls.RoundButton registartionBtn;
         private TextBox emailTb;
+        private Tools.CustomControls.RoundButton registartionBtn;
+        private Label warningLbl;
     }
 }

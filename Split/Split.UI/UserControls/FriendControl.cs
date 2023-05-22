@@ -12,10 +12,11 @@ namespace Split.UI.UserControls
 
         private string Name { get; set; }
 
-        public FriendControl()
+        public FriendControl(SplitServiceApi client)
         {
             InitializeComponent();
             controlsAdditions = new ControlsAdditions();
+            this.client = client;
         }
         public FriendControl(SplitServiceApi client, GroupMember member )
         {
@@ -106,6 +107,7 @@ namespace Split.UI.UserControls
             };
             button.FlatStyle = FlatStyle.Flat;
             button.FlatAppearance.BorderSize = 0;
+            button.Click += addBtn_Click;
 
             tableLayoutPanel1.Controls.Remove(deleteBtn);
             tableLayoutPanel1.Controls.Remove(pictureBox1);
@@ -158,15 +160,27 @@ namespace Split.UI.UserControls
             }
             else
             {
-                
                 //DeleteMember();
                 this.Dispose();
             }
         }
 
+        private void addBtn_Click(object sender, EventArgs e)
+        {
+            var controls = controlsAdditions.GetAll(this, typeof(TextBox));
+            foreach(var control in controls)
+            {
+                AddFriend(control.Text);
+            }
+        }
+        
+
         public async void AddFriend(string name)
         {
-            var friend = await client.GetUserByLoginAsync(name);
+            if (name.Length == 0) return;
+
+            User? friend = await client.GetUserByLoginAsync(name);
+            if(friend == null) return;
 
             await client.AddFriendAsync(Data.Id, friend.Id, true);
         }
