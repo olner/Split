@@ -27,6 +27,9 @@ namespace SplitWebService.Controllers
         [HttpGet("{id:int}", Name = "GetUserById")]
         public User? GetUser(int id) => userService.GetUserById(id);
 
+        [HttpGet("/GetByLogin", Name = "GetUserByLogin")]
+        public User? GetUserByLogin(string login) => userService.GetUserByLogin(login);
+
         [HttpGet("/auth", Name = "Authorize")]
         public User? Authorize(string login, string password) 
         {

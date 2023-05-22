@@ -47,6 +47,7 @@
             descRtb = new RichTextBox();
             nameTb = new TextBox();
             label2 = new Label();
+            deleteBtn = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             expenseTlp.SuspendLayout();
@@ -203,6 +204,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(deleteBtn);
             groupBox1.Controls.Add(resetBtn);
             groupBox1.Controls.Add(saveBtn);
             groupBox1.Controls.Add(label4);
@@ -270,6 +272,16 @@
             label2.TabIndex = 1;
             label2.Text = "Название группы";
             // 
+            // deleteBtn
+            // 
+            deleteBtn.Location = new Point(199, 398);
+            deleteBtn.Name = "deleteBtn";
+            deleteBtn.Size = new Size(140, 40);
+            deleteBtn.TabIndex = 7;
+            deleteBtn.Text = "Удалить группу";
+            deleteBtn.UseVisualStyleBackColor = true;
+            deleteBtn.Click += deleteBtn_Click;
+            // 
             // GroupForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -315,5 +327,6 @@
         private RichTextBox descRtb;
         private Button resetBtn;
         private Button saveBtn;
+        private Button deleteBtn;
     }
 }

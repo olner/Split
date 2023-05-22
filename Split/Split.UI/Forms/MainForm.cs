@@ -63,7 +63,7 @@ namespace Split.UI.Forms
             var frined = await client.GetFriendsAsync(id);
 
             var i = 0;
-            foreach(var item in frined)
+            foreach (var item in frined)
             {
                 var control = new FriendControl(client, item)
                 {
@@ -78,7 +78,7 @@ namespace Split.UI.Forms
 
         private async void SetGroups(int id)
         {
-            var newControl = new GroupControl
+            var newControl = new GroupControl(client)
             {
                 Width = groupsTlp.Width,
                 Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top
@@ -89,7 +89,7 @@ namespace Split.UI.Forms
             var groups = await client.GetUserGroupsAsync(id);
 
             var i = 0;
-            foreach( var item in groups)
+            foreach (var item in groups)
             {
                 var control = new GroupControl(client, item)
                 {
@@ -133,6 +133,7 @@ namespace Split.UI.Forms
             var result = MessageBox.Show("Вы точно хотите удалить аккаунт без возможности восстановления?", "Подтверждение",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (result != DialogResult.OK) return;
+            MessageBox.Show("Я не понял, ты сейчас быканул или как?");
         }
 
         private void saveBtn_Click(object sender, EventArgs e)

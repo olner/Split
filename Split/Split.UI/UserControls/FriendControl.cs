@@ -153,7 +153,7 @@ namespace Split.UI.UserControls
 
             if(member == null)
             {
-                //DeleteFriend();
+                DeleteFriend();
                 this.Dispose();
             }
             else
@@ -162,6 +162,13 @@ namespace Split.UI.UserControls
                 //DeleteMember();
                 this.Dispose();
             }
+        }
+
+        public async void AddFriend(string name)
+        {
+            var friend = await client.GetUserByLoginAsync(name);
+
+            await client.AddFriendAsync(Data.Id, friend.Id, true);
         }
         public async void DeleteFriend()
         {

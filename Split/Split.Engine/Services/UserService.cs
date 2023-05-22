@@ -77,6 +77,18 @@ namespace Split.Engine.Services
             }
         }
 
+        public User? GetUserByLogin(string login)
+        {
+            try
+            {
+                return userRepository.GetUserByLogin(login);
+            }
+            catch(UserNotFoundException)
+            {
+                return null;
+            }
+        }
+
         public Friend? GetFriend(int userId, int friendId)
         {
             try

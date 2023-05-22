@@ -31,7 +31,13 @@ namespace Split.UI.Forms
         private void registartionBtn_Click(object sender, EventArgs e)
         {
             //if (loginTb.Text.Length < 4 || passwordTb.Text.Length < 6 || emailTb.Text.Length < 6) return;
-            
+            var a = client.RegisterAsync(loginTb.Text, passwordTb.Text, emailTb.Text);
+
+            if (a == null)
+            {
+                MessageBox.Show("Такой пользователь уже есть");
+                return;
+            }
 
             var form = new MainForm(client);
             context.MainForm = form;

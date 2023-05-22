@@ -10,10 +10,11 @@ namespace Split.UI.UserControls
         private readonly SplitServiceApi client;
         private readonly Group group;
 
-        public GroupControl()
+        public GroupControl(SplitServiceApi client)
         {
             InitializeComponent();
             controlsAdditions = new ControlsAdditions();
+            this.client = client;
         }
 
         public GroupControl(SplitServiceApi client, Group group)
@@ -27,10 +28,10 @@ namespace Split.UI.UserControls
 
         private void GroupControl_Load(object sender, EventArgs e)
         {
-            SetActions(controlsAdditions.GetAll(this, typeof(ListBox)));
+            //SetActions(controlsAdditions.GetAll(this, typeof(ListBox)));
             SetActions(controlsAdditions.GetAll(this, typeof(RichTextBox)));
             SetActions(controlsAdditions.GetAll(this, typeof(Label)));
-            SetActions(controlsAdditions.GetAll(this, typeof(Button)));
+            //SetActions(controlsAdditions.GetAll(this, typeof(Button)));
 
             descriptionTb.ReadOnly = true;
             descriptionTb.BackColor = Color.White;
@@ -82,7 +83,7 @@ namespace Split.UI.UserControls
 
         private void addBtn_Click(object sender, EventArgs e)
         {
-            var form = new AddGroupForm();
+            var form = new AddGroupForm(client);
             form.ShowDialog();
         }
 

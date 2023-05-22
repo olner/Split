@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             nameLbl = new Label();
-            textBox1 = new TextBox();
+            nameTb = new TextBox();
             descriptionLbl = new Label();
             membersLbl = new Label();
-            richTextBox1 = new RichTextBox();
+            descriptionRtb = new RichTextBox();
             groupBox1 = new GroupBox();
-            listBox1 = new ListBox();
+            membersLb = new ListBox();
             addTb = new TextBox();
             addLinklbl = new LinkLabel();
             saveBtn = new Button();
@@ -52,12 +52,12 @@
             nameLbl.TabIndex = 0;
             nameLbl.Text = "Название группы";
             // 
-            // textBox1
+            // nameTb
             // 
-            textBox1.Location = new Point(26, 54);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(261, 27);
-            textBox1.TabIndex = 1;
+            nameTb.Location = new Point(26, 54);
+            nameTb.Name = "nameTb";
+            nameTb.Size = new Size(261, 27);
+            nameTb.TabIndex = 1;
             // 
             // descriptionLbl
             // 
@@ -79,23 +79,23 @@
             membersLbl.TabIndex = 4;
             membersLbl.Text = "Участники";
             // 
-            // richTextBox1
+            // descriptionRtb
             // 
-            richTextBox1.BorderStyle = BorderStyle.FixedSingle;
-            richTextBox1.Location = new Point(26, 121);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(261, 66);
-            richTextBox1.TabIndex = 5;
-            richTextBox1.Text = "";
+            descriptionRtb.BorderStyle = BorderStyle.FixedSingle;
+            descriptionRtb.Location = new Point(26, 121);
+            descriptionRtb.Name = "descriptionRtb";
+            descriptionRtb.Size = new Size(261, 66);
+            descriptionRtb.TabIndex = 5;
+            descriptionRtb.Text = "";
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(listBox1);
+            groupBox1.Controls.Add(membersLb);
             groupBox1.Controls.Add(addTb);
             groupBox1.Controls.Add(addLinklbl);
             groupBox1.Controls.Add(nameLbl);
-            groupBox1.Controls.Add(textBox1);
-            groupBox1.Controls.Add(richTextBox1);
+            groupBox1.Controls.Add(nameTb);
+            groupBox1.Controls.Add(descriptionRtb);
             groupBox1.Controls.Add(descriptionLbl);
             groupBox1.Controls.Add(membersLbl);
             groupBox1.Location = new Point(26, 26);
@@ -105,15 +105,15 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Добавить";
             // 
-            // listBox1
+            // membersLb
             // 
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 20;
-            listBox1.Location = new Point(26, 230);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(261, 104);
-            listBox1.TabIndex = 9;
-            listBox1.KeyPress += listBox1_KeyPress;
+            membersLb.FormattingEnabled = true;
+            membersLb.ItemHeight = 20;
+            membersLb.Location = new Point(26, 230);
+            membersLb.Name = "membersLb";
+            membersLb.Size = new Size(261, 104);
+            membersLb.TabIndex = 9;
+            membersLb.KeyPress += listBox1_KeyPress;
             // 
             // addTb
             // 
@@ -176,15 +176,15 @@
         #endregion
 
         private Label nameLbl;
-        private TextBox textBox1;
+        private TextBox nameTb;
         private Label descriptionLbl;
         private Label membersLbl;
-        private RichTextBox richTextBox1;
+        private RichTextBox descriptionRtb;
         private GroupBox groupBox1;
         private LinkLabel addLinklbl;
         private TextBox addTb;
         private Button saveBtn;
-        private ListBox listBox1;
+        private ListBox membersLb;
         private Button cancelBtn;
     }
 }

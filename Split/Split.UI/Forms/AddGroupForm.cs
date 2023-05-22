@@ -1,4 +1,5 @@
 ﻿using Split.UI.Tools;
+using Split.WebClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,9 +14,12 @@ namespace Split.UI.Forms
 {
     public partial class AddGroupForm : Form
     {
-        public AddGroupForm()
+        private readonly SplitServiceApi client;
+
+        public AddGroupForm(SplitServiceApi client)
         {
             InitializeComponent();
+            this.client = client;
         }
 
         private void AddGroupForm_Load(object sender, EventArgs e)
@@ -38,26 +42,59 @@ namespace Split.UI.Forms
             addTb.ForeColor = Color.Black;
         }
 
-        private void saveBtn_Click(object sender, EventArgs e)
+        private async void saveBtn_Click(object sender, EventArgs e)
         {
+            saveBtn.Enabled = false;
+            cancelBtn.Enabled = false;
+            try
+            {
+                if (nameTb.Text.Length == 0) return;
+
+                var group = await client.AddGroupAsync(nameTb.Text, Data.Id);
+
+                await client.AddUserToGroupAsync(group.Id, Data.Id);
+                foreach (var item in membersLb.Items)
+                {
+                    var user = await client.GetUserByLoginAsync(item.ToString());
+                    await client.AddUserToGroupAsync(group.Id, user.Id);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Ошибка {ex.Message}",
+                    "Ошибка",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
             this.Close();
         }
 
-        private void addTb_KeyPress(object sender, KeyPressEventArgs e)
+
+        private async void addTb_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Return)
             {
-                listBox1.Items.Add(addTb.Text);
+                foreach(var item in membersLb.Items)
+                {
+                    if (item == addTb.Text) return;
+                }
+
+                User? user = await client.GetUserByLoginAsync(addTb.Text);
+                if (user == null) return;
+
+                membersLb.Items.Add(addTb.Text);
             }
         }
 
         private void listBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (listBox1.SelectedItem == null) return;
+            if (membersLb.SelectedItem == null) return;
 
             if (e.KeyChar == (char)Keys.Delete || e.KeyChar == (char)Keys.Back)
             {
-                listBox1.Items.Remove(listBox1.SelectedItem);
+                membersLb.Items.Remove(membersLb.SelectedItem);
             }
         }
 

@@ -108,5 +108,10 @@ namespace Split.UI.Forms
             var group = await client.UpdateNameAsync(groupId, nameTb.Text);
             GroupName = group.Name;
         }
+
+        private void deleteBtn_Click(object sender, EventArgs e)
+        {
+            client.DeleteGroupAsync(groupId);
+        }
     }
 }

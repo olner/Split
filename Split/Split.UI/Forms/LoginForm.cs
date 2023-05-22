@@ -52,21 +52,38 @@ namespace Split.UI
                 return;
             }
 
-            var user = await client.AuthorizeAsync(loginTb.Text, passwordTb.Text);
-            if (user == null)
+            try
             {
-                MessageBox.Show("Пользователь не найден.\nПроверьте правильность написания логина и пароля");
+                var user = await client.AuthorizeAsync(loginTb.Text, passwordTb.Text);
+                if (user == null)
+                {
+                    MessageBox.Show("Пользователь не найден.\nПроверьте правильность написания логина и пароля");
 
-                loginBtn.Enabled = true;
-                return;
+                    loginBtn.Enabled = true;
+                    return;
+                }
+
+                Data.Id = (int)user.Id;
+
+                var form = new MainForm(client);
+
+                context.MainForm = form;
+                form.Show();
+
+                this.Hide();
             }
-
-            Data.Id = (int)user.Id;
-            var form = new MainForm(client);
-            context.MainForm = form;
-            form.Show();
-            //TODO: null exception
-            this.Hide();
+            catch(Exception ex)
+            {
+                MessageBox.Show(
+                    $"Ошибка {ex.Message}",
+                    "Ошибка",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+            finally
+            {
+                loginBtn.Enabled = true;
+            }
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

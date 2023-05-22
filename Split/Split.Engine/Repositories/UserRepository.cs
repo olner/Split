@@ -48,11 +48,24 @@ namespace Split.Engine.Repositories
         public User GetUser(int id)
         {
             using var context = contextFactory.CreateDbContext();
-            var users = context.Users.Where(p => p.Id == id).FirstOrDefault();
-            if (users == null)
+            var users = context.Users.Where(p => p.Id == id).FirstOrDefault() ?? throw new UserNotFoundException();
+
+            var user = new User
             {
-                throw new UserNotFoundException();
-            }
+                Id = users.Id,
+                Password = users.Password,
+                Login = users.Login,
+                Email = users.Email,
+                Name = users.Name
+            };
+            return user;
+        }
+
+        public User GetUserByLogin(string login)
+        {
+            using var context = contextFactory.CreateDbContext();
+            var users = context.Users.Where(x => x.Login == login).FirstOrDefault() ?? throw new UserNotFoundException();
+
             var user = new User
             {
                 Id = users.Id,

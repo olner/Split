@@ -47,7 +47,10 @@
             label3 = new Label();
             label2 = new Label();
             emailTb = new TextBox();
+            additionalTlp = new TableLayoutPanel();
             expensesTlp = new TableLayoutPanel();
+            friendRequestTlp = new TableLayoutPanel();
+            label5 = new Label();
             tabControl1.SuspendLayout();
             groupsPage.SuspendLayout();
             friendsPage.SuspendLayout();
@@ -55,6 +58,8 @@
             profileTlp.SuspendLayout();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)profilePb).BeginInit();
+            additionalTlp.SuspendLayout();
+            friendRequestTlp.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl1
@@ -143,7 +148,7 @@
             profileTlp.Controls.Add(label4, 1, 0);
             profileTlp.Controls.Add(accLbl, 0, 0);
             profileTlp.Controls.Add(groupBox1, 0, 1);
-            profileTlp.Controls.Add(expensesTlp, 1, 1);
+            profileTlp.Controls.Add(additionalTlp, 1, 1);
             profileTlp.Location = new Point(3, 3);
             profileTlp.Name = "profileTlp";
             profileTlp.RowCount = 2;
@@ -267,18 +272,56 @@
             emailTb.Size = new Size(242, 27);
             emailTb.TabIndex = 6;
             // 
+            // additionalTlp
+            // 
+            additionalTlp.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            additionalTlp.ColumnCount = 1;
+            additionalTlp.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            additionalTlp.Controls.Add(expensesTlp, 0, 0);
+            additionalTlp.Controls.Add(friendRequestTlp, 0, 1);
+            additionalTlp.Location = new Point(488, 38);
+            additionalTlp.Name = "additionalTlp";
+            additionalTlp.RowCount = 2;
+            additionalTlp.RowStyles.Add(new RowStyle());
+            additionalTlp.RowStyles.Add(new RowStyle());
+            additionalTlp.Size = new Size(587, 493);
+            additionalTlp.TabIndex = 13;
+            // 
             // expensesTlp
             // 
             expensesTlp.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             expensesTlp.ColumnCount = 1;
             expensesTlp.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            expensesTlp.Location = new Point(488, 38);
+            expensesTlp.Location = new Point(3, 3);
             expensesTlp.Name = "expensesTlp";
             expensesTlp.RowCount = 2;
             expensesTlp.RowStyles.Add(new RowStyle());
             expensesTlp.RowStyles.Add(new RowStyle());
-            expensesTlp.Size = new Size(587, 493);
-            expensesTlp.TabIndex = 11;
+            expensesTlp.Size = new Size(581, 240);
+            expensesTlp.TabIndex = 12;
+            // 
+            // friendRequestTlp
+            // 
+            friendRequestTlp.ColumnCount = 1;
+            friendRequestTlp.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            friendRequestTlp.Controls.Add(label5, 0, 0);
+            friendRequestTlp.Location = new Point(3, 249);
+            friendRequestTlp.Name = "friendRequestTlp";
+            friendRequestTlp.RowCount = 2;
+            friendRequestTlp.RowStyles.Add(new RowStyle());
+            friendRequestTlp.RowStyles.Add(new RowStyle());
+            friendRequestTlp.Size = new Size(581, 241);
+            friendRequestTlp.TabIndex = 13;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Location = new Point(3, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(243, 38);
+            label5.TabIndex = 0;
+            label5.Text = "Запросы в друзья";
             // 
             // MainForm
             // 
@@ -298,6 +341,9 @@
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)profilePb).EndInit();
+            additionalTlp.ResumeLayout(false);
+            friendRequestTlp.ResumeLayout(false);
+            friendRequestTlp.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -320,8 +366,11 @@
         private Button saveBtn;
         private GroupBox groupBox1;
         private TableLayoutPanel profileTlp;
-        private TableLayoutPanel expensesTlp;
         private Label label4;
         private Button deleteBtn;
+        private TableLayoutPanel additionalTlp;
+        private TableLayoutPanel expensesTlp;
+        private TableLayoutPanel friendRequestTlp;
+        private Label label5;
     }
 }
