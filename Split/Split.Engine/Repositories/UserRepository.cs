@@ -77,6 +77,20 @@ namespace Split.Engine.Repositories
             return user;
         }
 
+        public User UpdateUserData(int id, string login, string email, string password)
+        {
+            using var context = contextFactory.CreateDbContext();
+            var user = context.Users.Where(x => x.Id == id).FirstOrDefault() ?? throw new UserNotFoundException();
+            user.Login = login;
+            user.Email = email;
+            user.Password = password;
+
+            context.Users.Update(user);
+            context.SaveChanges();
+
+            return GetUser(id);
+        }
+
         public bool IsUserExists(string login)
         {
             using var context = contextFactory.CreateDbContext();

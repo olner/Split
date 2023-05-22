@@ -89,6 +89,19 @@ namespace Split.Engine.Services
             }
         }
 
+        public User? UpdateUserData(int id, string login, string email, string password)
+        {
+            try
+            {
+                return userRepository.UpdateUserData(id, login, email, password);
+            }
+            catch (UserNotFoundException)
+            {
+                return null;
+            }
+
+        }
+
         public Friend? GetFriend(int userId, int friendId)
         {
             try

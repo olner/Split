@@ -49,6 +49,9 @@ namespace SplitWebService.Controllers
             }            
         }
 
+        [HttpPatch("/updUserData", Name = "UpdateUserData")]
+        public User? UpdateUserData(int id, string login, string email, string password) => userService.UpdateUserData(id, login, email, password);
+
         [HttpDelete("/delete", Name = "Delete")]
         public void Delete(int id) => userService.DeleteUser(id);
 
