@@ -302,6 +302,7 @@
             // 
             // friendRequestTlp
             // 
+            friendRequestTlp.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             friendRequestTlp.ColumnCount = 1;
             friendRequestTlp.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             friendRequestTlp.Controls.Add(label5, 0, 0);

@@ -26,10 +26,12 @@ namespace Split.UI.Forms
             saveBtn.FlatStyle = FlatStyle.Flat;
             saveBtn.FlatAppearance.BorderSize = 0;
 
+            SetGroups(Data.Id);
             SetProfile(Data.Id);
             SetExpense(Data.Id);
             SetFriends(Data.Id);
-            SetGroups(Data.Id);
+            SetFriendsRequests(Data.Id);
+
         }
 
         private async void SetProfile(int id)
@@ -81,6 +83,24 @@ namespace Split.UI.Forms
                     Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top
                 };
                 friendsTlp.Controls.Add(control);
+                i++;
+            }
+        }
+
+        private async void SetFriendsRequests(int id)
+        {
+            var frined = await client.GetFriendsAsync(id);
+
+            var i = 0;
+            foreach (var item in frined)
+            {
+                var control = new FriendControl(client, item)
+                {
+                    Name = $"friendControl{i}",
+                    Width = friendRequestTlp.Width,
+                    Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top
+                };
+                friendRequestTlp.Controls.Add(control);
                 i++;
             }
         }
@@ -147,7 +167,6 @@ namespace Split.UI.Forms
 
         private async void saveBtn_Click(object sender, EventArgs e)
         {
-            //TODO: В сервисе сделать метод для изменения данных профиля
             saveBtn.Enabled = false;
             var user = await client.UpdateUserDataAsync(Data.Id, nameTb.Text, emailTb.Text, passwordTb.Text);
             if (user == null)
