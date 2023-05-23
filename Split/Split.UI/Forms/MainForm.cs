@@ -36,7 +36,9 @@ namespace Split.UI.Forms
 
         private async void SetProfile(int id)
         {
-            var user = await client.GetUserByIdAsync(id);
+            var result = await client.GetUserByIdAsync(id);
+            var user = result.Response;
+
             nameTb.Text = user.Login;
             emailTb.Text = user.Email;
             passwordTb.Text = user.Password;
@@ -44,7 +46,8 @@ namespace Split.UI.Forms
 
         private async void SetExpense(int id)
         {
-            var expenses = await client.GetUserExpensesAsync(id);
+            var result = await client.GetUserExpensesAsync(id);
+            var expenses = result.Response;
 
             var i = 0;
             foreach (var item in expenses)
@@ -71,10 +74,10 @@ namespace Split.UI.Forms
             newFriendControl.NewFriend();
             friendsTlp.Controls.Add(newFriendControl);
 
-            var frined = await client.GetFriendsAsync(id);
-
+            var result= await client.GetFriendsAsync(id);
+            var friend = result.Response;
             var i = 0;
-            foreach (var item in frined)
+            foreach (var item in friend)
             {
                 if (item.Request == true) break;
                 var control = new FriendControl(client, item)
@@ -90,10 +93,11 @@ namespace Split.UI.Forms
         //TODO: Возможно объединить два метода в один !!!  
         private async void SetFriendsRequests(int id)
         {
-            var frined = await client.GetFriendsAsync(id);
+            var result = await client.GetFriendsAsync(id);
+            var friend = result.Response;
 
             var i = 0;
-            foreach (var item in frined)
+            foreach (var item in friend)
             {
                 if (item.Request == false) break;
                 var control = new FriendControl(client, item)
@@ -118,7 +122,8 @@ namespace Split.UI.Forms
             newControl.NewGroup();
             groupsTlp.Controls.Add(newControl);
 
-            var groups = await client.GetUserGroupsAsync(id);
+            var result = await client.GetUserGroupsAsync(id);
+            var groups = result.Response;
 
             var i = 0;
             foreach (var item in groups)

@@ -41,7 +41,8 @@ namespace Split.UI.Forms
 
             try
             {
-                User? user = await client.RegisterAsync(loginTb.Text, passwordTb.Text, emailTb.Text);
+                var result = await client.RegisterAsync(loginTb.Text, passwordTb.Text, emailTb.Text);
+                var user = result.Response;
 
                 if (user == null)
                 {

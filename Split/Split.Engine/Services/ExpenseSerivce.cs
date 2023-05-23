@@ -97,11 +97,20 @@ namespace Split.Engine.Services
             }
         }
 
-        public List<Debts> GetUserDebts(int userId)
+        public List<DebtModel>? GetUserDebts(int userId)
         {
             try
             {
-                return expenseRepository.GetUserDebts(userId);
+                var result = expenseRepository.GetUserDebts(userId)
+                    .Select(x => new DebtModel
+                    {
+                        Id = x.Id,
+                        Debt = x.Debt,
+                        ExpenseId = x.ExpenseId,
+                        Paid = x.Paid,
+                        UserId = x.UserId
+                    }).ToList();
+                return result;
             }
             catch (DebtNotFoundException)
             {
@@ -109,11 +118,19 @@ namespace Split.Engine.Services
             }
         }
 
-        public List<Debts>? GetExpenseDebts(Guid groupId)
+        public List<DebtModel>? GetExpenseDebts(Guid groupId)
         {
             try
             {
-                return expenseRepository.GetExpenseDebts(groupId);
+                return expenseRepository.GetExpenseDebts(groupId)
+                    .Select(x => new DebtModel
+                    {
+                        Id = x.Id,
+                        Debt = x.Debt,
+                        ExpenseId = x.ExpenseId,
+                        Paid = x.Paid,
+                        UserId = x.UserId
+                    }).ToList();
             }
             catch (DebtNotFoundException)
             {

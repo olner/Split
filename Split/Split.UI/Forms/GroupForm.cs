@@ -26,10 +26,21 @@ namespace Split.UI.Forms
             addExpenseBtn.FlatAppearance.BorderSize = 0;
         }
 
-        public async void SetData()
+        public void SetData()
         {
-            var expenses = await client.GetGroupExpensesAsync(groupId);
-            var group = await client.GetGroupAsync(groupId);
+            SetExpenses();
+            SetFriends();
+            
+        }
+        private async void SetExpenses()
+        {
+
+            var rawResult = await client.GetGroupExpensesAsync(groupId);
+            var expenses = rawResult.Response;
+            if (expenses == null) return;
+
+            var result = await client.GetGroupAsync(groupId);
+            var group = result.Response;
 
             GroupName = group.Name;
             groupNameLbl.Text = GroupName;
@@ -48,7 +59,10 @@ namespace Split.UI.Forms
                 expenseTlp.Controls.Add(control);
                 i++;
             }
-
+        }
+        
+        private async void SetFriends()
+        {
             var addMember = new FriendControl(client)
             {
                 Width = expenseTlp.Width,
@@ -57,7 +71,10 @@ namespace Split.UI.Forms
             addMember.NewMember();
             membersTlp.Controls.Add(addMember);
 
-            var members = await client.GetGroupMembersAsync(groupId);
+            var rawMembers = await client.GetGroupMembersAsync(groupId);
+            var members = rawMembers.Response;
+            if(members == null) return;
+
             var j = 0;
             foreach (var item in members)
             {
@@ -105,7 +122,8 @@ namespace Split.UI.Forms
 
         private async void saveBtn_Click(object sender, EventArgs e)
         {
-            var group = await client.UpdateNameAsync(groupId, nameTb.Text);
+            var result = await client.UpdateNameAsync(groupId, nameTb.Text);
+            var group = result.Response;
             GroupName = group.Name;
         }
 

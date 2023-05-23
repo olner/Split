@@ -17,9 +17,20 @@ namespace SplitWebService.Controllers
         {
             this.roleService = roleService;
         }
+        public class ServiceResponse<T>
+        {
+            public T? Response { get; set; }
+        }
 
         [HttpGet("/Roles", Name = "GetAllRoles")]
-        public List<Role>? GetRoles() => roleService.GetRoles();
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ServiceResponse<List<Role>>))]
+        public IActionResult GetRoles()
+        {
+            var result = roleService.GetRoles();
+
+            return Ok(new ServiceResponse<List<Role>> { Response = result });
+        }
 
         [HttpPost("/SetRole", Name = "SetRole")]
         public void SetRole(int userId, string roleName, Guid groupId)
@@ -34,13 +45,15 @@ namespace SplitWebService.Controllers
         }
 
         [HttpPost("/AddRole", Name = "AddRole")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ServiceResponse<Role>))]
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest, "application/json")]
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError, "application/json")]
         public IActionResult AddRole(AddRoleRequest request)
         {
-            roleService.AddRole(request.RoleName, request.Description);
-            return NoContent();
+            var result = roleService.AddRole(request.RoleName, request.Description);
+
+            return Ok(new ServiceResponse<Role> { Response = result });
         }
 
         [HttpDelete("/DeleteRole", Name = "DeleteRole")]        

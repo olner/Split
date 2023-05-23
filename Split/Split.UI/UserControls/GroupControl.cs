@@ -40,18 +40,21 @@ namespace Split.UI.UserControls
 
         private async void SetData()
         {
-            var group = await client.GetGroupAsync(this.group.Id);
+            var rawGroup = await client.GetGroupAsync(this.group.Id);
+            var group = rawGroup.Response;
             if (group == null) return;
 
             dateLbl.Text = group.Date.Value.Date.ToShortDateString();
             nameLbl.Text = group.Name;
 
-            var members = await client.GetGroupMembersAsync(this.group.Id);
+            var rawMembers = await client.GetGroupMembersAsync(this.group.Id);
+            var members = rawMembers.Response;
             if (members == null) return;
 
             foreach (var member in members)
             {
-                var name = await client.GetUserByIdAsync((int)member.UserId);
+                var rawName = await client.GetUserByIdAsync((int)member.UserId);
+                var name = rawName.Response;
                 membersLb.Items.Add(name.Name);
             }
         }

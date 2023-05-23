@@ -26,19 +26,9 @@
           "200": {
             "description": "Success",
             "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/Expense"
-                }
-              },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Expense"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Expense"
+                  "$ref": "#/components/schemas/ExpenseServiceResponse"
                 }
               }
             }
@@ -67,28 +57,9 @@
           "200": {
             "description": "Success",
             "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Expense"
-                  }
-                }
-              },
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Expense"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Expense"
-                  }
+                  "$ref": "#/components/schemas/ExpenseListServiceResponse"
                 }
               }
             }
@@ -117,28 +88,9 @@
           "200": {
             "description": "Success",
             "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Expense"
-                  }
-                }
-              },
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Expense"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Expense"
-                  }
+                  "$ref": "#/components/schemas/ExpenseListServiceResponse"
                 }
               }
             }
@@ -193,19 +145,9 @@
           "200": {
             "description": "Success",
             "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/Expense"
-                }
-              },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Expense"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Expense"
+                  "$ref": "#/components/schemas/ExpenseServiceResponse"
                 }
               }
             }
@@ -258,19 +200,9 @@
           "200": {
             "description": "Success",
             "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/DebtModel"
-                }
-              },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DebtModel"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DebtModel"
+                  "$ref": "#/components/schemas/DebtModelServiceResponse"
                 }
               }
             }
@@ -299,28 +231,9 @@
           "200": {
             "description": "Success",
             "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Debts"
-                  }
-                }
-              },
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Debts"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Debts"
-                  }
+                  "$ref": "#/components/schemas/DebtModelListServiceResponse"
                 }
               }
             }
@@ -349,28 +262,9 @@
           "200": {
             "description": "Success",
             "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Debts"
-                  }
-                }
-              },
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Debts"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Debts"
-                  }
+                  "$ref": "#/components/schemas/DebtModelListServiceResponse"
                 }
               }
             }
@@ -426,19 +320,9 @@
           "200": {
             "description": "Success",
             "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/DebtModel"
-                }
-              },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DebtModel"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DebtModel"
+                  "$ref": "#/components/schemas/DebtModelServiceResponse"
                 }
               }
             }
@@ -480,28 +364,9 @@
           "200": {
             "description": "Success",
             "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Group"
-                  }
-                }
-              },
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Group"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Group"
-                  }
+                  "$ref": "#/components/schemas/GroupListServiceResponse"
                 }
               }
             }
@@ -530,19 +395,9 @@
           "200": {
             "description": "Success",
             "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/Group"
-                }
-              },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Group"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Group"
+                  "$ref": "#/components/schemas/GroupServiceResponse"
                 }
               }
             }
@@ -579,19 +434,9 @@
           "200": {
             "description": "Success",
             "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/Group"
-                }
-              },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Group"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Group"
+                  "$ref": "#/components/schemas/GroupServiceResponse"
                 }
               }
             }
@@ -658,19 +503,9 @@
           "200": {
             "description": "Success",
             "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/Group"
-                }
-              },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Group"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Group"
+                  "$ref": "#/components/schemas/GroupServiceResponse"
                 }
               }
             }
@@ -699,28 +534,9 @@
           "200": {
             "description": "Success",
             "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/GroupMember"
-                  }
-                }
-              },
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/GroupMember"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/GroupMember"
-                  }
+                  "$ref": "#/components/schemas/GroupMemberListServiceResponse"
                 }
               }
             }
@@ -821,28 +637,9 @@
           "200": {
             "description": "Success",
             "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Group"
-                  }
-                }
-              },
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Group"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Group"
-                  }
+                  "$ref": "#/components/schemas/GroupListServiceResponse"
                 }
               }
             }
@@ -860,28 +657,9 @@
           "200": {
             "description": "Success",
             "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Role"
-                  }
-                }
-              },
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Role"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Role"
-                  }
+                  "$ref": "#/components/schemas/RoleListServiceResponse"
                 }
               }
             }
@@ -1010,7 +788,14 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoleServiceResponse"
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad Request"
@@ -1054,28 +839,9 @@
           "200": {
             "description": "Success",
             "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/User"
-                  }
-                }
-              },
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/User"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/User"
-                  }
+                  "$ref": "#/components/schemas/UserListServiceResponse"
                 }
               }
             }
@@ -1105,19 +871,9 @@
           "200": {
             "description": "Success",
             "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
+                  "$ref": "#/components/schemas/UserServiceResponse"
                 }
               }
             }
@@ -1145,19 +901,9 @@
           "200": {
             "description": "Success",
             "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
+                  "$ref": "#/components/schemas/UserServiceResponse"
                 }
               }
             }
@@ -1239,19 +985,9 @@
           "200": {
             "description": "Success",
             "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
+                  "$ref": "#/components/schemas/UserServiceResponse"
                 }
               }
             }
@@ -1304,19 +1040,9 @@
           "200": {
             "description": "Success",
             "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
+                  "$ref": "#/components/schemas/UserServiceResponse"
                 }
               }
             }
@@ -1378,19 +1104,9 @@
           "200": {
             "description": "Success",
             "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/Friend"
-                }
-              },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Friend"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Friend"
+                  "$ref": "#/components/schemas/FriendServiceResponse"
                 }
               }
             }
@@ -1436,19 +1152,9 @@
           "200": {
             "description": "Success",
             "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/Friend"
-                }
-              },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Friend"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Friend"
+                  "$ref": "#/components/schemas/FriendServiceResponse"
                 }
               }
             }
@@ -1501,28 +1207,9 @@
           "200": {
             "description": "Success",
             "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Friend"
-                  }
-                }
-              },
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Friend"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Friend"
-                  }
+                  "$ref": "#/components/schemas/FriendListServiceResponse"
                 }
               }
             }
@@ -1573,44 +1260,29 @@
         },
         "additionalProperties": false
       },
-      "Debts": {
+      "DebtModelListServiceResponse": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "expenseId": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "expenses": {
+          "response": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DebtModel"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DebtModelServiceResponse": {
+        "type": "object",
+        "properties": {
+          "response": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/Expenses"
+                "$ref": "#/components/schemas/DebtModel"
               }
             ],
             "nullable": true
-          },
-          "userId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "users": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Users"
-              }
-            ],
-            "nullable": true
-          },
-          "debt": {
-            "type": "number",
-            "format": "double"
-          },
-          "paid": {
-            "type": "number",
-            "format": "double"
           }
         },
         "additionalProperties": false
@@ -1645,48 +1317,29 @@
         },
         "additionalProperties": false
       },
-      "Expenses": {
+      "ExpenseListServiceResponse": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "name": {
-            "type": "string",
+          "response": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Expense"
+            },
             "nullable": true
-          },
-          "userId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "users": {
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExpenseServiceResponse": {
+        "type": "object",
+        "properties": {
+          "response": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/Users"
+                "$ref": "#/components/schemas/Expense"
               }
             ],
             "nullable": true
-          },
-          "groupId": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "groups": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Groups"
-              }
-            ],
-            "nullable": true
-          },
-          "sum": {
-            "type": "number",
-            "format": "double"
-          },
-          "date": {
-            "type": "string",
-            "format": "date-time"
           }
         },
         "additionalProperties": false
@@ -1708,6 +1361,33 @@
           },
           "request": {
             "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FriendListServiceResponse": {
+        "type": "object",
+        "properties": {
+          "response": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Friend"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "FriendServiceResponse": {
+        "type": "object",
+        "properties": {
+          "response": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Friend"
+              }
+            ],
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1741,6 +1421,19 @@
         },
         "additionalProperties": false
       },
+      "GroupListServiceResponse": {
+        "type": "object",
+        "properties": {
+          "response": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Group"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "GroupMember": {
         "type": "object",
         "properties": {
@@ -1759,70 +1452,26 @@
         },
         "additionalProperties": false
       },
-      "Groups": {
+      "GroupMemberListServiceResponse": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "date": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "admin": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "users": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Users"
-              }
-            ],
-            "nullable": true
-          },
-          "groupsMembers": {
+          "response": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/GroupsMembers"
+              "$ref": "#/components/schemas/GroupMember"
             },
             "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "GroupsMembers": {
+      "GroupServiceResponse": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "groupId": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "groups": {
+          "response": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/Groups"
-              }
-            ],
-            "nullable": true
-          },
-          "userID": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "users": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Users"
+                "$ref": "#/components/schemas/Group"
               }
             ],
             "nullable": true
@@ -1848,26 +1497,28 @@
         },
         "additionalProperties": false
       },
-      "Roles": {
+      "RoleListServiceResponse": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "description": {
-            "type": "string",
-            "nullable": true
-          },
-          "userRoles": {
+          "response": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/UserRoles"
+              "$ref": "#/components/schemas/Role"
             },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RoleServiceResponse": {
+        "type": "object",
+        "properties": {
+          "response": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Role"
+              }
+            ],
             "nullable": true
           }
         },
@@ -1899,47 +1550,14 @@
         },
         "additionalProperties": false
       },
-      "UserRoles": {
+      "UserListServiceResponse": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "groupId": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "groups": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Groups"
-              }
-            ],
-            "nullable": true
-          },
-          "roleId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "roles": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Roles"
-              }
-            ],
-            "nullable": true
-          },
-          "userId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "users": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Users"
-              }
-            ],
+          "response": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/User"
+            },
             "nullable": true
           }
         },
@@ -1954,46 +1572,6 @@
                 "$ref": "#/components/schemas/User"
               }
             ],
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "Users": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "password": {
-            "type": "string",
-            "nullable": true
-          },
-          "email": {
-            "type": "string",
-            "nullable": true
-          },
-          "login": {
-            "type": "string",
-            "nullable": true
-          },
-          "userRoles": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/UserRoles"
-            },
-            "nullable": true
-          },
-          "groupsMembers": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/GroupsMembers"
-            },
             "nullable": true
           }
         },

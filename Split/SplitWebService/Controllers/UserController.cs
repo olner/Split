@@ -23,59 +23,109 @@ namespace SplitWebService.Controllers
             this.userRepository = userRepository;
         }
 
-        [HttpGet("", Name = "GetAllUsers")]
-        public List<User> GetUsers() => userService.GetUsers();
-
-        [HttpGet("{id:int}", Name = "GetUserById")]
-        public User? GetUser(int id) => userService.GetUserById(id);
-
-        [HttpGet("/GetByLogin", Name = "GetUserByLogin")]
-        public User? GetUserByLogin(string login) => userService.GetUserByLogin(login);
-
-        [HttpGet("/auth", Name = "Authorize")]
-        [Produces("application/json")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ServiceResponse<User>))]
-        public IActionResult Authorize(string login, string password) 
-        {
-            var result =  userService.Authorize(login, password);
-
-            return Ok(new ServiceResponse<User> { Response = result });
-        }
-
         public class ServiceResponse<T>
         {
             public T? Response { get; set; }
         }
 
-        [HttpPost("/reg", Name = "Register")]        
-        public User? Register(string login, string password, string email)
+        [HttpGet("", Name = "GetAllUsers")]
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ServiceResponse<List<User>>))]
+        public IActionResult GetUsers()
+        {
+            var result = userService.GetUsers();
+
+            return Ok(new ServiceResponse<List<User>> { Response = result });
+        }
+
+        [HttpGet("{id:int}", Name = "GetUserById")]
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ServiceResponse<User>))]
+        public IActionResult GetUser(int id)
+        {
+            var result = userService.GetUserById(id);
+
+            return Ok(new ServiceResponse<User> { Response = result });
+        }
+
+        [HttpGet("/GetByLogin", Name = "GetUserByLogin")]
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ServiceResponse<User>))]
+        public IActionResult GetUserByLogin(string login)
+        {
+            var result = userService.GetUserByLogin(login);
+            return Ok(new ServiceResponse<User> { Response = result });
+        }
+
+        [HttpGet("/auth", Name = "Authorize")]
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ServiceResponse<User>))]
+        public IActionResult Authorize(string login, string password)
+        {
+            var result = userService.Authorize(login, password);
+
+            return Ok(new ServiceResponse<User> { Response = result });
+        }
+
+        [HttpPost("/reg", Name = "Register")]
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ServiceResponse<User>))]
+        public IActionResult Register(string login, string password, string email)
         {
             try
             {
-                return userService.Register(login, password, email);
+                var result = userService.Register(login, password, email);
+                return Ok(new ServiceResponse<User> { Response = result });
             }
             catch (ServiceException)
             {
-                return null;
-            }            
+                return Ok(new ServiceResponse<User> { Response = (User)null });
+            }
         }
 
         [HttpPatch("/updUserData", Name = "UpdateUserData")]
-        public User? UpdateUserData(int id, string login, string email, string password) => userService.UpdateUserData(id, login, email, password);
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ServiceResponse<User>))]
+        public IActionResult UpdateUserData(int id, string login, string email, string password)
+        {
+            var result = userService.UpdateUserData(id, login, email, password);
+
+            return Ok(new ServiceResponse<User> { Response = result });
+        }
 
         [HttpDelete("/delete", Name = "Delete")]
         public void Delete(int id) => userService.DeleteUser(id);
 
         [HttpGet("/Friend", Name = "GetFriend")]
-        public Friend? GetFriend(int userId, int friendId) => userService.GetFriend(userId, friendId);
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ServiceResponse<Friend>))]
+        public IActionResult GetFriend(int userId, int friendId)
+        {
+            var result = userService.GetFriend(userId, friendId);
+            return Ok(new ServiceResponse<Friend> { Response = result });
+        }
 
         [HttpPost("/AddFriend", Name = "AddFriend")]
-        public Friend? AddFriend(int userId, int friendId, bool request) => userService.AddFriend(userId,friendId,request);
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ServiceResponse<Friend>))]
+        public IActionResult AddFriend(int userId, int friendId, bool request)
+        {
+            var result = userService.AddFriend(userId, friendId, request);
+
+            return Ok(new ServiceResponse<Friend> { Response = result });
+        }
 
         [HttpDelete("/DeleteFriend", Name = "DeleteFriend")]
         public void DeleteFriend(Guid id) => userService.DeleteFriend(id);
 
         [HttpGet("/Friends", Name = "GetFriends")]
-        public List<Friend>? GetFriends(int userId) => userService.GetFriends(userId);
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ServiceResponse<List<Friend>>))]
+        public IActionResult GetFriends(int userId)
+        {
+            var result = userService.GetFriends(userId);
+
+            return Ok(new ServiceResponse<List<Friend>> { Response = result });
+        }
     }
 }

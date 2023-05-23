@@ -17,19 +17,39 @@ namespace SplitWebService.Controllers
             this.groupService = groupService;
         }
 
+        public class ServiceResponse<T>
+        {
+            public T? Response { get; set; }
+        }
+
         [HttpGet("/Groups", Name = "GetAllGroups")]
-        public List<Group>? GetGroups() => groupService.GetGroups();
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ServiceResponse<List<Group>>))]
+        public IActionResult GetGroups()
+        {
+            var result = groupService.GetGroups();
+
+            return Ok(new ServiceResponse<List<Group>> { Response = result });
+        }
 
         [HttpGet("/Group", Name = "GetGroup")]
-        public Group? GetGroup(Guid groupId) => groupService.GetGroup(groupId);
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ServiceResponse<Group>))]
+        public IActionResult GetGroup(Guid groupId)
+        {
+            var result = groupService.GetGroup(groupId);
+            return Ok(new ServiceResponse<Group> { Response = result });
+        }
 
         [HttpPost("/AddGroup", Name = "AddGroup")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ServiceResponse<Group>))]
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest, "application/json")]
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError, "application/json")]
-        public Group? AddGroup(string name, int adminId)
+        public IActionResult AddGroup(string name, int adminId)
         {
-            return groupService.AddGroup(name, adminId);
+            var result = groupService.AddGroup(name, adminId);
+            return Ok(new ServiceResponse<Group> { Response = result });
         }
 
         [HttpDelete("/DeleteGroup", Name = "DeleteGroup")]
@@ -39,10 +59,22 @@ namespace SplitWebService.Controllers
         }
 
         [HttpPatch("/UpdateName", Name = "UpdateName")]
-        public Group? UpdateGroupName(Guid groupId, string name) => groupService.UpdateGroupName(groupId, name);
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ServiceResponse<Group>))]
+        public IActionResult UpdateGroupName(Guid groupId, string name)
+        {
+            var result = groupService.UpdateGroupName(groupId, name);
+            return Ok(new ServiceResponse<Group> { Response = result });
+        }
 
         [HttpGet("/Members", Name = "GetGroupMembers")]
-        public List<GroupMember>? GetGroupMembers(Guid groupId) => groupService.GetGroupMembers(groupId);
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ServiceResponse<List<GroupMember>>))]
+        public IActionResult GetGroupMembers(Guid groupId)
+        {
+            var result = groupService.GetGroupMembers(groupId);
+            return Ok(new ServiceResponse<List<GroupMember>> { Response = result });
+        }
 
         [HttpPost("/AddUserToGroup", Name = "AddUserToGroup")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -61,6 +93,12 @@ namespace SplitWebService.Controllers
         }
 
         [HttpGet("/UserGroups", Name = "GetUserGroups")]
-        public List<Group>? GetUserGroups(int userId) => groupService.GetUserGroups(userId);
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ServiceResponse<List<Group>>))]
+        public IActionResult GetUserGroups(int userId)
+        {
+            var result = groupService.GetUserGroups(userId);
+            return Ok(new ServiceResponse<List<Group>> { Response = result });
+        }
     }
 }

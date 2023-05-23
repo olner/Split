@@ -52,13 +52,16 @@ namespace Split.UI.UserControls
         {
             if (friend.UserId == Data.Id)
             {
-                var user = await client.GetUserByIdAsync((int)friend.FriendId);
+                var result = await client.GetUserByIdAsync((int)friend.FriendId);
+                var user = result.Response;
+
                 Name = user.Login;
                 nameLbl.Text = Name;
             }
             else
             {
-                var user = await client.GetUserByIdAsync((int)friend.UserId);
+                var result = await client.GetUserByIdAsync((int)friend.UserId);
+                var user = result.Response;
                 Name = user.Login;
                 nameLbl.Text = Name;
             }
@@ -66,7 +69,8 @@ namespace Split.UI.UserControls
 
         public async void SetMembers()
         {
-            var user = await client.GetUserByIdAsync((int)member.UserId);
+            var result = await client.GetUserByIdAsync((int)member.UserId);
+            var user = result.Response;
             Name = user.Login;
             nameLbl.Text = Name;
         }
@@ -197,7 +201,9 @@ namespace Split.UI.UserControls
         {
             if (name.Length == 0) return;
 
-            User? friend = await client.GetUserByLoginAsync(name);
+            var result = await client.GetUserByLoginAsync(name);
+            var friend = result.Response;
+
             if (friend == null) return;
 
             await client.AddFriendAsync(Data.Id, friend.Id, true);
@@ -208,7 +214,8 @@ namespace Split.UI.UserControls
         }
         public async void DeleteMember()
         {
-            var group = await client.GetGroupAsync(member.GroupId);
+            var result = await client.GetGroupAsync(member.GroupId);
+            var group = result.Response;
             if (group.Admin == member.Id) return;
 
             await client.DeleteGroupMemberAsync(member.GroupId, member.UserId);

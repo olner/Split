@@ -41,12 +41,14 @@ namespace Split.UI.Forms
             {
                 if (nameTb.Text.Length == 0) return;
 
-                var group = await client.AddGroupAsync(nameTb.Text, Data.Id);
+                var result = await client.AddGroupAsync(nameTb.Text, Data.Id);
+                var group = result.Response;
 
                 await client.AddUserToGroupAsync(group.Id, Data.Id);
                 foreach (var item in membersLb.Items)
                 {
-                    var user = await client.GetUserByLoginAsync(item.ToString());
+                    var rawResult = await client.GetUserByLoginAsync(item.ToString());
+                    var user = rawResult.Response;
                     await client.AddUserToGroupAsync(group.Id, user.Id);
                 }
 
@@ -72,7 +74,8 @@ namespace Split.UI.Forms
                     if (item == addTb.Text) return;
                 }
 
-                User? user = await client.GetUserByLoginAsync(addTb.Text);
+                var result = await client.GetUserByLoginAsync(addTb.Text);
+                var user = result.Response;
                 if (user == null) return;
 
                 membersLb.Items.Add(addTb.Text);
