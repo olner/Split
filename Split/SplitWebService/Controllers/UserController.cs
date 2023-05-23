@@ -3,6 +3,8 @@ using Split.Engine.Exceptions;
 using Split.Engine.Models;
 using Split.Engine.Repositories.Interfaces;
 using Split.Engine.Services;
+using System.Text.Json.Serialization;
+using static SplitWebService.Controllers.UserController;
 
 namespace SplitWebService.Controllers
 {
@@ -31,18 +33,21 @@ namespace SplitWebService.Controllers
         public User? GetUserByLogin(string login) => userService.GetUserByLogin(login);
 
         [HttpGet("/auth", Name = "Authorize")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ResponseResult<User>))]
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ServiceResponse<User>))]
         public IActionResult Authorize(string login, string password) 
         {
-            var user = userService.Authorize(login, password);
-            return Ok(new ResponseResult<User> { Result = user});
-        }
-        public class ResponseResult<T>
-        {
-            public T Result { get; set; }
+            var result =  userService.Authorize(login, password);
+
+            return Ok(new ServiceResponse<User> { Response = result });
         }
 
-        [HttpPost("/reg", Name = "Register")]
+        public class ServiceResponse<T>
+        {
+            public T? Response { get; set; }
+        }
+
+        [HttpPost("/reg", Name = "Register")]        
         public User? Register(string login, string password, string email)
         {
             try

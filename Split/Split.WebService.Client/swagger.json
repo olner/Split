@@ -981,17 +981,29 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/AddRoleRequest"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/AddRoleRequest"
+                  }
+                ]
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/AddRoleRequest"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/AddRoleRequest"
+                  }
+                ]
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/AddRoleRequest"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/AddRoleRequest"
+                  }
+                ]
               }
             }
           }
@@ -1181,19 +1193,9 @@
           "200": {
             "description": "Success",
             "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/UserResponseResult"
-                }
-              },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UserResponseResult"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UserResponseResult"
+                  "$ref": "#/components/schemas/UserServiceResponse"
                 }
               }
             }
@@ -1583,14 +1585,24 @@
             "format": "uuid"
           },
           "expenses": {
-            "$ref": "#/components/schemas/Expenses"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Expenses"
+              }
+            ],
+            "nullable": true
           },
           "userId": {
             "type": "integer",
             "format": "int32"
           },
           "users": {
-            "$ref": "#/components/schemas/Users"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Users"
+              }
+            ],
+            "nullable": true
           },
           "debt": {
             "type": "number",
@@ -1649,14 +1661,24 @@
             "format": "int32"
           },
           "users": {
-            "$ref": "#/components/schemas/Users"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Users"
+              }
+            ],
+            "nullable": true
           },
           "groupId": {
             "type": "string",
             "format": "uuid"
           },
           "groups": {
-            "$ref": "#/components/schemas/Groups"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Groups"
+              }
+            ],
+            "nullable": true
           },
           "sum": {
             "type": "number",
@@ -1757,7 +1779,12 @@
             "format": "int32"
           },
           "users": {
-            "$ref": "#/components/schemas/Users"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Users"
+              }
+            ],
+            "nullable": true
           },
           "groupsMembers": {
             "type": "array",
@@ -1781,14 +1808,24 @@
             "format": "uuid"
           },
           "groups": {
-            "$ref": "#/components/schemas/Groups"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Groups"
+              }
+            ],
+            "nullable": true
           },
           "userID": {
             "type": "integer",
             "format": "int32"
           },
           "users": {
-            "$ref": "#/components/schemas/Users"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Users"
+              }
+            ],
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1862,15 +1899,6 @@
         },
         "additionalProperties": false
       },
-      "UserResponseResult": {
-        "type": "object",
-        "properties": {
-          "result": {
-            "$ref": "#/components/schemas/User"
-          }
-        },
-        "additionalProperties": false
-      },
       "UserRoles": {
         "type": "object",
         "properties": {
@@ -1883,21 +1911,50 @@
             "format": "uuid"
           },
           "groups": {
-            "$ref": "#/components/schemas/Groups"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Groups"
+              }
+            ],
+            "nullable": true
           },
           "roleId": {
             "type": "integer",
             "format": "int32"
           },
           "roles": {
-            "$ref": "#/components/schemas/Roles"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Roles"
+              }
+            ],
+            "nullable": true
           },
           "userId": {
             "type": "integer",
             "format": "int32"
           },
           "users": {
-            "$ref": "#/components/schemas/Users"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Users"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserServiceResponse": {
+        "type": "object",
+        "properties": {
+          "response": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/User"
+              }
+            ],
+            "nullable": true
           }
         },
         "additionalProperties": false

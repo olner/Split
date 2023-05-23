@@ -18,7 +18,7 @@
         <OpenApiReference Include="swagger.json">
             <Namespace>Split.WebClient</Namespace>
             <ClassName>SplitServiceApi</ClassName>
-            <Options>/GenerateClientInterfaces:true /DateType:System.DateTime /DateTimeType:System.DateTime /UseBaseUrl:false /GenerateOptionalPropertiesAsNullable:true /DefaultResponseReferenceTypeNullHandling:null</Options>
+            <Options>/GenerateClientInterfaces:true /DateType:System.DateTime /DateTimeType:System.DateTime /UseBaseUrl:false /GenerateOptionalPropertiesAsNullable:true</Options>
         </OpenApiReference>
     </ItemGroup>
 
