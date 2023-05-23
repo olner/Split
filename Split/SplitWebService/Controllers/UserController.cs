@@ -31,9 +31,15 @@ namespace SplitWebService.Controllers
         public User? GetUserByLogin(string login) => userService.GetUserByLogin(login);
 
         [HttpGet("/auth", Name = "Authorize")]
-        public User? Authorize(string login, string password) 
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ResponseResult<User>))]
+        public IActionResult Authorize(string login, string password) 
         {
-            return userService.Authorize(login, password);
+            var user = userService.Authorize(login, password);
+            return Ok(new ResponseResult<User> { Result = user});
+        }
+        public class ResponseResult<T>
+        {
+            public T Result { get; set; }
         }
 
         [HttpPost("/reg", Name = "Register")]

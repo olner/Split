@@ -38,8 +38,8 @@ namespace Split.UI
 
         private async void loginBtn_Click(object sender, EventArgs e)
         {
-            loginTb.Text = "admin";
-            passwordTb.Text = "admin";
+            //loginTb.Text = "admin";
+            //passwordTb.Text = "admin";
 
             loginBtn.Enabled = false;
             if (loginBtn.Text.Length < 3 || passwordTb.Text.Length < 5)
@@ -54,7 +54,8 @@ namespace Split.UI
 
             try
             {
-                var user = await client.AuthorizeAsync(loginTb.Text, passwordTb.Text);
+                var response = await client.AuthorizeAsync(loginTb.Text, passwordTb.Text);
+                var user = response.Result;
                 if (user == null)
                 {
                     MessageBox.Show("Пользователь не найден.\nПроверьте правильность написания логина и пароля");
