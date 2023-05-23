@@ -39,13 +39,14 @@
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            tableLayoutPanel1.ColumnCount = 3;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 13.91129F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 67.94355F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 18.2459679F));
+            tableLayoutPanel1.ColumnCount = 4;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 9.267964F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 62.727272F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 13.333333F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.9494953F));
             tableLayoutPanel1.Controls.Add(pictureBox1, 0, 0);
             tableLayoutPanel1.Controls.Add(nameLbl, 1, 0);
-            tableLayoutPanel1.Controls.Add(deleteBtn, 2, 0);
+            tableLayoutPanel1.Controls.Add(deleteBtn, 3, 0);
             tableLayoutPanel1.Location = new Point(3, 3);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
@@ -60,7 +61,7 @@
             pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pictureBox1.Location = new Point(3, 3);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(131, 92);
+            pictureBox1.Size = new Size(85, 92);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -69,7 +70,7 @@
             // 
             nameLbl.Anchor = AnchorStyles.Left;
             nameLbl.AutoSize = true;
-            nameLbl.Location = new Point(140, 39);
+            nameLbl.Location = new Point(94, 39);
             nameLbl.Name = "nameLbl";
             nameLbl.Size = new Size(49, 20);
             nameLbl.TabIndex = 1;
@@ -78,9 +79,9 @@
             // deleteBtn
             // 
             deleteBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            deleteBtn.Location = new Point(811, 3);
+            deleteBtn.Location = new Point(844, 3);
             deleteBtn.Name = "deleteBtn";
-            deleteBtn.Size = new Size(176, 92);
+            deleteBtn.Size = new Size(143, 92);
             deleteBtn.TabIndex = 2;
             deleteBtn.Text = "Удалить";
             deleteBtn.UseVisualStyleBackColor = true;

@@ -38,6 +38,7 @@
             label4 = new Label();
             accLbl = new Label();
             groupBox1 = new GroupBox();
+            showPaswordCheckBox = new CheckBox();
             deleteBtn = new Button();
             profilePb = new PictureBox();
             saveBtn = new Button();
@@ -180,6 +181,7 @@
             // groupBox1
             // 
             groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            groupBox1.Controls.Add(showPaswordCheckBox);
             groupBox1.Controls.Add(deleteBtn);
             groupBox1.Controls.Add(profilePb);
             groupBox1.Controls.Add(saveBtn);
@@ -194,6 +196,17 @@
             groupBox1.Size = new Size(479, 493);
             groupBox1.TabIndex = 10;
             groupBox1.TabStop = false;
+            // 
+            // showPaswordCheckBox
+            // 
+            showPaswordCheckBox.AutoSize = true;
+            showPaswordCheckBox.Location = new Point(296, 200);
+            showPaswordCheckBox.Name = "showPaswordCheckBox";
+            showPaswordCheckBox.Size = new Size(176, 24);
+            showPaswordCheckBox.TabIndex = 11;
+            showPaswordCheckBox.Text = "Показывать пароль?";
+            showPaswordCheckBox.UseVisualStyleBackColor = true;
+            showPaswordCheckBox.CheckedChanged += showPaswordCheckBox_CheckedChanged;
             // 
             // deleteBtn
             // 
@@ -216,7 +229,7 @@
             // 
             // saveBtn
             // 
-            saveBtn.Location = new Point(328, 212);
+            saveBtn.Location = new Point(329, 230);
             saveBtn.Name = "saveBtn";
             saveBtn.Size = new Size(144, 42);
             saveBtn.TabIndex = 9;
@@ -237,6 +250,7 @@
             // 
             passwordTb.Location = new Point(230, 167);
             passwordTb.Name = "passwordTb";
+            passwordTb.PasswordChar = '*';
             passwordTb.Size = new Size(242, 27);
             passwordTb.TabIndex = 8;
             // 
@@ -250,7 +264,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(230, 142);
+            label3.Location = new Point(230, 144);
             label3.Name = "label3";
             label3.Size = new Size(62, 20);
             label3.TabIndex = 7;
@@ -259,7 +273,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(230, 89);
+            label2.Location = new Point(230, 91);
             label2.Name = "label2";
             label2.Size = new Size(46, 20);
             label2.TabIndex = 5;
@@ -267,7 +281,7 @@
             // 
             // emailTb
             // 
-            emailTb.Location = new Point(230, 112);
+            emailTb.Location = new Point(230, 114);
             emailTb.Name = "emailTb";
             emailTb.Size = new Size(242, 27);
             emailTb.TabIndex = 6;
@@ -373,5 +387,6 @@
         private TableLayoutPanel expensesTlp;
         private TableLayoutPanel friendRequestTlp;
         private Label label5;
+        private CheckBox showPaswordCheckBox;
     }
 }

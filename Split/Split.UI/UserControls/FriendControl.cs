@@ -18,7 +18,7 @@ namespace Split.UI.UserControls
             controlsAdditions = new ControlsAdditions();
             this.client = client;
         }
-        public FriendControl(SplitServiceApi client, GroupMember member )
+        public FriendControl(SplitServiceApi client, GroupMember member)
         {
             InitializeComponent();
             controlsAdditions = new ControlsAdditions();
@@ -50,7 +50,7 @@ namespace Split.UI.UserControls
         }
         public async void SetFriends()
         {
-            if(friend.UserId == Data.Id)
+            if (friend.UserId == Data.Id)
             {
                 var user = await client.GetUserByIdAsync((int)friend.FriendId);
                 Name = user.Login;
@@ -88,7 +88,7 @@ namespace Split.UI.UserControls
 
             tableLayoutPanel1.Controls.Remove(deleteBtn);
             tableLayoutPanel1.Controls.Remove(pictureBox1);
-            tableLayoutPanel1.Controls.Add(button, 3, 0);
+            tableLayoutPanel1.Controls.Add(button, 4, 0);
 
             AddNameTextBox();
         }
@@ -111,11 +111,29 @@ namespace Split.UI.UserControls
 
             tableLayoutPanel1.Controls.Remove(deleteBtn);
             tableLayoutPanel1.Controls.Remove(pictureBox1);
-            tableLayoutPanel1.Controls.Add(button, 3, 0);
+            tableLayoutPanel1.Controls.Add(button, 4, 0);
             AddNameTextBox();
         }
 
-        public void AddNameTextBox() 
+        public void NewFriendRequest()
+        {
+            var button = new Button
+            {
+                Name = "addBtn",
+                Text = "Добавить",
+                Size = new Size(300, 50),
+                BackColor = Color.FromArgb(91, 197, 167),
+                ForeColor = Color.White,
+                Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom
+            };
+            button.FlatStyle = FlatStyle.Flat;
+            button.FlatAppearance.BorderSize = 0;
+            //button.Click += addBtn_Click;
+            //TODO: Сделать в сервисе чтоюы запрос в друзья менять
+            tableLayoutPanel1.Controls.Add(button, 2, 0);
+        }
+
+        public void AddNameTextBox()
         {
             nameLbl.Text = "";
             var nameTb = new TextBox
@@ -125,7 +143,7 @@ namespace Split.UI.UserControls
                 Width = 200
             };
             tableLayoutPanel1.Controls.Remove(nameLbl);
-            tableLayoutPanel1.Controls.Add(nameTb, 1, 0);
+            tableLayoutPanel1.Controls.Add(nameTb, 2, 0);
         }
 
         public void SetActions(IEnumerable<Control> controls)
@@ -153,7 +171,7 @@ namespace Split.UI.UserControls
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.No) return;
 
-            if(member == null)
+            if (member == null)
             {
                 DeleteFriend();
                 this.Dispose();
@@ -168,19 +186,19 @@ namespace Split.UI.UserControls
         private void addBtn_Click(object sender, EventArgs e)
         {
             var controls = controlsAdditions.GetAll(this, typeof(TextBox));
-            foreach(var control in controls)
+            foreach (var control in controls)
             {
                 AddFriend(control.Text);
             }
         }
-        
+
 
         public async void AddFriend(string name)
         {
             if (name.Length == 0) return;
 
             User? friend = await client.GetUserByLoginAsync(name);
-            if(friend == null) return;
+            if (friend == null) return;
 
             await client.AddFriendAsync(Data.Id, friend.Id, true);
         }
@@ -193,7 +211,7 @@ namespace Split.UI.UserControls
             var group = await client.GetGroupAsync(member.GroupId);
             if (group.Admin == member.Id) return;
 
-            await client.DeleteGroupMemberAsync(member.GroupId,member.UserId);
+            await client.DeleteGroupMemberAsync(member.GroupId, member.UserId);
         }
     }
 }

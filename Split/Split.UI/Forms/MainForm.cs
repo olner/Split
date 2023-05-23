@@ -39,7 +39,7 @@ namespace Split.UI.Forms
             var user = await client.GetUserByIdAsync(id);
             nameTb.Text = user.Login;
             emailTb.Text = user.Email;
-            passwordTb.Text = "*******";
+            passwordTb.Text = user.Password;
         }
 
         private async void SetExpense(int id)
@@ -76,6 +76,7 @@ namespace Split.UI.Forms
             var i = 0;
             foreach (var item in frined)
             {
+                if (item.Request == true) break;
                 var control = new FriendControl(client, item)
                 {
                     Name = $"friendControl{i}",
@@ -86,7 +87,7 @@ namespace Split.UI.Forms
                 i++;
             }
         }
-
+        //TODO: Возможно объединить два метода в один !!!  
         private async void SetFriendsRequests(int id)
         {
             var frined = await client.GetFriendsAsync(id);
@@ -94,12 +95,14 @@ namespace Split.UI.Forms
             var i = 0;
             foreach (var item in frined)
             {
+                if (item.Request == false) break;
                 var control = new FriendControl(client, item)
                 {
                     Name = $"friendControl{i}",
                     Width = friendRequestTlp.Width,
                     Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top
                 };
+                control.NewFriendRequest();
                 friendRequestTlp.Controls.Add(control);
                 i++;
             }
@@ -173,7 +176,19 @@ namespace Split.UI.Forms
             {
                 //TODO: не знаю
             }
+            saveBtn.Enabled = true;
         }
 
+        private void showPaswordCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (showPaswordCheckBox.Checked)
+            {
+                passwordTb.PasswordChar = '\0';
+            }
+            else
+            {
+                passwordTb.PasswordChar = '*';
+            }
+        }
     }
 }
