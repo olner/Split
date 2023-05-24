@@ -235,7 +235,7 @@ namespace Split.UI.Forms
 
             var rawGroups = await client.GetUserGroupsAsync(Data.Id);
             var groups = rawGroups.Response;
-            if (friends.Count != Groups)
+            if (groups.Count != Groups)
             {
                 groupsTlp.Controls.Clear();
                 SetGroups(Data.Id);
