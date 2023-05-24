@@ -165,6 +165,7 @@ namespace Split.UI.Forms
         {
             var rawMembers = await client.GetGroupMembersAsync(groupId);
             var members = rawMembers.Response;
+            if (members == null) return;
 
             if (members.Count != Members)
             {
@@ -176,6 +177,7 @@ namespace Split.UI.Forms
         {
             var rawGroup = await client.GetGroupAsync(groupId);
             var group = rawGroup.Response;
+            if (group == null) return;
 
             if (group == null)
             {
