@@ -132,9 +132,29 @@ namespace Split.UI.UserControls
             };
             button.FlatStyle = FlatStyle.Flat;
             button.FlatAppearance.BorderSize = 0;
-            //button.Click += addBtn_Click;
+            button.Click += ChangeBtn_Click;
             //TODO: Сделать в сервисе чтоюы запрос в друзья менять
             tableLayoutPanel1.Controls.Add(button, 2, 0);
+        }
+        public async void ChangeBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var rawResult = await client.ChangeFriendRequestAsync(friend.Id);
+                var result = rawResult.Response;
+
+                if (result == null) return;
+
+                this.Dispose();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(
+                    $"Ошибка {ex.Message}",
+                    "Ошибка",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
 
         public void AddNameTextBox()

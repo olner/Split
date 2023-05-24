@@ -151,5 +151,17 @@ namespace Split.Engine.Services
                 return null;
             }
         }
+
+        public Friend? ChangeFriendRequest(Guid id)
+        {
+            try
+            {
+                return userRepository.ChangeFriendRequest(id);
+            }
+            catch (FriendNotFoundException)
+            {
+                return null;
+            }
+        }
     }
 }

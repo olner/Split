@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             tabControl1 = new TabControl();
             groupsPage = new TabPage();
             groupsTlp = new TableLayoutPanel();
@@ -52,6 +53,7 @@
             expensesTlp = new TableLayoutPanel();
             friendRequestTlp = new TableLayoutPanel();
             label5 = new Label();
+            updateTimer = new System.Windows.Forms.Timer(components);
             tabControl1.SuspendLayout();
             groupsPage.SuspendLayout();
             friendsPage.SuspendLayout();
@@ -338,6 +340,11 @@
             label5.TabIndex = 0;
             label5.Text = "Запросы в друзья";
             // 
+            // updateTimer
+            // 
+            updateTimer.Interval = 1000;
+            updateTimer.Tick += updateTimer_Tick;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -388,5 +395,6 @@
         private TableLayoutPanel friendRequestTlp;
         private Label label5;
         private CheckBox showPaswordCheckBox;
+        private System.Windows.Forms.Timer updateTimer;
     }
 }

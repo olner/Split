@@ -1216,6 +1216,37 @@
           }
         }
       }
+    },
+    "/ChangeFriendRequest": {
+      "patch": {
+        "tags": [
+          "User"
+        ],
+        "operationId": "ChangeFriendRequest",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FriendServiceResponse"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {

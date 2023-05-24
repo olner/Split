@@ -23,6 +23,6 @@ namespace Split.Engine.Repositories.Interfaces
         Friend AddFriend(int userId, int friendId, bool request);
         void DeleteFriend(Guid id);
         List<Friends> GetFriends(int userId);
-
+        Friend ChangeFriendRequest(Guid id);
     }
 }

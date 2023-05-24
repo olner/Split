@@ -74,7 +74,7 @@ namespace Split.UI.Forms
             newFriendControl.NewFriend();
             friendsTlp.Controls.Add(newFriendControl);
 
-            var result= await client.GetFriendsAsync(id);
+            var result = await client.GetFriendsAsync(id);
             var friend = result.Response;
             var i = 0;
             foreach (var item in friend)
@@ -90,7 +90,7 @@ namespace Split.UI.Forms
                 i++;
             }
         }
-        //TODO: Возможно объединить два метода в один !!!  
+        //TODO: Возможно объединить два метода в один !!! (метод сверху и снизу!) 
         private async void SetFriendsRequests(int id)
         {
             var result = await client.GetFriendsAsync(id);
@@ -194,6 +194,11 @@ namespace Split.UI.Forms
             {
                 passwordTb.PasswordChar = '*';
             }
+        }
+
+        private async void updateTimer_Tick(object sender, EventArgs e)
+        {
+
         }
     }
 }

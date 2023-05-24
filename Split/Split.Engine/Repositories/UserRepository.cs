@@ -138,7 +138,7 @@ namespace Split.Engine.Repositories
         public Friend GetFriend(int userId,int friendId)
         {
             using var context = contextFactory.CreateDbContext();
-            var friends = context.Friends.Where(x => x.UserId == userId && x.FriendId == friendId).FirstOrDefault() ?? throw new UserNotFoundException();
+            var friends = context.Friends.Where(x => (x.UserId == userId && x.FriendId == friendId) || (x.UserId == friendId && x.FriendId == userId)).FirstOrDefault() ?? throw new FriendNotFoundException();
 
             var friend = new Friend
             {
@@ -178,10 +178,23 @@ namespace Split.Engine.Repositories
         public void DeleteFriend(Guid id)
         {
             using var context = contextFactory.CreateDbContext();
-            var friend = context.Friends.Where(x => x.Id == id).FirstOrDefault() ?? throw new UserNotFoundException();
+            var friend = context.Friends.Where(x => x.Id == id).FirstOrDefault() ?? throw new FriendNotFoundException();
 
             context.Friends.Remove(friend);
             context.SaveChanges();
+        }
+
+        public Friend ChangeFriendRequest(Guid id)
+        {
+            using var context = contextFactory.CreateDbContext();
+            var friend = context.Friends.Where(x => x.Id == id && x.Request == true).FirstOrDefault() ?? throw new FriendNotFoundException();
+            
+            friend.Request = false;
+
+            context.Friends.Update(friend);
+            context.SaveChanges();
+
+            return GetFriend(friend.FriendId, friend.UserId);
         }
     }
 }

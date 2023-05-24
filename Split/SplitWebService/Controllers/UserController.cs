@@ -127,5 +127,15 @@ namespace SplitWebService.Controllers
 
             return Ok(new ServiceResponse<List<Friend>> { Response = result });
         }
+
+        [HttpPatch("/ChangeFriendRequest", Name = "ChangeFriendRequest")]
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ServiceResponse<Friend>))]
+        public IActionResult ChangeFriendRequest(Guid id)
+        {
+            var result = userService.ChangeFriendRequest(id);
+
+            return Ok(new ServiceResponse<Friend> { Response = result });
+        }
     }
 }
