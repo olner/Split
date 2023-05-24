@@ -83,6 +83,8 @@ namespace Split.UI.Forms
 
             var result = await client.GetFriendsAsync(id);
             var friend = result.Response;
+            if (friend == null) return;
+
             var i = 0;
             foreach (var item in friend)
             {
@@ -104,6 +106,7 @@ namespace Split.UI.Forms
         {
             var result = await client.GetFriendsAsync(id);
             var friend = result.Response;
+            if (friend == null) return;
 
             var i = 0;
             foreach (var item in friend)
@@ -135,6 +138,7 @@ namespace Split.UI.Forms
 
             var result = await client.GetUserGroupsAsync(id);
             var groups = result.Response;
+            if (groups == null) return;
 
             var i = 0;
             foreach (var item in groups)
@@ -209,14 +213,21 @@ namespace Split.UI.Forms
             }
         }
 
-        private async void updateTimer_Tick(object sender, EventArgs e)
+        private void updateTimer_Tick(object sender, EventArgs e)
+        {
+            CheckFriends();
+            CheckGroups();
+            CheckExpenses();  
+        }
+        private async void CheckFriends()
         {
             var rawFriends = await client.GetFriendsAsync(Data.Id);
             var friends = rawFriends.Response;
+            if (friends == null) return;
 
             var requestsCount = 0;
             var friendsCount = 0;
-            foreach(var item in friends)
+            foreach (var item in friends)
             {
                 if (item.Request == false) friendsCount++;
                 else requestsCount++;
@@ -227,28 +238,35 @@ namespace Split.UI.Forms
                 friendsTlp.Controls.Clear();
                 SetFriends(Data.Id);
             }
-            if(requestsCount != FriendRequsets)
+            if (requestsCount != FriendRequsets)
             {
                 friendRequestTlp.Controls.Clear();
                 SetFriendsRequests(Data.Id);
             }
-
+        }
+        private async void CheckGroups()
+        {
             var rawGroups = await client.GetUserGroupsAsync(Data.Id);
             var groups = rawGroups.Response;
+            if (groups == null) return;
+
             if (groups.Count != Groups)
             {
                 groupsTlp.Controls.Clear();
                 SetGroups(Data.Id);
             }
-
+        }
+        private async void CheckExpenses()
+        {
             var rawExpenses = await client.GetUserExpensesAsync(Data.Id);
             var expenses = rawExpenses.Response;
-            if(expenses.Count != Expenses)
+            if (expenses == null) return;
+
+            if (expenses.Count != Expenses)
             {
                 expensesTlp.Controls.Clear();
                 SetExpense(Data.Id);
             }
-
         }
     }
 }

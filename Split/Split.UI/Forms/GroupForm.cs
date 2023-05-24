@@ -8,6 +8,9 @@ namespace Split.UI.Forms
         private readonly SplitServiceApi client;
         private readonly Guid groupId;
         private string GroupName { get; set; }
+        private string Description { get; set; }
+        private int Expenses { get; set; }
+        private int Members { get; set; }
 
         public GroupForm(SplitServiceApi client, Guid groupId)
         {
@@ -19,6 +22,7 @@ namespace Split.UI.Forms
         private void GroupForm_Load(object sender, EventArgs e)
         {
             SetData();
+            updateTimer.Start();
 
             addExpenseBtn.BackColor = Color.FromArgb(91, 197, 167);
             addExpenseBtn.ForeColor = Color.White;
@@ -28,17 +32,13 @@ namespace Split.UI.Forms
 
         public void SetData()
         {
+            SetGroup();
             SetExpenses();
-            SetFriends();
-            
+            SetMembers();
+
         }
-        private async void SetExpenses()
+        private async void SetGroup()
         {
-
-            var rawResult = await client.GetGroupExpensesAsync(groupId);
-            var expenses = rawResult.Response;
-            if (expenses == null) return;
-
             var result = await client.GetGroupAsync(groupId);
             var group = result.Response;
 
@@ -46,6 +46,13 @@ namespace Split.UI.Forms
             groupNameLbl.Text = GroupName;
             nameTb.Text = GroupName;
             this.Text = GroupName + " - группы";
+        }
+        private async void SetExpenses()
+        {
+
+            var rawResult = await client.GetGroupExpensesAsync(groupId);
+            var expenses = rawResult.Response;
+            if (expenses == null) return;
 
             var i = 0;
             foreach (var item in expenses)
@@ -59,9 +66,11 @@ namespace Split.UI.Forms
                 expenseTlp.Controls.Add(control);
                 i++;
             }
+
+            Expenses = i;
         }
-        
-        private async void SetFriends()
+
+        private async void SetMembers()
         {
             var addMember = new FriendControl(client)
             {
@@ -73,20 +82,22 @@ namespace Split.UI.Forms
 
             var rawMembers = await client.GetGroupMembersAsync(groupId);
             var members = rawMembers.Response;
-            if(members == null) return;
+            if (members == null) return;
 
-            var j = 0;
+            var i = 0;
             foreach (var item in members)
             {
                 var control = new FriendControl(client, item)
                 {
-                    Name = $"friednControl{j}",
+                    Name = $"friednControl{i}",
                     Width = membersTlp.Width,
                     Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top
                 };
                 membersTlp.Controls.Add(control);
-                j++;
+                i++;
             }
+
+            Members = i;
         }
 
         private void tabControl1_DrawItem(object sender, DrawItemEventArgs e)
@@ -127,9 +138,54 @@ namespace Split.UI.Forms
             GroupName = group.Name;
         }
 
-        private void deleteBtn_Click(object sender, EventArgs e)
+        private async void deleteBtn_Click(object sender, EventArgs e)
         {
-            client.DeleteGroupAsync(groupId);
+            await client.DeleteGroupAsync(groupId);
+        }
+
+        private async void updateTimer_Tick(object sender, EventArgs e)
+        {
+            CheckExpenses();
+            CheckMembers();
+            CheckGroup();
+        }
+        private async void CheckExpenses()
+        {
+            var rawExpenses = await client.GetGroupExpensesAsync(groupId);
+            var expenses = rawExpenses.Response;
+            if (expenses == null) return;
+
+            if (expenses.Count != Expenses)
+            {
+                expenseTlp.Controls.Clear();
+                SetExpenses();
+            }
+        }
+        private async void CheckMembers()
+        {
+            var rawMembers = await client.GetGroupMembersAsync(groupId);
+            var members = rawMembers.Response;
+
+            if (members.Count != Members)
+            {
+                membersTlp.Controls.Clear();
+                SetMembers();
+            }
+        }
+        private async void CheckGroup()
+        {
+            var rawGroup = await client.GetGroupAsync(groupId);
+            var group = rawGroup.Response;
+
+            if (group == null)
+            {
+                MessageBox.Show(
+                    $"Группа была удалена администратором",
+                    "Группа удалена",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+                this.Dispose();
+            }
         }
     }
 }

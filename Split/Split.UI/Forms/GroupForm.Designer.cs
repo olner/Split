@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             accLbl = new Label();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
@@ -41,13 +42,14 @@
             tabPage3 = new TabPage();
             label3 = new Label();
             groupBox1 = new GroupBox();
+            deleteBtn = new Button();
             resetBtn = new Button();
             saveBtn = new Button();
             label4 = new Label();
             descRtb = new RichTextBox();
             nameTb = new TextBox();
             label2 = new Label();
-            deleteBtn = new Button();
+            updateTimer = new System.Windows.Forms.Timer(components);
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             expenseTlp.SuspendLayout();
@@ -217,6 +219,16 @@
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             // 
+            // deleteBtn
+            // 
+            deleteBtn.Location = new Point(199, 398);
+            deleteBtn.Name = "deleteBtn";
+            deleteBtn.Size = new Size(140, 40);
+            deleteBtn.TabIndex = 7;
+            deleteBtn.Text = "Удалить группу";
+            deleteBtn.UseVisualStyleBackColor = true;
+            deleteBtn.Click += deleteBtn_Click;
+            // 
             // resetBtn
             // 
             resetBtn.Location = new Point(69, 263);
@@ -272,15 +284,10 @@
             label2.TabIndex = 1;
             label2.Text = "Название группы";
             // 
-            // deleteBtn
+            // updateTimer
             // 
-            deleteBtn.Location = new Point(199, 398);
-            deleteBtn.Name = "deleteBtn";
-            deleteBtn.Size = new Size(140, 40);
-            deleteBtn.TabIndex = 7;
-            deleteBtn.Text = "Удалить группу";
-            deleteBtn.UseVisualStyleBackColor = true;
-            deleteBtn.Click += deleteBtn_Click;
+            updateTimer.Interval = 1000;
+            updateTimer.Tick += updateTimer_Tick;
             // 
             // GroupForm
             // 
@@ -328,5 +335,6 @@
         private Button resetBtn;
         private Button saveBtn;
         private Button deleteBtn;
+        private System.Windows.Forms.Timer updateTimer;
     }
 }
