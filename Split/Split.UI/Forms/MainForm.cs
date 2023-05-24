@@ -7,6 +7,10 @@ namespace Split.UI.Forms
     public partial class MainForm : Form
     {
         private readonly SplitServiceApi client;
+        private int Friends { get; set; }
+        private int FriendRequsets { get; set; }
+        private int Groups { get; set; }
+        private int Expenses { get; set; }
 
         public MainForm(SplitServiceApi client)
         {
@@ -32,6 +36,7 @@ namespace Split.UI.Forms
             SetFriends(Data.Id);
             SetFriendsRequests(Data.Id);
 
+            updateTimer.Start();
         }
 
         private async void SetProfile(int id)
@@ -61,6 +66,8 @@ namespace Split.UI.Forms
                 expensesTlp.Controls.Add(control);
                 i++;
             }
+
+            Expenses = i;
         }
 
         private async void SetFriends(int id)
@@ -89,6 +96,8 @@ namespace Split.UI.Forms
                 friendsTlp.Controls.Add(control);
                 i++;
             }
+
+            Friends = i;
         }
         //TODO: Возможно объединить два метода в один !!! (метод сверху и снизу!) 
         private async void SetFriendsRequests(int id)
@@ -110,6 +119,8 @@ namespace Split.UI.Forms
                 friendRequestTlp.Controls.Add(control);
                 i++;
             }
+
+            FriendRequsets = i;
         }
 
         private async void SetGroups(int id)
@@ -137,6 +148,8 @@ namespace Split.UI.Forms
                 groupsTlp.Controls.Add(control);
                 i++;
             }
+
+            Groups = i;
         }
 
         private void tabControl1_DrawItem(object sender, DrawItemEventArgs e)
@@ -198,6 +211,43 @@ namespace Split.UI.Forms
 
         private async void updateTimer_Tick(object sender, EventArgs e)
         {
+            var rawFriends = await client.GetFriendsAsync(Data.Id);
+            var friends = rawFriends.Response;
+
+            var requestsCount = 0;
+            var friendsCount = 0;
+            foreach(var item in friends)
+            {
+                if (item.Request == false) friendsCount++;
+                else requestsCount++;
+            }
+
+            if (friendsCount != Friends)
+            {
+                friendsTlp.Controls.Clear();
+                SetFriends(Data.Id);
+            }
+            if(requestsCount != FriendRequsets)
+            {
+                friendRequestTlp.Controls.Clear();
+                SetFriendsRequests(Data.Id);
+            }
+
+            var rawGroups = await client.GetUserGroupsAsync(Data.Id);
+            var groups = rawGroups.Response;
+            if (friends.Count != Groups)
+            {
+                groupsTlp.Controls.Clear();
+                SetGroups(Data.Id);
+            }
+
+            var rawExpenses = await client.GetUserExpensesAsync(Data.Id);
+            var expenses = rawExpenses.Response;
+            if(expenses.Count != Expenses)
+            {
+                expensesTlp.Controls.Clear();
+                SetExpense(Data.Id);
+            }
 
         }
     }
