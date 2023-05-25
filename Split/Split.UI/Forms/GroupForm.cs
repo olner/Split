@@ -177,10 +177,11 @@ namespace Split.UI.Forms
         {
             var rawGroup = await client.GetGroupAsync(groupId);
             var group = rawGroup.Response;
-            if (group == null) return;
 
             if (group == null)
             {
+                updateTimer.Stop();
+
                 MessageBox.Show(
                     $"Группа была удалена администратором",
                     "Группа удалена",
@@ -188,6 +189,11 @@ namespace Split.UI.Forms
                     MessageBoxIcon.Exclamation);
                 this.Dispose();
             }
+        }
+
+        private void addExpenseBtn_Click(object sender, EventArgs e)
+        {
+            new AddExpenseForm(client,groupId).ShowDialog(this);
         }
     }
 }

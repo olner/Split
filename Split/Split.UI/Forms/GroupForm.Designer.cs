@@ -148,6 +148,7 @@
             addExpenseBtn.TabIndex = 1;
             addExpenseBtn.Text = "Добавить расход";
             addExpenseBtn.UseVisualStyleBackColor = true;
+            addExpenseBtn.Click += addExpenseBtn_Click;
             // 
             // label1
             // 
