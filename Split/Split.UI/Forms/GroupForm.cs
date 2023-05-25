@@ -1,4 +1,5 @@
-﻿using Split.UI.UserControls;
+﻿using Split.UI.Tools;
+using Split.UI.UserControls;
 using Split.WebClient;
 
 namespace Split.UI.Forms
@@ -32,10 +33,28 @@ namespace Split.UI.Forms
 
         public void SetData()
         {
+            SetDebt();
             SetGroup();
             SetExpenses();
             SetMembers();
 
+        }
+        private async void SetDebt()
+        {
+            var rawDebts = await client.GetUserGroupDebtsAsync(groupId, Data.Id);
+            var debts = rawDebts.Response;
+
+            if(debts.Count == 0)
+            {
+                label1.Text = $"Вы ничего не должны";
+            }
+
+            double total = 0;
+            foreach ( var debt in debts )
+            {
+                total += (double)debt.Debt - (double)debt.Paid;
+            }
+            label1.Text = $"Вы всего должны {total}₽";
         }
         private async void SetGroup()
         {
