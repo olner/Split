@@ -114,7 +114,7 @@ namespace Split.UI.Forms
                 amountCounter += control.Sum;
             }
 
-            percentLbl.Text = $"Осталось: {sum - amountCounter}";
+            amountLbl.Text = $"Осталось: {sum - amountCounter}";
         }
 
         private void UpdateDebts()
@@ -128,7 +128,7 @@ namespace Split.UI.Forms
             var sum = decimal.Parse(sumTb.Text);
             var debt = (sum / checkedListBox1.CheckedItems.Count);
 
-            amountLbl.Text = $"Каждый должен: {debt}";
+            equalLbl.Text = $"Каждый должен: {debt}";
         }
 
         private void sumTb_KeyPress(object sender, KeyPressEventArgs e)
