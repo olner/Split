@@ -10,7 +10,7 @@ namespace Split.DbContexts.Tables
         public Guid Id { get; set; }
 
         [Column("expense_id")]
-        [ForeignKey("Expense")]
+        [ForeignKey("Expenses")]
         public Guid ExpenseId { get; set; }
         public Expenses Expenses { get; set; }
 
