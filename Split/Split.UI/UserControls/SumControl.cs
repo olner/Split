@@ -4,6 +4,7 @@ namespace Split.UI.UserControls
 {
     public partial class SumControl : UserControl
     {
+        public double Price { get; set; }
         public bool Validated { get; set; }
         public string UserName { get; set; }
         public string Name { get => nameLbl.Text; set => nameLbl.Text = value; }

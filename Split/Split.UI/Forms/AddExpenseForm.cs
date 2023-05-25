@@ -89,6 +89,7 @@ namespace Split.UI.Forms
             {
                 //if (control.Sum == 0) break;
                 var debt = (sum / 100) * control.Sum;
+                control.Price = debt;
                 control.Name = $"{control.UserName} должен: {debt}";
                 percentCounter += control.Sum;
             }
@@ -217,9 +218,83 @@ namespace Split.UI.Forms
                 return;
             }
 
-
+            switch (tabControl1.SelectedIndex)
+            {
+                case 0:
+                    AddEqualDebts((Guid)expense.Id);
+                    break;
+                case 1:
+                    AddAmountDebts((Guid)expense.Id);
+                    break;
+                case 2:
+                    AddPercentDebts((Guid)expense.Id);
+                    break;
+            }
 
             this.Close();
+        }
+
+        private async void AddEqualDebts(Guid expenseId)
+        {
+            var sum = double.Parse(sumTb.Text);
+
+            var rawMembers = await client.GetGroupMembersAsync(groupId);
+            var members = rawMembers.Response.ToList();
+
+            var users = new List<User>();
+            foreach(var member in members)
+            {
+                var rawUser = await client.GetUserByIdAsync((int)member.UserId);
+                users.Add(rawUser.Response);
+            }
+
+            foreach(string item in checkedListBox1.CheckedItems)
+            {
+                var user = users.Where(x => x.Login == item).FirstOrDefault();
+                var debt = await client.AddDebtAsync(groupId, user.Id, sum, 0);
+            }
+        }
+
+        private async void AddAmountDebts(Guid expenseId)
+        {
+            var rawMembers = await client.GetGroupMembersAsync(groupId);
+            var members = rawMembers.Response.ToList();
+
+            var users = new List<User>();
+            foreach (var member in members)
+            {
+                var rawUser = await client.GetUserByIdAsync((int)member.UserId);
+                users.Add(rawUser.Response);
+            }
+
+            foreach(SumControl control in amountTlp.Controls)
+            {
+                if (control.CheckBox == false) return;
+
+                var user = users.Where(x => x.Login == control.UserName).FirstOrDefault();
+                var debt = await client.AddDebtAsync(groupId, user.Id, control.Sum, 0);
+            }
+        }
+
+        private async void AddPercentDebts(Guid expenseId)
+        {
+            var rawMembers = await client.GetGroupMembersAsync(groupId);
+            var members = rawMembers.Response.ToList();
+
+            var users = new List<User>();
+            foreach (var member in members)
+            {
+                var rawUser = await client.GetUserByIdAsync((int)member.UserId);
+                users.Add(rawUser.Response);
+            }
+
+            foreach (SumControl control in percentTlp.Controls)
+            {
+                if (control.CheckBox == false) return;
+
+                var user = users.Where(x => x.Login == control.UserName).FirstOrDefault();
+                var debt = await client.AddDebtAsync(groupId, user.Id, control.Price, 0);
+            }
         }
     }
 }
