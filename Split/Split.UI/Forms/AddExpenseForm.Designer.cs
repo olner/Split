@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             groupBox1 = new GroupBox();
             sumTb = new TextBox();
             tabControl1 = new TabControl();
@@ -46,6 +47,7 @@
             sumLbl = new Label();
             nameLbl = new Label();
             nameTb = new TextBox();
+            updateTimer = new System.Windows.Forms.Timer(components);
             groupBox1.SuspendLayout();
             tabControl1.SuspendLayout();
             equalTp.SuspendLayout();
@@ -205,6 +207,7 @@
             saveBtn.TabIndex = 5;
             saveBtn.Text = "Сохранить";
             saveBtn.UseVisualStyleBackColor = true;
+            saveBtn.Click += saveBtn_Click;
             // 
             // dateTimePicker1
             // 
@@ -237,6 +240,10 @@
             nameTb.Name = "nameTb";
             nameTb.Size = new Size(340, 27);
             nameTb.TabIndex = 0;
+            // 
+            // updateTimer
+            // 
+            updateTimer.Tick += updateTimer_Tick;
             // 
             // AddExpenseForm
             // 
@@ -279,5 +286,6 @@
         private TableLayoutPanel amountTlp;
         private Label amountLbl;
         private Label percentLbl;
+        private System.Windows.Forms.Timer updateTimer;
     }
 }

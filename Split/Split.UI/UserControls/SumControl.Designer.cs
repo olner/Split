@@ -62,6 +62,7 @@
             checkBox1.Size = new Size(18, 17);
             checkBox1.TabIndex = 0;
             checkBox1.UseVisualStyleBackColor = true;
+            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
             // 
             // nameLbl
             // 
@@ -79,6 +80,8 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(38, 27);
             textBox1.TabIndex = 2;
+            textBox1.TextChanged += textBox1_TextChanged;
+            textBox1.KeyDown += textBox1_KeyDown;
             // 
             // SumControl
             // 

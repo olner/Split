@@ -1,5 +1,7 @@
-﻿using Split.UI.UserControls;
+﻿using Split.UI.Tools;
+using Split.UI.UserControls;
 using Split.WebClient;
+using System.Windows.Forms;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using static System.Windows.Forms.AxHost;
 
@@ -28,6 +30,8 @@ namespace Split.UI.Forms
             UpdateDebts();
             //Ибо нехуй
             sumTb.ShortcutsEnabled = false;
+
+            updateTimer.Start();
         }
 
         private async void SetPages()
@@ -83,7 +87,7 @@ namespace Split.UI.Forms
             double percentCounter = 0;
             foreach (var control in controls)
             {
-                if (control.Sum == 0) break;
+                //if (control.Sum == 0) break;
                 var debt = (sum / 100) * control.Sum;
                 control.Name = $"{control.UserName} должен: {debt}";
                 percentCounter += control.Sum;
@@ -109,7 +113,6 @@ namespace Split.UI.Forms
             double amountCounter = 0;
             foreach (var control in controls)
             {
-                if (control.Sum == 0) break;
                 control.Name = $"{control.UserName} должен: {control.Sum}";
                 amountCounter += control.Sum;
             }
@@ -125,7 +128,7 @@ namespace Split.UI.Forms
                 return;
             }
             if (checkedListBox1.CheckedItems.Count == 0) return;
-            var sum = decimal.Parse(sumTb.Text);
+            var sum = double.Parse(sumTb.Text);
             var debt = (sum / checkedListBox1.CheckedItems.Count);
 
             equalLbl.Text = $"Каждый должен: {debt}";
@@ -169,6 +172,54 @@ namespace Split.UI.Forms
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             UpdateDebts();
+        }
+
+        private void updateTimer_Tick(object sender, EventArgs e)
+        {
+            foreach (SumControl control in amountTlp.Controls)
+            {
+                if (control.Validated == false)
+                {
+                    UpdateAmountControls();
+                }
+            }
+
+            foreach (SumControl control in percentTlp.Controls)
+            {
+                if (control.Validated == false)
+                {
+                    UpdatePercentControls();
+                }
+            }
+        }
+
+        private async void saveBtn_Click(object sender, EventArgs e)
+        {
+            if (sumTb.Text.Length == 0 || nameTb.Text.Length == 0 || double.Parse(sumTb.Text) <= 0) return;
+
+            saveBtn.Enabled = false;
+            cancelBtn.Enabled = false;
+
+            var rawExpense = await client.AddExpenseAsync(nameTb.Text, Data.Id, groupId, double.Parse(sumTb.Text));
+            var expense = rawExpense.Response;
+
+            if(expense == null)
+            {
+                MessageBox.Show(
+                    $"Ошибка добавления. Обратитьсь в поддержку",
+                    "Ошибка",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+
+                saveBtn.Enabled = false;
+                cancelBtn.Enabled = false;
+
+                return;
+            }
+
+
+
+            this.Close();
         }
     }
 }
