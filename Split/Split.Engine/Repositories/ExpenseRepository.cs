@@ -4,6 +4,7 @@ using Split.DbContexts.Tables;
 using Split.Engine.Exceptions;
 using Split.Engine.Models;
 using Split.Engine.Repositories.Interfaces;
+using System.Diagnostics;
 
 namespace Split.Engine.Repositories
 {
@@ -132,5 +133,16 @@ namespace Split.Engine.Repositories
             context.SaveChanges();
         }
 
+        public List<Debts> GetUserGroupDebts(Guid groupId, int userId)
+        {
+            using var context = contextFactory.CreateDbContext();
+
+            var debts = context.Debts.Where(x => x.Expenses.Groups.Id == groupId && x.UserId == userId).ToList();
+
+            if (debts.Count == 0) throw new DebtNotFoundException();
+
+            return debts;
+
+        }
     }
 }

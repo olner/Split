@@ -138,6 +138,26 @@ namespace Split.Engine.Services
             }
         }
 
+        public List<DebtModel>? GetUserGroupDebts(Guid groupId, int userId)
+        {
+            try
+            {
+                return expenseRepository.GetUserGroupDebts(groupId, userId)
+                    .Select(x => new DebtModel
+                    {
+                        Id = x.Id,
+                        Debt = x.Debt,
+                        ExpenseId = x.ExpenseId,
+                        Paid = x.Paid,
+                        UserId = x.UserId
+                    }).ToList();
+            }
+            catch (DebtNotFoundException)
+            {
+                return null;
+            }
+        }
+
         public DebtModel? AddDebt(Guid expenseId, int userId, double sum, double paid)
         {
             try
