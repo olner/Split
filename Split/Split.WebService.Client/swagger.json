@@ -354,6 +354,46 @@
         }
       }
     },
+    "/UserGroupDebts": {
+      "get": {
+        "tags": [
+          "Expense"
+        ],
+        "operationId": "GetUserGroupDebts",
+        "parameters": [
+          {
+            "name": "groupId",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DebtModelListServiceResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/Groups": {
       "get": {
         "tags": [

@@ -98,5 +98,14 @@ namespace SplitWebService.Controllers
 
         [HttpDelete("/DeleteDebt", Name = "DeleteDebt")]
         public void DeleteDebt(Guid id) => expenseSerivce.DeleteDebt(id);
+
+        [HttpGet("/UserGroupDebts", Name = "GetUserGroupDebts")]
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ServiceResponse<List<DebtModel>>))]
+        public IActionResult GetUserGroupDebts(Guid groupId, int userId)
+        {
+            var result = expenseSerivce.GetUserGroupDebts(groupId, userId);
+            return Ok(new ServiceResponse<List<DebtModel>> { Response = result });
+        }
     }
 }
