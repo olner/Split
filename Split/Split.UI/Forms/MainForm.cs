@@ -63,6 +63,7 @@ namespace Split.UI.Forms
                     Width = expensesTlp.Width,
                     Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top
                 };
+                control.RemoveDeleteBtn();
                 expensesTlp.Controls.Add(control);
                 i++;
             }

@@ -1,13 +1,5 @@
-﻿using Split.WebClient;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using Split.UI.Tools;
+using Split.WebClient;
 
 namespace Split.UI.UserControls
 {
@@ -31,16 +23,31 @@ namespace Split.UI.UserControls
 
         private void ExpenseControl_Load(object sender, EventArgs e)
         {
-            /*dateLbl.AutoSize = true;
-            dateLbl.Text = "Май\n 20";*/
+
         }
 
-        private void SetData()
+        private async void SetData()
         {
             dateLbl.Text = expense.Date.Value.Date.ToShortDateString();
             nameLbl.Text = expense.Name;
             priceLbl.Text = "₽" + expense.Sum.ToString();
-            label1.Text = "Ты ничего не должен";
+
+            var rawDebts = await client.GetUserDebtsAsync(Data.Id);
+            var debts = rawDebts.Response;
+            var debt = debts.Where(x => x.ExpenseId == expense.Id).FirstOrDefault();
+
+            if (debt == null || debts == null)
+            {
+                label1.Text = "Вы ничего не должны";
+                return;
+            }
+
+            label1.Text = $"Вы должны {debt.Debt - debt.Paid}₽";
+        }
+
+        public void RemoveDeleteBtn()
+        {
+            tableLayoutPanel1.Controls.Remove(deleteBtn);
         }
     }
 }

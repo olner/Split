@@ -33,6 +33,7 @@
             priceLbl = new Label();
             label1 = new Label();
             nameLbl = new Label();
+            deleteBtn = new Button();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -40,15 +41,16 @@
             // 
             tableLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tableLayoutPanel1.ColumnCount = 5;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 7.887324F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 34.64789F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 24.1001568F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 57F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 7.889793F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 34.6587334F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 24.1077F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.34377F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
             tableLayoutPanel1.Controls.Add(dateLbl, 0, 0);
             tableLayoutPanel1.Controls.Add(priceLbl, 2, 0);
             tableLayoutPanel1.Controls.Add(label1, 3, 0);
             tableLayoutPanel1.Controls.Add(nameLbl, 1, 0);
+            tableLayoutPanel1.Controls.Add(deleteBtn, 4, 0);
             tableLayoutPanel1.Location = new Point(3, 3);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
@@ -60,7 +62,7 @@
             // 
             dateLbl.Anchor = AnchorStyles.None;
             dateLbl.AutoSize = true;
-            dateLbl.Location = new Point(19, 41);
+            dateLbl.Location = new Point(18, 41);
             dateLbl.Name = "dateLbl";
             dateLbl.Size = new Size(41, 20);
             dateLbl.TabIndex = 0;
@@ -70,7 +72,7 @@
             // 
             priceLbl.Anchor = AnchorStyles.None;
             priceLbl.AutoSize = true;
-            priceLbl.Location = new Point(529, 41);
+            priceLbl.Location = new Point(512, 41);
             priceLbl.Name = "priceLbl";
             priceLbl.Size = new Size(41, 20);
             priceLbl.TabIndex = 1;
@@ -80,7 +82,7 @@
             // 
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
-            label1.Location = new Point(767, 41);
+            label1.Location = new Point(741, 41);
             label1.Name = "label1";
             label1.Size = new Size(144, 20);
             label1.TabIndex = 2;
@@ -90,11 +92,20 @@
             // 
             nameLbl.Anchor = AnchorStyles.Left;
             nameLbl.AutoSize = true;
-            nameLbl.Location = new Point(82, 41);
+            nameLbl.Location = new Point(80, 41);
             nameLbl.Name = "nameLbl";
             nameLbl.Size = new Size(49, 20);
             nameLbl.TabIndex = 3;
             nameLbl.Text = "Name";
+            // 
+            // deleteBtn
+            // 
+            deleteBtn.Location = new Point(979, 3);
+            deleteBtn.Name = "deleteBtn";
+            deleteBtn.Size = new Size(81, 97);
+            deleteBtn.TabIndex = 4;
+            deleteBtn.Text = "Удалить";
+            deleteBtn.UseVisualStyleBackColor = true;
             // 
             // ExpenseControl
             // 
@@ -117,5 +128,6 @@
         private Label priceLbl;
         private Label label1;
         private Label nameLbl;
+        private Button deleteBtn;
     }
 }
