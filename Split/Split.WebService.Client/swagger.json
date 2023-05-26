@@ -249,7 +249,7 @@
         "operationId": "GetExpenseDebts",
         "parameters": [
           {
-            "name": "groupId",
+            "name": "expenseId",
             "in": "query",
             "style": "form",
             "schema": {

@@ -234,6 +234,7 @@ namespace Split.UI.Forms
             this.Close();
         }
 
+
         private async void AddEqualDebts(Guid expenseId)
         {
             var sum = double.Parse(sumTb.Text);
@@ -251,7 +252,7 @@ namespace Split.UI.Forms
             foreach(string item in checkedListBox1.CheckedItems)
             {
                 var user = users.Where(x => x.Login == item).FirstOrDefault();
-                var debt = await client.AddDebtAsync(groupId, user.Id, sum, 0);
+                var debt = await client.AddDebtAsync(expenseId, user.Id, sum, 0);
             }
         }
 
@@ -272,7 +273,7 @@ namespace Split.UI.Forms
                 if (control.CheckBox == false) return;
 
                 var user = users.Where(x => x.Login == control.UserName).FirstOrDefault();
-                var debt = await client.AddDebtAsync(groupId, user.Id, control.Sum, 0);
+                var debt = await client.AddDebtAsync(expenseId, user.Id, control.Sum, 0);
             }
         }
 
@@ -293,7 +294,7 @@ namespace Split.UI.Forms
                 if (control.CheckBox == false) return;
 
                 var user = users.Where(x => x.Login == control.UserName).FirstOrDefault();
-                var debt = await client.AddDebtAsync(groupId, user.Id, control.Price, 0);
+                var debt = await client.AddDebtAsync(expenseId, user.Id, control.Price, 0);
             }
         }
     }

@@ -34,6 +34,8 @@ namespace Split.UI.UserControls
 
             var rawDebts = await client.GetUserDebtsAsync(Data.Id);
             var debts = rawDebts.Response;
+            if (debts == null) return;
+
             var debt = debts.Where(x => x.ExpenseId == expense.Id).FirstOrDefault();
 
             if (debt == null || debts == null)
