@@ -43,15 +43,15 @@ namespace Split.UI.Forms
         {
             var rawDebts = await client.GetUserGroupDebtsAsync(groupId, Data.Id);
             var debts = rawDebts.Response;
- 
-            if(debts == null)
+
+            if (debts == null)
             {
                 label1.Text = $"Вы ничего не должны";
                 return;
             }
 
             double total = 0;
-            foreach ( var debt in debts )
+            foreach (var debt in debts)
             {
                 total += (double)debt.Debt - (double)debt.Paid;
             }
@@ -92,7 +92,7 @@ namespace Split.UI.Forms
 
         private async void SetMembers()
         {
-            var addMember = new FriendControl(client,groupId)
+            var addMember = new FriendControl(client, groupId)
             {
                 Width = expenseTlp.Width,
                 Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top
@@ -177,8 +177,21 @@ namespace Split.UI.Forms
 
             if (expenses.Count != Expenses)
             {
-                expenseTlp.Controls.Clear();
+                //expenseTlp.Controls.Clear();
+                ClearExpense();
                 SetExpenses();
+                SetDebt();
+            }
+        }
+        private void ClearExpense()
+        {
+            var additions = new ControlsAdditions();
+
+            var controls = additions.GetAll(expenseTlp, typeof(ExpenseControl));
+
+            foreach(ExpenseControl control in controls)
+            {
+                expenseTlp.Controls.Remove(control);
             }
         }
         private async void CheckMembers()
@@ -213,7 +226,7 @@ namespace Split.UI.Forms
 
         private void addExpenseBtn_Click(object sender, EventArgs e)
         {
-            new AddExpenseForm(client,groupId).ShowDialog(this);
+            new AddExpenseForm(client, groupId).ShowDialog(this);
         }
     }
 }
