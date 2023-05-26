@@ -53,6 +53,7 @@ namespace Split.UI.Forms
         {
             var result = await client.GetUserExpensesAsync(id);
             var expenses = result.Response;
+            if (expenses == null) return;
 
             var i = 0;
             foreach (var item in expenses)

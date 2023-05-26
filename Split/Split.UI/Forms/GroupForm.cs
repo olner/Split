@@ -43,10 +43,11 @@ namespace Split.UI.Forms
         {
             var rawDebts = await client.GetUserGroupDebtsAsync(groupId, Data.Id);
             var debts = rawDebts.Response;
-
-            if(debts.Count == 0)
+ 
+            if(debts == null)
             {
                 label1.Text = $"Вы ничего не должны";
+                return;
             }
 
             double total = 0;
@@ -91,7 +92,7 @@ namespace Split.UI.Forms
 
         private async void SetMembers()
         {
-            var addMember = new FriendControl(client)
+            var addMember = new FriendControl(client,groupId)
             {
                 Width = expenseTlp.Width,
                 Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top

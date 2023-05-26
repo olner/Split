@@ -49,5 +49,20 @@ namespace Split.UI.UserControls
         {
             tableLayoutPanel1.Controls.Remove(deleteBtn);
         }
+
+        private async void deleteBtn_Click(object sender, EventArgs e)
+        {
+            var rawDebts = await client.GetExpenseDebtsAsync(expense.Id);
+            var debts = rawDebts.Response;
+
+            foreach(var debt in debts)
+            {
+                await client.DeleteDebtAsync(debt.Id);
+            }
+
+            await client.DeleteExpenseAsync(expense.Id);
+
+            this.Dispose();
+        }
     }
 }

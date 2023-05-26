@@ -9,9 +9,17 @@ namespace Split.UI.UserControls
         private readonly SplitServiceApi client;
         private readonly Friend friend;
         private readonly GroupMember member;
+        private readonly Guid groupId;
 
         private string Name { get; set; }
 
+        public FriendControl(SplitServiceApi client, Guid groupId)
+        {
+            InitializeComponent();
+            controlsAdditions = new ControlsAdditions();
+            this.client = client;
+            this.groupId = groupId;
+        }
         public FriendControl(SplitServiceApi client)
         {
             InitializeComponent();
@@ -89,6 +97,7 @@ namespace Split.UI.UserControls
             };
             button.FlatStyle = FlatStyle.Flat;
             button.FlatAppearance.BorderSize = 0;
+            button.Click += addMemberBtn_Click;
 
             tableLayoutPanel1.Controls.Remove(deleteBtn);
             tableLayoutPanel1.Controls.Remove(pictureBox1);
@@ -202,7 +211,7 @@ namespace Split.UI.UserControls
             }
             else
             {
-                //DeleteMember();
+                DeleteMember();
                 this.Dispose();
             }
         }
@@ -215,6 +224,15 @@ namespace Split.UI.UserControls
                 AddFriend(control.Text);
             }
         }
+        private void addMemberBtn_Click(object sender, EventArgs e)
+        {
+            var controls = controlsAdditions.GetAll(this, typeof(TextBox));
+            foreach (var control in controls)
+            {
+                AddMember(control.Text);
+            }
+        }
+
 
 
         public async void AddFriend(string name)
@@ -228,6 +246,25 @@ namespace Split.UI.UserControls
 
             await client.AddFriendAsync(Data.Id, friend.Id, true);
         }
+
+        public async void AddMember(string name)
+        {
+            if (name.Length == 0) return;
+
+            var result = await client.GetUserByLoginAsync(name);
+            var user = result.Response;
+
+            if (user == null) return;
+
+            var rawMember = await client.GetGroupMembersAsync(groupId);
+            var members = rawMember.Response;
+            if(members == null) return;
+
+            if (members.Where(x => x.UserId == user.Id).FirstOrDefault() != null) return;
+
+            await client.AddUserToGroupAsync(groupId, user.Id);
+        }
+
         public async void DeleteFriend()
         {
             await client.DeleteFriendAsync(friend.Id);
@@ -236,6 +273,7 @@ namespace Split.UI.UserControls
         {
             var result = await client.GetGroupAsync(member.GroupId);
             var group = result.Response;
+            if (group == null) return;
             if (group.Admin == member.Id) return;
 
             await client.DeleteGroupMemberAsync(member.GroupId, member.UserId);

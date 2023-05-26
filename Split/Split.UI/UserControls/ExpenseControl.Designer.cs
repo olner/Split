@@ -106,6 +106,7 @@
             deleteBtn.TabIndex = 4;
             deleteBtn.Text = "Удалить";
             deleteBtn.UseVisualStyleBackColor = true;
+            deleteBtn.Click += deleteBtn_Click;
             // 
             // ExpenseControl
             // 
