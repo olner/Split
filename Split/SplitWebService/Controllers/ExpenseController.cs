@@ -81,9 +81,9 @@ namespace SplitWebService.Controllers
         [HttpGet("/ExpenseDebts", Name = "GetExpenseDebts")]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ServiceResponse<List<DebtModel>>))]
-        public IActionResult GetExpenseDebts(Guid groupId)
+        public IActionResult GetExpenseDebts(Guid expenseId)
         {
-            var result = expenseSerivce.GetExpenseDebts(groupId);
+            var result = expenseSerivce.GetExpenseDebts(expenseId);
             return Ok(new ServiceResponse<List<DebtModel>> { Response = result });
         }
 

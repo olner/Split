@@ -98,10 +98,10 @@ namespace Split.Engine.Repositories
             return debts;
         }
 
-        public List<Debts> GetExpenseDebts(Guid groupId)
+        public List<Debts> GetExpenseDebts(Guid expenseId)
         {
             using var context = contextFactory.CreateDbContext();
-            var debts = context.Debts.Where(x => x.ExpenseId == groupId).ToList();
+            var debts = context.Debts.Where(x => x.ExpenseId == expenseId).ToList();
             if (debts.Count == 0) throw new DebtNotFoundException();
 
             return debts;

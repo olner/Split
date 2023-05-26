@@ -12,7 +12,7 @@ namespace Split.Engine.Repositories.Interfaces
         void DeleteExpense(Guid id);
         DebtModel GetDebt(Guid id);
         List<Debts> GetUserDebts(int userId);
-        List<Debts> GetExpenseDebts(Guid groupId);
+        List<Debts> GetExpenseDebts(Guid expenseId);
         DebtModel AddDebt(Guid expenseId, int userId, double sum, double paid);
         void DeleteDebt(Guid id);
         List<Debts> GetUserGroupDebts(Guid groupId, int userId);

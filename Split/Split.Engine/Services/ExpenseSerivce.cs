@@ -118,11 +118,11 @@ namespace Split.Engine.Services
             }
         }
 
-        public List<DebtModel>? GetExpenseDebts(Guid groupId)
+        public List<DebtModel>? GetExpenseDebts(Guid expenseId)
         {
             try
             {
-                return expenseRepository.GetExpenseDebts(groupId)
+                return expenseRepository.GetExpenseDebts(expenseId)
                     .Select(x => new DebtModel
                     {
                         Id = x.Id,
