@@ -68,11 +68,11 @@ namespace Split.Engine.Services
             }
         }
 
-        public Expense? AddExpense(string name, int userId, Guid groupId, double sum)
+        public Expense? AddExpense(string name, int userId, Guid groupId, double sum, DateTime date)
         {
             try
             {
-                return expenseRepository.AddExpense(name, userId, groupId, sum);
+                return expenseRepository.AddExpense(name, userId, groupId, sum, date);
             }
             catch (ExpenseNotFoundException)
             {

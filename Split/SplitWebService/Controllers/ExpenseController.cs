@@ -51,9 +51,9 @@ namespace SplitWebService.Controllers
         [HttpPost("/AddExpense", Name = "AddExpense")]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ServiceResponse<Expense>))]
-        public IActionResult AddExpense(string name, int userId, Guid groupId, double sum)
+        public IActionResult AddExpense(string name, int userId, Guid groupId, double sum, DateTime date)
         {
-            var result = expenseSerivce.AddExpense(name, userId, groupId, sum);
+            var result = expenseSerivce.AddExpense(name, userId, groupId, sum, date);
             return Ok(new ServiceResponse<Expense> { Response = result });
         }
 

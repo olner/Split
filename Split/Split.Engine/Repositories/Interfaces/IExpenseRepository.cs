@@ -8,7 +8,7 @@ namespace Split.Engine.Repositories.Interfaces
         Expense GetExpense(Guid expenseId);
         List<Expenses> GetGroupExpenses(Guid groupId);
         List<Expenses> GetUserExpenses(int userId);
-        Expense AddExpense(string name, int userId, Guid groupId, double sum);
+        Expense AddExpense(string name, int userId, Guid groupId, double sum, DateTime date);
         void DeleteExpense(Guid id);
         DebtModel GetDebt(Guid id);
         List<Debts> GetUserDebts(int userId);

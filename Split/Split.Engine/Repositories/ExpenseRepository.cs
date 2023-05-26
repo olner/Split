@@ -28,7 +28,7 @@ namespace Split.Engine.Repositories
                 GroupId = expense.GroupId,
                 Name = expense.Name,
                 Date = expense.Date,
-                Sum = expense.Sum
+                Sum = expense.Sum,
             };
             return exp;
         }
@@ -49,7 +49,7 @@ namespace Split.Engine.Repositories
             return expenses;
         }
 
-        public Expense AddExpense(string name,int userId, Guid groupId, double sum)
+        public Expense AddExpense(string name,int userId, Guid groupId, double sum, DateTime date)
         {
             using var context = contextFactory.CreateDbContext();
             var expense = new Expenses
@@ -58,7 +58,8 @@ namespace Split.Engine.Repositories
                 Name = name,
                 UserId = userId,
                 GroupId = groupId,
-                Sum = sum
+                Sum = sum,
+                Date = date
             };
             context.Expenses.Add(expense);
             context.SaveChanges();
@@ -84,7 +85,7 @@ namespace Split.Engine.Repositories
                 ExpenseId = debts.ExpenseId,
                 UserId = debts.UserId,
                 Debt = debts.Debt,
-                Paid = debts.Paid
+                Paid = debts.Paid,
             };
             return debt;
         }

@@ -43,8 +43,11 @@ namespace Split.UI.UserControls
                 label1.Text = "Вы ничего не должны";
                 return;
             }
+            var rawUser = await client.GetUserByIdAsync((int)expense.UserId);
+            var user = rawUser.Response;
+            if (user == null) return;   
 
-            label1.Text = $"Вы должны {debt.Debt - debt.Paid}₽";
+            label1.Text = $"Вы должны {user.Login} {debt.Debt - debt.Paid}₽";
         }
 
         public void RemoveDeleteBtn()

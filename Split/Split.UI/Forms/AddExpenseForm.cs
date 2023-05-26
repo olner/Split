@@ -201,7 +201,7 @@ namespace Split.UI.Forms
             saveBtn.Enabled = false;
             cancelBtn.Enabled = false;
 
-            var rawExpense = await client.AddExpenseAsync(nameTb.Text, Data.Id, groupId, double.Parse(sumTb.Text));
+            var rawExpense = await client.AddExpenseAsync(nameTb.Text, Data.Id, groupId, double.Parse(sumTb.Text), dateTimePicker1.Value);
             var expense = rawExpense.Response;
 
             if(expense == null)
