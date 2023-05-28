@@ -191,7 +191,7 @@ namespace Split.Engine.Services
         {
             try
             {
-                return expenseRepository.GetUserGroupCustomDebts(groupId, userId, userId);
+                return expenseRepository.GetUserGroupCustomDebts(groupId, debtUserId, userId);
             }
             catch (DebtNotFoundException)
             {

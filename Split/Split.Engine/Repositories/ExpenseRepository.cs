@@ -151,7 +151,7 @@ namespace Split.Engine.Repositories
             using var context = contextFactory.CreateDbContext();
 
             var debts = context.Debts
-                .Where(x => x.UserId == userId && x.Expenses.UserId == debtUserId)
+                .Where(x => x.UserId == userId & x.Expenses.UserId == debtUserId)
                 .Select(x => new CustomDebt
                 {
                     Id = x.Id,
@@ -186,5 +186,7 @@ namespace Split.Engine.Repositories
             return debts;
 
         }
+       
+
     }
 }

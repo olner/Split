@@ -1,10 +1,12 @@
-﻿using Split.WebClient;
+﻿using Split.UI.Tools;
+using Split.WebClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -41,10 +43,18 @@ namespace Split.UI.UserControls
             var result = await client.GetUserByIdAsync((int)member.UserId);
             var user = result.Response;
             UserName = user.Login;
-            nameLbl.Text = UserName;
+            nameLbl.Text = $"Вы должны {UserName}: {Debt}";
 
-            debtLbl.Text = $"Вы должны {Debt}";
-            tableLayoutPanel1.Controls.Add(debtLbl);
+            var rawDebts = await client.GetUserGroupCustomDebtsAsync(member.GroupId, member.UserId, Data.Id);
+            var debts = rawDebts.Response;
+
+            foreach (var debt in debts)
+            {
+                var rawExpense = await client.GetExpenseAsync(debt.ExpenseId);
+                var expense = rawExpense.Response;
+                listBox1.Items.Add($"{expense.Name}: {debt.Debt - debt.Paid} рублей");
+            }
         }
+
     }
 }

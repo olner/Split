@@ -18,5 +18,6 @@ namespace Split.Engine.Repositories.Interfaces
         List<Debts> GetUserGroupDebts(Guid groupId, int userId);
         List<CustomDebt> GetUserCustomDebts(int userId, int debtUserId);
         List<CustomDebt> GetUserGroupCustomDebts(Guid groupId, int debtUserId, int userId);
+
     }
 }

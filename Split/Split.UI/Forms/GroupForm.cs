@@ -1,6 +1,7 @@
 ﻿using Split.UI.Tools;
 using Split.UI.UserControls;
 using Split.WebClient;
+using System.Xml.Serialization;
 
 namespace Split.UI.Forms
 {
@@ -132,37 +133,31 @@ namespace Split.UI.Forms
             if (members == null) return;
 
             var i = 0;
-            var dict = new Dictionary<int, double>();
             foreach (var member in members)
             {
-                if (member.Id != Data.Id)
+                if (member.UserId != Data.Id)
                 {
 
                     double sum = 0;
-                    var rawDebts = await client.GetUserGroupCustomDebtsAsync(groupId, member.Id, Data.Id);
+                    var rawDebts = await client.GetUserGroupCustomDebtsAsync(groupId, member.UserId, Data.Id);
                     var debts = rawDebts.Response;
-                    if (debts.Count == 0) break;
-
-                    foreach (var debt in debts)
+                    if (debts != null)
                     {
-                        sum += (double)debt.Debt - (double)debt.Paid;
-                        /*if (dict.ContainsKey((int)debt.DebtUserId))
+                        //if (debts.Count == 0) break;
+
+                        foreach (var debt in debts)
                         {
-                            dict[(int)debt.DebtUserId] += (double)debt.Debt;
+                            sum += (double)debt.Debt - (double)debt.Paid;
                         }
-                        else
-                        {
-                            dict.Add((int)debt.DebtUserId, (double)debt.Debt);
-                        }*/
-                    }
 
-                    var control = new DebtControl(client, member, sum)
-                    {
-                        Name = $"debtControl{i}",
-                        Width = debtTlp.Width,
-                        Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top
-                    };
-                    debtTlp.Controls.Add(control);
+                        var control = new DebtControl(client, member, sum)
+                        {
+                            Name = $"debtControl{i}",
+                            Width = debtTlp.Width,
+                            Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top
+                        };
+                        debtTlp.Controls.Add(control);
+                    }
                 }
             }
         }
@@ -228,19 +223,23 @@ namespace Split.UI.Forms
                 ClearExpense();
                 SetExpenses();
                 SetDebt();
+
+                debtTlp.Controls.Clear();
+                SetDebts();
             }
         }
         private void ClearExpense()
         {
             var additions = new ControlsAdditions();
 
-            var controls = additions.GetAll(expenseTlp, typeof(ExpenseControl));
+            var controls = additions.GetAll(expenseTlp, typeof(ExpenseControl)).ToList();
 
-            foreach (ExpenseControl control in controls)
+            for (int i = 0; i < controls.Count; i++)
             {
-                expenseTlp.Controls.Remove(control);
+                expenseTlp.Controls.Remove(controls[i]);
             }
         }
+
         private async void CheckMembers()
         {
             var rawMembers = await client.GetGroupMembersAsync(groupId);

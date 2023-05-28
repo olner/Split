@@ -260,7 +260,7 @@ namespace Split.UI.Forms
 
         private async void AddEqualDebts(Guid expenseId)
         {
-            var sum = double.Parse(sumTb.Text);
+            var sum = double.Parse(sumTb.Text) / checkedListBox1.CheckedItems.Count;
 
             var rawMembers = await client.GetGroupMembersAsync(groupId);
             var members = rawMembers.Response.ToList();
