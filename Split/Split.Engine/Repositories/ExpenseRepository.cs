@@ -145,5 +145,46 @@ namespace Split.Engine.Repositories
             return debts;
 
         }
+
+        public List<CustomDebt> GetUserCustomDebts(int userId, int debtUserId)
+        {
+            using var context = contextFactory.CreateDbContext();
+
+            var debts = context.Debts
+                .Where(x => x.UserId == userId && x.Expenses.UserId == debtUserId)
+                .Select(x => new CustomDebt
+                {
+                    Id = x.Id,
+                    ExpenseId = x.ExpenseId,
+                    UserId = x.UserId,
+                    DebtUserId = x.Expenses.UserId,
+                    Debt = x.Debt,
+                    Paid = x.Paid
+                }).ToList();
+            if (debts.Count == 0) throw new DebtNotFoundException();
+
+            return debts;
+        }
+
+        public List<CustomDebt> GetUserGroupCustomDebts(Guid groupId, int debtUserId, int userId)
+        {
+            using var context = contextFactory.CreateDbContext();
+
+            var debts = context.Debts
+                .Where(x => x.UserId == userId && x.Expenses.UserId == debtUserId && x.Expenses.GroupId == groupId)
+                .Select(x => new CustomDebt
+                {
+                    Id = x.Id,
+                    ExpenseId = x.ExpenseId,
+                    UserId = x.UserId,
+                    DebtUserId = x.Expenses.UserId,
+                    Debt = x.Debt,
+                    Paid = x.Paid
+                }).ToList();
+            if (debts.Count == 0) throw new DebtNotFoundException();
+
+            return debts;
+
+        }
     }
 }

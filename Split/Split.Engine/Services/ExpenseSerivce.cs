@@ -174,5 +174,29 @@ namespace Split.Engine.Services
         {
             expenseRepository.DeleteDebt(id);
         }
+
+        public List<CustomDebt> GetUserCustomDebts(int userId, int debtUserId)
+        {
+            try
+            {
+                return expenseRepository.GetUserCustomDebts(userId, debtUserId);
+            }
+            catch (DebtNotFoundException)
+            {
+                return null;
+            }
+        }
+
+        public List<CustomDebt> GetUserGroupCustomDebts(Guid groupId, int debtUserId, int userId)
+        {
+            try
+            {
+                return expenseRepository.GetUserGroupCustomDebts(groupId, userId, userId);
+            }
+            catch (DebtNotFoundException)
+            {
+                return null;
+            }
+        }
     }
 }

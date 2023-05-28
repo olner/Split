@@ -28,10 +28,30 @@ namespace Split.UI.Forms
         {
             SetPages();
             UpdateDebts();
-            //Ибо нехуй
+            SetListBox();
+
             sumTb.ShortcutsEnabled = false;
 
             updateTimer.Start();
+        }
+        private async void SetListBox()
+        {
+            var rawMembers = await client.GetGroupMembersAsync(groupId);
+            var mebers = rawMembers.Response;
+
+            foreach (var member in mebers)
+            { 
+                var rawUser = await client.GetUserByIdAsync((int)member.UserId);
+                var user = rawUser.Response;
+
+                comboBox1.Items.Add(user.Login);
+
+                if (member.UserId == Data.Id)
+                {
+                    comboBox1.SelectedItem = user.Login;
+                }
+            }
+            
         }
 
         private async void SetPages()
@@ -201,10 +221,13 @@ namespace Split.UI.Forms
             saveBtn.Enabled = false;
             cancelBtn.Enabled = false;
 
-            var rawExpense = await client.AddExpenseAsync(nameTb.Text, Data.Id, groupId, double.Parse(sumTb.Text), dateTimePicker1.Value);
+            var rawPaid = await client.GetUserByLoginAsync(comboBox1.Text);
+            var paid = rawPaid.Response;
+
+            var rawExpense = await client.AddExpenseAsync(nameTb.Text, paid.Id, groupId, double.Parse(sumTb.Text), dateTimePicker1.Value);
             var expense = rawExpense.Response;
 
-            if(expense == null)
+            if (expense == null)
             {
                 MessageBox.Show(
                     $"Ошибка добавления. Обратитьсь в поддержку",
@@ -243,13 +266,13 @@ namespace Split.UI.Forms
             var members = rawMembers.Response.ToList();
 
             var users = new List<User>();
-            foreach(var member in members)
+            foreach (var member in members)
             {
                 var rawUser = await client.GetUserByIdAsync((int)member.UserId);
                 users.Add(rawUser.Response);
             }
 
-            foreach(string item in checkedListBox1.CheckedItems)
+            foreach (string item in checkedListBox1.CheckedItems)
             {
                 var user = users.Where(x => x.Login == item).FirstOrDefault();
                 var debt = await client.AddDebtAsync(expenseId, user.Id, sum, 0);
@@ -268,7 +291,7 @@ namespace Split.UI.Forms
                 users.Add(rawUser.Response);
             }
 
-            foreach(SumControl control in amountTlp.Controls)
+            foreach (SumControl control in amountTlp.Controls)
             {
                 if (control.CheckBox == false) return;
 

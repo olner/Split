@@ -107,5 +107,23 @@ namespace SplitWebService.Controllers
             var result = expenseSerivce.GetUserGroupDebts(groupId, userId);
             return Ok(new ServiceResponse<List<DebtModel>> { Response = result });
         }
+
+        [HttpGet("/UserCustomDebts", Name = "GetUserCustomDebts")]
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ServiceResponse<List<CustomDebt>>))]
+        public IActionResult GetUserCustomDebts(int userId, int debtUserId)
+        {
+            var result = expenseSerivce.GetUserCustomDebts(userId, debtUserId);
+            return Ok(new ServiceResponse<List<CustomDebt>> { Response = result });
+        }
+
+        [HttpGet("/UserGroupCustomDebts", Name = "GetUserGroupCustomDebts")]
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ServiceResponse<List<CustomDebt>>))]
+        public IActionResult GetUserGroupCustomDebts(Guid groupId, int debtUserId, int userId)
+        {
+            var result = expenseSerivce.GetUserGroupCustomDebts(groupId, debtUserId, userId);
+            return Ok(new ServiceResponse<List<CustomDebt>> { Response = result });
+        }
     }
 }

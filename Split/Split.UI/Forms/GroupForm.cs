@@ -13,6 +13,8 @@ namespace Split.UI.Forms
         private int Expenses { get; set; }
         private int Members { get; set; }
 
+        private int Debts { get; set; }
+
         public GroupForm(SplitServiceApi client, Guid groupId)
         {
             InitializeComponent();
@@ -33,11 +35,14 @@ namespace Split.UI.Forms
 
         public void SetData()
         {
+            tableLayoutPanel1.Controls.Add(groupNameLbl);
+            tableLayoutPanel1.Controls.Add(label1);
+            tableLayoutPanel1.Controls.Add(addExpenseBtn);
             SetDebt();
             SetGroup();
             SetExpenses();
             SetMembers();
-
+            SetDebts();
         }
         private async void SetDebt()
         {
@@ -120,6 +125,48 @@ namespace Split.UI.Forms
             Members = i;
         }
 
+        private async void SetDebts()
+        {
+            var rawMembers = await client.GetGroupMembersAsync(groupId);
+            var members = rawMembers.Response;
+            if (members == null) return;
+
+            var i = 0;
+            var dict = new Dictionary<int, double>();
+            foreach (var member in members)
+            {
+                if (member.Id != Data.Id)
+                {
+
+                    double sum = 0;
+                    var rawDebts = await client.GetUserGroupCustomDebtsAsync(groupId, member.Id, Data.Id);
+                    var debts = rawDebts.Response;
+                    if (debts.Count == 0) break;
+
+                    foreach (var debt in debts)
+                    {
+                        sum += (double)debt.Debt - (double)debt.Paid;
+                        /*if (dict.ContainsKey((int)debt.DebtUserId))
+                        {
+                            dict[(int)debt.DebtUserId] += (double)debt.Debt;
+                        }
+                        else
+                        {
+                            dict.Add((int)debt.DebtUserId, (double)debt.Debt);
+                        }*/
+                    }
+
+                    var control = new DebtControl(client, member, sum)
+                    {
+                        Name = $"debtControl{i}",
+                        Width = debtTlp.Width,
+                        Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top
+                    };
+                    debtTlp.Controls.Add(control);
+                }
+            }
+        }
+
         private void tabControl1_DrawItem(object sender, DrawItemEventArgs e)
         {
             Graphics g;
@@ -189,7 +236,7 @@ namespace Split.UI.Forms
 
             var controls = additions.GetAll(expenseTlp, typeof(ExpenseControl));
 
-            foreach(ExpenseControl control in controls)
+            foreach (ExpenseControl control in controls)
             {
                 expenseTlp.Controls.Remove(control);
             }

@@ -30,6 +30,8 @@
         {
             components = new System.ComponentModel.Container();
             groupBox1 = new GroupBox();
+            comboBox1 = new ComboBox();
+            label1 = new Label();
             sumTb = new TextBox();
             tabControl1 = new TabControl();
             equalTp = new TabPage();
@@ -58,6 +60,8 @@
             // groupBox1
             // 
             groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            groupBox1.Controls.Add(comboBox1);
+            groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(sumTb);
             groupBox1.Controls.Add(tabControl1);
             groupBox1.Controls.Add(cancelBtn);
@@ -68,14 +72,32 @@
             groupBox1.Controls.Add(nameTb);
             groupBox1.Location = new Point(12, 12);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(379, 567);
+            groupBox1.Size = new Size(379, 593);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Добавить";
             // 
+            // comboBox1
+            // 
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(29, 192);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(337, 28);
+            comboBox1.TabIndex = 11;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(29, 169);
+            label1.Name = "label1";
+            label1.Size = new Size(76, 20);
+            label1.TabIndex = 10;
+            label1.Text = "Заплатил:";
+            // 
             // sumTb
             // 
-            sumTb.Location = new Point(29, 139);
+            sumTb.Location = new Point(29, 126);
             sumTb.Name = "sumTb";
             sumTb.Size = new Size(340, 27);
             sumTb.TabIndex = 8;
@@ -88,7 +110,7 @@
             tabControl1.Controls.Add(equalTp);
             tabControl1.Controls.Add(tabPage2);
             tabControl1.Controls.Add(tabPage3);
-            tabControl1.Location = new Point(29, 242);
+            tabControl1.Location = new Point(29, 277);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Size(344, 253);
@@ -191,7 +213,7 @@
             // 
             // cancelBtn
             // 
-            cancelBtn.Location = new Point(144, 501);
+            cancelBtn.Location = new Point(144, 536);
             cancelBtn.Name = "cancelBtn";
             cancelBtn.Size = new Size(123, 51);
             cancelBtn.TabIndex = 6;
@@ -201,7 +223,7 @@
             // 
             // saveBtn
             // 
-            saveBtn.Location = new Point(273, 501);
+            saveBtn.Location = new Point(273, 536);
             saveBtn.Name = "saveBtn";
             saveBtn.Size = new Size(96, 51);
             saveBtn.TabIndex = 5;
@@ -211,7 +233,7 @@
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(29, 197);
+            dateTimePicker1.Location = new Point(29, 232);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(340, 27);
             dateTimePicker1.TabIndex = 4;
@@ -219,7 +241,7 @@
             // sumLbl
             // 
             sumLbl.AutoSize = true;
-            sumLbl.Location = new Point(29, 116);
+            sumLbl.Location = new Point(29, 103);
             sumLbl.Name = "sumLbl";
             sumLbl.Size = new Size(55, 20);
             sumLbl.TabIndex = 2;
@@ -249,7 +271,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(407, 591);
+            ClientSize = new Size(407, 617);
             Controls.Add(groupBox1);
             Name = "AddExpenseForm";
             Text = "Добавить трату";
@@ -287,5 +309,7 @@
         private Label amountLbl;
         private Label percentLbl;
         private System.Windows.Forms.Timer updateTimer;
+        private Label label1;
+        private ComboBox comboBox1;
     }
 }

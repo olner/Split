@@ -33,12 +33,11 @@
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             expenseTlp = new TableLayoutPanel();
-            headerTlp = new TableLayoutPanel();
-            groupNameLbl = new Label();
-            addExpenseBtn = new Button();
-            label1 = new Label();
+            tableLayoutPanel1 = new TableLayoutPanel();
             tabPage2 = new TabPage();
             membersTlp = new TableLayoutPanel();
+            tabPage4 = new TabPage();
+            debtTlp = new TableLayoutPanel();
             tabPage3 = new TabPage();
             label3 = new Label();
             groupBox1 = new GroupBox();
@@ -50,11 +49,15 @@
             nameTb = new TextBox();
             label2 = new Label();
             updateTimer = new System.Windows.Forms.Timer(components);
+            headerTlp = new TableLayoutPanel();
+            label1 = new Label();
+            addExpenseBtn = new Button();
+            groupNameLbl = new Label();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             expenseTlp.SuspendLayout();
-            headerTlp.SuspendLayout();
             tabPage2.SuspendLayout();
+            tabPage4.SuspendLayout();
             tabPage3.SuspendLayout();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -74,6 +77,7 @@
             tabControl1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
+            tabControl1.Controls.Add(tabPage4);
             tabControl1.Controls.Add(tabPage3);
             tabControl1.DrawMode = TabDrawMode.OwnerDrawFixed;
             tabControl1.ItemSize = new Size(30, 120);
@@ -103,7 +107,7 @@
             expenseTlp.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             expenseTlp.ColumnCount = 1;
             expenseTlp.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            expenseTlp.Controls.Add(headerTlp, 0, 0);
+            expenseTlp.Controls.Add(tableLayoutPanel1, 0, 0);
             expenseTlp.Location = new Point(6, 6);
             expenseTlp.Name = "expenseTlp";
             expenseTlp.RowCount = 2;
@@ -112,53 +116,19 @@
             expenseTlp.Size = new Size(941, 485);
             expenseTlp.TabIndex = 0;
             // 
-            // headerTlp
+            // tableLayoutPanel1
             // 
-            headerTlp.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            headerTlp.ColumnCount = 3;
-            headerTlp.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
-            headerTlp.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 37.9679146F));
-            headerTlp.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 28.7700539F));
-            headerTlp.Controls.Add(groupNameLbl, 0, 0);
-            headerTlp.Controls.Add(addExpenseBtn, 2, 0);
-            headerTlp.Controls.Add(label1, 1, 0);
-            headerTlp.Location = new Point(3, 3);
-            headerTlp.Name = "headerTlp";
-            headerTlp.RowCount = 1;
-            headerTlp.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            headerTlp.Size = new Size(935, 65);
-            headerTlp.TabIndex = 0;
-            // 
-            // groupNameLbl
-            // 
-            groupNameLbl.Anchor = AnchorStyles.None;
-            groupNameLbl.AutoSize = true;
-            groupNameLbl.Location = new Point(108, 22);
-            groupNameLbl.Name = "groupNameLbl";
-            groupNameLbl.Size = new Size(94, 20);
-            groupNameLbl.TabIndex = 0;
-            groupNameLbl.Text = "Group Name";
-            // 
-            // addExpenseBtn
-            // 
-            addExpenseBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            addExpenseBtn.Location = new Point(668, 3);
-            addExpenseBtn.Name = "addExpenseBtn";
-            addExpenseBtn.Size = new Size(264, 59);
-            addExpenseBtn.TabIndex = 1;
-            addExpenseBtn.Text = "Добавить расход";
-            addExpenseBtn.UseVisualStyleBackColor = true;
-            addExpenseBtn.Click += addExpenseBtn_Click;
-            // 
-            // label1
-            // 
-            label1.Anchor = AnchorStyles.None;
-            label1.AutoSize = true;
-            label1.Location = new Point(371, 22);
-            label1.Name = "label1";
-            label1.Size = new Size(233, 20);
-            label1.TabIndex = 2;
-            label1.Text = "Ты всего должен: сокато токато ";
+            tableLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanel1.ColumnCount = 3;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15.8490562F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 84.15094F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 115F));
+            tableLayoutPanel1.Location = new Point(3, 3);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Size = new Size(935, 65);
+            tableLayoutPanel1.TabIndex = 0;
             // 
             // tabPage2
             // 
@@ -183,6 +153,30 @@
             membersTlp.RowStyles.Add(new RowStyle());
             membersTlp.Size = new Size(941, 485);
             membersTlp.TabIndex = 0;
+            // 
+            // tabPage4
+            // 
+            tabPage4.Controls.Add(debtTlp);
+            tabPage4.Location = new Point(124, 4);
+            tabPage4.Name = "tabPage4";
+            tabPage4.Padding = new Padding(3);
+            tabPage4.Size = new Size(953, 497);
+            tabPage4.TabIndex = 3;
+            tabPage4.Text = "Долги";
+            tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // debtTlp
+            // 
+            debtTlp.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            debtTlp.ColumnCount = 1;
+            debtTlp.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            debtTlp.Location = new Point(3, 3);
+            debtTlp.Name = "debtTlp";
+            debtTlp.RowCount = 2;
+            debtTlp.RowStyles.Add(new RowStyle());
+            debtTlp.RowStyles.Add(new RowStyle());
+            debtTlp.Size = new Size(944, 488);
+            debtTlp.TabIndex = 0;
             // 
             // tabPage3
             // 
@@ -290,6 +284,49 @@
             updateTimer.Interval = 1000;
             updateTimer.Tick += updateTimer_Tick;
             // 
+            // headerTlp
+            // 
+            headerTlp.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            headerTlp.ColumnCount = 3;
+            headerTlp.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            headerTlp.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 37.9679146F));
+            headerTlp.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 28.7700539F));
+            headerTlp.Location = new Point(3, 3);
+            headerTlp.Name = "headerTlp";
+            headerTlp.RowCount = 1;
+            headerTlp.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            headerTlp.Size = new Size(935, 65);
+            headerTlp.TabIndex = 0;
+            // 
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.None;
+            label1.AutoSize = true;
+            label1.Location = new Point(371, 22);
+            label1.Name = "label1";
+            label1.Size = new Size(233, 20);
+            label1.TabIndex = 2;
+            // 
+            // addExpenseBtn
+            // 
+            addExpenseBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            addExpenseBtn.Location = new Point(668, 3);
+            addExpenseBtn.Name = "addExpenseBtn";
+            addExpenseBtn.Size = new Size(264, 59);
+            addExpenseBtn.TabIndex = 1;
+            addExpenseBtn.Text = "Добавить расход";
+            addExpenseBtn.UseVisualStyleBackColor = true;
+            addExpenseBtn.Click += addExpenseBtn_Click;
+            // 
+            // groupNameLbl
+            // 
+            groupNameLbl.Anchor = AnchorStyles.None;
+            groupNameLbl.AutoSize = true;
+            groupNameLbl.Location = new Point(108, 22);
+            groupNameLbl.Name = "groupNameLbl";
+            groupNameLbl.Size = new Size(94, 20);
+            groupNameLbl.TabIndex = 0;
+            // 
             // GroupForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -303,9 +340,8 @@
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             expenseTlp.ResumeLayout(false);
-            headerTlp.ResumeLayout(false);
-            headerTlp.PerformLayout();
             tabPage2.ResumeLayout(false);
+            tabPage4.ResumeLayout(false);
             tabPage3.ResumeLayout(false);
             tabPage3.PerformLayout();
             groupBox1.ResumeLayout(false);
@@ -318,14 +354,8 @@
 
         private Label accLbl;
         private TabControl tabControl1;
-        private TabPage tabPage1;
         private TabPage tabPage2;
         private TabPage tabPage3;
-        private TableLayoutPanel expenseTlp;
-        private TableLayoutPanel headerTlp;
-        private Label groupNameLbl;
-        private Button addExpenseBtn;
-        private Label label1;
         private TableLayoutPanel membersTlp;
         private Label label3;
         private GroupBox groupBox1;
@@ -337,5 +367,14 @@
         private Button saveBtn;
         private Button deleteBtn;
         private System.Windows.Forms.Timer updateTimer;
+        private TabPage tabPage1;
+        private TableLayoutPanel expenseTlp;
+        private TableLayoutPanel headerTlp;
+        private Label label1;
+        private Button addExpenseBtn;
+        private Label groupNameLbl;
+        private TabPage tabPage4;
+        private TableLayoutPanel debtTlp;
+        private TableLayoutPanel tableLayoutPanel1;
     }
 }

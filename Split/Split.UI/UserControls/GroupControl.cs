@@ -55,7 +55,7 @@ namespace Split.UI.UserControls
             {
                 var rawName = await client.GetUserByIdAsync((int)member.UserId);
                 var name = rawName.Response;
-                membersLb.Items.Add(name.Name);
+                membersLb.Items.Add(name.Login);
             }
         }
 

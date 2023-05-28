@@ -403,6 +403,95 @@
         }
       }
     },
+    "/UserCustomDebts": {
+      "get": {
+        "tags": [
+          "Expense"
+        ],
+        "operationId": "GetUserCustomDebts",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "debtUserId",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomDebtListServiceResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UserGroupCustomDebts": {
+      "get": {
+        "tags": [
+          "Expense"
+        ],
+        "operationId": "GetUserGroupCustomDebts",
+        "parameters": [
+          {
+            "name": "groupId",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "debtUserId",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomDebtListServiceResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/Groups": {
       "get": {
         "tags": [
@@ -1309,6 +1398,49 @@
           },
           "description": {
             "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CustomDebt": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "expenseId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "debtUserId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "debt": {
+            "type": "number",
+            "format": "double"
+          },
+          "paid": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CustomDebtListServiceResponse": {
+        "type": "object",
+        "properties": {
+          "response": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CustomDebt"
+            },
             "nullable": true
           }
         },

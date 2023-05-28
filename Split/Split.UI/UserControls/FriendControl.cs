@@ -13,11 +13,8 @@ namespace Split.UI.UserControls
 
         private string Name { get; set; }
 
-        public FriendControl(SplitServiceApi client, Guid groupId)
+        public FriendControl(SplitServiceApi client, Guid groupId) : this(client)
         {
-            InitializeComponent();
-            controlsAdditions = new ControlsAdditions();
-            this.client = client;
             this.groupId = groupId;
         }
         public FriendControl(SplitServiceApi client)
@@ -26,19 +23,13 @@ namespace Split.UI.UserControls
             controlsAdditions = new ControlsAdditions();
             this.client = client;
         }
-        public FriendControl(SplitServiceApi client, GroupMember member)
+        public FriendControl(SplitServiceApi client, GroupMember member) : this(client)
         {
-            InitializeComponent();
-            controlsAdditions = new ControlsAdditions();
-            this.client = client;
             this.member = member;
             SetMembers();
         }
-        public FriendControl(SplitServiceApi client, Friend friend)
+        public FriendControl(SplitServiceApi client, Friend friend) : this(client)
         {
-            InitializeComponent();
-            controlsAdditions = new ControlsAdditions();
-            this.client = client;
             this.friend = friend;
             SetFriends();
         }
@@ -145,6 +136,7 @@ namespace Split.UI.UserControls
             //TODO: Сделать в сервисе чтоюы запрос в друзья менять
             tableLayoutPanel1.Controls.Add(button, 2, 0);
         }
+
         public async void ChangeBtn_Click(object sender, EventArgs e)
         {
             try
@@ -156,7 +148,7 @@ namespace Split.UI.UserControls
 
                 this.Dispose();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(
                     $"Ошибка {ex.Message}",
@@ -258,7 +250,7 @@ namespace Split.UI.UserControls
 
             var rawMember = await client.GetGroupMembersAsync(groupId);
             var members = rawMember.Response;
-            if(members == null) return;
+            if (members == null) return;
 
             if (members.Where(x => x.UserId == user.Id).FirstOrDefault() != null) return;
 
