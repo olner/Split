@@ -11,6 +11,7 @@ namespace Split.UI.Forms
         private int FriendRequsets { get; set; }
         private int Groups { get; set; }
         private int Expenses { get; set; }
+        private List<int> GroupsMembers { get; set; }
 
         public MainForm(SplitServiceApi client)
         {
@@ -130,6 +131,8 @@ namespace Split.UI.Forms
 
         private async void SetGroups(int id)
         {
+            GroupsMembers.Clear();
+
             var newControl = new GroupControl(client)
             {
                 Width = groupsTlp.Width,
@@ -145,6 +148,10 @@ namespace Split.UI.Forms
             var i = 0;
             foreach (var item in groups)
             {
+                var rawMembers = await client.GetGroupMembersAsync(item.Id);
+                var mebers = rawMembers.Response;
+                GroupsMembers.Add(mebers.Count);
+
                 var control = new GroupControl(client, item)
                 {
                     Name = $"groupControl{i}",
@@ -220,6 +227,7 @@ namespace Split.UI.Forms
             CheckFriends();
             CheckGroups();
             CheckExpenses();  
+            CheckMembers();
         }
         private async void CheckFriends()
         {
@@ -268,6 +276,27 @@ namespace Split.UI.Forms
             {
                 expensesTlp.Controls.Clear();
                 SetExpense(Data.Id);
+            }
+        }
+
+        private async void CheckMembers()
+        {
+            var rawGroups = await client.GetUserGroupsAsync(Data.Id);
+            var groups = rawGroups.Response;
+            if (groups == null) return;
+
+            int counter = 0;
+            foreach(var group in groups)
+            {
+                var rawMembers = await client.GetGroupMembersAsync(group.Id);
+                var members = rawMembers.Response;
+
+                if(members.Count != GroupsMembers[counter])
+                {
+                    expensesTlp.Controls.Clear();
+                    SetExpense(Data.Id);
+                }
+                counter++;
             }
         }
     }
