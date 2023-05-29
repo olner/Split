@@ -17,6 +17,7 @@ namespace Split.UI.Forms
         {
             InitializeComponent();
             this.client = client;
+            GroupsMembers = new List<int>();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
