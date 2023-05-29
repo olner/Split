@@ -566,6 +566,14 @@
               "type": "integer",
               "format": "int32"
             }
+          },
+          {
+            "name": "description",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -630,6 +638,45 @@
           },
           {
             "name": "name",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupServiceResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UpdateDescription": {
+      "patch": {
+        "tags": [
+          "Group"
+        ],
+        "operationId": "UpdateDescription",
+        "parameters": [
+          {
+            "name": "groupId",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "description",
             "in": "query",
             "style": "form",
             "schema": {
@@ -1622,6 +1669,10 @@
           "admin": {
             "type": "integer",
             "format": "int32"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
           },
           "members": {
             "type": "array",

@@ -71,6 +71,7 @@ namespace Split.UI.Forms
             GroupName = group.Name;
             groupNameLbl.Text = GroupName;
             nameTb.Text = GroupName;
+            descRtb.Text = group.Description;
             this.Text = GroupName + " - группы";
         }
         private async void SetExpenses()
@@ -197,7 +198,9 @@ namespace Split.UI.Forms
         {
             var result = await client.UpdateNameAsync(groupId, nameTb.Text);
             var group = result.Response;
+            await client.UpdateDescriptionAsync(groupId, descRtb.Text);
             GroupName = group.Name;
+
         }
 
         private async void deleteBtn_Click(object sender, EventArgs e)

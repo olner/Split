@@ -12,6 +12,7 @@ namespace Split.Engine.Models
         public string Name { get; set; }
         public DateTime Date { get; set; }
         public int Admin { get; set; }
+        public string Description { get; set; }
         public List<User>? Members { get; set; }
     }
 }

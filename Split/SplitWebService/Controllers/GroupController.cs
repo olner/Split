@@ -2,6 +2,7 @@
 using Split.Engine.Models;
 using Split.Engine.Services;
 using SplitWebService.Models;
+using System.Xml.Linq;
 
 namespace SplitWebService.Controllers
 {
@@ -46,9 +47,9 @@ namespace SplitWebService.Controllers
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ServiceResponse<Group>))]
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest, "application/json")]
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError, "application/json")]
-        public IActionResult AddGroup(string name, int adminId)
+        public IActionResult AddGroup(string name, int adminId, string description)
         {
-            var result = groupService.AddGroup(name, adminId);
+            var result = groupService.AddGroup(name, adminId, description);
             return Ok(new ServiceResponse<Group> { Response = result });
         }
 
@@ -64,6 +65,15 @@ namespace SplitWebService.Controllers
         public IActionResult UpdateGroupName(Guid groupId, string name)
         {
             var result = groupService.UpdateGroupName(groupId, name);
+            return Ok(new ServiceResponse<Group> { Response = result });
+        }
+
+        [HttpPatch("/UpdateDescription", Name = "UpdateDescription")]
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ServiceResponse<Group>))]
+        public IActionResult UpdateGroupDescription(Guid groupId, string description)
+        {
+            var result = groupService.UpdateGroupDescription(groupId, description);
             return Ok(new ServiceResponse<Group> { Response = result });
         }
 

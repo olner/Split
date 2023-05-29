@@ -41,7 +41,13 @@ namespace Split.UI.Forms
             {
                 if (nameTb.Text.Length == 0) return;
 
-                var result = await client.AddGroupAsync(nameTb.Text, Data.Id);
+                var text = nameTb.Text;
+                if(descriptionRtb.Text.Length != 0)
+                {
+                    text = descriptionRtb.Text;
+                }
+
+                var result = await client.AddGroupAsync(nameTb.Text, Data.Id, text);
                 var group = result.Response;
 
                 await client.AddUserToGroupAsync(group.Id, Data.Id);

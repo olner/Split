@@ -12,7 +12,7 @@ namespace Split.Engine.Repositories.Interfaces
     {
         List<Groups> GetGroups();
         Group GetGroup(Guid id);
-        Group AddGroup(string name, int adminId);
+        Group AddGroup(string name, int adminId, string description);
         void RemoveGroup(Guid groupId);
         Group UpdateGroupName(Guid groupId, string name);
         GroupsMembers AddGroupMember(Guid groupId, int userId);
@@ -21,5 +21,6 @@ namespace Split.Engine.Repositories.Interfaces
         void RemoveAllMembers(Guid groupId);
         bool IsUserInGroup(Guid groupId, int userId);
         List<Groups> GetUserGroups(int userId);
+        Group UpdateGroupDescription(Guid groupId, string description);
     }
 }

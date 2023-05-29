@@ -1,13 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using Split.Engine.Exceptions;
 using Split.Engine.Models;
-using Split.Engine.Repositories;
 using Split.Engine.Repositories.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Split.Engine.Services
 {
@@ -22,11 +16,11 @@ namespace Split.Engine.Services
             this.groupRepository = groupRepository;
         }
 
-        public Group? AddGroup(string name, int adminId)
+        public Group? AddGroup(string name, int adminId, string description)
         {
             try
             {
-                return groupRepository.AddGroup(name, adminId);
+                return groupRepository.AddGroup(name, adminId, description);
             }
             catch (GroupNotFoundException)
             {
@@ -59,6 +53,18 @@ namespace Split.Engine.Services
             }
         }
 
+        public Group? UpdateGroupDescription(Guid groupId, string description)
+        {
+            try
+            {
+                return groupRepository.UpdateGroupDescription(groupId, description);
+            }
+            catch (GroupNotFoundException)
+            {
+                return null;
+            }
+        }
+
         public List<Group>? GetGroups() 
         {
             try
@@ -71,6 +77,7 @@ namespace Split.Engine.Services
                         Name = group.Name,
                         Date = group.Date,
                         Admin = group.Admin,
+                        Description = group.Description,
                         Members = null
                     }).ToList();
                 return groups;
@@ -148,6 +155,7 @@ namespace Split.Engine.Services
                         Name = x.Name,
                         Date = x.Date,
                         Admin = x.Admin,
+                        Description = x.Description,
                         Members = null
                     }).ToList();
                 return groups;

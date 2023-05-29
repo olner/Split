@@ -36,13 +36,14 @@ namespace Split.Engine.Repositories
                 Name = groups.Name,
                 Date = groups.Date,
                 Admin = groups.Admin,
+                Description = groups.Description,
                 Members = null
             };
 
             return group;
         }
 
-        public Group AddGroup(string name, int adminId)
+        public Group AddGroup(string name, int adminId, string description)
         {
             using var context = contextFactory.CreateDbContext();
             Groups group = new Groups
@@ -50,7 +51,8 @@ namespace Split.Engine.Repositories
                 Id = new Guid(),
                 Name = name,
                 Date = DateTime.Now,
-                Admin = adminId
+                Admin = adminId,
+                Description = description
             };
             context.Groups.Add(group);
             context.SaveChanges();
@@ -73,6 +75,19 @@ namespace Split.Engine.Repositories
             var group = context.Groups.Where(x => x.Id == groupId).FirstOrDefault() ?? throw new GroupNotFoundException();
 
             group.Name = name;
+
+            context.Groups.Update(group);
+            context.SaveChanges();
+
+            return GetGroup(groupId);
+        }
+
+        public Group UpdateGroupDescription(Guid groupId, string description)
+        {
+            using var context = contextFactory.CreateDbContext();
+            var group = context.Groups.Where(x => x.Id == groupId).FirstOrDefault() ?? throw new GroupNotFoundException();
+
+            group.Description = description;
 
             context.Groups.Update(group);
             context.SaveChanges();

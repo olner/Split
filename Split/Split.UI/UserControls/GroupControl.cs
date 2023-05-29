@@ -46,6 +46,7 @@ namespace Split.UI.UserControls
 
             dateLbl.Text = group.Date.Value.Date.ToShortDateString();
             nameLbl.Text = group.Name;
+            descriptionTb.Text = group.Description;
 
             var rawMembers = await client.GetGroupMembersAsync(this.group.Id);
             var members = rawMembers.Response;
