@@ -162,5 +162,14 @@ namespace Split.Engine.Repositories
 
             return groups;
         }
+
+        public void DeleteGroupExpenses(Guid groupId)
+        {
+            using var context = contextFactory.CreateDbContext();
+            var expenses = context.Expenses.Where(x => x.GroupId == groupId).ToList() ?? throw new ExpenseNotFoundException();
+            context.Expenses.RemoveRange(expenses);
+            context.SaveChanges();
+        }
+
     }
 }

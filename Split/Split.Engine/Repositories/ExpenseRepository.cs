@@ -37,7 +37,7 @@ namespace Split.Engine.Repositories
         {
             using var context = contextFactory.CreateDbContext();
             var expenses = context.Expenses.Where(x => x.GroupId == groupId).ToList();
-            if (expenses.Count == 0) throw new ExpenseNotFoundException();
+            //if (expenses.Count == 0) throw new ExpenseNotFoundException();
             return expenses;
         }
 
@@ -186,7 +186,23 @@ namespace Split.Engine.Repositories
             return debts;
 
         }
-       
+        public void DeleteGroupDebgs(Guid groupId)
+        {
+            using var context = contextFactory.CreateDbContext();
+            var expenses = GetGroupExpenses(groupId);
+            if (expenses == null || expenses.Count == 0) return;
+            
+            foreach(var expense in expenses)
+            {
+                var debts = context.Debts.Where(x => x.ExpenseId == expense.Id).ToList();
+                if(debts != null || debts.Count != 0)
+                {
+                    context.Debts.RemoveRange(debts);
+                }
+            }
+            context.SaveChanges();
+
+        }
 
     }
 }

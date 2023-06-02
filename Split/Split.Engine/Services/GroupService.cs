@@ -9,11 +9,13 @@ namespace Split.Engine.Services
     {
         private readonly ILogger<RoleService> logger;
         private readonly IGroupRepository groupRepository;
+        private readonly IExpenseRepository expenseRepository;
 
-        public GroupService(ILogger<RoleService> logger, IGroupRepository groupRepository)
+        public GroupService(ILogger<RoleService> logger, IGroupRepository groupRepository, IExpenseRepository expenseRepository)
         {
             this.logger = logger;
             this.groupRepository = groupRepository;
+            this.expenseRepository = expenseRepository;
         }
 
         public Group? AddGroup(string name, int adminId, string description)
@@ -32,6 +34,8 @@ namespace Split.Engine.Services
         {
             try
             {
+                expenseRepository.DeleteGroupDebgs(groupId);
+                groupRepository.DeleteGroupExpenses(groupId);
                 groupRepository.RemoveAllMembers(groupId);
                 groupRepository.RemoveGroup(groupId);
             }
@@ -39,6 +43,11 @@ namespace Split.Engine.Services
             {
 
             }
+        }
+
+        public void DeleteGroupExpenses(Guid groupId)
+        {
+            groupRepository.DeleteGroupExpenses(groupId);   
         }
 
         public Group? UpdateGroupName(Guid groupId, string name)

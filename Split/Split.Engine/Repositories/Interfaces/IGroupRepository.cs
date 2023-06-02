@@ -22,5 +22,6 @@ namespace Split.Engine.Repositories.Interfaces
         bool IsUserInGroup(Guid groupId, int userId);
         List<Groups> GetUserGroups(int userId);
         Group UpdateGroupDescription(Guid groupId, string description);
+        void DeleteGroupExpenses(Guid groupId);
     }
 }

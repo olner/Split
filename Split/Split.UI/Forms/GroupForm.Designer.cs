@@ -105,6 +105,7 @@
             // expenseTlp
             // 
             expenseTlp.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            expenseTlp.AutoScroll = true;
             expenseTlp.ColumnCount = 1;
             expenseTlp.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             expenseTlp.Controls.Add(tableLayoutPanel1, 0, 0);
@@ -144,6 +145,7 @@
             // membersTlp
             // 
             membersTlp.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            membersTlp.AutoScroll = true;
             membersTlp.ColumnCount = 1;
             membersTlp.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             membersTlp.Location = new Point(6, 6);
@@ -168,6 +170,7 @@
             // debtTlp
             // 
             debtTlp.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            debtTlp.AutoScroll = true;
             debtTlp.ColumnCount = 1;
             debtTlp.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             debtTlp.Location = new Point(3, 3);
@@ -193,7 +196,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(3, 0);
+            label3.Location = new Point(0, 0);
             label3.Name = "label3";
             label3.Size = new Size(230, 35);
             label3.TabIndex = 2;
@@ -208,9 +211,9 @@
             groupBox1.Controls.Add(descRtb);
             groupBox1.Controls.Add(nameTb);
             groupBox1.Controls.Add(label2);
-            groupBox1.Location = new Point(13, 50);
+            groupBox1.Location = new Point(3, 50);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(345, 444);
+            groupBox1.Size = new Size(346, 444);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             // 

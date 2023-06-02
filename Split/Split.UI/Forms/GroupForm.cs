@@ -13,8 +13,8 @@ namespace Split.UI.Forms
         private string Description { get; set; }
         private int Expenses { get; set; }
         private int Members { get; set; }
-
         private int Debts { get; set; }
+        private bool IsAdmin { get; set; }
 
         public GroupForm(SplitServiceApi client, Guid groupId)
         {
@@ -23,9 +23,28 @@ namespace Split.UI.Forms
             this.groupId = groupId;
         }
 
+        private async void CheckAdmin()
+        {
+            var rawGroup = await client.GetGroupAsync(groupId);
+            var group = rawGroup.Response;
+            if (group == null) return;
+
+            if (group.Admin == Data.Id) IsAdmin = true;
+            else IsAdmin = false;
+        }
+        
+
         private void GroupForm_Load(object sender, EventArgs e)
         {
+
+            int vertScrollWidth = SystemInformation.VerticalScrollBarWidth;
+
+            expenseTlp.Padding = new Padding(0, 0, 0, 0);
+            membersTlp.Padding = new Padding(0, 0, 0, 0);
+            debtTlp.Padding = new Padding(0, 0, 0, 0);
+
             SetData();
+            CheckAdmin();
             updateTimer.Start();
 
             addExpenseBtn.BackColor = Color.FromArgb(91, 197, 167);

@@ -228,7 +228,7 @@ namespace Split.UI.Forms
             CheckFriends();
             CheckGroups();
             CheckExpenses();  
-            CheckMembers();
+            //CheckMembers();
         }
         private async void CheckFriends()
         {
@@ -291,14 +291,17 @@ namespace Split.UI.Forms
             {
                 var rawMembers = await client.GetGroupMembersAsync(group.Id);
                 var members = rawMembers.Response;
-
-                if(members.Count != GroupsMembers[counter])
+                if (GroupsMembers.Count != counter)
                 {
-                    expensesTlp.Controls.Clear();
-                    SetExpense(Data.Id);
+                    if (members.Count != GroupsMembers[counter])
+                    {
+                        groupsTlp.Controls.Clear();
+                        SetGroups(Data.Id);
+                    }
                 }
                 counter++;
             }
+
         }
     }
 }
