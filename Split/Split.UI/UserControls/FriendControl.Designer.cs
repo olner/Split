@@ -70,15 +70,17 @@
             // 
             nameLbl.Anchor = AnchorStyles.Left;
             nameLbl.AutoSize = true;
-            nameLbl.Location = new Point(94, 39);
+            nameLbl.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            nameLbl.Location = new Point(94, 35);
             nameLbl.Name = "nameLbl";
-            nameLbl.Size = new Size(49, 20);
+            nameLbl.Size = new Size(64, 28);
             nameLbl.TabIndex = 1;
             nameLbl.Text = "Name";
             // 
             // deleteBtn
             // 
             deleteBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            deleteBtn.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             deleteBtn.Location = new Point(844, 3);
             deleteBtn.Name = "deleteBtn";
             deleteBtn.Size = new Size(143, 92);

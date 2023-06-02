@@ -36,6 +36,7 @@ namespace Split.UI.Forms
 
         public void SetData()
         {
+
             tableLayoutPanel1.Controls.Add(groupNameLbl);
             tableLayoutPanel1.Controls.Add(label1);
             tableLayoutPanel1.Controls.Add(addExpenseBtn);

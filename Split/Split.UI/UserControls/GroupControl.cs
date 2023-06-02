@@ -44,7 +44,9 @@ namespace Split.UI.UserControls
             var group = rawGroup.Response;
             if (group == null) return;
 
-            dateLbl.Text = group.Date.Value.Date.ToShortDateString();
+
+            var date = group.Date.Value.Date.ToString("M");
+            dateLbl.Text = MyExtensions.SetDataFormat(date); //group.Date.Value.Date.ToShortDateString();
             nameLbl.Text = group.Name;
             descriptionTb.Text = group.Description;
 

@@ -62,9 +62,10 @@
             // 
             dateLbl.Anchor = AnchorStyles.None;
             dateLbl.AutoSize = true;
-            dateLbl.Location = new Point(30, 38);
+            dateLbl.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            dateLbl.Location = new Point(21, 33);
             dateLbl.Name = "dateLbl";
-            dateLbl.Size = new Size(41, 20);
+            dateLbl.Size = new Size(58, 30);
             dateLbl.TabIndex = 0;
             dateLbl.Text = "Date";
             // 
@@ -72,26 +73,29 @@
             // 
             nameLbl.Anchor = AnchorStyles.None;
             nameLbl.AutoSize = true;
-            nameLbl.Location = new Point(123, 38);
+            nameLbl.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            nameLbl.Location = new Point(112, 33);
             nameLbl.Name = "nameLbl";
-            nameLbl.Size = new Size(49, 20);
+            nameLbl.Size = new Size(71, 30);
             nameLbl.TabIndex = 1;
             nameLbl.Text = "Name";
             // 
             // membersLb
             // 
             membersLb.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            membersLb.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             membersLb.FormattingEnabled = true;
-            membersLb.ItemHeight = 20;
+            membersLb.ItemHeight = 25;
             membersLb.Location = new Point(541, 3);
             membersLb.Name = "membersLb";
-            membersLb.Size = new Size(265, 84);
+            membersLb.Size = new Size(265, 79);
             membersLb.TabIndex = 3;
             // 
             // descriptionTb
             // 
             descriptionTb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             descriptionTb.BorderStyle = BorderStyle.FixedSingle;
+            descriptionTb.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             descriptionTb.Location = new Point(198, 3);
             descriptionTb.Name = "descriptionTb";
             descriptionTb.Size = new Size(337, 84);

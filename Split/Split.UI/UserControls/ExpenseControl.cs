@@ -1,5 +1,6 @@
 ﻿using Split.UI.Tools;
 using Split.WebClient;
+using System.Drawing.Text;
 
 namespace Split.UI.UserControls
 {
@@ -23,12 +24,15 @@ namespace Split.UI.UserControls
 
         private void ExpenseControl_Load(object sender, EventArgs e)
         {
-
+            var a = new PrivateFontCollection();
+            //a.AddMemoryFont()
+            //dateLbl.Font = new Font(ca)
         }
 
         private async void SetData()
         {
-            dateLbl.Text = expense.Date.Value.Date.ToShortDateString();
+            var date = expense.Date.Value.Date.ToString("M");
+            dateLbl.Text = MyExtensions.SetDataFormat(date);
             nameLbl.Text = expense.Name;
             priceLbl.Text = "₽" + expense.Sum.ToString();
 
@@ -45,7 +49,7 @@ namespace Split.UI.UserControls
             }
             var rawUser = await client.GetUserByIdAsync((int)expense.UserId);
             var user = rawUser.Response;
-            if (user == null) return;   
+            if (user == null) return;
 
             label1.Text = $"Вы должны {user.Login} {debt.Debt - debt.Paid}₽";
         }
@@ -60,7 +64,7 @@ namespace Split.UI.UserControls
             var rawDebts = await client.GetExpenseDebtsAsync(expense.Id);
             var debts = rawDebts.Response;
 
-            foreach(var debt in debts)
+            foreach (var debt in debts)
             {
                 await client.DeleteDebtAsync(debt.Id);
             }

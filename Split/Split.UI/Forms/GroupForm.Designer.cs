@@ -122,7 +122,7 @@
             tableLayoutPanel1.ColumnCount = 3;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15.8490562F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 84.15094F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 115F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 212F));
             tableLayoutPanel1.Location = new Point(3, 3);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
@@ -302,6 +302,7 @@
             // 
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label1.Location = new Point(371, 22);
             label1.Name = "label1";
             label1.Size = new Size(233, 20);
@@ -310,6 +311,7 @@
             // addExpenseBtn
             // 
             addExpenseBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            addExpenseBtn.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             addExpenseBtn.Location = new Point(668, 3);
             addExpenseBtn.Name = "addExpenseBtn";
             addExpenseBtn.Size = new Size(264, 59);
@@ -322,6 +324,7 @@
             // 
             groupNameLbl.Anchor = AnchorStyles.None;
             groupNameLbl.AutoSize = true;
+            groupNameLbl.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             groupNameLbl.Location = new Point(108, 22);
             groupNameLbl.Name = "groupNameLbl";
             groupNameLbl.Size = new Size(94, 20);

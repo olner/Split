@@ -67,20 +67,23 @@
             // 
             nameLbl.Anchor = AnchorStyles.Left;
             nameLbl.AutoSize = true;
-            nameLbl.Location = new Point(92, 26);
+            nameLbl.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            nameLbl.Location = new Point(92, 22);
             nameLbl.Name = "nameLbl";
-            nameLbl.Size = new Size(50, 20);
+            nameLbl.Size = new Size(65, 28);
             nameLbl.TabIndex = 1;
             nameLbl.Text = "label1";
             // 
             // listBox1
             // 
             listBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            listBox1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 20;
+            listBox1.IntegralHeight = false;
+            listBox1.ItemHeight = 23;
             listBox1.Location = new Point(591, 3);
             listBox1.Name = "listBox1";
-            listBox1.Size = new Size(207, 64);
+            listBox1.Size = new Size(207, 67);
             listBox1.TabIndex = 2;
             // 
             // DebtControl

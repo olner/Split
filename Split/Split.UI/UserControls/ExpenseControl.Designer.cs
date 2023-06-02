@@ -41,10 +41,10 @@
             // 
             tableLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tableLayoutPanel1.ColumnCount = 5;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 7.889793F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 34.6587334F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 24.1077F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.34377F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 99F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 35.6492043F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25.51253F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 38.83827F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
             tableLayoutPanel1.Controls.Add(dateLbl, 0, 0);
             tableLayoutPanel1.Controls.Add(priceLbl, 2, 0);
@@ -62,9 +62,10 @@
             // 
             dateLbl.Anchor = AnchorStyles.None;
             dateLbl.AutoSize = true;
-            dateLbl.Location = new Point(18, 41);
+            dateLbl.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dateLbl.Location = new Point(23, 37);
             dateLbl.Name = "dateLbl";
-            dateLbl.Size = new Size(41, 20);
+            dateLbl.Size = new Size(53, 28);
             dateLbl.TabIndex = 0;
             dateLbl.Text = "Date";
             // 
@@ -72,9 +73,10 @@
             // 
             priceLbl.Anchor = AnchorStyles.None;
             priceLbl.AutoSize = true;
-            priceLbl.Location = new Point(512, 41);
+            priceLbl.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            priceLbl.Location = new Point(497, 37);
             priceLbl.Name = "priceLbl";
-            priceLbl.Size = new Size(41, 20);
+            priceLbl.Size = new Size(54, 28);
             priceLbl.TabIndex = 1;
             priceLbl.Text = "Price";
             // 
@@ -82,9 +84,10 @@
             // 
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
-            label1.Location = new Point(741, 41);
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(710, 37);
             label1.Name = "label1";
-            label1.Size = new Size(144, 20);
+            label1.Size = new Size(192, 28);
             label1.TabIndex = 2;
             label1.Text = "Сколько ты должен";
             // 
@@ -92,15 +95,17 @@
             // 
             nameLbl.Anchor = AnchorStyles.Left;
             nameLbl.AutoSize = true;
-            nameLbl.Location = new Point(80, 41);
+            nameLbl.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            nameLbl.Location = new Point(102, 37);
             nameLbl.Name = "nameLbl";
-            nameLbl.Size = new Size(49, 20);
+            nameLbl.Size = new Size(64, 28);
             nameLbl.TabIndex = 3;
             nameLbl.Text = "Name";
             // 
             // deleteBtn
             // 
-            deleteBtn.Location = new Point(979, 3);
+            deleteBtn.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            deleteBtn.Location = new Point(980, 3);
             deleteBtn.Name = "deleteBtn";
             deleteBtn.Size = new Size(81, 97);
             deleteBtn.TabIndex = 4;

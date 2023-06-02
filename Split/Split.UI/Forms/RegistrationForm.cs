@@ -18,6 +18,15 @@ namespace Split.UI.Forms
             warningLbl.Text = "";
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
 
+            loginTb.Text = "Логин";//подсказка
+            loginTb.ForeColor = Color.Gray;
+
+            passwordTb.Text = "Пароль";//подсказка
+            passwordTb.ForeColor = Color.Gray;
+
+            emailTb.Text = "Email";//подсказка
+            emailTb.ForeColor = Color.Gray;
+
 
             registartionBtn.BackColor = Color.FromArgb(24, 165, 130);
             registartionBtn.BackColor2 = Color.FromArgb(28, 172, 120);
@@ -66,6 +75,25 @@ namespace Split.UI.Forms
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
+        }
+
+        private void loginTb_Enter(object sender, EventArgs e)
+        {
+            loginTb.Text = null;
+            loginTb.ForeColor = Color.Black;
+        }
+
+        private void passwordTb_Enter(object sender, EventArgs e)
+        {
+            passwordTb.Text = null;
+            passwordTb.ForeColor = Color.Black;
+
+        }
+
+        private void emailTb_Enter(object sender, EventArgs e)
+        {
+            emailTb.Text = null;
+            emailTb.ForeColor = Color.Black;
         }
     }
 }

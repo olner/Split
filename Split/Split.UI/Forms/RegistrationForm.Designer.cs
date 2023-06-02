@@ -107,6 +107,7 @@
             loginTb.Name = "loginTb";
             loginTb.Size = new Size(409, 40);
             loginTb.TabIndex = 0;
+            loginTb.Enter += loginTb_Enter;
             // 
             // passwordTb
             // 
@@ -115,6 +116,7 @@
             passwordTb.Name = "passwordTb";
             passwordTb.Size = new Size(409, 40);
             passwordTb.TabIndex = 1;
+            passwordTb.Enter += passwordTb_Enter;
             // 
             // registartionBtn
             // 
@@ -142,6 +144,7 @@
             emailTb.Name = "emailTb";
             emailTb.Size = new Size(409, 40);
             emailTb.TabIndex = 2;
+            emailTb.Enter += emailTb_Enter;
             // 
             // warningLbl
             // 

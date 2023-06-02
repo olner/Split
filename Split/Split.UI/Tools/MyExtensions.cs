@@ -15,5 +15,24 @@ namespace Split.UI.Tools
             control.Cursor = Cursors.Arrow;
             control.Enter += delegate { focusTarget.Focus(); };
         }
+
+        public static string SetDataFormat(string data)
+        {
+            string[] words = data.Split(' ');
+
+            var sb = new StringBuilder();
+
+            for (int i = 0; i < words[1].Length / 2; i++)
+            {
+                sb.Append(' ');
+            }
+            if (words[0].Length < 2) sb.Append(' ');
+
+            sb.AppendLine(words[0]);
+            
+            sb.AppendLine(words[1]);
+
+            return sb.ToString();
+        }
     }
 }
