@@ -52,6 +52,12 @@ namespace Split.UI.Forms
             addExpenseBtn.ForeColor = Color.White;
             addExpenseBtn.FlatStyle = FlatStyle.Flat;
             addExpenseBtn.FlatAppearance.BorderSize = 0;
+
+            if (IsAdmin == false)
+            {
+                saveBtn.Enabled = false;
+                deleteBtn.Enabled = false;
+            }
         }
 
         public void SetData()
@@ -89,6 +95,7 @@ namespace Split.UI.Forms
             var result = await client.GetGroupAsync(groupId);
             var group = result.Response;
 
+            Description = group.Description;
             GroupName = group.Name;
             groupNameLbl.Text = GroupName;
             nameTb.Text = GroupName;
@@ -212,6 +219,7 @@ namespace Split.UI.Forms
 
         private void resetBtn_Click(object sender, EventArgs e)
         {
+            descRtb.Text = Description;
             nameTb.Text = GroupName;
         }
 

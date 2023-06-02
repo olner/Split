@@ -166,9 +166,9 @@
             label4.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
             label4.Location = new Point(488, 0);
             label4.Name = "label4";
-            label4.Size = new Size(427, 35);
+            label4.Size = new Size(194, 35);
             label4.TabIndex = 12;
-            label4.Text = "Тут типа покупки из ваших групп";
+            label4.Text = "Ваши покупки";
             // 
             // accLbl
             // 

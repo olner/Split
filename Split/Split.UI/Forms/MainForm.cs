@@ -229,7 +229,7 @@ namespace Split.UI.Forms
         {
             CheckFriends();
             CheckGroups();
-            CheckExpenses();  
+            CheckExpenses();
             //CheckMembers();
         }
         private async void CheckFriends()
@@ -294,7 +294,7 @@ namespace Split.UI.Forms
             if (groups == null) return;
 
             int counter = 0;
-            foreach(var group in groups)
+            foreach (var group in groups)
             {
                 var rawMembers = await client.GetGroupMembersAsync(group.Id);
                 var members = rawMembers.Response;
