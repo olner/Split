@@ -161,6 +161,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(457, 501);
             Controls.Add(tableLayoutPanel1);
+            MaximizeBox = false;
             Name = "RegistrationForm";
             Text = "Регистрация";
             Load += RegistrationForm_Load;

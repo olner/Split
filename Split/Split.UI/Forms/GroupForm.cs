@@ -32,10 +32,11 @@ namespace Split.UI.Forms
             if (group.Admin == Data.Id) IsAdmin = true;
             else IsAdmin = false;
         }
-        
+
 
         private void GroupForm_Load(object sender, EventArgs e)
         {
+            this.MinimumSize = new Size(1123, 576);
 
             int vertScrollWidth = SystemInformation.VerticalScrollBarWidth;
 

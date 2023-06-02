@@ -39,6 +39,7 @@
             tabPage4 = new TabPage();
             debtTlp = new TableLayoutPanel();
             tabPage3 = new TabPage();
+            tableLayoutPanel2 = new TableLayoutPanel();
             label3 = new Label();
             groupBox1 = new GroupBox();
             deleteBtn = new Button();
@@ -59,6 +60,7 @@
             tabPage2.SuspendLayout();
             tabPage4.SuspendLayout();
             tabPage3.SuspendLayout();
+            tableLayoutPanel2.SuspendLayout();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -183,8 +185,7 @@
             // 
             // tabPage3
             // 
-            tabPage3.Controls.Add(label3);
-            tabPage3.Controls.Add(groupBox1);
+            tabPage3.Controls.Add(tableLayoutPanel2);
             tabPage3.Location = new Point(124, 4);
             tabPage3.Name = "tabPage3";
             tabPage3.Size = new Size(953, 497);
@@ -192,11 +193,27 @@
             tabPage3.Text = "Настройки";
             tabPage3.UseVisualStyleBackColor = true;
             // 
+            // tableLayoutPanel2
+            // 
+            tableLayoutPanel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanel2.ColumnCount = 2;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 37.05263F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 62.94737F));
+            tableLayoutPanel2.Controls.Add(label3, 0, 0);
+            tableLayoutPanel2.Controls.Add(groupBox1, 0, 1);
+            tableLayoutPanel2.Location = new Point(3, 3);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 2;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 9.324009F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 90.67599F));
+            tableLayoutPanel2.Size = new Size(950, 491);
+            tableLayoutPanel2.TabIndex = 3;
+            // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(0, 0);
+            label3.Location = new Point(3, 0);
             label3.Name = "label3";
             label3.Size = new Size(230, 35);
             label3.TabIndex = 2;
@@ -204,6 +221,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             groupBox1.Controls.Add(deleteBtn);
             groupBox1.Controls.Add(resetBtn);
             groupBox1.Controls.Add(saveBtn);
@@ -211,9 +229,9 @@
             groupBox1.Controls.Add(descRtb);
             groupBox1.Controls.Add(nameTb);
             groupBox1.Controls.Add(label2);
-            groupBox1.Location = new Point(3, 50);
+            groupBox1.Location = new Point(3, 48);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(346, 444);
+            groupBox1.Size = new Size(346, 440);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             // 
@@ -349,7 +367,8 @@
             tabPage2.ResumeLayout(false);
             tabPage4.ResumeLayout(false);
             tabPage3.ResumeLayout(false);
-            tabPage3.PerformLayout();
+            tableLayoutPanel2.ResumeLayout(false);
+            tableLayoutPanel2.PerformLayout();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);
@@ -382,5 +401,6 @@
         private TabPage tabPage4;
         private TableLayoutPanel debtTlp;
         private TableLayoutPanel tableLayoutPanel1;
+        private TableLayoutPanel tableLayoutPanel2;
     }
 }

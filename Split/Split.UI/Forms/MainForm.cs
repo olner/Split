@@ -22,6 +22,8 @@ namespace Split.UI.Forms
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            this.MinimumSize = new Size(1239, 819);
+
             deleteBtn.Visible = false;
             deleteBtn.BackColor = Color.FromArgb(204, 68, 85);
             deleteBtn.ForeColor = Color.White;

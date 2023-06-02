@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             tableLayoutPanel1 = new TableLayoutPanel();
-            label1 = new Label();
             groupBox1 = new GroupBox();
             tableLayoutPanel2 = new TableLayoutPanel();
             loginTb = new TextBox();
@@ -38,6 +37,7 @@
             loginBtn = new Tools.CustomControls.RoundButton();
             errorGB = new GroupBox();
             errorLbl = new Label();
+            label1 = new Label();
             tableLayoutPanel1.SuspendLayout();
             groupBox1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -49,8 +49,8 @@
             tableLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tableLayoutPanel1.ColumnCount = 1;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Controls.Add(label1, 0, 0);
             tableLayoutPanel1.Controls.Add(groupBox1, 0, 1);
+            tableLayoutPanel1.Controls.Add(label1, 0, 0);
             tableLayoutPanel1.Location = new Point(12, 12);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
@@ -58,16 +58,6 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 51.81818F));
             tableLayoutPanel1.Size = new Size(433, 477);
             tableLayoutPanel1.TabIndex = 0;
-            // 
-            // label1
-            // 
-            label1.Anchor = AnchorStyles.Bottom;
-            label1.AutoSize = true;
-            label1.Location = new Point(197, 86);
-            label1.Name = "label1";
-            label1.Size = new Size(39, 20);
-            label1.TabIndex = 0;
-            label1.Text = "Split";
             // 
             // groupBox1
             // 
@@ -169,12 +159,24 @@
             errorLbl.TabIndex = 0;
             errorLbl.Text = "label2";
             // 
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.Bottom;
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(173, 60);
+            label1.Name = "label1";
+            label1.Size = new Size(86, 46);
+            label1.TabIndex = 0;
+            label1.Text = "Split";
+            // 
             // LoginForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(457, 501);
             Controls.Add(tableLayoutPanel1);
+            MaximizeBox = false;
             Name = "LoginForm";
             Text = "Авторизация";
             Load += LoginForm_Load;
