@@ -75,7 +75,7 @@ namespace Split.UI.Forms
         {
             if (e.KeyChar == (char)Keys.Return)
             {
-                foreach(var item in membersLb.Items)
+                foreach(string item in membersLb.Items)
                 {
                     if (item == addTb.Text) return;
                 }
