@@ -15,7 +15,8 @@ namespace Split.DbContexts
             //throw new NotImplementedException();
             var optionsBuilder = new DbContextOptionsBuilder<SplitDbContext>();
             //TODO: Брать connectionstring из файла
-            optionsBuilder.UseMySql("Server=127.0.0.1;Database=split;port=3306;User Id=root;password=Olegka_2003",
+            //optionsBuilder.UseMySql("Server=127.0.0.1;Database=split;port=3306;User Id=root;password=Olegka_2003",
+            optionsBuilder.UseMySql("Server=api.kiinse.me;Database=split;port=7223;User Id=root;password=TestPassword",
                 new MySqlServerVersion(new Version(8, 0, 30)));
 
             return new SplitDbContext(optionsBuilder.Options);
