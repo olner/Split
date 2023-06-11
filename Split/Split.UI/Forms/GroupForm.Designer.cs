@@ -337,7 +337,7 @@
             addExpenseBtn.Name = "addExpenseBtn";
             addExpenseBtn.Size = new Size(264, 59);
             addExpenseBtn.TabIndex = 1;
-            addExpenseBtn.Text = "Добавить расход";
+            addExpenseBtn.Text = "Добавить покупку";
             addExpenseBtn.UseVisualStyleBackColor = true;
             addExpenseBtn.Click += addExpenseBtn_Click;
             // 

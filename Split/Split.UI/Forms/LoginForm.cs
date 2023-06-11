@@ -44,6 +44,11 @@ namespace Split.UI
         {
             //loginTb.Text = "admin";
             //passwordTb.Text = "admin";
+            if(loginTb.Text == "Ћогин" || passwordTb.Text == "ѕароль")
+            {
+                MessageBox.Show("¬ведите логин и пароль");
+                return;
+            }
 
             loginBtn.Enabled = false;
             if (loginBtn.Text.Length < 3 || passwordTb.Text.Length < 5)

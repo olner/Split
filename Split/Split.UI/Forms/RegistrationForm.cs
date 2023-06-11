@@ -85,6 +85,7 @@ namespace Split.UI.Forms
 
         private void passwordTb_Enter(object sender, EventArgs e)
         {
+            passwordTb.PasswordChar = '*';
             passwordTb.Text = null;
             passwordTb.ForeColor = Color.Black;
 

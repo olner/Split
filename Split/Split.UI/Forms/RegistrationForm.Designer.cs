@@ -61,9 +61,10 @@
             // 
             label1.Anchor = AnchorStyles.Bottom;
             label1.AutoSize = true;
-            label1.Location = new Point(197, 86);
+            label1.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(173, 60);
             label1.Name = "label1";
-            label1.Size = new Size(39, 20);
+            label1.Size = new Size(86, 46);
             label1.TabIndex = 0;
             label1.Text = "Split";
             // 

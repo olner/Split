@@ -23,7 +23,7 @@ namespace Split.UI.Forms
             this.groupId = groupId;
         }
 
-        private async void CheckAdmin()
+        private async Task CheckAdmin()
         {
             var rawGroup = await client.GetGroupAsync(groupId);
             var group = rawGroup.Response;
@@ -45,7 +45,8 @@ namespace Split.UI.Forms
             debtTlp.Padding = new Padding(0, 0, 0, 0);
 
             SetData();
-            CheckAdmin();
+            //CheckAdmin();
+            SetAdmin();
             updateTimer.Start();
 
             addExpenseBtn.BackColor = Color.FromArgb(91, 197, 167);
@@ -53,12 +54,23 @@ namespace Split.UI.Forms
             addExpenseBtn.FlatStyle = FlatStyle.Flat;
             addExpenseBtn.FlatAppearance.BorderSize = 0;
 
+            /*if (IsAdmin == false)
+            {
+                saveBtn.Enabled = false;
+                deleteBtn.Enabled = false;
+            }*/
+        }
+        private async void SetAdmin()
+        {
+            await CheckAdmin();
+
             if (IsAdmin == false)
             {
                 saveBtn.Enabled = false;
                 deleteBtn.Enabled = false;
             }
         }
+        
 
         public void SetData()
         {
