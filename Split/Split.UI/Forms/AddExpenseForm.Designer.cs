@@ -274,7 +274,7 @@
             ClientSize = new Size(407, 617);
             Controls.Add(groupBox1);
             Name = "AddExpenseForm";
-            Text = "Добавить трату";
+            Text = "Добавить покупку";
             Load += AddExpenseForm_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();

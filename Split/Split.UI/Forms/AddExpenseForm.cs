@@ -40,7 +40,7 @@ namespace Split.UI.Forms
             var mebers = rawMembers.Response;
 
             foreach (var member in mebers)
-            { 
+            {
                 var rawUser = await client.GetUserByIdAsync((int)member.UserId);
                 var user = rawUser.Response;
 
@@ -51,7 +51,7 @@ namespace Split.UI.Forms
                     comboBox1.SelectedItem = user.Login;
                 }
             }
-            
+
         }
 
         private async void SetPages()

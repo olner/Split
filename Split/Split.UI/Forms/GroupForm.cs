@@ -70,7 +70,7 @@ namespace Split.UI.Forms
                 deleteBtn.Enabled = false;
             }
         }
-        
+
 
         public void SetData()
         {

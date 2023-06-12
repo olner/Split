@@ -204,8 +204,8 @@
             tableLayoutPanel2.Location = new Point(3, 3);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 2;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 448F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 46F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 422F));
             tableLayoutPanel2.Size = new Size(950, 491);
             tableLayoutPanel2.TabIndex = 3;
             // 
@@ -229,9 +229,9 @@
             groupBox1.Controls.Add(descRtb);
             groupBox1.Controls.Add(nameTb);
             groupBox1.Controls.Add(label2);
-            groupBox1.Location = new Point(3, 46);
+            groupBox1.Location = new Point(3, 49);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(457, 442);
+            groupBox1.Size = new Size(457, 439);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             // 

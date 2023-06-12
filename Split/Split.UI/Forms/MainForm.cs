@@ -265,6 +265,7 @@ namespace Split.UI.Forms
             {
                 groupsTlp.Controls.Clear();
                 SetGroups(Data.Id);
+                Groups = 0;
             }
             if (groups == null) return;
 
