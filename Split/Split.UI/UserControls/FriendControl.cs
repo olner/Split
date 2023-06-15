@@ -94,7 +94,8 @@ namespace Split.UI.UserControls
             tableLayoutPanel1.Controls.Remove(pictureBox1);
             tableLayoutPanel1.Controls.Add(button, 4, 0);
 
-            AddNameTextBox();
+            //AddNameTextBox();
+            AddNameComboBox();
         }
 
         public void NewFriend()
@@ -171,6 +172,50 @@ namespace Split.UI.UserControls
             tableLayoutPanel1.Controls.Add(nameTb, 2, 0);
         }
 
+        public async void AddNameComboBox()
+        {
+            nameLbl.Text = "";
+            var nameTb = new ComboBox
+            {
+                Name = "nameTb",
+                Anchor = AnchorStyles.Right,
+                Width = 200
+            };
+
+            var rawMembers = await client.GetGroupMembersAsync(groupId);
+            var members = rawMembers.Response;
+
+            var rawFriends = await client.GetFriendsAsync(Data.Id);
+            var friends = rawFriends.Response;
+            if (friends == null || friends.Count == 0) return;
+
+            foreach (var friend in friends)
+            {
+                var inGroup = false;
+
+                int? id;
+
+                if (friend.UserId == Data.Id) id = friend.FriendId;
+                else id = friend.UserId;
+
+                foreach(var member in members)
+                {
+                    if (member.UserId == id) inGroup = true;
+                }
+
+                if (inGroup == false)
+                {
+                    var rawUser = await client.GetUserByIdAsync((int)id);
+                    var user = rawUser.Response;
+
+                    nameTb.Items.Add(user.Login);
+                }
+            }
+
+            tableLayoutPanel1.Controls.Remove(nameLbl);
+            tableLayoutPanel1.Controls.Add(nameTb, 2, 0);
+        }
+
         public void SetActions(IEnumerable<Control> controls)
         {
             foreach (var control in controls)
@@ -218,7 +263,7 @@ namespace Split.UI.UserControls
         }
         private void addMemberBtn_Click(object sender, EventArgs e)
         {
-            var controls = controlsAdditions.GetAll(this, typeof(TextBox));
+            var controls = controlsAdditions.GetAll(this, typeof(ComboBox));
             foreach (var control in controls)
             {
                 AddMember(control.Text);
