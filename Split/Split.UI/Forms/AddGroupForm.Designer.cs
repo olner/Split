@@ -34,8 +34,8 @@
             membersLbl = new Label();
             descriptionRtb = new RichTextBox();
             groupBox1 = new GroupBox();
+            addTb = new ComboBox();
             membersLb = new ListBox();
-            addTb = new TextBox();
             addLinklbl = new LinkLabel();
             saveBtn = new Button();
             cancelBtn = new Button();
@@ -90,8 +90,8 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(membersLb);
             groupBox1.Controls.Add(addTb);
+            groupBox1.Controls.Add(membersLb);
             groupBox1.Controls.Add(addLinklbl);
             groupBox1.Controls.Add(nameLbl);
             groupBox1.Controls.Add(nameTb);
@@ -105,6 +105,16 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Добавить";
             // 
+            // addTb
+            // 
+            addTb.FormattingEnabled = true;
+            addTb.Location = new Point(25, 361);
+            addTb.Name = "addTb";
+            addTb.Size = new Size(262, 28);
+            addTb.TabIndex = 10;
+            addTb.Enter += addTb_Enter;
+            addTb.KeyPress += addTb_KeyPress;
+            // 
             // membersLb
             // 
             membersLb.FormattingEnabled = true;
@@ -114,16 +124,6 @@
             membersLb.Size = new Size(261, 104);
             membersLb.TabIndex = 9;
             membersLb.KeyPress += listBox1_KeyPress;
-            // 
-            // addTb
-            // 
-            addTb.Location = new Point(26, 366);
-            addTb.Name = "addTb";
-            addTb.Size = new Size(261, 27);
-            addTb.TabIndex = 8;
-            addTb.Visible = false;
-            addTb.Enter += addTb_Enter;
-            addTb.KeyPress += addTb_KeyPress;
             // 
             // addLinklbl
             // 
@@ -182,9 +182,9 @@
         private RichTextBox descriptionRtb;
         private GroupBox groupBox1;
         private LinkLabel addLinklbl;
-        private TextBox addTb;
         private Button saveBtn;
         private ListBox membersLb;
         private Button cancelBtn;
+        private ComboBox addTb;
     }
 }

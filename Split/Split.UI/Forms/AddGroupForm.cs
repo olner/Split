@@ -19,6 +19,28 @@ namespace Split.UI.Forms
 
             addTb.Text = "Name";
             addTb.ForeColor = Color.Gray;
+
+            InitializeComboBox();
+        }
+
+        private async void InitializeComboBox()
+        {
+            var rawFriends = await client.GetFriendsAsync(Data.Id);
+            var friends = rawFriends.Response;
+            if (friends == null || friends.Count == 0) return;
+
+            foreach (var friend in friends)
+            {
+                int? id = 0;
+
+                if (friend.UserId == Data.Id) id = friend.FriendId;
+                else id = friend.UserId;
+
+                var rawUser = await client.GetUserByIdAsync((int)id);
+                var user = rawUser.Response;
+
+                addTb.Items.Add(user.Login);
+            }
         }
 
         private void addLinklbl_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -42,7 +64,7 @@ namespace Split.UI.Forms
                 if (nameTb.Text.Length == 0) return;
 
                 var text = nameTb.Text;
-                if(descriptionRtb.Text.Length != 0)
+                if (descriptionRtb.Text.Length != 0)
                 {
                     text = descriptionRtb.Text;
                 }
@@ -75,7 +97,7 @@ namespace Split.UI.Forms
         {
             if (e.KeyChar == (char)Keys.Return)
             {
-                foreach(string item in membersLb.Items)
+                foreach (string item in membersLb.Items)
                 {
                     if (item == addTb.Text) return;
                 }
