@@ -35,7 +35,8 @@ namespace SplitWebService
             builder.Services.AddDbContextFactory<SplitDbContext>(opt =>
             {
                 //TODO: Брать connectionstring из файла
-                opt.UseMySql("Server=api.kiinse.me;Database=split;port=7223;User Id=root;password=TestPassword",
+                //opt.UseMySql("Server=api.kiinse.me;Database=split;port=7223;User Id=root;password=TestPassword",
+                opt.UseMySql(builder.Configuration.GetConnectionString("SplitConnection"),
                     new MySqlServerVersion(new Version(8, 0, 30)));
             });
 
