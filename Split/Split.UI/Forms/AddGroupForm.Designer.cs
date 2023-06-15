@@ -112,6 +112,7 @@
             addTb.Name = "addTb";
             addTb.Size = new Size(262, 28);
             addTb.TabIndex = 10;
+            addTb.Visible = false;
             addTb.Enter += addTb_Enter;
             addTb.KeyPress += addTb_KeyPress;
             // 
