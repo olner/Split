@@ -270,8 +270,6 @@ namespace Split.UI.UserControls
             }
         }
 
-
-
         public async void AddFriend(string name)
         {
             if (name.Length == 0) return;

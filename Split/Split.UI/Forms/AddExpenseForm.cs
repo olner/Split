@@ -150,7 +150,7 @@ namespace Split.UI.Forms
             }
             if (checkedListBox1.CheckedItems.Count == 0) return;
             var sum = double.Parse(sumTb.Text);
-            var debt = (sum / checkedListBox1.CheckedItems.Count);
+            var debt = Math.Round((sum / checkedListBox1.CheckedItems.Count),2);
 
             equalLbl.Text = $"Каждый должен: {debt}";
         }

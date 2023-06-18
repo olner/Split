@@ -63,6 +63,7 @@ namespace Split.UI.UserControls
         {
             var rawDebts = await client.GetExpenseDebtsAsync(expense.Id);
             var debts = rawDebts.Response;
+            if (debts == null) return;
 
             foreach (var debt in debts)
             {
