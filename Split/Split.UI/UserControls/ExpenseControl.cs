@@ -24,9 +24,7 @@ namespace Split.UI.UserControls
 
         private void ExpenseControl_Load(object sender, EventArgs e)
         {
-            var a = new PrivateFontCollection();
-            //a.AddMemoryFont()
-            //dateLbl.Font = new Font(ca)
+
         }
 
         private async void SetData()
@@ -42,7 +40,7 @@ namespace Split.UI.UserControls
 
             var debt = debts.Where(x => x.ExpenseId == expense.Id).FirstOrDefault();
 
-            if (debt == null || debts == null)
+            if (debt == null || debts == null || expense.UserId == Data.Id)
             {
                 label1.Text = "Вы ничего не должны";
                 return;
