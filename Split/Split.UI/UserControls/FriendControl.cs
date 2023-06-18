@@ -279,7 +279,22 @@ namespace Split.UI.UserControls
 
             if (friend == null) return;
 
+            var rawFrineds = await client.GetFriendsAsync(Data.Id);
+            var friends = rawFrineds.Response;
+
+            if (friends != null)
+            {
+                foreach (var item in friends)
+                {
+                    if (item.UserId == friend.Id & item.FriendId == Data.Id) return;
+
+                    if (item.UserId == Data.Id & item.FriendId == friend.Id) return;
+                }
+            }
+
             await client.AddFriendAsync(Data.Id, friend.Id, true);
+
+            MessageBox.Show("Заявка отправлена");
         }
 
         public async void AddMember(string name)
