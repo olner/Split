@@ -38,6 +38,7 @@
             membersTlp = new TableLayoutPanel();
             tabPage4 = new TabPage();
             debtTlp = new TableLayoutPanel();
+            tabPage5 = new TabPage();
             tabPage3 = new TabPage();
             tableLayoutPanel2 = new TableLayoutPanel();
             label3 = new Label();
@@ -54,11 +55,13 @@
             label1 = new Label();
             addExpenseBtn = new Button();
             groupNameLbl = new Label();
+            debtorsTlp = new TableLayoutPanel();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             expenseTlp.SuspendLayout();
             tabPage2.SuspendLayout();
             tabPage4.SuspendLayout();
+            tabPage5.SuspendLayout();
             tabPage3.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -80,6 +83,7 @@
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
             tabControl1.Controls.Add(tabPage4);
+            tabControl1.Controls.Add(tabPage5);
             tabControl1.Controls.Add(tabPage3);
             tabControl1.DrawMode = TabDrawMode.OwnerDrawFixed;
             tabControl1.ItemSize = new Size(30, 120);
@@ -182,6 +186,16 @@
             debtTlp.RowStyles.Add(new RowStyle());
             debtTlp.Size = new Size(944, 488);
             debtTlp.TabIndex = 0;
+            // 
+            // tabPage5
+            // 
+            tabPage5.Controls.Add(debtorsTlp);
+            tabPage5.Location = new Point(124, 4);
+            tabPage5.Name = "tabPage5";
+            tabPage5.Size = new Size(953, 497);
+            tabPage5.TabIndex = 4;
+            tabPage5.Text = "Должники";
+            tabPage5.UseVisualStyleBackColor = true;
             // 
             // tabPage3
             // 
@@ -351,6 +365,20 @@
             groupNameLbl.Size = new Size(94, 20);
             groupNameLbl.TabIndex = 0;
             // 
+            // debtorsTlp
+            // 
+            debtorsTlp.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            debtorsTlp.AutoScroll = true;
+            debtorsTlp.ColumnCount = 1;
+            debtorsTlp.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            debtorsTlp.Location = new Point(6, 6);
+            debtorsTlp.Name = "debtorsTlp";
+            debtorsTlp.RowCount = 2;
+            debtorsTlp.RowStyles.Add(new RowStyle());
+            debtorsTlp.RowStyles.Add(new RowStyle());
+            debtorsTlp.Size = new Size(941, 485);
+            debtorsTlp.TabIndex = 1;
+            // 
             // GroupForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -366,6 +394,7 @@
             expenseTlp.ResumeLayout(false);
             tabPage2.ResumeLayout(false);
             tabPage4.ResumeLayout(false);
+            tabPage5.ResumeLayout(false);
             tabPage3.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
@@ -402,5 +431,7 @@
         private TableLayoutPanel debtTlp;
         private TableLayoutPanel tableLayoutPanel1;
         private TableLayoutPanel tableLayoutPanel2;
+        private TabPage tabPage5;
+        private TableLayoutPanel debtorsTlp;
     }
 }

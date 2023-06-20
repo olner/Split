@@ -83,6 +83,7 @@ namespace Split.UI.Forms
             SetExpenses();
             SetMembers();
             SetDebts();
+            SetDebtors();
         }
         private async void SetDebt()
         {
@@ -102,6 +103,50 @@ namespace Split.UI.Forms
             }
             label1.Text = $"Вы всего должны {total}₽";
         }
+
+        private async void SetDebtors()
+        {
+            var rawMembers = await client.GetGroupMembersAsync(groupId);
+            var members = rawMembers.Response;
+            if (members == null) return;
+
+            var i = 0;
+            foreach (var member in members)
+            {
+                if (member.UserId != Data.Id)
+                {
+
+                    double sum = 0;
+                    var rawDebts = await client.GetUserGroupCustomDebtsAsync(groupId, Data.Id, member.UserId);
+                    var debts = rawDebts.Response;
+                    if (debts != null)
+                    {
+
+                        foreach (var debt in debts)
+                        {
+                            sum += (double)debt.Debt - (double)debt.Paid;
+                        }
+
+                        var control = new DebtControl(client, member, sum, true)
+                        {
+                            Name = $"debtControl{i}",
+                            Width = debtTlp.Width,
+                            Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top
+                        };
+                        debtorsTlp.Controls.Add(control);
+                    }
+                }
+            }
+
+            /*var rawMembers = await client.GetGroupMembersAsync(groupId);
+            var members = rawMembers.Response;
+
+            foreach (var member in members)
+            {
+                var rawDebts = await client.Debt
+            }*/
+        }
+
         private async void SetGroup()
         {
             var result = await client.GetGroupAsync(groupId);
@@ -261,7 +306,7 @@ namespace Split.UI.Forms
             var expenses = rawExpenses.Response;
             if (expenses == null) return;
 
-            if (expenses.Count != Expenses) 
+            if (expenses.Count != Expenses)
             {
                 //expenseTlp.Controls.Clear();
                 ClearExpense();

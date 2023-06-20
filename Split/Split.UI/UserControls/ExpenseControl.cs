@@ -1,4 +1,5 @@
-﻿using Split.UI.Tools;
+﻿using Split.UI.Forms;
+using Split.UI.Tools;
 using Split.WebClient;
 using System.Drawing.Text;
 
@@ -8,6 +9,8 @@ namespace Split.UI.UserControls
     {
         private readonly SplitServiceApi client;
         private readonly Expense expense;
+
+        private double Debt { get; set; }
 
         public ExpenseControl()
         {
@@ -20,12 +23,18 @@ namespace Split.UI.UserControls
             this.client = client;
             this.expense = expense;
             SetData();
+
+            
+
         }
+
+        
 
         private void ExpenseControl_Load(object sender, EventArgs e)
         {
 
         }
+
 
         private async void SetData()
         {
@@ -50,6 +59,27 @@ namespace Split.UI.UserControls
             if (user == null) return;
 
             label1.Text = $"Вы должны {user.Login} {debt.Debt - debt.Paid}₽";
+
+            Debt = (double)(debt.Debt - debt.Paid);
+
+            if (expense.UserId != Data.Id) SetNotCeratorData();
+        }
+
+        private void SetNotCeratorData()
+        {
+
+            deleteBtn.Text = "Оплата";
+            deleteBtn.Name = $"{expense.Id}";
+
+            if(Debt == 0) deleteBtn.Enabled = false;
+
+            deleteBtn.Click -= deleteBtn_Click;
+            deleteBtn.Click += payBtn_Click;
+        }
+
+        private void payBtn_Click(object sender, EventArgs e)
+        {
+            new PayForm(expense).ShowDialog();
         }
 
         public void RemoveDeleteBtn()
