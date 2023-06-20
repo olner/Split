@@ -117,16 +117,18 @@ namespace Split.UI.Forms
             var i = 0;
             foreach (var item in friend)
             {
-                if (item.Request == false) break;
-                var control = new FriendControl(client, item)
+                if (item.Request == true && item.UserId != Data.Id)
                 {
-                    Name = $"friendControl{i}",
-                    Width = friendRequestTlp.Width,
-                    Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top
-                };
-                control.NewFriendRequest();
-                friendRequestTlp.Controls.Add(control);
-                i++;
+                    var control = new FriendControl(client, item)
+                    {
+                        Name = $"friendControl{i}",
+                        Width = friendRequestTlp.Width,
+                        Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top
+                    };
+                    control.NewFriendRequest();
+                    friendRequestTlp.Controls.Add(control);
+                    i++;
+                }
             }
 
             FriendRequsets = i;
@@ -253,10 +255,23 @@ namespace Split.UI.Forms
             }
             if (requestsCount != FriendRequsets)
             {
-                friendRequestTlp.Controls.Clear();
+                ClearFriendRequestControl();
                 SetFriendsRequests(Data.Id);
             }
         }
+
+        private void ClearFriendRequestControl()
+        {
+            var additions = new ControlsAdditions();
+
+            var controls = additions.GetAll(friendRequestTlp, typeof(FriendControl)).ToList();
+
+            for (int i = 0; i < controls.Count; i++)
+            {
+                friendRequestTlp.Controls.Remove(controls[i]);
+            }
+        }
+
         private async void CheckGroups()
         {
             var rawGroups = await client.GetUserGroupsAsync(Data.Id);

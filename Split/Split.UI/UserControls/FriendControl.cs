@@ -182,6 +182,9 @@ namespace Split.UI.UserControls
                 Width = 200
             };
 
+            tableLayoutPanel1.Controls.Remove(nameLbl);
+            tableLayoutPanel1.Controls.Add(nameTb, 2, 0);
+
             var rawMembers = await client.GetGroupMembersAsync(groupId);
             var members = rawMembers.Response;
 
@@ -203,7 +206,7 @@ namespace Split.UI.UserControls
                     if (member.UserId == id) inGroup = true;
                 }
 
-                if (inGroup == false)
+                if (inGroup == false && friend.Request == false)
                 {
                     var rawUser = await client.GetUserByIdAsync((int)id);
                     var user = rawUser.Response;
@@ -211,9 +214,6 @@ namespace Split.UI.UserControls
                     nameTb.Items.Add(user.Login);
                 }
             }
-
-            tableLayoutPanel1.Controls.Remove(nameLbl);
-            tableLayoutPanel1.Controls.Add(nameTb, 2, 0);
         }
 
         public void SetActions(IEnumerable<Control> controls)

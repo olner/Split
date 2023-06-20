@@ -166,9 +166,9 @@
             label4.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
             label4.Location = new Point(488, 0);
             label4.Name = "label4";
-            label4.Size = new Size(194, 35);
+            label4.Size = new Size(334, 35);
             label4.TabIndex = 12;
-            label4.Text = "Ваши покупки";
+            label4.Text = "Ваши последние покупки";
             // 
             // accLbl
             // 
@@ -208,6 +208,7 @@
             showPaswordCheckBox.TabIndex = 11;
             showPaswordCheckBox.Text = "Показывать пароль?";
             showPaswordCheckBox.UseVisualStyleBackColor = true;
+            showPaswordCheckBox.Visible = false;
             showPaswordCheckBox.CheckedChanged += showPaswordCheckBox_CheckedChanged;
             // 
             // deleteBtn
