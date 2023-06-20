@@ -261,7 +261,7 @@ namespace Split.UI.Forms
             var expenses = rawExpenses.Response;
             if (expenses == null) return;
 
-            if (expenses.Count != Expenses)
+            if (expenses.Count != Expenses) 
             {
                 //expenseTlp.Controls.Clear();
                 ClearExpense();

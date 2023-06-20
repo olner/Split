@@ -110,10 +110,10 @@ namespace Split.UI.Forms
                 //if (control.Sum == 0) break;
                 var debt = (sum / 100) * control.Sum;
                 control.Price = debt;
-                control.Name = $"{control.UserName} должен: {debt}";
+                control.Name = $"{control.UserName} должен: {debt}₽";
                 percentCounter += control.Sum;
             }
-            percentLbl.Text = $"Процентов осталось: {100 - percentCounter}";
+            percentLbl.Text = $"Процентов осталось: {100 - percentCounter} %";
         }
 
         private void UpdateAmountControls()
@@ -134,25 +134,25 @@ namespace Split.UI.Forms
             double amountCounter = 0;
             foreach (var control in controls)
             {
-                control.Name = $"{control.UserName} должен: {control.Sum}";
+                control.Name = $"{control.UserName} должен: {control.Sum}₽";
                 amountCounter += control.Sum;
             }
 
-            amountLbl.Text = $"Осталось: {sum - amountCounter}";
+            amountLbl.Text = $"Осталось: {sum - amountCounter}₽";
         }
 
         private void UpdateDebts()
         {
             if (sumTb.Text.Length == 0)
             {
-                equalLbl.Text = $"Каждый должен: 0";
+                equalLbl.Text = $"Каждый должен: 0₽";
                 return;
             }
             if (checkedListBox1.CheckedItems.Count == 0) return;
             var sum = double.Parse(sumTb.Text);
             var debt = Math.Round((sum / checkedListBox1.CheckedItems.Count),2);
 
-            equalLbl.Text = $"Каждый должен: {debt}";
+            equalLbl.Text = $"Каждый должен: {debt}₽";
         }
 
         private void sumTb_KeyPress(object sender, KeyPressEventArgs e)
