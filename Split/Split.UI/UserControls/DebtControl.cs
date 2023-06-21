@@ -1,15 +1,5 @@
 ﻿using Split.UI.Tools;
 using Split.WebClient;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Split.UI.UserControls
 {
@@ -81,6 +71,5 @@ namespace Split.UI.UserControls
                 listBox1.Items.Add($"{expense.Name}: {debt.Debt - debt.Paid} рублей");
             }
         }
-
     }
 }

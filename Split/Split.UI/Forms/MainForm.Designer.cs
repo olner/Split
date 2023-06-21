@@ -31,6 +31,7 @@
             components = new System.ComponentModel.Container();
             tabControl1 = new TabControl();
             groupsPage = new TabPage();
+            panel1 = new Panel();
             groupsTlp = new TableLayoutPanel();
             friendsPage = new TabPage();
             friendsTlp = new TableLayoutPanel();
@@ -54,8 +55,10 @@
             friendRequestTlp = new TableLayoutPanel();
             label5 = new Label();
             updateTimer = new System.Windows.Forms.Timer(components);
+            panel2 = new Panel();
             tabControl1.SuspendLayout();
             groupsPage.SuspendLayout();
+            panel1.SuspendLayout();
             friendsPage.SuspendLayout();
             accountPage.SuspendLayout();
             profileTlp.SuspendLayout();
@@ -63,6 +66,7 @@
             ((System.ComponentModel.ISupportInitialize)profilePb).BeginInit();
             additionalTlp.SuspendLayout();
             friendRequestTlp.SuspendLayout();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl1
@@ -86,7 +90,7 @@
             // 
             // groupsPage
             // 
-            groupsPage.Controls.Add(groupsTlp);
+            groupsPage.Controls.Add(panel1);
             groupsPage.Location = new Point(124, 4);
             groupsPage.Name = "groupsPage";
             groupsPage.Padding = new Padding(3);
@@ -95,22 +99,34 @@
             groupsPage.Text = "Группы";
             groupsPage.UseVisualStyleBackColor = true;
             // 
+            // panel1
+            // 
+            panel1.AutoScroll = true;
+            panel1.Controls.Add(groupsTlp);
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(3, 3);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1078, 534);
+            panel1.TabIndex = 1;
+            // 
             // groupsTlp
             // 
-            groupsTlp.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            groupsTlp.AutoSize = true;
+            groupsTlp.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             groupsTlp.ColumnCount = 1;
             groupsTlp.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            groupsTlp.Location = new Point(6, 6);
+            groupsTlp.Dock = DockStyle.Top;
+            groupsTlp.Location = new Point(0, 0);
             groupsTlp.Name = "groupsTlp";
             groupsTlp.RowCount = 2;
             groupsTlp.RowStyles.Add(new RowStyle());
             groupsTlp.RowStyles.Add(new RowStyle());
-            groupsTlp.Size = new Size(1075, 528);
+            groupsTlp.Size = new Size(1078, 0);
             groupsTlp.TabIndex = 0;
             // 
             // friendsPage
             // 
-            friendsPage.Controls.Add(friendsTlp);
+            friendsPage.Controls.Add(panel2);
             friendsPage.Location = new Point(124, 4);
             friendsPage.Name = "friendsPage";
             friendsPage.Padding = new Padding(3);
@@ -121,15 +137,17 @@
             // 
             // friendsTlp
             // 
-            friendsTlp.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            friendsTlp.AutoSize = true;
+            friendsTlp.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             friendsTlp.ColumnCount = 1;
             friendsTlp.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            friendsTlp.Location = new Point(6, 6);
+            friendsTlp.Dock = DockStyle.Top;
+            friendsTlp.Location = new Point(0, 0);
             friendsTlp.Name = "friendsTlp";
             friendsTlp.RowCount = 2;
             friendsTlp.RowStyles.Add(new RowStyle());
             friendsTlp.RowStyles.Add(new RowStyle());
-            friendsTlp.Size = new Size(1072, 528);
+            friendsTlp.Size = new Size(1078, 0);
             friendsTlp.TabIndex = 0;
             // 
             // accountPage
@@ -346,6 +364,16 @@
             updateTimer.Interval = 1000;
             updateTimer.Tick += updateTimer_Tick;
             // 
+            // panel2
+            // 
+            panel2.AutoScroll = true;
+            panel2.Controls.Add(friendsTlp);
+            panel2.Dock = DockStyle.Fill;
+            panel2.Location = new Point(3, 3);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(1078, 534);
+            panel2.TabIndex = 1;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -357,6 +385,8 @@
             Load += MainForm_Load;
             tabControl1.ResumeLayout(false);
             groupsPage.ResumeLayout(false);
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             friendsPage.ResumeLayout(false);
             accountPage.ResumeLayout(false);
             profileTlp.ResumeLayout(false);
@@ -367,6 +397,8 @@
             additionalTlp.ResumeLayout(false);
             friendRequestTlp.ResumeLayout(false);
             friendRequestTlp.PerformLayout();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -397,5 +429,7 @@
         private Label label5;
         private CheckBox showPaswordCheckBox;
         private System.Windows.Forms.Timer updateTimer;
+        private Panel panel1;
+        private Panel panel2;
     }
 }

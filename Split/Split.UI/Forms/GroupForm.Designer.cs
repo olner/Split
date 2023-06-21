@@ -32,13 +32,18 @@
             accLbl = new Label();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            panel2 = new Panel();
             expenseTlp = new TableLayoutPanel();
             tableLayoutPanel1 = new TableLayoutPanel();
             tabPage2 = new TabPage();
+            panel1 = new Panel();
             membersTlp = new TableLayoutPanel();
             tabPage4 = new TabPage();
+            panel3 = new Panel();
             debtTlp = new TableLayoutPanel();
             tabPage5 = new TabPage();
+            panel4 = new Panel();
+            debtorsTlp = new TableLayoutPanel();
             tabPage3 = new TabPage();
             tableLayoutPanel2 = new TableLayoutPanel();
             label3 = new Label();
@@ -55,13 +60,16 @@
             label1 = new Label();
             addExpenseBtn = new Button();
             groupNameLbl = new Label();
-            debtorsTlp = new TableLayoutPanel();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
+            panel2.SuspendLayout();
             expenseTlp.SuspendLayout();
             tabPage2.SuspendLayout();
+            panel1.SuspendLayout();
             tabPage4.SuspendLayout();
+            panel3.SuspendLayout();
             tabPage5.SuspendLayout();
+            panel4.SuspendLayout();
             tabPage3.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -99,7 +107,7 @@
             // 
             // tabPage1
             // 
-            tabPage1.Controls.Add(expenseTlp);
+            tabPage1.Controls.Add(panel2);
             tabPage1.Location = new Point(124, 4);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
@@ -108,19 +116,30 @@
             tabPage1.Text = "Группа";
             tabPage1.UseVisualStyleBackColor = true;
             // 
+            // panel2
+            // 
+            panel2.AutoScroll = true;
+            panel2.Controls.Add(expenseTlp);
+            panel2.Dock = DockStyle.Fill;
+            panel2.Location = new Point(3, 3);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(947, 491);
+            panel2.TabIndex = 1;
+            // 
             // expenseTlp
             // 
-            expenseTlp.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            expenseTlp.AutoScroll = true;
+            expenseTlp.AutoSize = true;
+            expenseTlp.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             expenseTlp.ColumnCount = 1;
             expenseTlp.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             expenseTlp.Controls.Add(tableLayoutPanel1, 0, 0);
-            expenseTlp.Location = new Point(6, 6);
+            expenseTlp.Dock = DockStyle.Top;
+            expenseTlp.Location = new Point(0, 0);
             expenseTlp.Name = "expenseTlp";
             expenseTlp.RowCount = 2;
             expenseTlp.RowStyles.Add(new RowStyle(SizeType.Absolute, 71F));
             expenseTlp.RowStyles.Add(new RowStyle());
-            expenseTlp.Size = new Size(941, 485);
+            expenseTlp.Size = new Size(947, 71);
             expenseTlp.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -134,12 +153,12 @@
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new Size(935, 65);
+            tableLayoutPanel1.Size = new Size(941, 65);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // tabPage2
             // 
-            tabPage2.Controls.Add(membersTlp);
+            tabPage2.Controls.Add(panel1);
             tabPage2.Location = new Point(124, 4);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
@@ -148,23 +167,34 @@
             tabPage2.Text = "Участники";
             tabPage2.UseVisualStyleBackColor = true;
             // 
+            // panel1
+            // 
+            panel1.AutoScroll = true;
+            panel1.Controls.Add(membersTlp);
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(3, 3);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(947, 491);
+            panel1.TabIndex = 1;
+            // 
             // membersTlp
             // 
-            membersTlp.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            membersTlp.AutoScroll = true;
+            membersTlp.AutoSize = true;
+            membersTlp.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             membersTlp.ColumnCount = 1;
             membersTlp.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            membersTlp.Location = new Point(6, 6);
+            membersTlp.Dock = DockStyle.Top;
+            membersTlp.Location = new Point(0, 0);
             membersTlp.Name = "membersTlp";
             membersTlp.RowCount = 2;
             membersTlp.RowStyles.Add(new RowStyle());
             membersTlp.RowStyles.Add(new RowStyle());
-            membersTlp.Size = new Size(941, 485);
+            membersTlp.Size = new Size(947, 0);
             membersTlp.TabIndex = 0;
             // 
             // tabPage4
             // 
-            tabPage4.Controls.Add(debtTlp);
+            tabPage4.Controls.Add(panel3);
             tabPage4.Location = new Point(124, 4);
             tabPage4.Name = "tabPage4";
             tabPage4.Padding = new Padding(3);
@@ -173,29 +203,65 @@
             tabPage4.Text = "Долги";
             tabPage4.UseVisualStyleBackColor = true;
             // 
+            // panel3
+            // 
+            panel3.AutoScroll = true;
+            panel3.Controls.Add(debtTlp);
+            panel3.Dock = DockStyle.Fill;
+            panel3.Location = new Point(3, 3);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(947, 491);
+            panel3.TabIndex = 1;
+            // 
             // debtTlp
             // 
-            debtTlp.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            debtTlp.AutoScroll = true;
+            debtTlp.AutoSize = true;
+            debtTlp.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             debtTlp.ColumnCount = 1;
             debtTlp.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            debtTlp.Location = new Point(3, 3);
+            debtTlp.Dock = DockStyle.Top;
+            debtTlp.Location = new Point(0, 0);
             debtTlp.Name = "debtTlp";
             debtTlp.RowCount = 2;
             debtTlp.RowStyles.Add(new RowStyle());
             debtTlp.RowStyles.Add(new RowStyle());
-            debtTlp.Size = new Size(944, 488);
+            debtTlp.Size = new Size(947, 0);
             debtTlp.TabIndex = 0;
             // 
             // tabPage5
             // 
-            tabPage5.Controls.Add(debtorsTlp);
+            tabPage5.Controls.Add(panel4);
             tabPage5.Location = new Point(124, 4);
             tabPage5.Name = "tabPage5";
             tabPage5.Size = new Size(953, 497);
             tabPage5.TabIndex = 4;
             tabPage5.Text = "Должники";
             tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // panel4
+            // 
+            panel4.AutoScroll = true;
+            panel4.Controls.Add(debtorsTlp);
+            panel4.Dock = DockStyle.Fill;
+            panel4.Location = new Point(0, 0);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(953, 497);
+            panel4.TabIndex = 2;
+            // 
+            // debtorsTlp
+            // 
+            debtorsTlp.AutoSize = true;
+            debtorsTlp.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            debtorsTlp.ColumnCount = 1;
+            debtorsTlp.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            debtorsTlp.Dock = DockStyle.Top;
+            debtorsTlp.Location = new Point(0, 0);
+            debtorsTlp.Name = "debtorsTlp";
+            debtorsTlp.RowCount = 2;
+            debtorsTlp.RowStyles.Add(new RowStyle());
+            debtorsTlp.RowStyles.Add(new RowStyle());
+            debtorsTlp.Size = new Size(953, 0);
+            debtorsTlp.TabIndex = 1;
             // 
             // tabPage3
             // 
@@ -365,20 +431,6 @@
             groupNameLbl.Size = new Size(94, 20);
             groupNameLbl.TabIndex = 0;
             // 
-            // debtorsTlp
-            // 
-            debtorsTlp.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            debtorsTlp.AutoScroll = true;
-            debtorsTlp.ColumnCount = 1;
-            debtorsTlp.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            debtorsTlp.Location = new Point(6, 6);
-            debtorsTlp.Name = "debtorsTlp";
-            debtorsTlp.RowCount = 2;
-            debtorsTlp.RowStyles.Add(new RowStyle());
-            debtorsTlp.RowStyles.Add(new RowStyle());
-            debtorsTlp.Size = new Size(941, 485);
-            debtorsTlp.TabIndex = 1;
-            // 
             // GroupForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -391,10 +443,18 @@
             Load += GroupForm_Load;
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             expenseTlp.ResumeLayout(false);
             tabPage2.ResumeLayout(false);
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             tabPage4.ResumeLayout(false);
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
             tabPage5.ResumeLayout(false);
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
             tabPage3.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
@@ -410,7 +470,6 @@
         private TabControl tabControl1;
         private TabPage tabPage2;
         private TabPage tabPage3;
-        private TableLayoutPanel membersTlp;
         private Label label3;
         private GroupBox groupBox1;
         private Label label2;
@@ -433,5 +492,10 @@
         private TableLayoutPanel tableLayoutPanel2;
         private TabPage tabPage5;
         private TableLayoutPanel debtorsTlp;
+        private Panel panel1;
+        private TableLayoutPanel membersTlp;
+        private Panel panel2;
+        private Panel panel3;
+        private Panel panel4;
     }
 }

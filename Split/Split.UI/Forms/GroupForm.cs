@@ -1,6 +1,7 @@
 ﻿using Split.UI.Tools;
 using Split.UI.UserControls;
 using Split.WebClient;
+using System.Windows.Forms;
 using System.Xml.Serialization;
 
 namespace Split.UI.Forms
@@ -21,6 +22,7 @@ namespace Split.UI.Forms
             InitializeComponent();
             this.client = client;
             this.groupId = groupId;
+
         }
 
         private async Task CheckAdmin()
@@ -36,6 +38,8 @@ namespace Split.UI.Forms
 
         private void GroupForm_Load(object sender, EventArgs e)
         {
+            expenseTlp.AutoScroll = false;
+
             this.MinimumSize = new Size(1123, 576);
 
             int vertScrollWidth = SystemInformation.VerticalScrollBarWidth;
@@ -43,6 +47,10 @@ namespace Split.UI.Forms
             expenseTlp.Padding = new Padding(0, 0, 0, 0);
             membersTlp.Padding = new Padding(0, 0, 0, 0);
             debtTlp.Padding = new Padding(0, 0, 0, 0);
+
+            //TEST
+            //membersTlp.Padding = new Padding(0, 0, 10, 0); //prevents horizontal ScrollBar but adds nasty gap
+            //TEST
 
             SetData();
             //CheckAdmin();
