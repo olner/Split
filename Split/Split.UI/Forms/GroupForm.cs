@@ -137,14 +137,6 @@ namespace Split.UI.Forms
                     }
                 }
             }
-
-            /*var rawMembers = await client.GetGroupMembersAsync(groupId);
-            var members = rawMembers.Response;
-
-            foreach (var member in members)
-            {
-                var rawDebts = await client.Debt
-            }*/
         }
 
         private async void SetGroup()
@@ -308,7 +300,6 @@ namespace Split.UI.Forms
 
             if (expenses.Count != Expenses)
             {
-                //expenseTlp.Controls.Clear();
                 ClearExpense();
                 SetExpenses();
                 SetDebt();

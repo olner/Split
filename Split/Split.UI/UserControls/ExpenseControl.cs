@@ -23,18 +23,12 @@ namespace Split.UI.UserControls
             this.client = client;
             this.expense = expense;
             SetData();
-
-            
-
         }
-
-        
 
         private void ExpenseControl_Load(object sender, EventArgs e)
         {
 
         }
-
 
         private async void SetData()
         {
@@ -49,9 +43,10 @@ namespace Split.UI.UserControls
 
             var debt = debts.Where(x => x.ExpenseId == expense.Id).FirstOrDefault();
 
-            if (debt == null || debts == null || expense.UserId == Data.Id)
+            if (debt == null || debts == null || expense.UserId == Data.Id || debt.Debt == debt.Paid)
             {
                 label1.Text = "Вы ничего не должны";
+                if (expense.UserId != Data.Id) SetNotCeratorData();
                 return;
             }
             var rawUser = await client.GetUserByIdAsync((int)expense.UserId);
@@ -79,7 +74,7 @@ namespace Split.UI.UserControls
 
         private void payBtn_Click(object sender, EventArgs e)
         {
-            new PayForm(expense).ShowDialog();
+            new PayForm(expense,client).ShowDialog();
         }
 
         public void RemoveDeleteBtn()
@@ -93,14 +88,51 @@ namespace Split.UI.UserControls
             var debts = rawDebts.Response;
             if (debts == null) return;
 
-            foreach (var debt in debts)
+            var unpaid = false;
+            foreach( var debt in debts )
             {
-                await client.DeleteDebtAsync(debt.Id);
+                if ((debt.Debt - debt.Paid) > 0 && debt.UserId != Data.Id) unpaid = true;
             }
 
-            await client.DeleteExpenseAsync(expense.Id);
+            if (unpaid)
+            {
+                var result = MessageBox.Show("По этой покупке остались неоплаченные долги. Вы точно хотите удалить эту покупку?",
+                    "Внимание",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Information);
+                if (result == DialogResult.Yes)
+                {
+                    foreach (var debt in debts)
+                    {
+                        await client.DeleteDebtAsync(debt.Id);
+                    }
 
-            this.Dispose();
+                    await client.DeleteExpenseAsync(expense.Id);
+
+                    this.Dispose();
+                    return;
+                }
+            }
+            else
+            {
+                var result = MessageBox.Show("Вы точно хотите удалить эту покупку?",
+                    "Внимание",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Information);
+                if (result == DialogResult.Yes)
+                {
+                    foreach (var debt in debts)
+                    {
+                        await client.DeleteDebtAsync(debt.Id);
+                    }
+
+                    await client.DeleteExpenseAsync(expense.Id);
+
+                    this.Dispose();
+                    return;
+                }
+            }
+
         }
     }
 }

@@ -31,6 +31,7 @@
             label1 = new Label();
             sumTb = new TextBox();
             payBtn = new Button();
+            label2 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -52,7 +53,7 @@
             // 
             // payBtn
             // 
-            payBtn.Location = new Point(263, 71);
+            payBtn.Location = new Point(248, 68);
             payBtn.Name = "payBtn";
             payBtn.Size = new Size(94, 29);
             payBtn.TabIndex = 2;
@@ -60,11 +61,21 @@
             payBtn.UseVisualStyleBackColor = true;
             payBtn.Click += payBtn_Click;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(14, 9);
+            label2.Name = "label2";
+            label2.Size = new Size(89, 20);
+            label2.TabIndex = 3;
+            label2.Text = "Вы должны";
+            // 
             // PayForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(455, 112);
+            ClientSize = new Size(449, 112);
+            Controls.Add(label2);
             Controls.Add(payBtn);
             Controls.Add(sumTb);
             Controls.Add(label1);
@@ -79,5 +90,6 @@
         private Label label1;
         private TextBox sumTb;
         private Button payBtn;
+        private Label label2;
     }
 }

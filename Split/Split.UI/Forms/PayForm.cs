@@ -1,29 +1,46 @@
-﻿using Split.WebClient;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using Split.UI.Tools;
+using Split.WebClient;
 
 namespace Split.UI.Forms
 {
     public partial class PayForm : Form
     {
         private readonly Expense expense;
+        private readonly SplitServiceApi client;
+        private DebtModel Debt { get; set; }
 
-        public PayForm(Expense expense)
+        public PayForm(Expense expense, SplitServiceApi client)
         {
             InitializeComponent();
             this.expense = expense;
+            this.client = client;
+            SetData();
         }
 
-        private void payBtn_Click(object sender, EventArgs e)
+        private async void SetData()
         {
+            var rawDebts = await client.GetExpenseDebtsAsync(expense.Id);
+            var debts = rawDebts.Response;
 
+            foreach (var debt in debts)
+            {
+                if (debt.UserId == Data.Id) Debt = debt;
+            }
+        }
+
+        private async void payBtn_Click(object sender, EventArgs e)
+        {
+            var debt = Debt.Debt - Debt.Paid;
+
+            if (double.Parse(sumTb.Text) > debt)
+            {
+                MessageBox.Show("Введенная сумма больше суммы долга");
+                return;
+            }
+
+            await client.PayDebtAsync(Debt.Id, double.Parse(sumTb.Text));
+            this.Close();
+            //MessageBox.Show("Сумма занесена");
         }
 
         private void sumTb_KeyDown(object sender, KeyEventArgs e)

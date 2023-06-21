@@ -204,5 +204,18 @@ namespace Split.Engine.Repositories
 
         }
 
+        public DebtModel PayDebt(Guid debtId, double paid)
+        {
+            using var context = contextFactory.CreateDbContext();
+            var debt = context.Debts.Where(x => x.Id == debtId).FirstOrDefault() ?? throw new DebtNotFoundException();
+
+            debt.Paid += paid;
+
+            context.Debts.Update(debt);
+            context.SaveChanges();
+
+            return GetDebt(debtId);
+        }
+
     }
 }

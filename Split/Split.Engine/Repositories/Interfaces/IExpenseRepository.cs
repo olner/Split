@@ -20,5 +20,7 @@ namespace Split.Engine.Repositories.Interfaces
         List<CustomDebt> GetUserGroupCustomDebts(Guid groupId, int debtUserId, int userId);
         void DeleteGroupDebgs(Guid groupId);
 
+        DebtModel PayDebt(Guid debtId, double paid);
+
     }
 }

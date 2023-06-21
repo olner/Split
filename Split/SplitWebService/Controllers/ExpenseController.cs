@@ -125,5 +125,14 @@ namespace SplitWebService.Controllers
             var result = expenseSerivce.GetUserGroupCustomDebts(groupId, debtUserId, userId);
             return Ok(new ServiceResponse<List<CustomDebt>> { Response = result });
         }
+
+        [HttpPatch("/PayDebt", Name = "PayDebt")]
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ServiceResponse<DebtModel>))]
+        public IActionResult PayDebt(Guid debtId, double paid)
+        {
+            var result = expenseSerivce.PayDebt(debtId, paid);
+            return Ok(new ServiceResponse<DebtModel> { Response = result });
+        }
     }
 }

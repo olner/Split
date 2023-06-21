@@ -492,6 +492,46 @@
         }
       }
     },
+    "/PayDebt": {
+      "patch": {
+        "tags": [
+          "Expense"
+        ],
+        "operationId": "PayDebt",
+        "parameters": [
+          {
+            "name": "debtId",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "paid",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DebtModelServiceResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/Groups": {
       "get": {
         "tags": [

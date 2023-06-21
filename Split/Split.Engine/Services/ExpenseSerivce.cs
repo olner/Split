@@ -198,5 +198,17 @@ namespace Split.Engine.Services
                 return null;
             }
         }
+
+        public DebtModel PayDebt(Guid debtId, double paid)
+        {
+            try
+            {
+                return expenseRepository.PayDebt(debtId, paid);
+            }
+            catch (DebtNotFoundException)
+            {
+                return null;
+            }
+        }
     }
 }
