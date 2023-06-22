@@ -109,7 +109,7 @@ namespace Split.UI.UserControls
 
                     await client.DeleteExpenseAsync(expense.Id);
 
-                    this.Dispose();
+                    //this.Dispose();
                     return;
                 }
             }
@@ -128,7 +128,7 @@ namespace Split.UI.UserControls
 
                     await client.DeleteExpenseAsync(expense.Id);
 
-                    this.Dispose();
+                    //this.Dispose();
                     return;
                 }
             }
