@@ -48,10 +48,6 @@ namespace Split.UI.Forms
             membersTlp.Padding = new Padding(0, 0, 0, 0);
             debtTlp.Padding = new Padding(0, 0, 0, 0);
 
-            //TEST
-            //membersTlp.Padding = new Padding(0, 0, 10, 0); //prevents horizontal ScrollBar but adds nasty gap
-            //TEST
-
             SetData();
             //CheckAdmin();
             SetAdmin();
@@ -142,6 +138,7 @@ namespace Split.UI.Forms
                             Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top
                         };
                         debtorsTlp.Controls.Add(control);
+                        i++;
                     }
                 }
             }
@@ -243,9 +240,11 @@ namespace Split.UI.Forms
                             Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top
                         };
                         debtTlp.Controls.Add(control);
+                        i++;
                     }
                 }
             }
+            Debts = i;
         }
 
         private void tabControl1_DrawItem(object sender, DrawItemEventArgs e)
@@ -299,6 +298,7 @@ namespace Split.UI.Forms
             CheckExpenses();
             CheckMembers();
             CheckGroup();
+            //CheckDebts();
         }
         private async void CheckExpenses()
         {
@@ -314,6 +314,9 @@ namespace Split.UI.Forms
 
                 debtTlp.Controls.Clear();
                 SetDebts();
+
+                debtorsTlp.Controls.Clear();
+                SetDebtors();
             }
         }
         private void ClearExpense()
