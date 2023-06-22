@@ -53,6 +53,12 @@ namespace Split.UI.UserControls
         {
             var rawDebts = await client.GetUserGroupCustomDebtsAsync(member.GroupId, member.UserId, Data.Id);
             var debts = rawDebts.Response;
+
+            if(debts == null)
+            {
+                timer1.Stop();
+                return;
+            }
             if(debts.Count != Debts.Count)
             {
                 timer1.Stop();
@@ -76,6 +82,12 @@ namespace Split.UI.UserControls
         {
             var rawDebts = await client.GetUserGroupCustomDebtsAsync(member.GroupId, Data.Id, member.UserId);
             var debts = rawDebts.Response;
+
+            if(debts == null)
+            {
+                timer2.Stop();
+                return;
+            }
 
             if (debts.Count != Debtors.Count)
             {
