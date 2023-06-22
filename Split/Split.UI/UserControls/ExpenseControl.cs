@@ -23,6 +23,7 @@ namespace Split.UI.UserControls
             this.client = client;
             this.expense = expense;
             SetData();
+            updateTimer.Start();
         }
 
         private void ExpenseControl_Load(object sender, EventArgs e)
@@ -46,6 +47,7 @@ namespace Split.UI.UserControls
             if (debt == null || debts == null || expense.UserId == Data.Id || debt.Debt == debt.Paid)
             {
                 label1.Text = "Вы ничего не должны";
+                Debt = 0;
                 if (expense.UserId != Data.Id) SetNotCeratorData();
                 return;
             }
@@ -66,15 +68,17 @@ namespace Split.UI.UserControls
             deleteBtn.Text = "Оплата";
             deleteBtn.Name = $"{expense.Id}";
 
-            if(Debt == 0) deleteBtn.Enabled = false;
+            if (Debt == 0) deleteBtn.Enabled = false;
 
+            //TODO: Бесконечное добавление click, сделать нормальный фикс
             deleteBtn.Click -= deleteBtn_Click;
+            deleteBtn.Click -= payBtn_Click;
             deleteBtn.Click += payBtn_Click;
         }
 
         private void payBtn_Click(object sender, EventArgs e)
         {
-            new PayForm(expense,client).ShowDialog();
+            new PayForm(expense, client).ShowDialog();
         }
 
         public void RemoveDeleteBtn()
@@ -89,7 +93,7 @@ namespace Split.UI.UserControls
             if (debts == null) return;
 
             var unpaid = false;
-            foreach( var debt in debts )
+            foreach (var debt in debts)
             {
                 if ((debt.Debt - debt.Paid) > 0 && debt.UserId != Data.Id) unpaid = true;
             }
@@ -133,6 +137,35 @@ namespace Split.UI.UserControls
                 }
             }
 
+        }
+        private void updateTimer_Tick(object sender, EventArgs e)
+        {
+            CheckDebt();
+        }
+
+        private async void CheckDebt()
+        {
+            double tmpDebt;
+
+            var rawDebts = await client.GetUserDebtsAsync(Data.Id);
+            var debts = rawDebts.Response;
+            if (debts == null) return;
+
+            var debt = debts.Where(x => x.ExpenseId == expense.Id).FirstOrDefault();
+
+            if (debt == null || debts == null || expense.UserId == Data.Id || debt.Debt == debt.Paid)
+            {
+                tmpDebt = 0;
+            }
+            else
+            {
+                tmpDebt = (double)(debt.Debt - debt.Paid);
+            }
+            
+            if(Debt != tmpDebt)
+            {
+                SetData();
+            }
         }
     }
 }

@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             tableLayoutPanel1 = new TableLayoutPanel();
             dateLbl = new Label();
             priceLbl = new Label();
             label1 = new Label();
             nameLbl = new Label();
             deleteBtn = new Button();
+            updateTimer = new System.Windows.Forms.Timer(components);
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -113,6 +115,11 @@
             deleteBtn.UseVisualStyleBackColor = true;
             deleteBtn.Click += deleteBtn_Click;
             // 
+            // updateTimer
+            // 
+            updateTimer.Interval = 1000;
+            updateTimer.Tick += updateTimer_Tick;
+            // 
             // ExpenseControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -135,5 +142,6 @@
         private Label label1;
         private Label nameLbl;
         private Button deleteBtn;
+        private System.Windows.Forms.Timer updateTimer;
     }
 }

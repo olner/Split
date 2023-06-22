@@ -28,10 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             tableLayoutPanel1 = new TableLayoutPanel();
             pictureBox1 = new PictureBox();
             nameLbl = new Label();
             listBox1 = new ListBox();
+            timer1 = new System.Windows.Forms.Timer(components);
+            timer2 = new System.Windows.Forms.Timer(components);
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -86,6 +89,16 @@
             listBox1.Size = new Size(207, 67);
             listBox1.TabIndex = 2;
             // 
+            // timer1
+            // 
+            timer1.Interval = 1000;
+            timer1.Tick += timer1_Tick;
+            // 
+            // timer2
+            // 
+            timer2.Interval = 1000;
+            timer2.Tick += timer2_Tick;
+            // 
             // DebtControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -107,5 +120,7 @@
         private PictureBox pictureBox1;
         private Label nameLbl;
         private ListBox listBox1;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timer2;
     }
 }
