@@ -33,6 +33,9 @@ namespace Split.UI.UserControls
 
         private async void SetData()
         {
+            deleteBtn.BackColor = Color.FromArgb(204, 68, 85);
+            deleteBtn.ForeColor = Color.White;
+
             var date = expense.Date.Value.Date.ToString("M");
             dateLbl.Text = MyExtensions.SetDataFormat(date);
             nameLbl.Text = expense.Name;
@@ -67,7 +70,7 @@ namespace Split.UI.UserControls
 
             deleteBtn.Text = "Оплата";
             deleteBtn.Name = $"{expense.Id}";
-            deleteBtn.BackColor = Color.FromArgb(204, 68, 85);
+            deleteBtn.BackColor = Color.FromArgb(91, 197, 167);
             deleteBtn.ForeColor = Color.White;
 
             //disabled btn fix
