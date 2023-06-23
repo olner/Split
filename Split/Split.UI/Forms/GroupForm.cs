@@ -17,6 +17,8 @@ namespace Split.UI.Forms
         private int Debts { get; set; }
         private bool IsAdmin { get; set; }
 
+        private double Debt { get; set; }
+
         public GroupForm(SplitServiceApi client, Guid groupId)
         {
             InitializeComponent();
@@ -103,9 +105,18 @@ namespace Split.UI.Forms
             double total = 0;
             foreach (var debt in debts)
             {
-                total += (double)debt.Debt - (double)debt.Paid;
+                var rawExpense = await client.GetExpenseAsync(debt.ExpenseId);
+                var expense = rawExpense.Response;
+
+                if (expense.UserId != Data.Id)
+                {
+                    total += (double)debt.Debt - (double)debt.Paid;
+                }
             }
-            label1.Text = $"Вы всего должны {total}₽";
+
+            label1.Text = $"Вы всего должны {Math.Round(total,2)}₽";
+
+            Debt = Math.Round(total, 2);
         }
 
         private async void SetDebtors()
@@ -300,6 +311,7 @@ namespace Split.UI.Forms
             CheckExpenses();
             CheckMembers();
             CheckGroup();
+            CheckDebt();
             //CheckDebts();
         }
         private async void CheckExpenses()
@@ -321,6 +333,41 @@ namespace Split.UI.Forms
                 SetDebtors();
             }
         }
+
+        private async void CheckDebt()
+        {
+            double total = 0;
+            var rawDebts = await client.GetUserGroupDebtsAsync(groupId, Data.Id);
+            var debts = rawDebts.Response;
+
+            if (debts == null)
+            {
+                if (Debt != 0)
+                {
+                    SetDebt();
+                    return;
+                }
+            }
+            
+            foreach (var debt in debts)
+            {
+                var rawExpense = await client.GetExpenseAsync(debt.ExpenseId);
+                var expense = rawExpense.Response;
+
+                if (expense.UserId != Data.Id)
+                {
+                    total += (double)debt.Debt - (double)debt.Paid;
+                }
+            }
+            total = Math.Round(total, 2);
+
+            if(Debt != total)
+            {
+                SetDebt();
+            }
+
+        }
+
         private void ClearExpense()
         {
             var additions = new ControlsAdditions();
