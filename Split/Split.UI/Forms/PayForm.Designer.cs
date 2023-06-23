@@ -53,7 +53,7 @@
             // 
             // payBtn
             // 
-            payBtn.Location = new Point(248, 68);
+            payBtn.Location = new Point(250, 70);
             payBtn.Name = "payBtn";
             payBtn.Size = new Size(94, 29);
             payBtn.TabIndex = 2;
@@ -64,9 +64,10 @@
             // label2
             // 
             label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             label2.Location = new Point(14, 9);
             label2.Name = "label2";
-            label2.Size = new Size(89, 20);
+            label2.Size = new Size(100, 23);
             label2.TabIndex = 3;
             label2.Text = "Вы должны";
             // 
@@ -74,7 +75,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(449, 112);
+            ClientSize = new Size(359, 112);
             Controls.Add(label2);
             Controls.Add(payBtn);
             Controls.Add(sumTb);

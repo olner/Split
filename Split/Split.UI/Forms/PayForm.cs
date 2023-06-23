@@ -26,6 +26,12 @@ namespace Split.UI.Forms
             {
                 if (debt.UserId == Data.Id) Debt = debt;
             }
+
+            var rawUser = await client.GetUserByIdAsync((int)expense.UserId);
+            var user = rawUser.Response;
+            if (user == null) return;
+
+            label2.Text = $"Вы должны {user.Login} {Debt.Debt - Debt.Paid}₽ за {expense.Name}";
         }
 
         private async void payBtn_Click(object sender, EventArgs e)

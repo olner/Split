@@ -341,6 +341,17 @@ namespace Split.UI.Forms
             {
                 membersTlp.Controls.Clear();
                 SetMembers();
+
+                //Tests version
+                ClearExpense();
+                SetExpenses();
+                SetDebt();
+
+                debtTlp.Controls.Clear();
+                SetDebts();
+
+                debtorsTlp.Controls.Clear();
+                SetDebtors();
             }
         }
         private async void CheckGroup()

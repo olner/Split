@@ -72,6 +72,20 @@ namespace Split.UI.UserControls
             var user = result.Response;
             Name = user.Login;
             nameLbl.Text = Name;
+
+            var rawGroup = await client.GetGroupAsync(member.GroupId);
+            var group = rawGroup.Response;
+            if (group == null) return;
+
+            if(group.Admin != Data.Id)
+            {
+                deleteBtn.Enabled = false;
+            }
+
+            if(member.UserId == Data.Id)
+            {
+                deleteBtn.Enabled = false;
+            } 
         }
 
         public void NewMember()
@@ -237,7 +251,7 @@ namespace Split.UI.UserControls
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-            var result = MessageBox.Show("Вы точно хотите удалить пользователя из друзей?", "Подтверждение",
+            var result = MessageBox.Show("Вы точно хотите удалить пользователя?", "Подтверждение",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.No) return;
 
@@ -249,7 +263,7 @@ namespace Split.UI.UserControls
             else
             {
                 DeleteMember();
-                this.Dispose();
+                //this.Dispose();
             }
         }
 
@@ -326,7 +340,31 @@ namespace Split.UI.UserControls
             if (group == null) return;
             if (group.Admin == member.Id) return;
 
+            var rawGroupDebts = await client.GetUserGroupDebtsAsync(member.GroupId, member.UserId);
+            var groupDebts = rawGroupDebts.Response;
+
+            var unpaid = false;
+            if (groupDebts != null)
+            {
+                foreach (var debt in groupDebts)
+                {
+                    if ((debt.Debt - debt.Paid) != 0)
+                    {
+                        unpaid = true;
+                    }
+                }
+            }
+
+            if(unpaid == true)
+            {
+                var dialogResult = MessageBox.Show("У этого пользователя остались неоплаченные долги.Вы точно хотите удалить пользователя?", "Подтверждение",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if(dialogResult == DialogResult.No) return;
+            }
+
             await client.DeleteGroupMemberAsync(member.GroupId, member.UserId);
+            this.Dispose();
         }
     }
 }
