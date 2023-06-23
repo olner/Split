@@ -47,13 +47,13 @@
             // 
             sumTb.Location = new Point(14, 70);
             sumTb.Name = "sumTb";
-            sumTb.Size = new Size(217, 27);
+            sumTb.Size = new Size(264, 27);
             sumTb.TabIndex = 1;
             sumTb.KeyDown += sumTb_KeyDown;
             // 
             // payBtn
             // 
-            payBtn.Location = new Point(250, 70);
+            payBtn.Location = new Point(284, 70);
             payBtn.Name = "payBtn";
             payBtn.Size = new Size(94, 29);
             payBtn.TabIndex = 2;
@@ -75,7 +75,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(359, 112);
+            ClientSize = new Size(390, 112);
             Controls.Add(label2);
             Controls.Add(payBtn);
             Controls.Add(sumTb);

@@ -163,8 +163,10 @@ namespace Split.UI.Forms
             var expenses = rawResult.Response;
             if (expenses == null) return;
 
+            var sortedExpense = expenses.OrderByDescending(x => x.Date).ToList();
+
             var i = 0;
-            foreach (var item in expenses)
+            foreach (var item in sortedExpense)
             {
                 var control = new ExpenseControl(client, item)
                 {

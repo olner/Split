@@ -67,6 +67,8 @@ namespace Split.UI.UserControls
 
             deleteBtn.Text = "Оплата";
             deleteBtn.Name = $"{expense.Id}";
+            deleteBtn.BackColor = Color.FromArgb(204, 68, 85);
+            deleteBtn.ForeColor = Color.White;
 
             //disabled btn fix
             deleteBtn.Enabled = true;
