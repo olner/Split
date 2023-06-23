@@ -37,15 +37,16 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(14, 47);
+            label1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(12, 58);
             label1.Name = "label1";
-            label1.Size = new Size(55, 20);
+            label1.Size = new Size(62, 23);
             label1.TabIndex = 0;
             label1.Text = "Сумма";
             // 
             // sumTb
             // 
-            sumTb.Location = new Point(14, 70);
+            sumTb.Location = new Point(14, 84);
             sumTb.Name = "sumTb";
             sumTb.Size = new Size(264, 27);
             sumTb.TabIndex = 1;
@@ -53,9 +54,10 @@
             // 
             // payBtn
             // 
-            payBtn.Location = new Point(284, 70);
+            payBtn.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            payBtn.Location = new Point(300, 70);
             payBtn.Name = "payBtn";
-            payBtn.Size = new Size(94, 29);
+            payBtn.Size = new Size(123, 55);
             payBtn.TabIndex = 2;
             payBtn.Text = "Оплатить";
             payBtn.UseVisualStyleBackColor = true;
@@ -64,10 +66,10 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             label2.Location = new Point(14, 9);
             label2.Name = "label2";
-            label2.Size = new Size(100, 23);
+            label2.Size = new Size(110, 25);
             label2.TabIndex = 3;
             label2.Text = "Вы должны";
             // 
@@ -75,7 +77,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(390, 112);
+            ClientSize = new Size(437, 137);
             Controls.Add(label2);
             Controls.Add(payBtn);
             Controls.Add(sumTb);
