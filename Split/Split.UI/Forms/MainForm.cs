@@ -60,7 +60,8 @@ namespace Split.UI.Forms
             if (expenses == null) return;
 
             var i = 0;
-            foreach (var item in expenses)
+            var sortedExpense = expenses.OrderByDescending(x => x.Date).ToList();
+            foreach (var item in sortedExpense)
             {
                 var control = new ExpenseControl(client, item)
                 {
@@ -150,8 +151,9 @@ namespace Split.UI.Forms
             var groups = result.Response;
             if (groups == null) return;
 
+            var sortedGroups = groups.OrderByDescending(x => x.Date).ToList();
             var i = 0;
-            foreach (var item in groups)
+            foreach (var item in sortedGroups)
             {
                 var rawMembers = await client.GetGroupMembersAsync(item.Id);
                 var mebers = rawMembers.Response;

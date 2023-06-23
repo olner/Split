@@ -136,7 +136,7 @@ namespace Split.UI.UserControls
                 sum += (double)(debt.Debt - debt.Paid);
             }
             sum = Math.Round(sum, 2);
-            nameLbl.Text = $"Вы должны {UserName}: {sum}";
+            nameLbl.Text = $"Вы должны {UserName}: {sum}₽";
         }
 
         //Для должников
@@ -163,7 +163,7 @@ namespace Split.UI.UserControls
 
                 sum += (double)(debt.Debt - debt.Paid);
             }
-            nameLbl.Text = $"{UserName} вам должен: {Math.Round(sum,2)}";
+            nameLbl.Text = $"{UserName} вам должен: {Math.Round(sum,2)}₽";
         }
     }
 }
