@@ -114,7 +114,7 @@ namespace Split.UI.Forms
                 }
             }
 
-            label1.Text = $"Вы всего должны {Math.Round(total,2)}₽";
+            label1.Text = $"Вы всего должны {Math.Round(total, 2)}₽";
 
             Debt = Math.Round(total, 2);
         }
@@ -345,10 +345,10 @@ namespace Split.UI.Forms
                 if (Debt != 0)
                 {
                     SetDebt();
-                    return;
                 }
+                return;
             }
-            
+
             foreach (var debt in debts)
             {
                 var rawExpense = await client.GetExpenseAsync(debt.ExpenseId);
@@ -361,7 +361,7 @@ namespace Split.UI.Forms
             }
             total = Math.Round(total, 2);
 
-            if(Debt != total)
+            if (Debt != total)
             {
                 SetDebt();
             }

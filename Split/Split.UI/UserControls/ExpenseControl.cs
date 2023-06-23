@@ -168,8 +168,8 @@ namespace Split.UI.UserControls
             {
                 tmpDebt = (double)(debt.Debt - debt.Paid);
             }
-            
-            if(Debt != tmpDebt)
+
+            if (Debt != tmpDebt)
             {
                 SetData();
             }

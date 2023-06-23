@@ -301,7 +301,6 @@
             // 
             // groupBox1
             // 
-            groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             groupBox1.Controls.Add(deleteBtn);
             groupBox1.Controls.Add(resetBtn);
             groupBox1.Controls.Add(saveBtn);
@@ -309,6 +308,7 @@
             groupBox1.Controls.Add(descRtb);
             groupBox1.Controls.Add(nameTb);
             groupBox1.Controls.Add(label2);
+            groupBox1.Dock = DockStyle.Fill;
             groupBox1.Location = new Point(3, 49);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(457, 439);

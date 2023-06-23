@@ -44,8 +44,8 @@
             tableLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tableLayoutPanel1.ColumnCount = 5;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 99F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 35.6492043F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25.51253F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 35.6492F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25.5125256F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 38.83827F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
             tableLayoutPanel1.Controls.Add(dateLbl, 0, 0);
@@ -76,7 +76,7 @@
             priceLbl.Anchor = AnchorStyles.None;
             priceLbl.AutoSize = true;
             priceLbl.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            priceLbl.Location = new Point(497, 37);
+            priceLbl.Location = new Point(491, 37);
             priceLbl.Name = "priceLbl";
             priceLbl.Size = new Size(54, 28);
             priceLbl.TabIndex = 1;
@@ -87,7 +87,7 @@
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(710, 37);
+            label1.Location = new Point(701, 37);
             label1.Name = "label1";
             label1.Size = new Size(192, 28);
             label1.TabIndex = 2;
@@ -106,10 +106,11 @@
             // 
             // deleteBtn
             // 
+            deleteBtn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             deleteBtn.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            deleteBtn.Location = new Point(980, 3);
+            deleteBtn.Location = new Point(969, 3);
             deleteBtn.Name = "deleteBtn";
-            deleteBtn.Size = new Size(81, 97);
+            deleteBtn.Size = new Size(93, 97);
             deleteBtn.TabIndex = 4;
             deleteBtn.Text = "Удалить";
             deleteBtn.UseVisualStyleBackColor = true;
