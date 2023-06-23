@@ -166,6 +166,7 @@
             Controls.Add(cancelBtn);
             Controls.Add(saveBtn);
             Controls.Add(groupBox1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "AddGroupForm";
             Text = "Добавить группу";
             Load += AddGroupForm_Load;

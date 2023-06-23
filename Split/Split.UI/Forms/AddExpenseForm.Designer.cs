@@ -273,6 +273,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(407, 617);
             Controls.Add(groupBox1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "AddExpenseForm";
             Text = "Добавить покупку";
             Load += AddExpenseForm_Load;

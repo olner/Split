@@ -68,6 +68,8 @@ namespace Split.UI.UserControls
             deleteBtn.Text = "Оплата";
             deleteBtn.Name = $"{expense.Id}";
 
+            //disabled btn fix
+            deleteBtn.Enabled = true;
             if (Debt == 0) deleteBtn.Enabled = false;
 
             //TODO: Бесконечное добавление click, сделать нормальный фикс

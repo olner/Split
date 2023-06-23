@@ -30,6 +30,12 @@ namespace Split.UI.Forms
 
         private async void payBtn_Click(object sender, EventArgs e)
         {
+            if (sumTb.Text.Length == 0)
+            {
+                MessageBox.Show("Заполните поле суммы");
+                return;
+            }
+
             var debt = Debt.Debt - Debt.Paid;
 
             if (double.Parse(sumTb.Text) > debt)

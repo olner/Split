@@ -79,6 +79,7 @@
             Controls.Add(payBtn);
             Controls.Add(sumTb);
             Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "PayForm";
             Text = "Учет оплаты";
             ResumeLayout(false);
