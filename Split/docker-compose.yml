@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+    api:
+      build: .
+      container_name: olner-api
+      environment:
+        - TZ=Europe/Moscow
+      ports:
+        - '7223:80'
+      restart: always
+      image: 'olner-api:latest'
