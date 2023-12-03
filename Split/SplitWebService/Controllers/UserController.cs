@@ -57,7 +57,7 @@ namespace SplitWebService.Controllers
             return Ok(new ServiceResponse<User> { Response = result });
         }
 
-        [HttpPost("/auth", Name = "Authorize")]
+        [HttpGet("/auth", Name = "Authorize")]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ServiceResponse<User>))]
         public IActionResult Authorize(string login, string password)
